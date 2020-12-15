@@ -2,17 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class JoystickController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject touchMarker;
+
+    Vector3 targetVector;
+
+    public PlayerController plController;
+
     void Start()
     {
-        
+        touchMarker.transform.position = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetMouseButton(0)) //Change this to (Input.touchCount > 0) in order to switch PC to mobile
+        {
+            Vector3 touchPos = Input.mousePosition; //Also change this to Input.GetTouch(0).position
+            targetVector = touchPos - transform.position;
+
+            if(targetVector.magnitude < 100)
+            {
+                touchMarker.transform.position = touchPos;
+                plController.targetMove = targetVector;
+            }
+        else
+        {
+            touchMarker.transform.position = transform.position;
+            //plController.targetMove = new Vector3(0, 0, 0);
+        }
+        }
     }
 }
