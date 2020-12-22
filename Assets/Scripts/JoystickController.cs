@@ -29,8 +29,8 @@ public class JoystickController : MonoBehaviour
             }
             else
             {
-                float newX = transform.position.x + Mathf.Cos(Mathf.Atan2(targetVector.x, targetVector.y)) * 100;
-                float newY = transform.position.y + Mathf.Sin(Mathf.Atan2(targetVector.x, targetVector.y)) * 100;
+                float newX = transform.position.x + Mathf.Sin(Mathf.Atan2(targetVector.x, targetVector.y)) * 100;
+                float newY = transform.position.y + Mathf.Cos(Mathf.Atan2(targetVector.x, targetVector.y)) * 100;
                 touchMarker.transform.position = new Vector3(newX, newY, transform.position.z);
             }
         }
