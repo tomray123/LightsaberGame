@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    float speed = 0.1f;
+    float speed = 0.12f;
     Vector3 direction;
 
     private void Start()
@@ -16,11 +16,13 @@ public class Bullet : MonoBehaviour
         transform.Translate(direction * speed, Space.World);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Got it");
-        ContactPoint2D contact = collision.GetContact(0);
-        direction = Vector3.Reflect(direction, contact.normal);
-        transform.up = direction;
+        if (other.CompareTag("Player")) 
+        {
+            Debug.Log("Got it");
+            direction = Vector3.Reflect(direction, other.transform.up);
+            transform.up = direction;
+        }
     }
 }
