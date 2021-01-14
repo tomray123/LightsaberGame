@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Test : MonoBehaviour
 {
     public float speed = 0.15f;
     Vector3 direction;
@@ -14,25 +14,26 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        direction = target.transform.position - transform.position;
-        transform.up = direction;  //Change it later
-        Vector2[] colPoints = transform.GetComponent<EdgeCollider2D>().points;
-        frontPoint.transform.localPosition = colPoints[0];
+        //direction = target.transform.position - transform.position;
+        //transform.up = direction;  //Change it later
+        direction = transform.up;
+        //Vector2[] colPoints = transform.GetComponent<EdgeCollider2D>().points;
+        //frontPoint.transform.localPosition = colPoints[0];
     }
     void FixedUpdate()
     {
-        transform.Translate(direction.normalized * speed, Space.World);
+        transform.Translate(direction * speed, Space.World);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("LightSaber")) 
+        if (other.CompareTag("LightSaber"))
         {
             Debug.Log("Got it");
             direction = Vector3.Reflect(direction, other.transform.up);
-            transform.position = frontPoint.transform.position;
+            //transform.position = frontPoint.transform.position;
             transform.up = direction;
-            
+
             //timeToStop = true;
         }
     }
