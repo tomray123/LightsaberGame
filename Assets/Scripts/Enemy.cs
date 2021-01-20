@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public GameObject target;
     public float timeToShoot = 1f;
     public GameObject bullet;
-    bool isTimeToShoot = true;
+    private bool isTimeToShoot = true;
 
     void Start()
     {
@@ -25,5 +25,23 @@ public class Enemy : MonoBehaviour
         isTimeToShoot = false;
         yield return new WaitForSeconds(time);
         isTimeToShoot = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        // Check for bullet layer and for danger
+        if(other.gameObject.layer == 8 && other.gameObject.GetComponent<Bullet>().isDangerous)
+        {
+            Debug.Log("Enemy was shot");
+            Destroy(other.gameObject);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == 8)
+        {
+            other.gameObject.GetComponent<Bullet>().isDangerous = true;
+        }
     }
 }

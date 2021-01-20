@@ -10,6 +10,8 @@ public class Bullet : MonoBehaviour
     public GameObject frontPoint;
     public GameObject target;
 
+    public bool isDangerous;
+
     private Rigidbody2D rb;
 
     private void Start()
@@ -23,6 +25,9 @@ public class Bullet : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         rb.velocity = direction.normalized * speed;
+
+        //Bullet doesn't hit enemy when bullet spawns
+        isDangerous = false;
     }
 
     void FixedUpdate()

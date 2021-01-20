@@ -16,4 +16,12 @@ public class PlayerController : MonoBehaviour
         float angle = Angle360(Vector3.up, targetMove, Vector3.right);
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.gameObject.layer == 8)
+        {
+            Debug.Log("Player was shot");
+        }
+    }
 }
