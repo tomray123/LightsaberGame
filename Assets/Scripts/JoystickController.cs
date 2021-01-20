@@ -37,7 +37,6 @@ public class JoystickController : MonoBehaviour
         else
         {
             touchMarker.transform.position = transform.position;
-            //plController.targetMove = new Vector3(0, 0, 0);
         }
     }
 }
