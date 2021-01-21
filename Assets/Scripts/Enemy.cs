@@ -36,7 +36,6 @@ public class Enemy : MonoBehaviour
         // Check for bullet layer and for danger
         if(other.gameObject.layer == 8 && other.gameObject.GetComponent<Bullet>().isDangerous)
         {
-            Debug.Log("Enemy was shot");
             Destroy(other.gameObject);
             StartCoroutine(ChangeColor());
             //Destroy(gameObject);
@@ -65,5 +64,6 @@ public class Enemy : MonoBehaviour
             renderer.material.color = cl;
             yield return null;
         }
+        Destroy(gameObject);
     }
 }

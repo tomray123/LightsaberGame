@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
     {
         if(other.gameObject.layer == 8)
         {
-            Debug.Log("Player was shot");
             Destroy(other.gameObject);
             StartCoroutine(ChangeColor());
         }
