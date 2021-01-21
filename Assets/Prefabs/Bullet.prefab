@@ -130,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   frontPoint: {fileID: 2737468163907518878}
-  target: {fileID: 0}
+  target: {fileID: 4258905628541220326, guid: 0470770b121af954d8b23fb39892839e, type: 3}
 --- !u!68 &2737468164590865730
 EdgeCollider2D:
   m_ObjectHideFlags: 0
