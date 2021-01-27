@@ -6,9 +6,15 @@ public class JoystickController : MonoBehaviour
 {
     public GameObject touchMarker;
 
-    Vector3 targetVector;
+    public Vector3 targetVector;
 
     public PlayerController plController;
+
+    public float lowSpeed = 100f;
+
+    public float medSpeed = 400f;
+
+    public float highSpeed = 800f;
 
     void Start()
     {
@@ -26,9 +32,23 @@ public class JoystickController : MonoBehaviour
             if (targetVector.magnitude < 100)
             {
                 touchMarker.transform.position = touchPos;
+
+                if (targetVector.magnitude < 40)
+                {
+                    plController.rotationSpeed = medSpeed;
+                }
+                /*else if(targetVector.magnitude < 40)
+                {
+                    plController.rotationSpeed = medSpeed;
+                }*/
+                else
+                {
+                    plController.rotationSpeed = highSpeed;
+                }
             }
             else
             {
+                plController.rotationSpeed = highSpeed;
                 float newX = transform.position.x + Mathf.Sin(Mathf.Atan2(targetVector.x, targetVector.y)) * 100;
                 float newY = transform.position.y + Mathf.Cos(Mathf.Atan2(targetVector.x, targetVector.y)) * 100;
                 touchMarker.transform.position = new Vector3(newX, newY, transform.position.z);
@@ -37,6 +57,8 @@ public class JoystickController : MonoBehaviour
         else
         {
             touchMarker.transform.position = transform.position;
+            targetVector = new Vector3(0, 0, 0);
+            plController.rotationSpeed = 0;
         }
     }
 }

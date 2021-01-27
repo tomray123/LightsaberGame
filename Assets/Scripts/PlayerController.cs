@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 
     private Renderer renderer;
 
+    public float rotationSpeed = 5f;
+
     private void Start()
     {
         renderer = GetComponent<Renderer>();
@@ -16,7 +18,17 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         float angle = Angle360(Vector3.up, targetMove, Vector3.right);
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        //first way to rotate
+        //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        //second way to rotate
+        //Quaternion targetQuater = Quaternion.Euler(0, 0, angle);
+        //transform.rotation  = Quaternion.Slerp(transform.rotation, targetQuater, Time.deltaTime * rotationSpeed);
+
+        //third way to rotate
+        Quaternion targetQuater = Quaternion.Euler(0, 0, angle);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, targetQuater, rotationSpeed * Time.deltaTime);
     }
 
     float Angle360(Vector3 from, Vector3 to, Vector3 right)
