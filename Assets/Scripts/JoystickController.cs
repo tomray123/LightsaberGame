@@ -33,14 +33,14 @@ public class JoystickController : MonoBehaviour
             {
                 touchMarker.transform.position = touchPos;
 
-                if (targetVector.magnitude < 40)
+                if (targetVector.magnitude < 10)
+                {
+                    plController.rotationSpeed = lowSpeed;
+                }
+                else if(targetVector.magnitude < 30)
                 {
                     plController.rotationSpeed = medSpeed;
                 }
-                /*else if(targetVector.magnitude < 40)
-                {
-                    plController.rotationSpeed = medSpeed;
-                }*/
                 else
                 {
                     plController.rotationSpeed = highSpeed;
