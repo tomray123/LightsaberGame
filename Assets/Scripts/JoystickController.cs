@@ -24,7 +24,6 @@ public class JoystickController : MonoBehaviour
     {
         touchMarker.transform.position = transform.position;
         width = gameObject.GetComponent<RectTransform>().rect.width;
-        Debug.Log(width);
     }
 
     void Update()
