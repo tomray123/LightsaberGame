@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Enemy.unity
-    guid: 46e8732d46b675e409347d0f9d21a7a9
+    path: Assets/Scenes/ClassicJoystick.unity
+    guid: 560f7d5c7caf11d42b1d1e51955d2286
+  - enabled: 1
+    path: Assets/Scenes/FloatJoystick.unity
+    guid: 034ea54752a0837499154b5347e6734e
+  - enabled: 1
+    path: Assets/Scenes/MouseLookController.unity
+    guid: e97fa16f8210dff40a824d1e8f14cc58
   m_configObjects: {}
