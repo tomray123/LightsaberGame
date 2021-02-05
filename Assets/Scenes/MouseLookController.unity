@@ -719,7 +719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchMarker: {fileID: 550818901}
   targetVector: {x: 0, y: 0, z: 0}
-  plController: {fileID: 1823141442}
+  plController: {fileID: 0}
   lowSpeed: 100
   medSpeed: 400
   highSpeed: 800
@@ -859,7 +859,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 559.9999, y: -29.344986}
+  m_AnchoredPosition: {x: 559.9999, y: -29.34497}
   m_SizeDelta: {x: -1120, y: 58.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &973336037
@@ -1210,36 +1210,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0470770b121af954d8b23fb39892839e, type: 3}
---- !u!114 &1823141442 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4258905628541220321, guid: 0470770b121af954d8b23fb39892839e, type: 3}
-  m_PrefabInstance: {fileID: 1823141441}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1823141443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f9aa732c23fee04cbe11993c4a61643, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1823141443 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4258905628541220326, guid: 0470770b121af954d8b23fb39892839e, type: 3}
-  m_PrefabInstance: {fileID: 1823141441}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1823141444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1823141443}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9478e0703f3f1f4e98a9ebfb0bfa777, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  plController: {fileID: 1823141442}
 --- !u!1 &1892236148
 GameObject:
   m_ObjectHideFlags: 0

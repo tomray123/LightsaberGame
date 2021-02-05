@@ -8,12 +8,15 @@ public class Enemy : MonoBehaviour
     public float timeToShoot = 1f;
     public GameObject bullet;
     private bool isTimeToShoot = true;
+    private bool isJustBorn = true;
 
     private Renderer renderer;
 
     void Start()
     {
         transform.up = target.transform.position - transform.position;
+
+        isJustBorn = true;
 
         renderer = GetComponent<Renderer>();
     }
@@ -25,8 +28,13 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator Shoot(float time)
     {
-        Instantiate(bullet, transform.position, transform.rotation);
         isTimeToShoot = false;
+        if (isJustBorn)
+        {
+            isJustBorn = false;
+            yield return new WaitForSeconds(2f);
+        }
+        Instantiate(bullet, transform.position, transform.rotation);
         yield return new WaitForSeconds(time);
         isTimeToShoot = true;
     }

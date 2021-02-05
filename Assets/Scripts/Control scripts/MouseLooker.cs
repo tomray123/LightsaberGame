@@ -11,7 +11,7 @@ public class MouseLooker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        plController = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame

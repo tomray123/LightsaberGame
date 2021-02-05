@@ -9,6 +9,11 @@ public class SceneChanger : MonoBehaviour
 	{
 		SceneManager.LoadScene(sceneName);
 	}
+
+	public void Lol()
+	{
+		Debug.Log("Lol Kek");
+	}
 	public void Exit()
 	{
 		Application.Quit();
