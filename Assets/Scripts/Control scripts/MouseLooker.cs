@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class MouseLooker : MonoBehaviour
 {
-    public Transform target;
+    public float speed = 800f;
+
+    public GameObject player;
 
     public PlayerController plController;
 
     // Start is called before the first frame update
     void Start()
     {
-        plController = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -19,9 +20,9 @@ public class MouseLooker : MonoBehaviour
     {
         if (Input.GetMouseButton(0)) //Change this to (Input.touchCount > 0) in order to switch PC to mobile
         {
-            //target.LookAt(Camera.main.ScreenToWorldPoint(Input.mousePosition));
-            var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+            var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(player.transform.position);
             plController.targetMove = dir;
+            plController.rotationSpeed = speed;
             //var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }

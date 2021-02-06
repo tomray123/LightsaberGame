@@ -13,13 +13,14 @@ GameObject:
   - component: {fileID: 1605830342053926691}
   - component: {fileID: 1605830342053926688}
   - component: {fileID: 1605830342053926701}
+  - component: {fileID: 4454597456334779585}
   m_Layer: 5
   m_Name: Joystick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1605830342053926689
 RectTransform:
   m_ObjectHideFlags: 0
@@ -118,6 +119,21 @@ MonoBehaviour:
   highSpeed: 800
   width: 0
   height: 0
+--- !u!114 &4454597456334779585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605830342053926694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9478e0703f3f1f4e98a9ebfb0bfa777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  player: {fileID: 4258905628541220326, guid: 0470770b121af954d8b23fb39892839e, type: 3}
+  plController: {fileID: 6387370590292991224, guid: 0470770b121af954d8b23fb39892839e, type: 3}
 --- !u!1 &1605830343032986349
 GameObject:
   m_ObjectHideFlags: 0
