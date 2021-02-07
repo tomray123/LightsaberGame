@@ -40,4 +40,14 @@ public class PauseController : MonoBehaviour
         joystick.SetActive(true);
         SceneManager.LoadScene(sceneName);
     }
+
+    public void changeLevel(string levelName)
+    {
+        PauseMenu.SetActive(false);
+        GameUI.SetActive(true);
+        Time.timeScale = 1f;
+        IsGamePaused = false;
+        joystick.SetActive(true);
+        SceneManager.LoadScene(levelName);
+    }
 }
