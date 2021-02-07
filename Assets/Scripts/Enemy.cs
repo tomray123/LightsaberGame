@@ -8,7 +8,12 @@ public class Enemy : MonoBehaviour
     public float timeToShoot = 1f;
     public GameObject bullet;
     private bool isTimeToShoot = true;
+
     private bool isJustBorn = true;
+
+    public bool isLast = false;
+
+    public static bool isWin = false;
 
     private Renderer renderer;
 
@@ -93,5 +98,10 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
         Destroy(gameObject);
+
+        if (isLast)
+        {
+            isWin = true;
+        }
     }
 }

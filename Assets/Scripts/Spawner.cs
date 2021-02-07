@@ -9,19 +9,20 @@ public class SpawnObject
 {
     public GameObject obj;
     public Transform spawnPos;
-    public float spawnTime;
+    public float spawnPeriod;
 }
 
 
 public class Spawner : MonoBehaviour
 {
+
     [SerializeField]
     public List<SpawnObject> MyList = new List<SpawnObject>();
     void Start()
     {
-        foreach(SpawnObject obj in MyList)
+        for(int i = 0; i < MyList.Count; i++)       //(SpawnObject obj in MyList)
         {
-            StartCoroutine(Timer(obj));
+            StartCoroutine(Timer(MyList[i], i, MyList.Count));
         }
     }
 
@@ -30,9 +31,20 @@ public class Spawner : MonoBehaviour
         
     }
 
-    private IEnumerator Timer(SpawnObject spawnObj)
+    private IEnumerator Timer(SpawnObject spawnObj, int num, int size)
     {
-        yield return new WaitForSeconds(spawnObj.spawnTime);
+        if (num == 0)
+        {
+            yield return new WaitForSeconds(spawnObj.spawnPeriod);
+        }
+        else
+        {
+            yield return new WaitForSeconds(spawnObj.spawnPeriod * num);
+        }
+        if (num == size - 1)
+        {
+            spawnObj.obj.GetComponent<Enemy>().isLast = true;
+        }
         Instantiate(spawnObj.obj, spawnObj.spawnPos.position, Quaternion.identity);
     }
 }
