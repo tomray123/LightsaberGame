@@ -47,6 +47,7 @@ public class LevelManager : MonoBehaviour
                 break;
         }
 
+
         if (MenuController.isSmooth)
         {
             player.GetComponent<PlayerController>().isSmooth = true;
@@ -60,7 +61,7 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Enemy.isWin)
+        if (Enemy.NumberOfKilledEnemies == Spawner.TotalNumberOfEnemies)
         {
             PauseController.IsGamePaused = true;
             joystick.SetActive(false);
@@ -68,7 +69,8 @@ public class LevelManager : MonoBehaviour
             GameUI.SetActive(false);
             PauseMenu.SetActive(false);
             NextLevelMenu.SetActive(true);
-            Enemy.isWin = false;
+            Enemy.NumberOfKilledEnemies = 0;
+            Spawner.TotalNumberOfEnemies = -1;
         }
     }
 }

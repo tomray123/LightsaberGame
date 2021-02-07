@@ -7,13 +7,14 @@ public class Enemy : MonoBehaviour
     public GameObject target;
     public float timeToShoot = 1f;
     public GameObject bullet;
+
     private bool isTimeToShoot = true;
 
     private bool isJustBorn = true;
 
-    public bool isLast = false;
+    public bool isKilled = false;
 
-    public static bool isWin = false;
+    public static int NumberOfKilledEnemies = 0;
 
     private Renderer renderer;
 
@@ -26,6 +27,8 @@ public class Enemy : MonoBehaviour
         transform.up = target.transform.position - transform.position;
 
         isJustBorn = true;
+
+        isKilled = false;
 
         renderer = GetComponent<Renderer>();
 
@@ -99,9 +102,10 @@ public class Enemy : MonoBehaviour
         }
         Destroy(gameObject);
 
-        if (isLast)
+        if (!isKilled)
         {
-            isWin = true;
+            NumberOfKilledEnemies++;
         }
+        isKilled = true;
     }
 }

@@ -39,6 +39,8 @@ public class PauseController : MonoBehaviour
         IsGamePaused = false;
         joystick.SetActive(true);
         SceneManager.LoadScene(sceneName);
+        Enemy.NumberOfKilledEnemies = 0;
+        Spawner.TotalNumberOfEnemies = -1;
     }
 
     public void changeLevel(string levelName)
@@ -49,5 +51,7 @@ public class PauseController : MonoBehaviour
         IsGamePaused = false;
         joystick.SetActive(true);
         SceneManager.LoadScene(levelName);
+        Enemy.NumberOfKilledEnemies = 0;
+        Spawner.TotalNumberOfEnemies = -1;
     }
 }

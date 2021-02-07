@@ -18,12 +18,16 @@ public class Spawner : MonoBehaviour
 
     [SerializeField]
     public List<SpawnObject> MyList = new List<SpawnObject>();
+
+    public static int TotalNumberOfEnemies = -1;
+
     void Start()
     {
-        for(int i = 0; i < MyList.Count; i++)       //(SpawnObject obj in MyList)
+        for (int i = 0; i < MyList.Count; i++)       //(SpawnObject obj in MyList)
         {
-            StartCoroutine(Timer(MyList[i], i, MyList.Count));
+            StartCoroutine(Timer(MyList[i], i));
         }
+        TotalNumberOfEnemies = MyList.Count;
     }
 
     void Update()
@@ -31,7 +35,7 @@ public class Spawner : MonoBehaviour
         
     }
 
-    private IEnumerator Timer(SpawnObject spawnObj, int num, int size)
+    private IEnumerator Timer(SpawnObject spawnObj, int num)
     {
         if (num == 0)
         {
@@ -40,14 +44,6 @@ public class Spawner : MonoBehaviour
         else
         {
             yield return new WaitForSeconds(spawnObj.spawnPeriod * num);
-        }
-        if (num == size - 1)
-        {
-            spawnObj.obj.GetComponent<Enemy>().isLast = true;
-        }
-        else
-        {
-            spawnObj.obj.GetComponent<Enemy>().isLast = false;
         }
         Instantiate(spawnObj.obj, spawnObj.spawnPos.position, Quaternion.identity);
     }
