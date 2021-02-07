@@ -12,6 +12,10 @@ public class Enemy : MonoBehaviour
 
     private Renderer renderer;
 
+    private Transform shootIndicator;
+
+    private bool flash = false;
+
     void Start()
     {
         transform.up = target.transform.position - transform.position;
@@ -19,6 +23,8 @@ public class Enemy : MonoBehaviour
         isJustBorn = true;
 
         renderer = GetComponent<Renderer>();
+
+        shootIndicator = gameObject.transform.GetChild(0);
     }
 
     void Update()
@@ -32,10 +38,24 @@ public class Enemy : MonoBehaviour
         if (isJustBorn)
         {
             isJustBorn = false;
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(0.8f);
+            
+            for (int i=0; i<6; i++)
+            {
+                flash = !flash;
+                shootIndicator.gameObject.SetActive(flash);
+                yield return new WaitForSeconds(0.2f);
+            }
+
         }
         Instantiate(bullet, transform.position, transform.rotation);
-        yield return new WaitForSeconds(time);
+        yield return new WaitForSeconds(time - 1.2f);
+        for (int i = 0; i < 6; i++)
+        {
+            flash = !flash;
+            shootIndicator.gameObject.SetActive(flash);
+            yield return new WaitForSeconds(0.2f);
+        }
         isTimeToShoot = true;
     }
 
