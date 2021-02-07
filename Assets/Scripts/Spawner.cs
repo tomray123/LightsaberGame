@@ -45,6 +45,10 @@ public class Spawner : MonoBehaviour
         {
             spawnObj.obj.GetComponent<Enemy>().isLast = true;
         }
+        else
+        {
+            spawnObj.obj.GetComponent<Enemy>().isLast = false;
+        }
         Instantiate(spawnObj.obj, spawnObj.spawnPos.position, Quaternion.identity);
     }
 }
