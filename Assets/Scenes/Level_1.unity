@@ -367,6 +367,11 @@ PrefabInstance:
       objectReference: {fileID: 747273054}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef3342470f20cf1478157e0c25d5933b, type: 3}
+--- !u!1 &152145517 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1605830342053926694, guid: ef3342470f20cf1478157e0c25d5933b, type: 3}
+  m_PrefabInstance: {fileID: 152145516}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &162417162
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,7 +1925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 360283130}
   GameUI: {fileID: 883976521}
-  joystick: {fileID: 1605830342053926694, guid: ef3342470f20cf1478157e0c25d5933b, type: 3}
+  joystick: {fileID: 152145517}
 --- !u!114 &1242005677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1936,7 +1941,8 @@ MonoBehaviour:
   NextLevelMenu: {fileID: 468389982}
   GameUI: {fileID: 883976521}
   PauseMenu: {fileID: 360283130}
-  joystick: {fileID: 1605830342053926694, guid: ef3342470f20cf1478157e0c25d5933b, type: 3}
+  joystick: {fileID: 152145517}
+  player: {fileID: 747273053}
 --- !u!1 &1330937870
 GameObject:
   m_ObjectHideFlags: 0

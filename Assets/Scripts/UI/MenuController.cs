@@ -13,10 +13,15 @@ public class MenuController : MonoBehaviour
 
 	public Toggle smooth;
 
-	public GameObject player;
-	public GameObject joystick;
+	/*public GameObject player;
+	public GameObject joystick;*/
+
+	public static string whichController = "NoJoystick";
+
+	public static bool isSmooth = false;
 
 	public GameObject SettingsMenu;
+
 
     private void Start()
     {
@@ -32,16 +37,19 @@ public class MenuController : MonoBehaviour
 		flJoyst.colors = cb;
 		clJoyst.colors = cb;
 
-		joystick.GetComponent<Image>().enabled = false;
+		whichController = "NoJoystick";
+		isSmooth = false;
+
+		/*joystick.GetComponent<Image>().enabled = false;
 		joystick.transform.GetChild(0).GetComponent<Image>().enabled = false;
 		joystick.GetComponent<MouseLooker>().enabled = true;
 		joystick.GetComponent<JoystickController>().enabled = false;
-		joystick.GetComponent<FloatJoystickController>().enabled = false;
+		joystick.GetComponent<FloatJoystickController>().enabled = false;*/
 
 		cb.selectedColor = disableColor;
 		smooth.colors = cb;
 		smooth.isOn = false;
-		player.GetComponent<PlayerController>().isSmooth = false;
+		//player.GetComponent<PlayerController>().isSmooth = false;
 	}
 
     public void OpenSettings()
@@ -76,11 +84,13 @@ public class MenuController : MonoBehaviour
 				flJoyst.colors = cb;
 				clJoyst.colors = cb;
 
-				joystick.GetComponent<Image>().enabled = false;
+				whichController = "NoJoystick";
+
+				/*joystick.GetComponent<Image>().enabled = false;
 				joystick.transform.GetChild(0).GetComponent<Image>().enabled = false;
 				joystick.GetComponent<MouseLooker>().enabled = true;
 				joystick.GetComponent<JoystickController>().enabled = false;
-				joystick.GetComponent<FloatJoystickController>().enabled = false;
+				joystick.GetComponent<FloatJoystickController>().enabled = false;*/
 
 				break;
 
@@ -89,11 +99,13 @@ public class MenuController : MonoBehaviour
 				noJoyst.colors = cb;
 				clJoyst.colors = cb;
 
-				joystick.GetComponent<Image>().enabled = true;
+				whichController = "FloatJoystick";
+
+				/*joystick.GetComponent<Image>().enabled = true;
 				joystick.transform.GetChild(0).GetComponent<Image>().enabled = true;
 				joystick.GetComponent<JoystickController>().enabled = false;
 				joystick.GetComponent<FloatJoystickController>().enabled = true;
-				joystick.GetComponent<MouseLooker>().enabled = false;
+				joystick.GetComponent<MouseLooker>().enabled = false;*/
 
 				break;
 
@@ -102,11 +114,13 @@ public class MenuController : MonoBehaviour
 				flJoyst.colors = cb;
 				noJoyst.colors = cb;
 
-				joystick.GetComponent<Image>().enabled = true;
+				whichController = "ClassicJoystick";
+
+				/*joystick.GetComponent<Image>().enabled = true;
 				joystick.transform.GetChild(0).GetComponent<Image>().enabled = true;
 				joystick.GetComponent<JoystickController>().enabled = true;
 				joystick.GetComponent<FloatJoystickController>().enabled = false;
-				joystick.GetComponent<MouseLooker>().enabled = false;
+				joystick.GetComponent<MouseLooker>().enabled = false;*/
 
 				break;
 		}
@@ -119,21 +133,21 @@ public class MenuController : MonoBehaviour
 
 		ColorBlock cb = pressed.colors;
 
-		PlayerController plController = player.GetComponent<PlayerController>();
+		//PlayerController plController = player.GetComponent<PlayerController>();
 
 		if (pressed.isOn)
         {
 			cb.normalColor = activeColor;
 			cb.selectedColor = activeColor;
 			pressed.colors = cb;
-			plController.isSmooth = true;
+			isSmooth = true;
 		}
         else
         {
 			cb.normalColor = disableColor;
 			cb.selectedColor = disableColor;
 			pressed.colors = cb;
-			plController.isSmooth = false;
+			isSmooth = false;
 		}
 	}
 

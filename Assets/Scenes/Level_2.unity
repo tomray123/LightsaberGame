@@ -1837,6 +1837,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1605830342053926689, guid: ef3342470f20cf1478157e0c25d5933b, type: 3}
   m_PrefabInstance: {fileID: 1220992384}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1220992386 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1605830342053926694, guid: ef3342470f20cf1478157e0c25d5933b, type: 3}
+  m_PrefabInstance: {fileID: 1220992384}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1223794504
 GameObject:
   m_ObjectHideFlags: 0
@@ -2593,7 +2598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 1223794504}
   GameUI: {fileID: 1377187605}
-  joystick: {fileID: 1605830342053926694, guid: ef3342470f20cf1478157e0c25d5933b, type: 3}
+  joystick: {fileID: 1220992386}
 --- !u!114 &1819273180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2691,7 +2696,8 @@ MonoBehaviour:
   NextLevelMenu: {fileID: 2018308374}
   GameUI: {fileID: 1377187605}
   PauseMenu: {fileID: 1223794504}
-  joystick: {fileID: 1605830342053926694, guid: ef3342470f20cf1478157e0c25d5933b, type: 3}
+  joystick: {fileID: 1220992386}
+  player: {fileID: 1122917389}
 --- !u!1 &1868462818
 GameObject:
   m_ObjectHideFlags: 0
