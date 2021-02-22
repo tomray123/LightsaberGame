@@ -6,6 +6,10 @@ public class BasePlayerSettings : MonoBehaviour
 {
     private Renderer renderer;
 
+    public int hp = 500;
+
+    public static bool isKilled = false;
+
     private void Start()
     {
         renderer = GetComponent<Renderer>();
@@ -15,8 +19,9 @@ public class BasePlayerSettings : MonoBehaviour
     {
         if (other.gameObject.layer == 8)
         {
-            Destroy(other.gameObject);
+            hp -= other.GetComponent<Bullet>().damage;
             StartCoroutine(ChangeColor());
+            Destroy(other.gameObject);
         }
     }
 
@@ -33,6 +38,11 @@ public class BasePlayerSettings : MonoBehaviour
             Color cl = new Color(1, i, i);
             renderer.material.color = cl;
             yield return null;
+        }
+        if (hp <= 0)
+        {
+            isKilled = true;
+            Destroy(gameObject);
         }
     }
 }

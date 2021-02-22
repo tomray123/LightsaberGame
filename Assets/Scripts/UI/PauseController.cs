@@ -41,6 +41,7 @@ public class PauseController : MonoBehaviour
         SceneManager.LoadScene(sceneName);
         Enemy.NumberOfKilledEnemies = 0;
         Spawner.TotalNumberOfEnemies = -1;
+        BasePlayerSettings.isKilled = false;
     }
 
     public void changeLevel(string levelName)
@@ -53,5 +54,6 @@ public class PauseController : MonoBehaviour
         SceneManager.LoadScene(levelName);
         Enemy.NumberOfKilledEnemies = 0;
         Spawner.TotalNumberOfEnemies = -1;
+        BasePlayerSettings.isKilled = false;
     }
 }

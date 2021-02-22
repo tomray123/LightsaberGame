@@ -8,6 +8,7 @@ public class LevelManager : MonoBehaviour
     public GameObject NextLevelMenu;
     public GameObject GameUI;
     public GameObject PauseMenu;
+    public GameObject LoseMenu;
 
     public GameObject joystick;
     public GameObject player;
@@ -71,6 +72,19 @@ public class LevelManager : MonoBehaviour
             NextLevelMenu.SetActive(true);
             Enemy.NumberOfKilledEnemies = 0;
             Spawner.TotalNumberOfEnemies = -1;
+            BasePlayerSettings.isKilled = false;
+        }
+        if (BasePlayerSettings.isKilled)
+        {
+            PauseController.IsGamePaused = true;
+            joystick.SetActive(false);
+            Time.timeScale = 0f;
+            GameUI.SetActive(false);
+            PauseMenu.SetActive(false);
+            LoseMenu.SetActive(true);
+            Enemy.NumberOfKilledEnemies = 0;
+            Spawner.TotalNumberOfEnemies = -1;
+            BasePlayerSettings.isKilled = false;
         }
     }
 }
