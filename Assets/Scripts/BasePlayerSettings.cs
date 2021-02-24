@@ -6,12 +6,18 @@ public class BasePlayerSettings : MonoBehaviour
 {
     private Renderer renderer;
 
-    public int hp = 500;
+    public HealthBar healthBar;
+
+    public int maxHealth = 500;
+
+    public int currentHealth;
 
     public static bool isKilled = false;
 
     private void Start()
     {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         renderer = GetComponent<Renderer>();
     }
 
@@ -19,7 +25,8 @@ public class BasePlayerSettings : MonoBehaviour
     {
         if (other.gameObject.layer == 8)
         {
-            hp -= other.GetComponent<Bullet>().damage;
+            currentHealth -= other.GetComponent<Bullet>().damage;
+            healthBar.SetHealth(currentHealth);
             StartCoroutine(ChangeColor());
             Destroy(other.gameObject);
         }
@@ -39,7 +46,7 @@ public class BasePlayerSettings : MonoBehaviour
             renderer.material.color = cl;
             yield return null;
         }
-        if (hp <= 0)
+        if (currentHealth <= 0)
         {
             isKilled = true;
             Destroy(gameObject);
