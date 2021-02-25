@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3684367867540466767}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.62, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 0.06, y: 0.06, z: 0.06}
   m_Children:
   - {fileID: 5604004682840774830}
   m_Father: {fileID: 0}
@@ -138,6 +138,9 @@ MonoBehaviour:
   target: {fileID: 4258905628541220326, guid: 0470770b121af954d8b23fb39892839e, type: 3}
   timeToShoot: 4.3
   bullet: {fileID: 2737468164590865732, guid: 419e1cf998269504c9ec9e681f80b8ca, type: 3}
+  hp: 100
+  damage: 100
+  isKilled: 0
 --- !u!1 &4839685064455937787
 GameObject:
   m_ObjectHideFlags: 0
