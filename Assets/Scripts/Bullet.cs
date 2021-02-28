@@ -7,6 +7,8 @@ public class Bullet : MonoBehaviour
     public float speed = 0.15f;
     Vector3 direction;
 
+    public int damage = 0;
+
     public GameObject frontPoint;
     public GameObject target;
 
@@ -16,8 +18,9 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
+
         direction = target.transform.position - transform.position;
-        transform.up = direction;  //Change it later
+        transform.up = direction;  
 
         Vector2[] colPoints = transform.GetComponent<EdgeCollider2D>().points;
         frontPoint.transform.localPosition = colPoints[0];
