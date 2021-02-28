@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 287249812}
   - component: {fileID: 287249811}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: Version
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -566,7 +566,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: demo V 1.0.0
+  m_Text: demo V 1.0.2
 --- !u!222 &287249812
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2019,8 +2019,6 @@ MonoBehaviour:
   flJoyst: {fileID: 730890}
   clJoyst: {fileID: 1964064462}
   smooth: {fileID: 730810507}
-  player: {fileID: 4258905628541220326, guid: 0470770b121af954d8b23fb39892839e, type: 3}
-  joystick: {fileID: 1605830342053926694, guid: ef3342470f20cf1478157e0c25d5933b, type: 3}
   SettingsMenu: {fileID: 1206381430}
 --- !u!114 &1934759043
 MonoBehaviour:
