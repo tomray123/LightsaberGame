@@ -109,17 +109,14 @@ public class Bullet : MonoBehaviour
 
         if (hitLeft.collider != null)
         {
-            Debug.Log("Hit the enemy");
             newDirection = hitLeft.collider.transform.position - transform.position;
         }
         if (hitMiddle.collider != null)
         {
-            Debug.Log("Hit the enemy");
             newDirection = hitMiddle.collider.transform.position - transform.position;
         }
         if (hitRight.collider != null)
         {
-            Debug.Log("Hit the enemy");
             newDirection = hitRight.collider.transform.position - transform.position;
         }
 
