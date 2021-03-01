@@ -2406,46 +2406,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0703d8e3210036c40b1d6614e712421c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allSpawnPeriod: 0
+  allTimeToInitialShoot: 1
+  allShootPeriod: 1
   MyList:
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 150065747}
     spawnPeriod: 1
+    timeToInitialShoot: 2
+    shootPeriod: 4.3
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 1868462819}
     spawnPeriod: 3
+    timeToInitialShoot: 4.3
+    shootPeriod: 2
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 2059751975}
     spawnPeriod: 3
+    timeToInitialShoot: 4.3
+    shootPeriod: 2
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 1732021908}
     spawnPeriod: 3
+    timeToInitialShoot: 4.3
+    shootPeriod: 2
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 1581845253}
     spawnPeriod: 3
+    timeToInitialShoot: 4.3
+    shootPeriod: 2
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 861018042}
     spawnPeriod: 3
+    timeToInitialShoot: 4.3
+    shootPeriod: 2
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 417688790}
     spawnPeriod: 3
+    timeToInitialShoot: 4.3
+    shootPeriod: 2
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 827449314}
     spawnPeriod: 3
+    timeToInitialShoot: 4.3
+    shootPeriod: 2
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 517043075}
     spawnPeriod: 3
+    timeToInitialShoot: 4.3
+    shootPeriod: 2
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 1868462819}
     spawnPeriod: 3
+    timeToInitialShoot: 4.3
+    shootPeriod: 2
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 4576496}
     spawnPeriod: 3
+    timeToInitialShoot: 4.3
+    shootPeriod: 2
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 1398558929}
     spawnPeriod: 3
+    timeToInitialShoot: 4.3
+    shootPeriod: 2
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 150065747}
     spawnPeriod: 3
+    timeToInitialShoot: 4.3
+    shootPeriod: 2
 --- !u!4 &1212123990
 Transform:
   m_ObjectHideFlags: 0

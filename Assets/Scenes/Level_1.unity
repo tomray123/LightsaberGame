@@ -156,9 +156,13 @@ MonoBehaviour:
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 666348003}
     spawnPeriod: 1
+    timeToInitialShoot: 2
+    shootPeriod: 4.3
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 878201381}
     spawnPeriod: 3
+    timeToInitialShoot: 2
+    shootPeriod: 4.3
 --- !u!4 &34424929
 Transform:
   m_ObjectHideFlags: 0

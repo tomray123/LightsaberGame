@@ -6,6 +6,8 @@ public class Enemy : MonoBehaviour
 {
     public GameObject target;
 
+    public float timeToFirstShoot = 0.8f;
+
     public float timeToShoot = 1f;
 
     public GameObject bullet;
@@ -52,7 +54,7 @@ public class Enemy : MonoBehaviour
         if (isJustBorn)
         {
             isJustBorn = false;
-            yield return new WaitForSeconds(0.8f);
+            yield return new WaitForSeconds(timeToFirstShoot - 1.2f);
             
             for (int i=0; i<6; i++)
             {
