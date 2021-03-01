@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3684367867540466800}
   - component: {fileID: 3684367867540466801}
   - component: {fileID: 3684367867540466766}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,7 +150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5604004682840774830}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6754553973155964140}
   - component: {fileID: 1447021144661309963}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: flash (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -266,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8433719225562008709}
   - component: {fileID: 2690278411796880349}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: flash (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2482429308718997099}
   - component: {fileID: 3176484932139716283}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: flash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
