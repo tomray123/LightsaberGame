@@ -274,7 +274,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level_2
+          m_StringArgument: Level_4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &152125229
@@ -406,7 +406,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level_1
+          m_StringArgument: Level_5
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &236028843
@@ -805,7 +805,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level_1
+          m_StringArgument: Level_5
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &438980492
@@ -1336,7 +1336,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level_2
+          m_StringArgument: Level_4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &689140294
@@ -1657,7 +1657,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827449313}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 20.88, y: 4.98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2018,7 +2018,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level_3
+          m_StringArgument: Level_5
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &942951900
@@ -2306,7 +2306,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Level_2
+          m_StringArgument: Level_4
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1142430440
@@ -2381,25 +2381,65 @@ MonoBehaviour:
   allShootPeriod: 0
   MyList:
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
-    spawnPos: {fileID: 827449314}
+    spawnPos: {fileID: 150065747}
     spawnPeriod: 1
     timeToInitialShoot: 2
-    shootPeriod: 3.5
+    shootPeriod: 6
+  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+    spawnPos: {fileID: 1398558929}
+    spawnPeriod: 4
+    timeToInitialShoot: 3
+    shootPeriod: 5.2
+  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+    spawnPos: {fileID: 827449314}
+    spawnPeriod: 5
+    timeToInitialShoot: 3.3
+    shootPeriod: 5.4
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 1868462819}
-    spawnPeriod: 3
-    timeToInitialShoot: 3
-    shootPeriod: 4
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
-    spawnPos: {fileID: 2059751975}
     spawnPeriod: 5
     timeToInitialShoot: 4.3
-    shootPeriod: 3
+    shootPeriod: 4.9
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 1581845253}
-    spawnPeriod: 3
+    spawnPeriod: 4
+    timeToInitialShoot: 3.3
+    shootPeriod: 5.1
+  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+    spawnPos: {fileID: 2059751975}
+    spawnPeriod: 3.7
     timeToInitialShoot: 4.3
-    shootPeriod: 2
+    shootPeriod: 5.1
+  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+    spawnPos: {fileID: 417688790}
+    spawnPeriod: 4.5
+    timeToInitialShoot: 5
+    shootPeriod: 4.9
+  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+    spawnPos: {fileID: 517043075}
+    spawnPeriod: 5
+    timeToInitialShoot: 4.3
+    shootPeriod: 4.9
+  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+    spawnPos: {fileID: 4576496}
+    spawnPeriod: 5
+    timeToInitialShoot: 4.3
+    shootPeriod: 4.9
+  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+    spawnPos: {fileID: 1732021908}
+    spawnPeriod: 5
+    timeToInitialShoot: 4.3
+    shootPeriod: 4.9
+  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+    spawnPos: {fileID: 1374713354}
+    spawnPeriod: 5
+    timeToInitialShoot: 4.3
+    shootPeriod: 4.9
+  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+    spawnPos: {fileID: 150065747}
+    spawnPeriod: 5
+    timeToInitialShoot: 4.3
+    shootPeriod: 4.9
 --- !u!4 &1212123990
 Transform:
   m_ObjectHideFlags: 0
@@ -2885,7 +2925,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374713353}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 8.69, y: 8.85, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
