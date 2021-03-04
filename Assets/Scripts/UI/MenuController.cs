@@ -14,9 +14,9 @@ public class MenuController : MonoBehaviour
 
 	public Toggle smooth;
 
-	public static string whichController;
+	public string whichController;
 
-	public static bool isSmooth;
+	public bool isSmooth;
 
 	public GameObject SettingsMenu;
 

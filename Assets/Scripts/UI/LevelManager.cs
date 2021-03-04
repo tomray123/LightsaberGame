@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,9 +14,14 @@ public class LevelManager : MonoBehaviour
     public GameObject joystick;
     public GameObject player;
 
+    public string whichController;
+    public bool isSmooth;
+
     void Start()
     {
-        switch (MenuController.whichController)
+        whichController = PlayerPrefs.GetString("ControllerType", "NoJoystick");
+        isSmooth = Convert.ToBoolean(PlayerPrefs.GetInt("SmoothSetting", 0));
+        switch (whichController)
         {
             case "NoJoystick":
 
@@ -49,7 +55,7 @@ public class LevelManager : MonoBehaviour
         }
 
 
-        if (MenuController.isSmooth)
+        if (isSmooth)
         {
             player.GetComponent<PlayerController>().isSmooth = true;
         }
