@@ -20,9 +20,13 @@ public class MenuController : MonoBehaviour
 
 	public GameObject SettingsMenu;
 
+	public GameObject LevelMenu;
 
-    private void Start()
-    {
+	public GameObject UiContainer;
+
+
+	private void Start()
+	{
 		Color disableColor = new Color(0.5568628f, 0.5568628f, 0.5568628f, 1f);
 		Color activeColor = new Color(1f, 1f, 1f, 1f);
 
@@ -81,18 +85,6 @@ public class MenuController : MonoBehaviour
 		}
 	}
 
-    public void OpenSettings()
-	{
-		MainMenu.SetActive(false);
-		SettingsMenu.SetActive(true);
-	}
-
-	public void CloseSettings()
-	{
-		MainMenu.SetActive(true);
-		SettingsMenu.SetActive(false);
-	}
-
 	public void ChangeController(Button pressed)
 	{
 		Color disableColor = new Color(0.5568628f, 0.5568628f, 0.5568628f, 1f);
@@ -104,10 +96,10 @@ public class MenuController : MonoBehaviour
 		pressed.colors = cb;
 
 		cb.normalColor = disableColor;
-		
+
 
 		switch (pressed.name)
-        {
+		{
 			case "No Joystick Button":
 
 				flJoyst.colors = cb;
@@ -148,15 +140,15 @@ public class MenuController : MonoBehaviour
 		ColorBlock cb = pressed.colors;
 
 		if (pressed.isOn)
-        {
+		{
 			cb.normalColor = activeColor;
 			cb.selectedColor = activeColor;
 			pressed.colors = cb;
 			isSmooth = true;
 			PlayerPrefs.SetInt("SmoothSetting", 1);
 		}
-        else
-        {
+		else
+		{
 			cb.normalColor = disableColor;
 			cb.selectedColor = disableColor;
 			pressed.colors = cb;

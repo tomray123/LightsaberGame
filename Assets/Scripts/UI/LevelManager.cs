@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    public GameObject NextLevelMenu;
+    public GameObject WinMenu;
     public GameObject GameUI;
     public GameObject PauseMenu;
     public GameObject LoseMenu;
@@ -75,7 +75,7 @@ public class LevelManager : MonoBehaviour
             Time.timeScale = 0f;
             GameUI.SetActive(false);
             PauseMenu.SetActive(false);
-            NextLevelMenu.SetActive(true);
+            WinMenu.SetActive(true);
             Enemy.NumberOfKilledEnemies = 0;
             Spawner.TotalNumberOfEnemies = -1;
             BasePlayerSettings.isKilled = false;
