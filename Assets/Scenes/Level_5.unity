@@ -790,6 +790,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8675341583894499106, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
+      propertyPath: plController
+      value: 
+      objectReference: {fileID: 844023601}
+    - target: {fileID: 8675341583894499107, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
+      propertyPath: plController
+      value: 
+      objectReference: {fileID: 844023601}
+    - target: {fileID: 8675341583894499109, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 844023602}
+    - target: {fileID: 8675341583894499109, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
+      propertyPath: plController
+      value: 
+      objectReference: {fileID: 844023601}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
 --- !u!114 &1378854737 stripped
