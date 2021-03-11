@@ -12,6 +12,11 @@ public class MenuController : MonoBehaviour
 	public Button flJoyst;
 	public Button clJoyst;
 
+	public GameObject linearFlightCorrection;
+	public GameObject angularFlightCorrection;
+
+	public string whichCorrection;
+
 	public Toggle smooth;
 
 	public string whichController;
@@ -33,6 +38,7 @@ public class MenuController : MonoBehaviour
 		ColorBlock cb = noJoyst.colors;
 
 		whichController = PlayerPrefs.GetString("ControllerType", "NoJoystick");
+		whichCorrection = PlayerPrefs.GetString("CorrectionType", "linear");
 		isSmooth = Convert.ToBoolean(PlayerPrefs.GetInt("SmoothSetting", 0));
 
 		switch (whichController)
@@ -69,6 +75,15 @@ public class MenuController : MonoBehaviour
 				flJoyst.colors = cb;
 
 				break;
+		}
+
+		angularFlightCorrection.SetActive(false);
+		linearFlightCorrection.SetActive(true);
+
+		if (whichCorrection == "angular")
+		{
+			angularFlightCorrection.SetActive(true);
+			linearFlightCorrection.SetActive(false);
 		}
 
 		if (isSmooth)
@@ -154,6 +169,29 @@ public class MenuController : MonoBehaviour
 			pressed.colors = cb;
 			isSmooth = false;
 			PlayerPrefs.SetInt("SmoothSetting", 0);
+		}
+	}
+	public void ChangeFlightCorrection()
+	{
+		switch (whichCorrection)
+		{
+			case "linear":
+
+				angularFlightCorrection.SetActive(true);
+				linearFlightCorrection.SetActive(false);
+				whichCorrection = "angular";
+				PlayerPrefs.SetString("CorrectionType", whichCorrection);
+
+				break;
+
+			case "angular":
+
+				angularFlightCorrection.SetActive(false);
+				linearFlightCorrection.SetActive(true);
+				whichCorrection = "linear";
+				PlayerPrefs.SetString("CorrectionType", whichCorrection);
+
+				break;
 		}
 	}
 

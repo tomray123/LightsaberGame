@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        whichCorrection = PlayerPrefs.GetString("CorrectionType", "angular");
+        whichCorrection = PlayerPrefs.GetString("CorrectionType", "linear");
 
         direction = target.transform.position - transform.position;
         transform.up = direction;
