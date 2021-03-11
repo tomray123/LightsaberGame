@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4258905628541220326, guid: 0470770b121af954d8b23fb39892839e, type: 3}
+  timeToFirstShoot: 0.8
   timeToShoot: 4.3
   bullet: {fileID: 2737468164590865732, guid: 419e1cf998269504c9ec9e681f80b8ca, type: 3}
   hp: 100

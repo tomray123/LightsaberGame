@@ -132,6 +132,8 @@ MonoBehaviour:
   damage: 0
   RayDelta: 10
   MaxRayLength: 10
+  rayAngle: 6
+  whichCorrection: 
   frontPoint: {fileID: 2737468163907518878}
   target: {fileID: 4258905628541220326, guid: 0470770b121af954d8b23fb39892839e, type: 3}
   isDangerous: 0

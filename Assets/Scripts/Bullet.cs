@@ -13,6 +13,10 @@ public class Bullet : MonoBehaviour
 
     public float MaxRayLength = 10f;
 
+    public float rayAngle = 6f;
+
+    public string whichCorrection;
+
     public GameObject frontPoint;
     public GameObject target;
 
@@ -22,6 +26,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
+        whichCorrection = PlayerPrefs.GetString("CorrectionType", "angular");
 
         direction = target.transform.position - transform.position;
         transform.up = direction;
@@ -39,34 +44,43 @@ public class Bullet : MonoBehaviour
 
     void FixedUpdate()
     {
-        /* //Layer mask for casting enemies
-         int layerMask = 1 << 9;
-         RaycastHit hit;
+        /*
+        //Layer mask for casting enemies
+        int layerMask = 1 << 9;
+        RaycastHit hit;
 
-         Vector3 leftRayStart = transform.TransformPoint(-RayDelta, 0, 0);
-         Vector3 rightRayStart = transform.TransformPoint(RayDelta, 0, 0);
+        Vector3 leftRayStart =  transform.TransformPoint(-RayDelta, 0, 0);
+        Vector3 rightRayStart = transform.TransformPoint(RayDelta, 0, 0);
+        Vector3 leftRayDirection = direction;
+        Vector3 rightRayDirection = direction;
 
-         Debug.Log(leftRayStart);
-         Debug.Log(transform.position);
-         Debug.Log(rightRayStart);
+        if (whichCorrection == "angular")
+        {
+            leftRayStart = transform.position;
+            rightRayStart = transform.position;
+            leftRayDirection = Quaternion.AngleAxis(rayAngle, Vector3.forward) * direction;
+            rightRayDirection = Quaternion.AngleAxis(-1*rayAngle, Vector3.forward) * direction;
+        }
+        Debug.Log(leftRayStart);
+        Debug.Log(transform.position);
+        Debug.Log(rightRayStart);
 
-         Ray leftRay = new Ray(leftRayStart, direction);
-         Ray middleRay = new Ray(transform.position, direction);
-         Ray rightRay = new Ray(rightRayStart, direction);
+        Ray leftRay = new Ray(leftRayStart, leftRayDirection);
+        Ray middleRay = new Ray(transform.position, direction);
+        Ray rightRay = new Ray(rightRayStart, rightRayDirection);
 
-         Debug.Log(leftRay.origin);
-         Debug.Log(middleRay.origin);
-         Debug.Log(rightRay.origin);
+        Debug.Log(leftRay.origin);
+        Debug.Log(middleRay.origin);
+        Debug.Log(rightRay.origin);
 
-         Physics.Raycast(leftRay, out hit, MaxRayLength, layerMask);
-         Physics.Raycast(middleRay, out hit, MaxRayLength, layerMask);
-         Physics.Raycast(rightRay, out hit, MaxRayLength, layerMask);
+        Physics.Raycast(leftRay, out hit, MaxRayLength, layerMask);
+        Physics.Raycast(middleRay, out hit, MaxRayLength, layerMask);
+        Physics.Raycast(rightRay, out hit, MaxRayLength, layerMask);
 
-
-
-         Debug.DrawRay(leftRay.origin, direction * MaxRayLength, Color.yellow);
-         Debug.DrawRay(middleRay.origin, direction * MaxRayLength, Color.yellow);
-         Debug.DrawRay(rightRay.origin, direction * MaxRayLength, Color.yellow);*/
+        Debug.DrawRay(leftRay.origin, leftRayDirection * MaxRayLength, Color.yellow);
+        Debug.DrawRay(middleRay.origin, direction * MaxRayLength, Color.yellow);
+        Debug.DrawRay(rightRay.origin, rightRayDirection * MaxRayLength, Color.yellow);
+        */
     }
 
     void OnCollisionEnter2D(Collision2D other)
@@ -92,20 +106,30 @@ public class Bullet : MonoBehaviour
 
         Vector3 leftRayStart = transform.TransformPoint(-RayDelta, 0, 0);
         Vector3 rightRayStart = transform.TransformPoint(RayDelta, 0, 0);
+        Vector3 leftRayDirection = newDirection;
+        Vector3 rightRayDirection = newDirection;
 
-        Ray leftRay = new Ray(leftRayStart, newDirection);
-        Ray middleRay = new Ray(transform.position, newDirection);
-        Ray rightRay = new Ray(rightRayStart, newDirection);
-
-        hitLeft = Physics2D.Raycast(leftRayStart, newDirection, MaxRayLength, layerMask);
-        hitMiddle = Physics2D.Raycast(transform.position, newDirection, MaxRayLength, layerMask);
-        hitRight = Physics2D.Raycast(rightRayStart, newDirection, MaxRayLength, layerMask);
+        if (whichCorrection == "angular")
+        {
+            leftRayStart = transform.position;
+            rightRayStart = transform.position;
+            leftRayDirection = Quaternion.AngleAxis(rayAngle, Vector3.forward) * newDirection;
+            rightRayDirection = Quaternion.AngleAxis(-1 * rayAngle, Vector3.forward) * newDirection;
+        }
 
         /*
+        Ray leftRay = new Ray(leftRayStart, leftRayDirection);
+        Ray middleRay = new Ray(transform.position, newDirection);
+        Ray rightRay = new Ray(rightRayStart, rightRayDirection);
+
         Debug.DrawRay(leftRay.origin, newDirection * MaxRayLength, Color.yellow);
         Debug.DrawRay(middleRay.origin, newDirection * MaxRayLength, Color.yellow);
         Debug.DrawRay(rightRay.origin, newDirection * MaxRayLength, Color.yellow);
         */
+
+        hitLeft = Physics2D.Raycast(leftRayStart, leftRayDirection, MaxRayLength, layerMask);
+        hitMiddle = Physics2D.Raycast(transform.position, newDirection, MaxRayLength, layerMask);
+        hitRight = Physics2D.Raycast(rightRayStart, rightRayDirection, MaxRayLength, layerMask);
 
         if (hitLeft.collider != null)
         {
