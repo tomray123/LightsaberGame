@@ -139,7 +139,7 @@ public class MenuController : MonoBehaviour
 
 		ColorBlock cb = pressed.colors;
 
-		if (pressed.isOn)
+		if (cb.normalColor == disableColor)
 		{
 			cb.normalColor = activeColor;
 			cb.selectedColor = activeColor;
