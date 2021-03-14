@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
 
     DoTweenController tweenController;
 
+    private float touchDuration;
+
+    private Touch touch;
+
     private void Start()
     {
         saber = transform.GetChild(0);
@@ -62,15 +66,20 @@ public class PlayerController : MonoBehaviour
 
                 case GameSettings.Device.Smartphone:
 
-                    if (Input.touchCount > 1)
-                    {
-                        Touch firstTouch = Input.GetTouch(0);
-                        StartCoroutine(tweenController.DoThrowAndRotate(Camera.main.ScreenToWorldPoint(firstTouch.position)));
+                    if (Input.touchCount > 0)
+                    { 
+                        touchDuration += Time.deltaTime;
+                        touch = Input.GetTouch(0);
+
+                        if (touch.phase == TouchPhase.Ended && touchDuration < 0.2f) //making sure it only check the touch once && it was a short touch/tap and not a dragging.
+                            StartCoroutine("singleOrDouble");
                     }
+                    else
+                        touchDuration = 0.0f;
 
                     break;
             }
-            
+
         }
     }
 
@@ -80,51 +89,15 @@ public class PlayerController : MonoBehaviour
         return (Vector3.Angle(right, to) < 90f) ? 360f - angle : angle;
     }
 
-    void ThrowSaber()
+    IEnumerator singleOrDouble()
     {
-
-        /*
-        Vector3 targetPosition = Camera.main.ScreenToWorldPoint(targetPositionLocal);
-        targetPosition.z = 0f;
-        
-        Vector3 direction = targetPosition - saber.position;
-        Debug.DrawRay(saber.position, direction, Color.yellow);
-        float startSpeed = speed;
-        Vector3 startPosition = saber.position;
-
-        while (isThrown)
+        yield return new WaitForSeconds(0.3f);
+        if (touch.tapCount == 2)
         {
-            
-            speed = Mathf.Lerp(startSpeed, -1 * startSpeed, progress);
-            progress += step;
-            Debug.Log(speed);
-            saber.position = Vector3.MoveTowards(saber.position, targetPosition*2, Time.deltaTime * speed);
-            if (speed <= -1 * startSpeed)
-            {
-                speed = 0;
-                progress = 0;
-                isThrown = false;
-            }
-            yield return null;
-            
-            direction = targetPosition - saber.position;
-            if (direction.magnitude < 2 && progress < 1)
-            {
-                speed = Mathf.Lerp(startSpeed, -1*startSpeed, progress);
-                progress += step;
-                Debug.Log(speed);
-            }
-            saber.position = Vector3.MoveTowards(saber.position, targetPosition, Time.deltaTime * speed);
-            if (saber.position == targetPosition)
-            {
-                //speed = 0;
-               // progress = 0;
-                isThrown = false;
-            }
-            yield return null;
-            
+            //this coroutine has been called twice. We should stop the next one here otherwise we get two double tap
+            StopCoroutine("singleOrDouble");
+            StartCoroutine(tweenController.DoThrowAndRotate(Camera.main.ScreenToWorldPoint(touch.position)));
         }
-        */
+
     }
-        
 }

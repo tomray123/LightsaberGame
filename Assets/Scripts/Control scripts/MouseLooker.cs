@@ -37,7 +37,8 @@ public class MouseLooker : MonoBehaviour
 
                 if (Input.touchCount > 0) //Change this to (Input.touchCount > 0) in order to switch PC to mobile
                 {
-                    var dir = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - player.transform.position;
+                    Vector3 tapPosition = Input.GetTouch(0).position;
+                    var dir = tapPosition - Camera.main.WorldToScreenPoint(player.transform.position);
                     plController.targetMove = dir;
                     plController.rotationSpeed = speed;
                     //var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
