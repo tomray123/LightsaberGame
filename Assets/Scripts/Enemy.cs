@@ -87,6 +87,11 @@ public class Enemy : MonoBehaviour
             StartCoroutine(ChangeColor());
             Destroy(other.gameObject);
         }
+        if (other.gameObject.CompareTag("LightSaber"))
+        {
+            hp -= other.GetComponent<SaberSettings>().damage;
+            StartCoroutine(ChangeColor());
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
