@@ -18,13 +18,33 @@ public class MouseLooker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0)) //Change this to (Input.touchCount > 0) in order to switch PC to mobile
+        switch (GameSettings.device)
         {
-            var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(player.transform.position);
-            plController.targetMove = dir;
-            plController.rotationSpeed = speed;
-            //var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            case GameSettings.Device.PC:
+
+                if (Input.GetMouseButton(0)) //Change this to (Input.touchCount > 0) in order to switch PC to mobile
+                {
+                    var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(player.transform.position);
+                    plController.targetMove = dir;
+                    plController.rotationSpeed = speed;
+                    //var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                    //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                }
+
+                break;
+
+            case GameSettings.Device.Smartphone:
+
+                if (Input.touchCount > 0) //Change this to (Input.touchCount > 0) in order to switch PC to mobile
+                {
+                    var dir = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position) - player.transform.position;
+                    plController.targetMove = dir;
+                    plController.rotationSpeed = speed;
+                    //var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                    //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                }
+
+                break;
         }
     }
 }

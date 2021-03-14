@@ -49,10 +49,28 @@ public class PlayerController : MonoBehaviour
                 transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             }
 
-            if (Input.GetMouseButtonDown(1)) //Change this to (Input.touchCount > 1) in order to switch PC to mobile
+            switch (GameSettings.device)
             {
-                StartCoroutine(tweenController.DoThrowAndRotate(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
+                case GameSettings.Device.PC:
+
+                    if (Input.GetMouseButtonDown(1)) //Change this to (Input.touchCount > 1) in order to switch PC to mobile
+                    {
+                        StartCoroutine(tweenController.DoThrowAndRotate(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
+                    }
+
+                    break;
+
+                case GameSettings.Device.Smartphone:
+
+                    if (Input.touchCount > 1)
+                    {
+                        Touch firstTouch = Input.GetTouch(0);
+                        StartCoroutine(tweenController.DoThrowAndRotate(Camera.main.ScreenToWorldPoint(firstTouch.position)));
+                    }
+
+                    break;
             }
+            
         }
     }
 
