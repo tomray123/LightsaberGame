@@ -153,7 +153,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetMove: {x: 0, y: 0, z: 0}
   rotationSpeed: 0
+  ThrowTime: 10
   isSmooth: 0
+  saber: {fileID: 0}
 --- !u!1 &4258905629515534121
 GameObject:
   m_ObjectHideFlags: 0

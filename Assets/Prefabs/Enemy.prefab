@@ -140,7 +140,7 @@ MonoBehaviour:
   timeToShoot: 4.3
   bullet: {fileID: 2737468164590865732, guid: 419e1cf998269504c9ec9e681f80b8ca, type: 3}
   hp: 100
-  damage: 100
+  damage: 0
   isKilled: 0
 --- !u!1 &4839685064455937787
 GameObject:
