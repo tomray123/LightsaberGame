@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameSettings : MonoBehaviour
 {
-    public static Device device = Device.PC;
+    public static Device device = Device.Smartphone;
 
     public enum Device
     {
