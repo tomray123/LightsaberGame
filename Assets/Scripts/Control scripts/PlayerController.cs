@@ -37,22 +37,22 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        float angle = Angle360(Vector3.up, targetMove, Vector3.right);
+
+        if (isSmooth)
+        {
+            //third way to rotate
+            Quaternion targetQuater = Quaternion.Euler(0, 0, angle);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetQuater, rotationSpeed * Time.deltaTime);
+        }
+        else
+        {
+            //first way to rotate
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+
         if (tweenController.isThrowTweenCompleted)
         {
-            float angle = Angle360(Vector3.up, targetMove, Vector3.right);
-
-            if (isSmooth)
-            {
-                //third way to rotate
-                Quaternion targetQuater = Quaternion.Euler(0, 0, angle);
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetQuater, rotationSpeed * Time.deltaTime);
-            }
-            else
-            {
-                //first way to rotate
-                transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            }
-
             switch (GameSettings.device)
             {
                 case GameSettings.Device.PC:
@@ -67,11 +67,15 @@ public class PlayerController : MonoBehaviour
                 case GameSettings.Device.Smartphone:
 
                     if (Input.touchCount > 0)
-                    { 
-                        touchDuration += Time.deltaTime;
+                    {
                         touch = Input.GetTouch(0);
+                        touchDuration += Time.deltaTime;
+                        if (Input.touchCount > 1)
+                        {
+                            touch = Input.GetTouch(1);
+                        }
 
-                        if (touch.phase == TouchPhase.Ended && touchDuration < 0.2f) //making sure it only check the touch once && it was a short touch/tap and not a dragging.
+                        if (touch.phase == TouchPhase.Ended && touchDuration < 0.3f) //making sure it only check the touch once && it was a short touch/tap and not a dragging.
                             StartCoroutine("singleOrDouble");
                     }
                     else
