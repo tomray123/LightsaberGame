@@ -140,7 +140,7 @@ public class DoTweenController : MonoBehaviour
         if (targetPosition == Vector3.zero)
             targetPosition = transform.position;
         targetPosition.z = 0f;
-        Vector3 originalLocation = transform.position;
+        Vector3 originalLocation = transform.parent.position;
         Vector3 localOriginalLocation = transform.localPosition;
         Tween forwardTween = transform.DOMove(targetPosition, _moveDuration).SetEase(_moveForwardEase);
         //yield return forwardTween.WaitForCompletion();

@@ -37,6 +37,47 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
+        if (tweenController.isThrowTweenCompleted)
+        {
+            switch (GameSettings.device)
+            {
+                case GameSettings.Device.PC:
+
+                    if (Input.GetMouseButtonDown(1)) //Change this to (Input.touchCount > 1) in order to switch PC to mobile
+                    {
+                        targetMove = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+                        StartCoroutine(tweenController.DoThrowAndRotate(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
+                    }
+
+                    break;
+
+                case GameSettings.Device.Smartphone:
+
+                    if (Input.touchCount > 0)
+                    {
+                        touch = Input.GetTouch(0);
+                        touchDuration += Time.deltaTime;
+
+                        if (Input.touchCount > 1)
+                        {
+                            touch = Input.GetTouch(1);
+                        }
+
+                        Vector3 targetPosition = touch.position;
+                        targetMove = targetPosition - Camera.main.WorldToScreenPoint(transform.position);
+
+                        if (touch.phase == TouchPhase.Ended && touchDuration < 0.3f) //making sure it only check the touch once && it was a short touch/tap and not a dragging.
+                            StartCoroutine("singleOrDouble");
+                    }
+                    else
+                        touchDuration = 0.0f;
+
+                    break;
+            }
+
+        }
+
         float angle = Angle360(Vector3.up, targetMove, Vector3.right);
 
         if (isSmooth)
@@ -49,41 +90,6 @@ public class PlayerController : MonoBehaviour
         {
             //first way to rotate
             transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        }
-
-        if (tweenController.isThrowTweenCompleted)
-        {
-            switch (GameSettings.device)
-            {
-                case GameSettings.Device.PC:
-
-                    if (Input.GetMouseButtonDown(1)) //Change this to (Input.touchCount > 1) in order to switch PC to mobile
-                    {
-                        StartCoroutine(tweenController.DoThrowAndRotate(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
-                    }
-
-                    break;
-
-                case GameSettings.Device.Smartphone:
-
-                    if (Input.touchCount > 0)
-                    {
-                        touch = Input.GetTouch(0);
-                        touchDuration += Time.deltaTime;
-                        if (Input.touchCount > 1)
-                        {
-                            touch = Input.GetTouch(1);
-                        }
-
-                        if (touch.phase == TouchPhase.Ended && touchDuration < 0.3f) //making sure it only check the touch once && it was a short touch/tap and not a dragging.
-                            StartCoroutine("singleOrDouble");
-                    }
-                    else
-                        touchDuration = 0.0f;
-
-                    break;
-            }
-
         }
     }
 
