@@ -134,14 +134,16 @@ public class DoTweenController : MonoBehaviour
 
     public IEnumerator DoThrowAndRotate(Vector3 targetPosition)
     {
+        Transform player = transform.parent;
         Quaternion originalRotation = transform.localRotation;
         isThrowTweenCompleted = false;
+        Vector3 originalLocation = player.position;
+        Vector3 localOriginalLocation = transform.localPosition;
+        player.DetachChildren();
         Tween Rotation = transform.DORotate(new Vector3(0, 0, -360), _rotate360Duration, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).SetLoops(-1);
         if (targetPosition == Vector3.zero)
             targetPosition = transform.position;
-        targetPosition.z = 0f;
-        Vector3 originalLocation = transform.parent.position;
-        Vector3 localOriginalLocation = transform.localPosition;
+        targetPosition.z = 0f;      
         Tween forwardTween = transform.DOMove(targetPosition, _moveDuration).SetEase(_moveForwardEase);
         //yield return forwardTween.WaitForCompletion();
         yield return new WaitForSeconds(_moveDuration);
@@ -149,6 +151,7 @@ public class DoTweenController : MonoBehaviour
         yield return backTween.WaitForCompletion();
         Rotation.Kill();
         isThrowTweenCompleted = true;
+        transform.parent = player;
         transform.localRotation = originalRotation;
         transform.localPosition = localOriginalLocation;
     }
