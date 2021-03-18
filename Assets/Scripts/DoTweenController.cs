@@ -136,7 +136,7 @@ public class DoTweenController : MonoBehaviour
     {
         Quaternion originalRotation = transform.localRotation;
         isThrowTweenCompleted = false;
-        Tween Rotation = transform.DORotate(new Vector3(0, 0, 360), _rotate360Duration, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).SetLoops(-1);
+        Tween Rotation = transform.DORotate(new Vector3(0, 0, -360), _rotate360Duration, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).SetLoops(-1);
         if (targetPosition == Vector3.zero)
             targetPosition = transform.position;
         targetPosition.z = 0f;
