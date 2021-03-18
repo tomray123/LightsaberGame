@@ -46,7 +46,10 @@ public class PlayerController : MonoBehaviour
 
                     if (Input.GetMouseButtonDown(1)) //Change this to (Input.touchCount > 1) in order to switch PC to mobile
                     {
-                        targetMove = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+                        //RaycastHit2D throwHit;
+                        //throwHit = Physics2D.Raycast(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), 5f);
+                        //Debug.DrawRay(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) * 5f, Color.yellow);
+                        //targetMove = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
                         StartCoroutine(tweenController.DoThrowAndRotate(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
                     }
 
@@ -62,13 +65,19 @@ public class PlayerController : MonoBehaviour
                         if (Input.touchCount > 1)
                         {
                             touch = Input.GetTouch(1);
+                            if (touch.phase == TouchPhase.Began)
+                                touchDuration = 0.0f;
+                            touchDuration += Time.deltaTime;
                         }
 
+                        /*
                         Vector3 targetPosition = touch.position;
                         targetMove = targetPosition - Camera.main.WorldToScreenPoint(transform.position);
+                        */
 
                         if (touch.phase == TouchPhase.Ended && touchDuration < 0.3f) //making sure it only check the touch once && it was a short touch/tap and not a dragging.
-                            StartCoroutine("singleOrDouble");
+                            singleOrDouble(touch.position);
+
                     }
                     else
                         touchDuration = 0.0f;
@@ -99,15 +108,9 @@ public class PlayerController : MonoBehaviour
         return (Vector3.Angle(right, to) < 90f) ? 360f - angle : angle;
     }
 
-    IEnumerator singleOrDouble()
+    void singleOrDouble(Vector3 touchPosition)
     {
-        yield return new WaitForSeconds(0.3f);
-        if (touch.tapCount == 2)
-        {
-            //this coroutine has been called twice. We should stop the next one here otherwise we get two double tap
-            StopCoroutine("singleOrDouble");
-            StartCoroutine(tweenController.DoThrowAndRotate(Camera.main.ScreenToWorldPoint(touch.position)));
-        }
-
+        if (touch.tapCount > 1)
+            StartCoroutine(tweenController.DoThrowAndRotate(Camera.main.ScreenToWorldPoint(touchPosition)));
     }
 }
