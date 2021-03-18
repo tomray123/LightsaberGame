@@ -27,12 +27,17 @@ public class PlayerController : MonoBehaviour
 
     private Touch touch;
 
+    private Vector3 throwTarget;
+
+    private int throwLayerMask;
+
     private void Start()
     {
         saber = transform.GetChild(0);
         isThrown = false;
         startPos = saber.position;
         tweenController = saber.GetComponent<DoTweenController>();
+        throwLayerMask = 1 << 10;
     }
 
     void Update()
@@ -46,11 +51,21 @@ public class PlayerController : MonoBehaviour
 
                     if (Input.GetMouseButtonDown(1)) //Change this to (Input.touchCount > 1) in order to switch PC to mobile
                     {
-                        //RaycastHit2D throwHit;
-                        //throwHit = Physics2D.Raycast(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition), 5f);
-                        //Debug.DrawRay(transform.position, Camera.main.ScreenToWorldPoint(Input.mousePosition) * 5f, Color.yellow);
+                        
+                        Vector3 targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                        RaycastHit2D throwHit;
+                        throwHit = Physics2D.Raycast(transform.position, targetPos, 20f, throwLayerMask);
+                        
+                        if (throwHit.collider != null)
+                        {
+                            throwTarget = throwHit.point;
+                        }
+                        else
+                        {
+                            throwTarget = targetPos;
+                        }
                         //targetMove = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
-                        StartCoroutine(tweenController.DoThrowAndRotate(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
+                        StartCoroutine(tweenController.DoThrowAndRotate(throwTarget));
                     }
 
                     break;
@@ -111,6 +126,20 @@ public class PlayerController : MonoBehaviour
     void singleOrDouble(Vector3 touchPosition)
     {
         if (touch.tapCount > 1)
-            StartCoroutine(tweenController.DoThrowAndRotate(Camera.main.ScreenToWorldPoint(touchPosition)));
+        {
+            Vector3 targetPos = Camera.main.ScreenToWorldPoint(touchPosition);
+            RaycastHit2D throwHit;
+            throwHit = Physics2D.Raycast(transform.position, targetPos, 20f, throwLayerMask);
+
+            if (throwHit.collider != null)
+            {
+                throwTarget = throwHit.point;
+            }
+            else
+            {
+                throwTarget = targetPos;
+            }
+            StartCoroutine(tweenController.DoThrowAndRotate(throwTarget));
+        }
     }
 }
