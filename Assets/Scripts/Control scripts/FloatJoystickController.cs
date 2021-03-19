@@ -39,6 +39,8 @@ public class FloatJoystickController : MonoBehaviour
 
                 if (Input.GetMouseButton(0)) //Change this to (Input.touchCount > 0) in order to switch PC to mobile
                 {
+                    plController.isPlayerMoving = true;
+
                     Vector3 localTouchPos = Input.mousePosition; //Also change this to Input.GetTouch(0).position
                     Vector3 touchPos = Camera.main.ScreenToWorldPoint(localTouchPos);
                     Vector3 localPos = Camera.main.WorldToScreenPoint(transform.position);
@@ -91,6 +93,7 @@ public class FloatJoystickController : MonoBehaviour
                 }
                 else
                 {
+                    plController.isPlayerMoving = false;
                     GetComponent<Image>().enabled = false;
                     touchMarker.GetComponent<Image>().enabled = false;
                     isMouseHeld = false;
@@ -105,6 +108,8 @@ public class FloatJoystickController : MonoBehaviour
 
                 if (Input.touchCount > 0) //Change this to (Input.touchCount > 0) in order to switch PC to mobile
                 {
+                    plController.isPlayerMoving = true;
+
                     Vector3 localTouchPos = Input.GetTouch(0).position; //Also change this to Input.GetTouch(0).position
                     Vector3 touchPos = Camera.main.ScreenToWorldPoint(localTouchPos);
                     Vector3 localPos = Camera.main.WorldToScreenPoint(transform.position);
@@ -157,6 +162,7 @@ public class FloatJoystickController : MonoBehaviour
                 }
                 else
                 {
+                    plController.isPlayerMoving = false;
                     GetComponent<Image>().enabled = false;
                     touchMarker.GetComponent<Image>().enabled = false;
                     isMouseHeld = false;

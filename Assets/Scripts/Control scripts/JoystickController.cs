@@ -34,6 +34,8 @@ public class JoystickController : MonoBehaviour
 
                 if (Input.GetMouseButton(0)) //Change this to (Input.touchCount > 0) in order to switch PC to mobile
                 {
+                    plController.isPlayerMoving = true;
+
                     Vector3 localTouchPos = Input.mousePosition; //Also change this to Input.GetTouch(0).position
                     Vector3 touchPos = Camera.main.ScreenToWorldPoint(localTouchPos);
                     Vector3 localPos = Camera.main.WorldToScreenPoint(transform.position);
@@ -74,6 +76,7 @@ public class JoystickController : MonoBehaviour
                 }
                 else
                 {
+                    plController.isPlayerMoving = false;
                     touchMarker.transform.position = transform.position;
                     targetVector = new Vector3(0, 0, 0);
                     plController.rotationSpeed = 0;
@@ -85,6 +88,8 @@ public class JoystickController : MonoBehaviour
 
                 if (Input.touchCount > 0) //Change this to (Input.touchCount > 0) in order to switch PC to mobile
                 {
+                    plController.isPlayerMoving = true;
+
                     Vector3 localTouchPos = Input.GetTouch(0).position; //Also change this to Input.GetTouch(0).position
                     Vector3 touchPos = Camera.main.ScreenToWorldPoint(localTouchPos);
                     Vector3 localPos = Camera.main.WorldToScreenPoint(transform.position);
@@ -125,6 +130,7 @@ public class JoystickController : MonoBehaviour
                 }
                 else
                 {
+                    plController.isPlayerMoving = false;
                     touchMarker.transform.position = transform.position;
                     targetVector = new Vector3(0, 0, 0);
                     plController.rotationSpeed = 0;

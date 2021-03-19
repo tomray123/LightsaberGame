@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
     public Vector3 targetMove;
 
+    public bool isPlayerMoving = false;
+
     public float rotationSpeed = 5f;
 
     public float ThrowTime = 5f;
@@ -42,6 +44,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        float angle = Angle360(Vector3.up, targetMove, Vector3.right);
+        RotatePlayer(angle);
 
         if (tweenController.isThrowTweenCompleted)
         {
@@ -64,7 +68,17 @@ public class PlayerController : MonoBehaviour
                         {
                             throwTarget = targetPos;
                         }
-                        //targetMove = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+                        if (isPlayerMoving == true)
+                        {
+                            Vector3 throwDirection = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+                            angle = Angle360(Vector3.up, throwDirection, Vector3.right);
+                            RotatePlayer(angle);
+                        }
+                        else
+                        {
+                            targetMove = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+                        }
+                        
                         StartCoroutine(tweenController.DoThrowAndRotate(throwTarget));
                     }
 
@@ -85,11 +99,6 @@ public class PlayerController : MonoBehaviour
                             touchDuration += Time.deltaTime;
                         }
 
-                        /*
-                        Vector3 targetPosition = touch.position;
-                        targetMove = targetPosition - Camera.main.WorldToScreenPoint(transform.position);
-                        */
-
                         if (touch.phase == TouchPhase.Ended && touchDuration < 0.3f) //making sure it only check the touch once && it was a short touch/tap and not a dragging.
                             singleOrDouble(touch.position);
 
@@ -100,20 +109,6 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
-        }
-
-        float angle = Angle360(Vector3.up, targetMove, Vector3.right);
-
-        if (isSmooth)
-        {
-            //third way to rotate
-            Quaternion targetQuater = Quaternion.Euler(0, 0, angle);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetQuater, rotationSpeed * Time.deltaTime);
-        }
-        else
-        {
-            //first way to rotate
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
 
@@ -127,6 +122,18 @@ public class PlayerController : MonoBehaviour
     {
         if (touch.tapCount > 1)
         {
+            if (isPlayerMoving == true)
+            {
+                Vector3 throwDirection = touchPosition - Camera.main.WorldToScreenPoint(transform.position);
+                float angle = Angle360(Vector3.up, throwDirection, Vector3.right);
+                RotatePlayer(angle);
+            }
+            else
+            {
+                targetMove = touchPosition - Camera.main.WorldToScreenPoint(transform.position);
+            }
+            
+
             Vector3 targetPos = Camera.main.ScreenToWorldPoint(touchPosition);
             RaycastHit2D throwHit;
             throwHit = Physics2D.Raycast(transform.position, targetPos, 20f, throwLayerMask);
@@ -140,6 +147,21 @@ public class PlayerController : MonoBehaviour
                 throwTarget = targetPos;
             }
             StartCoroutine(tweenController.DoThrowAndRotate(throwTarget));
+        }
+    }
+
+    void RotatePlayer(float angle)
+    {
+        if (isSmooth)
+        {
+            //third way to rotate
+            Quaternion targetQuater = Quaternion.Euler(0, 0, angle);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetQuater, rotationSpeed * Time.deltaTime);
+        }
+        else
+        {
+            //first way to rotate
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
 }
