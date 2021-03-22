@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
         float angle = Angle360(Vector3.up, targetMove, Vector3.right);
         RotatePlayer(angle);
 
+        /*
         if (tweenController.isThrowTweenCompleted)
         {
             switch (GameSettings.device)
@@ -109,7 +110,7 @@ public class PlayerController : MonoBehaviour
                     break;
             }
 
-        }
+        }*/
     }
 
     float Angle360(Vector3 from, Vector3 to, Vector3 right)

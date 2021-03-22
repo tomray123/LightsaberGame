@@ -391,9 +391,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8675341583894499106, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2105092012}
+    - target: {fileID: 8675341583894499106, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
       propertyPath: plController
       value: 
       objectReference: {fileID: 2105092013}
+    - target: {fileID: 8675341583894499107, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2105092012}
     - target: {fileID: 8675341583894499107, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
       propertyPath: plController
       value: 
