@@ -4,23 +4,13 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    public GameObject touchMarker;
-
     public PlayerController plController;
 
     public GameObject player;
 
     public Vector3 targetVector;
 
-    public float lowSpeed = 100f;
-
-    public float medSpeed = 400f;
-
-    public float highSpeed = 800f;
-
     public float width;
-
-    public bool isPlayerMoving = false;
 
     protected DoTweenController tweenController;
 
@@ -35,14 +25,6 @@ public class InputController : MonoBehaviour
         Transform saber = player.transform.GetChild(0);
         tweenController = saber.GetComponent<DoTweenController>();
         throwLayerMask = 1 << 10;
-    }
-
-    public void BaseJoystickInitialization()
-    {
-        BaseInitialization();
-        touchMarker.transform.position = transform.position;
-        width = gameObject.GetComponent<RectTransform>().rect.width;
-
     }
 
     public string CheckInputSmartphone()
