@@ -8,7 +8,11 @@ public class InputController : MonoBehaviour
 
     public GameObject player;
 
+    public IconCooldown ThrowIcon;
+
     public Vector3 targetVector;
+
+    public float throwCooldownDuration = 5f;
 
     public float width;
 
@@ -68,22 +72,26 @@ public class InputController : MonoBehaviour
 
     public void ThrowSaber(Vector3 touchPosition)
     {
-        Vector3 targetPos = Camera.main.ScreenToWorldPoint(touchPosition);
-        RaycastHit2D throwHit;
-        throwHit = Physics2D.Raycast(player.transform.position, targetPos, 20f, throwLayerMask);
-
-        Vector3 throwTarget;
-
-        if (throwHit.collider != null)
+        if (ThrowIcon.isFinishedCooldown)
         {
-            throwTarget = throwHit.point;
-        }
-        else
-        {
-            throwTarget = targetPos;
-        }
+            Vector3 targetPos = Camera.main.ScreenToWorldPoint(touchPosition);
+            RaycastHit2D throwHit;
+            throwHit = Physics2D.Raycast(player.transform.position, targetPos, 20f, throwLayerMask);
 
-        StartCoroutine(tweenController.DoThrowAndRotate(throwTarget));
+            Vector3 throwTarget;
+
+            if (throwHit.collider != null)
+            {
+                throwTarget = throwHit.point;
+            }
+            else
+            {
+                throwTarget = targetPos;
+            }
+
+            StartCoroutine(tweenController.DoThrowAndRotate(throwTarget));
+            StartCoroutine(ThrowIcon.StartCooldown(throwCooldownDuration));
+        }
     }
 
 }
