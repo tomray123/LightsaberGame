@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class LevelManager : MonoBehaviour
 {
     public GameObject WinMenu;
-    public GameObject GameUI;
+    public GameObject pauseButton;
     public GameObject PauseMenu;
     public GameObject LoseMenu;
 
@@ -71,9 +71,9 @@ public class LevelManager : MonoBehaviour
         if (Enemy.NumberOfKilledEnemies == Spawner.TotalNumberOfEnemies)
         {
             PauseController.IsGamePaused = true;
-            joystick.SetActive(false);
+            //joystick.SetActive(false);
             Time.timeScale = 0f;
-            GameUI.SetActive(false);
+            pauseButton.SetActive(false);
             PauseMenu.SetActive(false);
             WinMenu.SetActive(true);
             Enemy.NumberOfKilledEnemies = 0;
@@ -83,9 +83,9 @@ public class LevelManager : MonoBehaviour
         if (BasePlayerSettings.isKilled)
         {
             PauseController.IsGamePaused = true;
-            joystick.SetActive(false);
+            //joystick.SetActive(false);
             Time.timeScale = 0f;
-            GameUI.SetActive(false);
+            pauseButton.SetActive(false);
             PauseMenu.SetActive(false);
             LoseMenu.SetActive(true);
             Enemy.NumberOfKilledEnemies = 0;

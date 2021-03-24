@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InputController : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class InputController : MonoBehaviour
 
     public GameObject player;
 
-    public IconCooldown ThrowIcon;
+    public GameObject throwIcon;
+
+    public IconCooldown throwIconCooldown;
 
     public Vector3 targetVector;
 
@@ -24,11 +27,17 @@ public class InputController : MonoBehaviour
 
     protected float touchDuration;
 
+    private Slider throwIconMask;
+
+    
+
     public void BaseInitialization()
     {
         Transform saber = player.transform.GetChild(0);
         tweenController = saber.GetComponent<DoTweenController>();
         throwLayerMask = 1 << 10;
+        throwIconMask = throwIcon.GetComponent<Slider>();
+        throwIconCooldown = throwIcon.GetComponent<IconCooldown>();
     }
 
     public string CheckInputSmartphone()
@@ -61,18 +70,18 @@ public class InputController : MonoBehaviour
             {
                 return "continious";
             }
-                
+
         }
         else
         {
             touchDuration = 0.0f;
             return "none";
-        }  
+        }
     }
 
     public void ThrowSaber(Vector3 touchPosition)
     {
-        if (ThrowIcon.isFinishedCooldown)
+        if (throwIconCooldown.isFinishedCooldown)
         {
             Vector3 targetPos = Camera.main.ScreenToWorldPoint(touchPosition);
             RaycastHit2D throwHit;
@@ -90,7 +99,7 @@ public class InputController : MonoBehaviour
             }
 
             StartCoroutine(tweenController.DoThrowAndRotate(throwTarget));
-            StartCoroutine(ThrowIcon.StartCooldown(throwCooldownDuration));
+            StartCoroutine(throwIconCooldown.StartCooldown(throwCooldownDuration, throwIconMask));
         }
     }
 

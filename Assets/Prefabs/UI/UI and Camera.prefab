@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PauseMenu: {fileID: 707929744858388030}
-  GameUI: {fileID: 707929745126695497}
+  pauseButton: {fileID: 707929744825154529}
   joystick: {fileID: 8675341583894499111}
 --- !u!114 &707929744232592405
 MonoBehaviour:
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WinMenu: {fileID: 707929744209411236}
-  GameUI: {fileID: 707929745126695497}
+  pauseButton: {fileID: 707929744825154529}
   PauseMenu: {fileID: 707929744858388030}
   LoseMenu: {fileID: 707929744984515659}
   joystick: {fileID: 8675341583894499111}
@@ -7866,7 +7866,7 @@ GameObject:
   - component: {fileID: 3917297804926309616}
   - component: {fileID: 2159826921717438212}
   - component: {fileID: 3479007214234575524}
-  - component: {fileID: 8688647596251498724}
+  - component: {fileID: 1125524241444894748}
   m_Layer: 5
   m_Name: Throw Indicator
   m_TagString: Untagged
@@ -7945,12 +7945,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 0
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -7970,7 +7970,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 2159826921717438212}
   m_FillRect: {fileID: 8353933220760021072}
   m_HandleRect: {fileID: 0}
@@ -7982,7 +7982,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8688647596251498724
+--- !u!114 &1125524241444894748
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7994,7 +7994,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9690cea5dd143ca428c0a04aa5ce900e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mask: {fileID: 3479007214234575524}
   isFinishedCooldown: 1
 --- !u!1 &8675341583894499111
 GameObject:
@@ -8089,8 +8088,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plController: {fileID: 6387370590292991224, guid: 0470770b121af954d8b23fb39892839e, type: 3}
   player: {fileID: 0}
-  ThrowIcon: {fileID: 8688647596251498724}
+  throwIcon: {fileID: 4527776499242857040}
+  throwIconCooldown: {fileID: 0}
   targetVector: {x: 0, y: 0, z: 0}
+  throwCooldownDuration: 5
   width: 0
   touchMarker: {fileID: 8675341583910768025}
   lowSpeed: 100
@@ -8110,8 +8111,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plController: {fileID: 6387370590292991224, guid: 0470770b121af954d8b23fb39892839e, type: 3}
   player: {fileID: 0}
-  ThrowIcon: {fileID: 8688647596251498724}
+  throwIcon: {fileID: 4527776499242857040}
+  throwIconCooldown: {fileID: 0}
   targetVector: {x: 0, y: 0, z: 0}
+  throwCooldownDuration: 5
   width: 0
   touchMarker: {fileID: 8675341583910768025}
   lowSpeed: 100
@@ -8131,8 +8134,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   plController: {fileID: 6387370590292991224, guid: 0470770b121af954d8b23fb39892839e, type: 3}
   player: {fileID: 4258905628541220326, guid: 0470770b121af954d8b23fb39892839e, type: 3}
-  ThrowIcon: {fileID: 8688647596251498724}
+  throwIcon: {fileID: 4527776499242857040}
+  throwIconCooldown: {fileID: 0}
   targetVector: {x: 0, y: 0, z: 0}
+  throwCooldownDuration: 5
   width: 0
   speed: 800
 --- !u!1 &8675341583910768025

@@ -15,19 +15,22 @@ public class MouseLooker : InputController
     // Update is called once per frame
     void Update()
     {
-        switch (GameSettings.device)
+        if (!PauseController.IsGamePaused)
         {
-            case GameSettings.Device.PC:
+            switch (GameSettings.device)
+            {
+                case GameSettings.Device.PC:
 
-                WhatToDoPC();
+                    WhatToDoPC();
 
-                break;
+                    break;
 
-            case GameSettings.Device.Smartphone:
+                case GameSettings.Device.Smartphone:
 
-                WhatToDoSmartphone();
+                    WhatToDoSmartphone();
 
-                break;
+                    break;
+            }
         }
     }
 
