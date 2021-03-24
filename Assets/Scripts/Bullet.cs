@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed = 0.15f;
+    public float speed = 7f;
+
     Vector3 direction;
 
     public int damage = 0;
@@ -18,11 +19,12 @@ public class Bullet : MonoBehaviour
     public string whichCorrection;
 
     public GameObject frontPoint;
+
     public GameObject target;
 
     public bool isDangerous;
 
-    private Rigidbody2D rb;
+    protected Rigidbody2D rb;
 
     private void Start()
     {
@@ -45,6 +47,9 @@ public class Bullet : MonoBehaviour
     void FixedUpdate()
     {
         /*
+        Debug.DrawRay(transform.position, direction.normalized * MaxRayLength, Color.yellow);
+        Debug.DrawRay(transform.position, rb.velocity, Color.red);
+
         //Layer mask for casting enemies
         int layerMask = 1 << 9;
         RaycastHit hit;
@@ -82,6 +87,15 @@ public class Bullet : MonoBehaviour
         Debug.DrawRay(rightRay.origin, rightRayDirection * MaxRayLength, Color.yellow);
         */
     }
+    void Update()
+    {
+        // Trajectory correction after reflection
+        float angle = Vector3.Angle(rb.velocity, transform.up);
+        if (angle > 1f || angle < -1f)
+        {
+            rb.velocity = transform.up * speed;
+        }
+    }
 
     void OnCollisionEnter2D(Collision2D other)
     {
@@ -90,8 +104,8 @@ public class Bullet : MonoBehaviour
             direction = Vector3.Reflect(direction, other.transform.up);
             transform.position = other.GetContact(0).point;
             direction = TrajectoryСorrection(direction);
-            transform.up = direction;
-            rb.velocity = direction.normalized * speed;
+            transform.up = direction.normalized;
+            rb.velocity = transform.up * speed;
         }
     }
 
@@ -146,5 +160,4 @@ public class Bullet : MonoBehaviour
 
         return newDirection;
     }
-
 }
