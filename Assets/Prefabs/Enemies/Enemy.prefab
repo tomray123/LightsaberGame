@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cb3e1983fae9d94d92d0b816306e479, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parameters: []
   target: {fileID: 4258905628541220326, guid: 0470770b121af954d8b23fb39892839e, type: 3}
   timeToFirstShoot: 0.8
   timeToShoot: 4.3
