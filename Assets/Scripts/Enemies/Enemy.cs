@@ -39,6 +39,10 @@ public class Enemy : MonoBehaviour
 
     public int damage = 100;
 
+    public float saberDamageCooldown = 3f;
+
+    public bool isSaberDangerous = true;
+
     protected bool startLoop = true;
 
     protected bool isJustBorn = true;
@@ -66,8 +70,9 @@ public class Enemy : MonoBehaviour
     }
     
 
-    protected void BaseInitialization()
+    protected virtual void BaseInitialization()
     {
+        isSaberDangerous = true;
         transform.up = target.transform.position - transform.position;
         isJustBorn = true;
         isKilled = false;
@@ -75,39 +80,13 @@ public class Enemy : MonoBehaviour
         shootIndicator = gameObject.transform.GetChild(0);
     }
 
-    protected void Shoot(/*float time*/)
+    protected virtual void Shoot()
     {
-        /*
-        isTimeToShoot = false;
-        if (isJustBorn)
-        {
-            isJustBorn = false;
-            yield return new WaitForSeconds(timeToFirstShoot - 1.2f);
-
-            for (int i = 0; i < 6; i++)
-            {
-                flash = !flash;
-                shootIndicator.gameObject.SetActive(flash);
-                yield return new WaitForSeconds(0.2f);
-            }
-
-        }*/
-
         GameObject bulletClone = Instantiate(bullet, transform.position, transform.rotation);
         bulletClone.GetComponent<Bullet>().damage += damage;
-
-        /*
-        yield return new WaitForSeconds(time - 1.2f);
-        for (int i = 0; i < 6; i++)
-        {
-            flash = !flash;
-            shootIndicator.gameObject.SetActive(flash);
-            yield return new WaitForSeconds(0.2f);
-        }
-        isTimeToShoot = true;*/
     }
 
-    protected void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter2D(Collider2D other)
     {
         // Check for bullet layer and for danger
         if(other.gameObject.layer == 8 && other.gameObject.GetComponent<Bullet>().isDangerous)
@@ -116,19 +95,27 @@ public class Enemy : MonoBehaviour
             StartCoroutine(GetHit());
             Destroy(other.gameObject);
         }
-        if (other.gameObject.CompareTag("LightSaber"))
+        if (other.gameObject.CompareTag("LightSaber") && isSaberDangerous)
         {
             hp -= other.GetComponent<SaberSettings>().damage;
+            StartCoroutine(SaberDamageCooldown());
             StartCoroutine(GetHit());
         }
     }
 
-    protected void OnTriggerExit2D(Collider2D other)
+    protected virtual void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.layer == 8)
         {
             other.gameObject.GetComponent<Bullet>().isDangerous = true;
         }
+    }
+
+    protected virtual IEnumerator SaberDamageCooldown()
+    {
+        isSaberDangerous = false;
+        yield return new WaitForSeconds(saberDamageCooldown);
+        isSaberDangerous = true;
     }
 
     protected virtual IEnumerator GetHit()
@@ -185,7 +172,7 @@ public class Enemy : MonoBehaviour
         renderer.color = cl;
     }
 
-    protected void DestroyWhenDead()
+    protected virtual void DestroyWhenDead()
     {
         if (hp <= 0)
         {

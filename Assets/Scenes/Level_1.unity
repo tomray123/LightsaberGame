@@ -154,36 +154,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSpawnPeriod: 0
   MyList:
-  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+  - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
     spawnPos: {fileID: 666348003}
-    spawnPeriod: 0
+    spawnPeriod: 2
     p1Name: Time to first shot
     p1Value: 3
-    p2Name: Shoot interval
+    p2Name: Time between single shots
     p2Value: 2
-    p3Name: Flashes duration
-    p3Value: 1.2
-    p4Name: none
-    p4Value: 0
-    p5Name: none
-    p5Value: 0
-    p6Name: none
-    p6Value: 0
-  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
-    spawnPos: {fileID: 878201381}
-    spawnPeriod: 0
-    p1Name: Time to first shot
-    p1Value: 3
-    p2Name: Shoot interval
-    p2Value: 2
-    p3Name: Flashes duration
-    p3Value: 1.2
-    p4Name: none
-    p4Value: 0
-    p5Name: none
-    p5Value: 0
-    p6Name: none
-    p6Value: 0
+    p3Name: Wait time before multiple attack
+    p3Value: 1
+    p4Name: Time to prepare multiple attack (Gun spin)
+    p4Value: 3
+    p5Name: Multiple shots duration
+    p5Value: 1.5
+    p6Name: Recharge time
+    p6Value: 4
+    p7Name: Flashes duration
+    p7Value: 1.2
+    p8Name: none
+    p8Value: 0
 --- !u!4 &34424929
 Transform:
   m_ObjectHideFlags: 0
