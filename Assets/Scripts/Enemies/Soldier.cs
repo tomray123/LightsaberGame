@@ -12,12 +12,12 @@ public class Soldier : Enemy
 
     void Update()
     {
-        if (isTimeToShoot) StartCoroutine(EnemyLoop(parameters[0].value, parameters[1].value, parameters[2].value));
+        if (startLoop) StartCoroutine(EnemyLoop(parameters[0].value, parameters[1].value, parameters[2].value));
     }
 
     private IEnumerator EnemyLoop(float initialTime, float shootTime, float flashesDuration)
     {
-        isTimeToShoot = false;
+        startLoop = false;
         if (isJustBorn)
         {
             isJustBorn = false;
@@ -36,8 +36,8 @@ public class Soldier : Enemy
         {
             flash = !flash;
             shootIndicator.gameObject.SetActive(flash);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(flashesDuration / 6);
         }
-        isTimeToShoot = true;
+        startLoop = true;
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasePlayerSettings : MonoBehaviour
 {
-    private Renderer renderer;
+    private Renderer rend;
 
     public HealthBar healthBar;
 
@@ -18,7 +18,7 @@ public class BasePlayerSettings : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
-        renderer = GetComponent<Renderer>();
+        rend = GetComponent<Renderer>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -37,13 +37,13 @@ public class BasePlayerSettings : MonoBehaviour
         for (float i = 1f; i >= 0; i -= 0.05f)
         {
             Color cl = new Color(1, i, i);
-            renderer.material.color = cl;
+            rend.material.color = cl;
             yield return null;
         }
         for (float i = 0; i < 1f; i += 0.05f)
         {
             Color cl = new Color(1, i, i);
-            renderer.material.color = cl;
+            rend.material.color = cl;
             yield return null;
         }
         if (currentHealth <= 0)

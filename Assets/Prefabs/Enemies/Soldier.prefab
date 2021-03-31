@@ -185,6 +185,10 @@ MonoBehaviour:
     value: 0
   - name: none
     value: 0
+  - name: none
+    value: 0
+  - name: none
+    value: 0
   target: {fileID: 4258905628541220326, guid: 0470770b121af954d8b23fb39892839e, type: 3}
   timeToFirstShoot: 0.8
   timeToShoot: 1
@@ -192,7 +196,6 @@ MonoBehaviour:
   hp: 100
   damage: 100
   isKilled: 0
-  isDefaultValuesSet: 0
 --- !u!1 &1945263220913230937
 GameObject:
   m_ObjectHideFlags: 0

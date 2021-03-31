@@ -22,7 +22,8 @@ public class EnemyParameter
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    public List<EnemyParameter> parameters = new List<EnemyParameter>(6) {new EnemyParameter(), new EnemyParameter(),
+    public List<EnemyParameter> parameters = new List<EnemyParameter>(8) {new EnemyParameter(), new EnemyParameter(),
+                                                                          new EnemyParameter(), new EnemyParameter(),
                                                                           new EnemyParameter(), new EnemyParameter(),
                                                                           new EnemyParameter(), new EnemyParameter() };
 
@@ -38,7 +39,7 @@ public class Enemy : MonoBehaviour
 
     public int damage = 100;
 
-    protected bool isTimeToShoot = true;
+    protected bool startLoop = true;
 
     protected bool isJustBorn = true;
 
@@ -46,7 +47,7 @@ public class Enemy : MonoBehaviour
 
     public static int NumberOfKilledEnemies = 0;
 
-    private Renderer renderer;
+    protected Renderer rend;
 
     protected Transform shootIndicator;
 
@@ -70,7 +71,7 @@ public class Enemy : MonoBehaviour
         transform.up = target.transform.position - transform.position;
         isJustBorn = true;
         isKilled = false;
-        renderer = GetComponent<Renderer>();
+        rend = GetComponent<Renderer>();
         shootIndicator = gameObject.transform.GetChild(0);
     }
 
@@ -112,13 +113,13 @@ public class Enemy : MonoBehaviour
         if(other.gameObject.layer == 8 && other.gameObject.GetComponent<Bullet>().isDangerous)
         {
             hp -= other.GetComponent<Bullet>().damage;
-            StartCoroutine(ChangeColor());
+            StartCoroutine(GetHit());
             Destroy(other.gameObject);
         }
         if (other.gameObject.CompareTag("LightSaber"))
         {
             hp -= other.GetComponent<SaberSettings>().damage;
-            StartCoroutine(ChangeColor());
+            StartCoroutine(GetHit());
         }
     }
 
@@ -130,22 +131,58 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected IEnumerator ChangeColor()
+    protected virtual IEnumerator GetHit()
     {
         for (float i = 1f; i >= 0; i-=0.05f)
         {
             Color cl = new Color(1, i, i);
-            renderer.material.color = cl;
+            rend.material.color = cl;
             yield return null;
         }
         for (float i = 0; i < 1f; i += 0.05f)
         {
             Color cl = new Color(1, i, i);
-            renderer.material.color = cl;
+            rend.material.color = cl;
             yield return null;
         }
-
         DestroyWhenDead();
+    }
+
+    public IEnumerator SetTransparencyHigher(float duration, GameObject obj)
+    {
+        float timeElapsed = 0;
+        float i = 0f;
+        Color cl = new Color(1f, 1f, 1f, i);
+        SpriteRenderer renderer = obj.GetComponent<SpriteRenderer>();
+        while (timeElapsed < duration)
+        {
+            i = Mathf.Lerp(0, 0.7f, timeElapsed / duration);
+            timeElapsed += Time.deltaTime;
+            cl = new Color(1f, 1f, 1f, i);
+            renderer.color = cl;
+            yield return null;
+        }
+        i = 0.7f;
+        cl = new Color(1f, 1f, 1f, i);
+        renderer.color = cl;
+    }
+    public IEnumerator SetTransparencyLower(float duration, GameObject obj)
+    {
+        float timeElapsed = 0;
+        float i = 0.7f;
+        Color cl = new Color(1f, 1f, 1f, i);
+        SpriteRenderer renderer = obj.GetComponent<SpriteRenderer>();
+        while (timeElapsed < duration)
+        {
+            i = Mathf.Lerp(0.7f, 0, timeElapsed / duration);
+            timeElapsed += Time.deltaTime;
+            cl = new Color(1f, 1f, 1f, i);
+            renderer.color = cl;
+            yield return null;
+        }
+        i = 0;
+        cl = new Color(1f, 1f, 1f, i);
+        renderer.color = cl;
     }
 
     protected void DestroyWhenDead()

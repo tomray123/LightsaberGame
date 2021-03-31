@@ -55,7 +55,7 @@ public class SpawnerEditor : Editor
             if (buf != null)
             {
                 Enemy enemy = buf.GetComponent<Enemy>();
-                if (enemy != null && enemy.parameters.Count > 0)
+                if (enemy != null && enemy.parameters.Count > 7)
                 {
 
                     if (buf != spawner.MyList[i].obj)
@@ -72,6 +72,10 @@ public class SpawnerEditor : Editor
                         spawner.MyList[i].p5Value = enemy.parameters[4].value;
                         spawner.MyList[i].p6Name = enemy.parameters[5].name;
                         spawner.MyList[i].p6Value = enemy.parameters[5].value;
+                        spawner.MyList[i].p7Name = enemy.parameters[6].name;
+                        spawner.MyList[i].p7Value = enemy.parameters[6].value;
+                        spawner.MyList[i].p8Name = enemy.parameters[7].name;
+                        spawner.MyList[i].p8Value = enemy.parameters[7].value;
                     }
 
                     spawner.MyList[i].obj = buf;
@@ -104,6 +108,16 @@ public class SpawnerEditor : Editor
                     GUILayout.BeginHorizontal();
                     EditorGUILayout.LabelField(spawner.MyList[i].p6Name);
                     spawner.MyList[i].p6Value = EditorGUILayout.FloatField(spawner.MyList[i].p6Value);
+                    GUILayout.EndHorizontal();
+
+                    GUILayout.BeginHorizontal();
+                    EditorGUILayout.LabelField(spawner.MyList[i].p7Name);
+                    spawner.MyList[i].p7Value = EditorGUILayout.FloatField(spawner.MyList[i].p7Value);
+                    GUILayout.EndHorizontal();
+
+                    GUILayout.BeginHorizontal();
+                    EditorGUILayout.LabelField(spawner.MyList[i].p8Name);
+                    spawner.MyList[i].p8Value = EditorGUILayout.FloatField(spawner.MyList[i].p8Value);
                     GUILayout.EndHorizontal();
                 }
                 
