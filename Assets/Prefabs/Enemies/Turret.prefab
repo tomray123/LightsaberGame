@@ -70,7 +70,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: dbae440ba70644b41b2a2c6ec9c93b52, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
@@ -393,6 +393,8 @@ MonoBehaviour:
   bullet: {fileID: 2737468164590865732, guid: 419e1cf998269504c9ec9e681f80b8ca, type: 3}
   hp: 200
   damage: 50
+  saberDamageCooldown: 3
+  isSaberDangerous: 1
   isKilled: 0
 --- !u!1 &4046838177105027348
 GameObject:
