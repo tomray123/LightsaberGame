@@ -41,7 +41,7 @@ public class MachineGun : Enemy
         Shoot();
         yield return new WaitForSeconds(timeBeforeMulti);
 
-        StartCoroutine(SetTransparencyHigher(gunSpinTime, transform.GetChild(1).gameObject));
+        StartCoroutine(SetTransparency(gunSpinTime, 0f, 0.7f, transform.GetChild(1).gameObject));
         yield return new WaitForSeconds(gunSpinTime);
 
         Shoot();
@@ -51,7 +51,7 @@ public class MachineGun : Enemy
             Shoot();
         }
 
-        StartCoroutine(SetTransparencyLower(recharge, transform.GetChild(1).gameObject));
+        StartCoroutine(SetTransparency(gunSpinTime, 0.7f, 0f, transform.GetChild(1).gameObject));
         yield return new WaitForSeconds(recharge);
 
         startLoop = true;

@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
 
     public float saberDamageCooldown = 3f;
 
+    [HideInInspector]
     public bool isSaberDangerous = true;
 
     protected bool startLoop = true;
@@ -135,7 +136,7 @@ public class Enemy : MonoBehaviour
         DestroyWhenDead();
     }
 
-    public IEnumerator SetTransparencyHigher(float duration, GameObject obj)
+    public IEnumerator SetTransparency(float duration, float startValue, float EndValue, GameObject obj)
     {
         float timeElapsed = 0;
         float i = 0f;
@@ -143,17 +144,17 @@ public class Enemy : MonoBehaviour
         SpriteRenderer renderer = obj.GetComponent<SpriteRenderer>();
         while (timeElapsed < duration)
         {
-            i = Mathf.Lerp(0, 0.7f, timeElapsed / duration);
+            i = Mathf.Lerp(startValue, EndValue, timeElapsed / duration);
             timeElapsed += Time.deltaTime;
             cl = new Color(1f, 1f, 1f, i);
             renderer.color = cl;
             yield return null;
         }
-        i = 0.7f;
+        i = EndValue;
         cl = new Color(1f, 1f, 1f, i);
         renderer.color = cl;
     }
-    public IEnumerator SetTransparencyLower(float duration, GameObject obj)
+    /*public IEnumerator SetTransparencyLower(float duration, GameObject obj)
     {
         float timeElapsed = 0;
         float i = 0.7f;
@@ -170,7 +171,7 @@ public class Enemy : MonoBehaviour
         i = 0;
         cl = new Color(1f, 1f, 1f, i);
         renderer.color = cl;
-    }
+    }*/
 
     protected virtual void DestroyWhenDead()
     {
