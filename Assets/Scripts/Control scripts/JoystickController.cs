@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JoystickController : InputController
+public class JoystickController : BaseInputController
 {
     public GameObject touchMarker;
 
@@ -49,7 +49,7 @@ public class JoystickController : InputController
 
     public virtual void WhatToDoSmartphone()
     {
-        switch (CheckInputSmartphone())
+        switch (smartphoneInput.CheckInputSmartphone())
         {
             case "continious":
 
@@ -99,12 +99,12 @@ public class JoystickController : InputController
                 targetVector = new Vector3(0, 0, 0);
                 plController.rotationSpeed = 0;
 
-                Vector3 touchPosition = touch.position;
+                Vector3 touchPosition = smartphoneInput.touch.position;
                 plController.targetMove = touchPosition - Camera.main.WorldToScreenPoint(player.transform.position);
 
                 if (tweenController.isThrowTweenCompleted)
                 {
-                    ThrowSaber(touch.position);
+                    ThrowSaber(smartphoneInput.touch.position);
                 }
 
                 break;

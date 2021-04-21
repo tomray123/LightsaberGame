@@ -37,7 +37,7 @@ public class FloatJoystickController : JoystickController
 
     public override void WhatToDoSmartphone()
     {
-        switch (CheckInputSmartphone())
+        switch (smartphoneInput.CheckInputSmartphone())
         {
             case "continious":
 
@@ -101,12 +101,12 @@ public class FloatJoystickController : JoystickController
                 targetVector = new Vector3(0, 0, 0);
                 plController.rotationSpeed = 0;
 
-                Vector3 touchPosition = touch.position;
+                Vector3 touchPosition = smartphoneInput.touch.position;
                 plController.targetMove = touchPosition - Camera.main.WorldToScreenPoint(player.transform.position);
 
                 if (tweenController.isThrowTweenCompleted)
                 {
-                    ThrowSaber(touch.position);
+                    ThrowSaber(smartphoneInput.touch.position);
                 }
 
                 break;

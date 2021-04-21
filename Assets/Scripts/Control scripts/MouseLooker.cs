@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseLooker : InputController
+public class MouseLooker : BaseInputController
 {
     public float speed = 800f;
 
@@ -36,7 +36,7 @@ public class MouseLooker : InputController
 
     public void WhatToDoSmartphone()
     {
-        switch (CheckInputSmartphone())
+        switch (smartphoneInput.CheckInputSmartphone())
         {
             case "continious":
 
@@ -49,12 +49,12 @@ public class MouseLooker : InputController
 
             case "doubleTap":
 
-                Vector3 touchPosition = touch.position;
+                Vector3 touchPosition = smartphoneInput.touch.position;
                 plController.targetMove = touchPosition - Camera.main.WorldToScreenPoint(player.transform.position);
 
                 if (tweenController.isThrowTweenCompleted)
                 {
-                    ThrowSaber(touch.position);
+                    ThrowSaber(smartphoneInput.touch.position);
                 }
 
                 break;
