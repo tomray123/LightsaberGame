@@ -27,6 +27,8 @@ public class BaseInputController : MonoBehaviour
 
     protected SmartphoneInputController smartphoneInput;
 
+    protected MouseInputController mouseInput;
+
     public void BaseInitialization()
     {
         Transform saber = player.transform.GetChild(0);
@@ -35,6 +37,7 @@ public class BaseInputController : MonoBehaviour
         throwIconMask = throwIcon.GetComponent<Slider>();
         throwIconCooldown = throwIcon.GetComponent<IconCooldown>();
         smartphoneInput = SmartphoneInputController.instance;
+        mouseInput = MouseInputController.instance;
     }
 
     public void ThrowSaber(Vector3 touchPosition)

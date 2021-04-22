@@ -122,6 +122,10 @@ public class JoystickController : BaseInputController
 
     public virtual void WhatToDoPC()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            mouseInput.SingleClick();
+        }
         if (Input.GetMouseButton(0)) //Change this to (Input.touchCount > 0) in order to switch PC to mobile
         {
 

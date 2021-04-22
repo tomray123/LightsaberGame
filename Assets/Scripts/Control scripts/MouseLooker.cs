@@ -63,6 +63,10 @@ public class MouseLooker : BaseInputController
 
     public void WhatToDoPC()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            mouseInput.SingleClick();
+        }
         if (Input.GetMouseButton(0)) //Change this to (Input.touchCount > 0) in order to switch PC to mobile
         {
             var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(player.transform.position);

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,11 +12,21 @@ public class SmartphoneInputController : MonoBehaviour
 
     public static SmartphoneInputController instance;
 
+    public Action OnSingleTap;
+
     public void Awake()
     {
         if (instance == null)
         {
             instance = this;
+        }
+    }
+
+    public void SingleTap()
+    {
+        if (OnSingleTap != null)
+        {
+            OnSingleTap();
         }
     }
 
@@ -42,6 +53,7 @@ public class SmartphoneInputController : MonoBehaviour
                 }
                 else
                 {
+                    SingleTap();
                     return "singleTap";
                 }
             }
