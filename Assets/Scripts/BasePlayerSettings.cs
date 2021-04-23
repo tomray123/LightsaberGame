@@ -30,6 +30,25 @@ public class BasePlayerSettings : MonoBehaviour
             StartCoroutine(ChangeColor());
             Destroy(other.gameObject);
         }
+        if (other.gameObject.layer == 11)
+        {
+            currentHealth -= other.GetComponent<SimpleExplosion>().damage;
+            healthBar.SetHealth(currentHealth);
+            StartCoroutine(ChangeColor());
+        }
+        if( other.gameObject.layer == 12)
+        {
+            GameObject explosion = other.gameObject.GetComponent<Rocket>().explosion;
+            if (explosion != null)
+            {
+                Instantiate(explosion, transform.position, Quaternion.identity);
+                Destroy(other);
+            }
+            else
+            {
+                Debug.LogWarning("No explosion attached to this GameObject.");
+            }
+        }
     }
 
     IEnumerator ChangeColor()

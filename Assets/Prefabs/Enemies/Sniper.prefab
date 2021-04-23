@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1765187888381335914}
   - component: {fileID: 8881575976464954974}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8767798266285240788}
   - component: {fileID: 6017845417658364374}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 7544404307406101565}
   - component: {fileID: 3900508866727677934}
   - component: {fileID: 6664886170412704235}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sniper
   m_TagString: Untagged
   m_Icon: {fileID: 0}

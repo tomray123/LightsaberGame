@@ -96,11 +96,29 @@ public class Enemy : MonoBehaviour
             StartCoroutine(GetHit());
             Destroy(other.gameObject);
         }
+        if (other.gameObject.layer == 11)
+        {
+            hp -= other.GetComponent<SimpleExplosion>().damage;
+            StartCoroutine(GetHit());
+        }
         if (other.gameObject.CompareTag("LightSaber") && isSaberDangerous)
         {
             hp -= other.GetComponent<SaberSettings>().damage;
             StartCoroutine(SaberDamageCooldown());
             StartCoroutine(GetHit());
+        }
+        if (other.gameObject.layer == 12)
+        {
+            GameObject explosion = other.gameObject.GetComponent<Rocket>().explosion;
+            if (explosion != null)
+            {
+                Instantiate(explosion, transform.position, Quaternion.identity);
+                Destroy(other);
+            }
+            else
+            {
+                Debug.LogWarning("No explosion attached to this GameObject.");
+            }
         }
     }
 

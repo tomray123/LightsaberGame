@@ -11,15 +11,21 @@ public class Rocket : MonoBehaviour
 
     public float moveDuration = 1.0f;
 
+    public float reflectedRocketSpeed = 1f;
+
     public Ease moveEaseForward = Ease.Linear;
 
     public Ease moveEaseBackward = Ease.Linear;
+
+    public int damage = 300;
 
     public float damageRadius = 1f;
 
     public float tapRadius = 2f;
 
     public float reflectAreaRadius = 5f;
+
+    public GameObject explosion;
 
     public SmartphoneInputController smartphoneInput;
 
@@ -29,6 +35,8 @@ public class Rocket : MonoBehaviour
 
     protected Tween flyBackwardAnimation;
 
+    protected Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +44,11 @@ public class Rocket : MonoBehaviour
         smartphoneInput.OnSingleTap += OnTap;
         mouseInput = MouseInputController.instance;
         mouseInput.OnSingleClick += OnClick;
+        Vector2 direction = targetLocation - transform.position;
+        transform.up = direction;
+        rb = GetComponent<Rigidbody2D>();
+        explosion.GetComponent<SimpleExplosion>().damage = damage;
+
         // Delete this
         LaunchRocket();
         reflectLocation = transform.position;
@@ -46,12 +59,6 @@ public class Rocket : MonoBehaviour
     {
         smartphoneInput.OnSingleTap -= OnTap;
         mouseInput.OnSingleClick -= OnClick;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void OnTap()
@@ -88,7 +95,9 @@ public class Rocket : MonoBehaviour
         if(flyForwardAnimation.IsPlaying())
         {
             flyForwardAnimation.Kill();
-            flyBackwardAnimation = transform.DOMove(reflectLocation, moveDuration).SetEase(moveEaseBackward);
+            transform.up = reflectLocation;
+            rb.velocity = reflectLocation.normalized * reflectedRocketSpeed;
+            //flyBackwardAnimation = transform.DOMove(reflectLocation, moveDuration).SetEase(moveEaseBackward);
         }
     }
 
