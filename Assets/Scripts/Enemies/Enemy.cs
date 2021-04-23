@@ -107,7 +107,7 @@ public class Enemy : MonoBehaviour
             StartCoroutine(SaberDamageCooldown());
             StartCoroutine(GetHit());
         }
-        if (other.gameObject.layer == 12)
+        if (other.gameObject.layer == 12 && other.gameObject.GetComponent<Rocket>().isDangerous)
         {
             GameObject explosion = other.gameObject.GetComponent<Rocket>().explosion;
             if (explosion != null)
@@ -127,6 +127,10 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.layer == 8)
         {
             other.gameObject.GetComponent<Bullet>().isDangerous = true;
+        }
+        if (other.gameObject.layer == 12)
+        {
+            other.gameObject.GetComponent<Rocket>().isDangerous = true;
         }
     }
 

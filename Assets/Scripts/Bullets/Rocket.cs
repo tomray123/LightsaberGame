@@ -37,6 +37,8 @@ public class Rocket : MonoBehaviour
 
     protected Rigidbody2D rb;
 
+    public bool isDangerous;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -49,8 +51,9 @@ public class Rocket : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         explosion.GetComponent<SimpleExplosion>().damage = damage;
 
-        // Delete this
-        LaunchRocket();
+        //Bullet doesn't hit enemy when bullet spawns
+        isDangerous = false;
+
         reflectLocation = transform.position;
     }
 
