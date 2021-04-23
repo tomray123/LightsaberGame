@@ -435,6 +435,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e659db9fa836f9a4da81130cb750e24d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &922256495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 922256498}
+  - component: {fileID: 922256497}
+  - component: {fileID: 922256496}
+  m_Layer: 0
+  m_Name: InputManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &922256496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922256495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7a600a74f64c8942aa015b1b56ad9dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &922256497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922256495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9d3653d63d37024594974603823f55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchDuration: 0
+--- !u!4 &922256498
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922256495}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.7049594, y: -1.7017012, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &952464607
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,29 +578,83 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allSpawnPeriod: 0
-  allTimeToInitialShoot: 0
-  allShootPeriod: 0
   MyList:
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 1398558929}
     spawnPeriod: 1
-    timeToInitialShoot: 2
-    shootPeriod: 4.3
+    p1Name: 
+    p1Value: 0
+    p2Name: 
+    p2Value: 0
+    p3Name: 
+    p3Value: 0
+    p4Name: 
+    p4Value: 0
+    p5Name: 
+    p5Value: 0
+    p6Name: 
+    p6Value: 0
+    p7Name: 
+    p7Value: 0
+    p8Name: 
+    p8Value: 0
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 827449314}
     spawnPeriod: 4.3
-    timeToInitialShoot: 4.3
-    shootPeriod: 4.6
+    p1Name: 
+    p1Value: 0
+    p2Name: 
+    p2Value: 0
+    p3Name: 
+    p3Value: 0
+    p4Name: 
+    p4Value: 0
+    p5Name: 
+    p5Value: 0
+    p6Name: 
+    p6Value: 0
+    p7Name: 
+    p7Value: 0
+    p8Name: 
+    p8Value: 0
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 1374713354}
     spawnPeriod: 4
-    timeToInitialShoot: 3.3
-    shootPeriod: 3
+    p1Name: 
+    p1Value: 0
+    p2Name: 
+    p2Value: 0
+    p3Name: 
+    p3Value: 0
+    p4Name: 
+    p4Value: 0
+    p5Name: 
+    p5Value: 0
+    p6Name: 
+    p6Value: 0
+    p7Name: 
+    p7Value: 0
+    p8Name: 
+    p8Value: 0
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 1732021908}
     spawnPeriod: 5
-    timeToInitialShoot: 4.3
-    shootPeriod: 3
+    p1Name: 
+    p1Value: 0
+    p2Name: 
+    p2Value: 0
+    p3Name: 
+    p3Value: 0
+    p4Name: 
+    p4Value: 0
+    p5Name: 
+    p5Value: 0
+    p6Name: 
+    p6Value: 0
+    p7Name: 
+    p7Value: 0
+    p8Name: 
+    p8Value: 0
 --- !u!4 &1212123990
 Transform:
   m_ObjectHideFlags: 0

@@ -173,8 +173,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetLocation: {x: 0, y: 0, z: 0}
   reflectLocation: {x: 0, y: 0, z: 0}
-  moveDuration: 3
-  reflectedRocketSpeed: 4
+  moveDuration: 1.5
+  reflectedRocketSpeed: 6
   moveEaseForward: 1
   moveEaseBackward: 1
   damage: 300
