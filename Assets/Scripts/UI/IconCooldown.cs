@@ -5,20 +5,21 @@ using UnityEngine.UI;
 
 public class IconCooldown : MonoBehaviour
 {
-    //public Slider mask;
-
     public bool isFinishedCooldown = true;
 
+    // Sets max value of icon's mask.
     public void SetMaxState(float percent, Slider mask)
     {
         mask.maxValue = percent;
     }
 
+    // Sets min value of icon's mask.
     public void SetMinState(float percent, Slider mask)
     {
         mask.minValue = percent;
     }
 
+    // Smoothly removes the mask from the icon.
     public IEnumerator StartCooldown(float duration, Slider mask)
     {
         isFinishedCooldown = false;
@@ -30,6 +31,7 @@ public class IconCooldown : MonoBehaviour
             timeElapsed += Time.deltaTime;
             yield return null;
         }
+
         mask.value = mask.minValue;
         isFinishedCooldown = true;
     }
