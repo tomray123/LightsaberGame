@@ -19,7 +19,7 @@ public class BaseInputController : MonoBehaviour
 
     public float throwCooldownDuration = 5f;
 
-    // Animation controller.
+    // Tween animations controller.
     protected DoTweenController tweenController;
 
     protected int throwLayerMask;
