@@ -6,12 +6,17 @@ public class JoystickController : BaseInputController
 {
     public GameObject touchMarker;
 
+    // Rotation speed types for smooth rotation.
+    // Low speed when joystick marker is close to the center of the joystick.
     public float lowSpeed = 100f;
 
+    // Medium speed when joystick marker is not too close and not too far from the center of the joystick.
     public float medSpeed = 400f;
 
+    // High speed when joystick marker is far from the center of the joystick.
     public float highSpeed = 800f;
 
+    // Width of the joystick.
     public float width;
 
     void Start()
@@ -22,8 +27,10 @@ public class JoystickController : BaseInputController
 
     void Update()
     {
+        // Checking for game is unpaused.
         if (!PauseController.IsGamePaused)
         {
+            // Checking for device used in the game (Can be directly set from the GameSettings script).
             switch (GameSettings.device)
             {
                 case GameSettings.Device.PC:

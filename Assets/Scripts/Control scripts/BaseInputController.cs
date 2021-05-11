@@ -42,6 +42,7 @@ public class BaseInputController : MonoBehaviour
         mouseInput = MouseInputController.instance;
     }
 
+    // Starts a saber throw.
     public void ThrowSaber(Vector3 touchPosition)
     {
         if (throwIconCooldown.isFinishedCooldown)
