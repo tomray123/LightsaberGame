@@ -10,18 +10,21 @@ public class SmartphoneInputController : MonoBehaviour
 
     public float touchDuration;
 
+    // Singleton instance.
     public static SmartphoneInputController instance;
 
     public Action OnSingleTap;
 
     public void Awake()
     {
+        // Creating singleton instance.
         if (instance == null)
         {
             instance = this;
         }
     }
 
+    // Calls the OnSingleTap action when single tap.
     public void SingleTap()
     {
         if (OnSingleTap != null)
@@ -30,6 +33,8 @@ public class SmartphoneInputController : MonoBehaviour
         }
     }
 
+    // Returns "doubleTap" when double tap is detected, "singleTap" when single tap accordingly, 
+    // "continious" when player is touching the screen and "none" when nothing happens.
     public string CheckInputSmartphone()
     {
         if (Input.touchCount > 0)
@@ -37,6 +42,7 @@ public class SmartphoneInputController : MonoBehaviour
             touch = Input.GetTouch(0);
             touchDuration += Time.deltaTime;
 
+            // If player is touching a screen and makes another taps then counting the time of the second touch.
             if (Input.touchCount > 1)
             {
                 touch = Input.GetTouch(1);
@@ -45,7 +51,8 @@ public class SmartphoneInputController : MonoBehaviour
                 touchDuration += Time.deltaTime;
             }
 
-            if (touch.phase == TouchPhase.Ended && touchDuration < 0.3f) //making sure it only check the touch once && it was a short touch/tap and not a dragging.
+            // Making sure it only check the touch once && it was a short touch/tap and not a dragging.
+            if (touch.phase == TouchPhase.Ended && touchDuration < 0.3f) 
             {
                 if (touch.tapCount > 1)
                 {
