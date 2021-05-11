@@ -49,7 +49,6 @@ public class BaseInputController : MonoBehaviour
             Vector3 targetPos = Camera.main.ScreenToWorldPoint(touchPosition);
             RaycastHit2D throwHit;
             throwHit = Physics2D.Raycast(player.transform.position, targetPos, 20f, throwLayerMask);
-
             Vector3 throwTarget;
 
             // Checking for throw border.
