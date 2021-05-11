@@ -12,8 +12,11 @@ public class JoystickController : BaseInputController
 
     public float highSpeed = 800f;
 
+    public float width;
+
     void Start()
     {
+        BaseInitialization();
         BaseJoystickInitialization();
     }
 
@@ -41,10 +44,8 @@ public class JoystickController : BaseInputController
 
     public void BaseJoystickInitialization()
     {
-        BaseInitialization();
         touchMarker.transform.position = transform.position;
         width = gameObject.GetComponent<RectTransform>().rect.width;
-
     }
 
     public virtual void WhatToDoSmartphone()

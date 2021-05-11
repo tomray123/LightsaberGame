@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
 
     public bool isSmooth = false;
 
-    public Vector3 _targetLocation = Vector3.zero;
+    //public Vector3 _targetLocation = Vector3.zero;
 
     void Update()
     {

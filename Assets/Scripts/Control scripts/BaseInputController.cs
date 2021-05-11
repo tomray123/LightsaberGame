@@ -5,20 +5,21 @@ using UnityEngine.UI;
 
 public class BaseInputController : MonoBehaviour
 {
-    public PlayerController plController;
-
     public GameObject player;
+
+    public PlayerController plController;
 
     public GameObject throwIcon;
 
-    public IconCooldown throwIconCooldown;
-
+    // Rotation direction of the character.
     public Vector3 targetVector;
+
+    // Animation of icon's cooldown.
+    public IconCooldown throwIconCooldown;
 
     public float throwCooldownDuration = 5f;
 
-    public float width;
-
+    // Animation controller.
     protected DoTweenController tweenController;
 
     protected int throwLayerMask;
@@ -33,6 +34,7 @@ public class BaseInputController : MonoBehaviour
     {
         Transform saber = player.transform.GetChild(0);
         tweenController = saber.GetComponent<DoTweenController>();
+        // Layer mask for raycasting throw border collider.
         throwLayerMask = 1 << 10;
         throwIconMask = throwIcon.GetComponent<Slider>();
         throwIconCooldown = throwIcon.GetComponent<IconCooldown>();
@@ -50,6 +52,7 @@ public class BaseInputController : MonoBehaviour
 
             Vector3 throwTarget;
 
+            // Checking for throw border.
             if (throwHit.collider != null)
             {
                 throwTarget = throwHit.point;
@@ -59,7 +62,9 @@ public class BaseInputController : MonoBehaviour
                 throwTarget = targetPos;
             }
 
+            // Starting saber animation.
             StartCoroutine(tweenController.DoThrowAndRotate(throwTarget));
+            // Starting icon animation.
             StartCoroutine(throwIconCooldown.StartCooldown(throwCooldownDuration, throwIconMask));
         }
     }
