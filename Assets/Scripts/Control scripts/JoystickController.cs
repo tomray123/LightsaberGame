@@ -130,7 +130,7 @@ public class JoystickController : BaseInputController
             // If player isn't touching a screen.
             case "none":
 
-                // Don't do any action.
+                // Do nothing.
                 touchMarker.transform.position = transform.position;
                 targetVector = new Vector3(0, 0, 0);
                 plController.rotationSpeed = 0;
@@ -151,7 +151,7 @@ public class JoystickController : BaseInputController
         // If player is holding left mouse button.
         if (Input.GetMouseButton(0)) 
         {
-            Vector3 localTouchPos = Input.mousePosition; //Also change this to Input.GetTouch(0).position
+            Vector3 localTouchPos = Input.mousePosition;
             Vector3 touchPos = Camera.main.ScreenToWorldPoint(localTouchPos);
             Vector3 localPos = Camera.main.WorldToScreenPoint(transform.position);
 
@@ -198,7 +198,7 @@ public class JoystickController : BaseInputController
         // If player isn't clicking on left mouse button.
         else
         {
-            // Don't do any action.
+            // Do nothing.
             touchMarker.transform.position = transform.position;
             targetVector = new Vector3(0, 0, 0);
             plController.rotationSpeed = 0;
