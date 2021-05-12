@@ -4,6 +4,10 @@ using UnityEngine;
 using System;
 using System.IO;
 
+// Custom Unity editor menu was created for this script.
+// You can find it in Editor folder -> SpawnerEditor.
+
+// Class of objects to spawn.
 [Serializable]
 public class SpawnObject
 {
@@ -38,6 +42,7 @@ public class SpawnObject
     public string p8Name;
     public float p8Value;
 
+    // Constructor for spawn objects.
     public SpawnObject(GameObject _obj = null, Transform _spawnPos = null, float _spawnPeriod = 0, string _p1Name = "none",
         float _p1Value = 0f, string _p2Name = "none",
         float _p2Value = 0f, string _p3Name = "none",
@@ -73,7 +78,7 @@ public class SpawnObject
 
 public class Spawner : MonoBehaviour
 {
-
+    // This setting allows to set the same spawn period for every spawn object.
     [SerializeField]
     [Header("Set spawn period of the first object to all")]
     public bool allSpawnPeriod = false;
@@ -90,20 +95,24 @@ public class Spawner : MonoBehaviour
 
     [Space(10)]
 
+    // List of objects to spawn.
     [SerializeField]
     public List<SpawnObject> MyList = new List<SpawnObject>();
 
+    // Amount of all enemies spawned on one level.
     public static int TotalNumberOfEnemies = -1;
 
     void Start()
     {
         if (allSpawnPeriod)
         {
+            // Setting the same spawn period for every spawn object.
             for (int i = 0; i < MyList.Count; i++)       
             {
                 MyList[i].spawnPeriod = MyList[0].spawnPeriod;
             }
         }
+
         /*if (allTimeToInitialShoot)
         {
             for (int i = 0; i < MyList.Count; i++)      
@@ -118,33 +127,36 @@ public class Spawner : MonoBehaviour
                 MyList[i].shootPeriod = MyList[0].shootPeriod;
             }
         }*/
-        for (int i = 0; i < MyList.Count; i++)       //(SpawnObject obj in MyList)
+
+        // Starting a spawn timer for every spawn object.
+        for (int i = 0; i < MyList.Count; i++)
         {
             StartCoroutine(Timer(MyList[i], i));
         }
+
+        // Setting an amount of all enemies spawned on one level.
         TotalNumberOfEnemies = MyList.Count;
     }
 
-    void Update()
-    {
-        
-    }
-
+    // Starts a timer to spawn and sets all spawn object parameters.
     private IEnumerator Timer(SpawnObject spawnObj, int num)
     {
+        // Set the timer for first spawn object in list.
         if (num == 0)
         {
             yield return new WaitForSeconds(spawnObj.spawnPeriod);
         }
+        // Set the timer for other spawn objects in list.
         else
         {
             yield return new WaitForSeconds(spawnObj.spawnPeriod * num);
         }
-        GameObject SpawnedObject = Instantiate(spawnObj.obj, spawnObj.spawnPos.position, Quaternion.identity);
 
-        
+        // Creating an object and getting its enemy script.
+        GameObject SpawnedObject = Instantiate(spawnObj.obj, spawnObj.spawnPos.position, Quaternion.identity);
         Enemy enemy = SpawnedObject.GetComponent<Enemy>();
-        
+
+        // Setting all parameters for objects.
         if (enemy.parameters.Count > 7)
         {
             enemy.parameters[0].value = spawnObj.p1Value;
@@ -156,11 +168,5 @@ public class Spawner : MonoBehaviour
             enemy.parameters[6].value = spawnObj.p7Value;
             enemy.parameters[7].value = spawnObj.p8Value;
         }
-        
-        
-        
-        
-
-        //SpawnedObject.GetComponent<Enemy>().timeToShoot = spawnObj.shootPeriod;
     }
 }
