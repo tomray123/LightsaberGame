@@ -64,6 +64,25 @@ public class Rocket : MonoBehaviour
         mouseInput.OnSingleClick -= OnClick;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Activating an explosion only if rocket is dangerous.
+        if (isDangerous)
+        {
+            isDangerous = false;
+            if (explosion != null)
+            {
+                // Creating an explosion and destroying a rocket.
+                Instantiate(explosion, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.LogWarning("No explosion attached to this GameObject.");
+            }
+        }
+    }
+
     public void OnTap()
     {
         Vector3 clickPosition = Camera.main.ScreenToWorldPoint(smartphoneInput.touch.position);

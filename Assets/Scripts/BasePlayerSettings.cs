@@ -45,22 +45,6 @@ public class BasePlayerSettings : MonoBehaviour
             healthBar.SetHealth(currentHealth);
             StartCoroutine(ChangeColor());
         }
-
-        // Checking for rocket layer.
-        if (other.gameObject.layer == 12)
-        {
-            GameObject explosion = other.gameObject.GetComponent<Rocket>().explosion;
-            if (explosion != null)
-            {
-                // Creating an explosion and destroying a rocket.
-                Instantiate(explosion, transform.position, Quaternion.identity);
-                Destroy(other);
-            }
-            else
-            {
-                Debug.LogWarning("No explosion attached to this GameObject.");
-            }
-        }
     }
 
     // Changes the color of the object from normal to red and back 
