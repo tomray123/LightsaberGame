@@ -66,19 +66,23 @@ public class Rocket : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Activating an explosion only if rocket is dangerous.
-        if (isDangerous)
+        // Lighsaber can't reflect the rocket.
+        if (!collision.gameObject.CompareTag("LightSaber"))
         {
-            isDangerous = false;
-            if (explosion != null)
+            // Activating an explosion only if rocket is dangerous.
+            if (isDangerous)
             {
-                // Creating an explosion and destroying a rocket.
-                Instantiate(explosion, transform.position, Quaternion.identity);
-                Destroy(gameObject);
-            }
-            else
-            {
-                Debug.LogWarning("No explosion attached to this GameObject.");
+                isDangerous = false;
+                if (explosion != null)
+                {
+                    // Creating an explosion and destroying a rocket.
+                    Instantiate(explosion, transform.position, Quaternion.identity);
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Debug.LogWarning("No explosion attached to this GameObject.");
+                }
             }
         }
     }

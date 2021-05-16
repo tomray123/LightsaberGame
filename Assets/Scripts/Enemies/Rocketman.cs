@@ -40,6 +40,7 @@ public class Rocketman : Enemy
 
     private IEnumerator EnemyLoop(float startLaserAngle, float endLaserAngle, float initTime, float aimingTime, float cooldownTime)
     {
+        PrepareRocket();
         startLoop = false;
 
         if (isJustBorn)
@@ -47,8 +48,6 @@ public class Rocketman : Enemy
             isJustBorn = false;
             yield return new WaitForSeconds(initTime);
         }
-
-        PrepareRocket();
 
         StartCoroutine(Aiming(-startLaserAngle, -endLaserAngle, aimingTime, leftLine, 200f));
         StartCoroutine(Aiming(startLaserAngle, endLaserAngle, aimingTime, rightLine, 200f));
