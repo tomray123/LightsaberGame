@@ -541,24 +541,24 @@ MonoBehaviour:
     p7Value: 0
     p8Name: none
     p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+  - obj: {fileID: 5223154668494895743, guid: bc0a94e18ea86b548ae6aa23fbc4b325, type: 3}
     spawnPos: {fileID: 1868462819}
     spawnPeriod: 3
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
-    p4Value: 0
-    p5Name: 
+    p1Name: Waiting time before start
+    p1Value: 1
+    p2Name: Aiming time
+    p2Value: 6
+    p3Name: Cooldown (After shot)
+    p3Value: 2
+    p4Name: Freeze time (when get hit)
+    p4Value: 1
+    p5Name: none
     p5Value: 0
-    p6Name: 
+    p6Name: none
     p6Value: 0
-    p7Name: 
+    p7Name: none
     p7Value: 0
-    p8Name: 
+    p8Name: none
     p8Value: 0
   - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
     spawnPos: {fileID: 2059751975}
