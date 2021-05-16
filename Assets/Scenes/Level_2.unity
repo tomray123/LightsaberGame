@@ -522,36 +522,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSpawnPeriod: 0
   MyList:
-  - obj: {fileID: 751141338283610165, guid: 22a5cc7f15fd3ef46ab84a92a6d735f4, type: 3}
-    spawnPos: {fileID: 827449314}
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 1398558929}
     spawnPeriod: 1
-    p1Name: Start laser angle
-    p1Value: 30
-    p2Name: End laser angle
-    p2Value: 0
-    p3Name: Init time
-    p3Value: 1
-    p4Name: Aiming Time
-    p4Value: 8
-    p5Name: Cooldown time
-    p5Value: 4
-    p6Name: none
-    p6Value: 0
-    p7Name: none
-    p7Value: 0
-    p8Name: none
-    p8Value: 0
-  - obj: {fileID: 5223154668494895743, guid: bc0a94e18ea86b548ae6aa23fbc4b325, type: 3}
-    spawnPos: {fileID: 1868462819}
-    spawnPeriod: 3
-    p1Name: Waiting time before start
-    p1Value: 1
-    p2Name: Aiming time
-    p2Value: 6
-    p3Name: Cooldown (After shot)
+    p1Name: Time to first shot
+    p1Value: 4
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
     p3Value: 2
-    p4Name: Freeze time (when get hit)
-    p4Value: 1
+    p4Name: none
+    p4Value: 0
     p5Name: none
     p5Value: 0
     p6Name: none
@@ -560,43 +541,62 @@ MonoBehaviour:
     p7Value: 0
     p8Name: none
     p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
-    spawnPos: {fileID: 2059751975}
-    spawnPeriod: 5
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
-    p4Value: 0
-    p5Name: 
-    p5Value: 0
-    p6Name: 
-    p6Value: 0
-    p7Name: 
-    p7Value: 0
-    p8Name: 
-    p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
-    spawnPos: {fileID: 1581845253}
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 1868462819}
     spawnPeriod: 3
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
+    p1Name: Time to first shot
+    p1Value: 4
+    p2Name: Shoot interval
+    p2Value: 3
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
     p4Value: 0
-    p5Name: 
+    p5Name: none
     p5Value: 0
-    p6Name: 
+    p6Name: none
     p6Value: 0
-    p7Name: 
+    p7Name: none
     p7Value: 0
-    p8Name: 
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 1581845253}
+    spawnPeriod: 5
+    p1Name: Time to first shot
+    p1Value: 3
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 827449314}
+    spawnPeriod: 4
+    p1Name: Time to first shot
+    p1Value: 3
+    p2Name: Shoot interval
+    p2Value: 3
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
     p8Value: 0
 --- !u!4 &1212123990
 Transform:
