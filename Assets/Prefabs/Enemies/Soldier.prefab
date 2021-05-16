@@ -190,11 +190,13 @@ MonoBehaviour:
   - name: none
     value: 0
   target: {fileID: 4258905628541220326, guid: 0470770b121af954d8b23fb39892839e, type: 3}
-  timeToFirstShoot: 0.8
-  timeToShoot: 1
+  timeToFirstShoot: 2
+  timeToShoot: 4
   bullet: {fileID: 2737468164590865732, guid: 419e1cf998269504c9ec9e681f80b8ca, type: 3}
   hp: 100
   damage: 100
+  saberDamageCooldown: 3
+  isSaberDangerous: 1
   isKilled: 0
 --- !u!1 &1945263220913230937
 GameObject:
