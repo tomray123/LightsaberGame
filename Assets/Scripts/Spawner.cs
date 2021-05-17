@@ -75,7 +75,6 @@ public class SpawnObject
     }
 }
 
-
 public class Spawner : MonoBehaviour
 {
     // This setting allows to set the same spawn period for every spawn object.
@@ -99,11 +98,26 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     public List<SpawnObject> MyList = new List<SpawnObject>();
 
+    public Dictionary<Transform, Queue<SpawnObject>> spawnPointDictionary = new Dictionary<Transform, Queue<SpawnObject>>();
+
     // Amount of all enemies spawned on one level.
     public static int TotalNumberOfEnemies = -1;
 
     void Start()
     {
+        // Adding spawn objects to the queue.
+        for (int i = 0; i < MyList.Count; i++)
+        {
+            if (spawnPointDictionary.ContainsKey(MyList[i].spawnPos))
+            {
+                spawnPointDictionary[MyList[i].spawnPos].Enqueue(MyList[i]);
+            }
+            else
+            {
+                spawnPointDictionary[MyList[i].spawnPos] = new Queue<SpawnObject>();
+            }
+        }
+
         if (allSpawnPeriod)
         {
             // Setting the same spawn period for every spawn object.
@@ -128,19 +142,24 @@ public class Spawner : MonoBehaviour
             }
         }*/
 
+        /*
         // Starting a spawn timer for every spawn object.
         for (int i = 0; i < MyList.Count; i++)
         {
             StartCoroutine(Timer(MyList[i], i));
         }
+        */
+
+        StartCoroutine(StartInitialTimer(0));
 
         // Setting an amount of all enemies spawned on one level.
         TotalNumberOfEnemies = MyList.Count;
     }
 
     // Starts a timer to spawn and sets all spawn object parameters.
-    private IEnumerator Timer(SpawnObject spawnObj, int num)
+    private IEnumerator StartInitialTimer(int num)
     {
+        /*
         // Set the timer for first spawn object in list.
         if (num == 0)
         {
@@ -151,22 +170,32 @@ public class Spawner : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnObj.spawnPeriod * num);
         }
+        */
+
+        yield return new WaitForSeconds(MyList[num].spawnPeriod);
 
         // Creating an object and getting its enemy script.
-        GameObject SpawnedObject = Instantiate(spawnObj.obj, spawnObj.spawnPos.position, Quaternion.identity);
+        GameObject SpawnedObject = Instantiate(MyList[num].obj, MyList[num].spawnPos.position, Quaternion.identity);
         Enemy enemy = SpawnedObject.GetComponent<Enemy>();
 
         // Setting all parameters for objects.
         if (enemy.parameters.Count > 7)
         {
-            enemy.parameters[0].value = spawnObj.p1Value;
-            enemy.parameters[1].value = spawnObj.p2Value;
-            enemy.parameters[2].value = spawnObj.p3Value;
-            enemy.parameters[3].value = spawnObj.p4Value;
-            enemy.parameters[4].value = spawnObj.p5Value;
-            enemy.parameters[5].value = spawnObj.p6Value;
-            enemy.parameters[6].value = spawnObj.p7Value;
-            enemy.parameters[7].value = spawnObj.p8Value;
+            enemy.parameters[0].value = MyList[num].p1Value;
+            enemy.parameters[1].value = MyList[num].p2Value;
+            enemy.parameters[2].value = MyList[num].p3Value;
+            enemy.parameters[3].value = MyList[num].p4Value;
+            enemy.parameters[4].value = MyList[num].p5Value;
+            enemy.parameters[5].value = MyList[num].p6Value;
+            enemy.parameters[6].value = MyList[num].p7Value;
+            enemy.parameters[7].value = MyList[num].p8Value;
+        }
+
+        num++;
+
+        if (num < MyList.Count)
+        {  
+            StartCoroutine(StartInitialTimer(num));
         }
     }
 }
