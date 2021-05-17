@@ -75,6 +75,20 @@ public class SpawnObject
     }
 }
 
+// Class for storing spawn position and queue of spawn objects to this position.
+public class SpawnPoint
+{
+    public Transform spawnPosition;
+    public Queue<SpawnObject> objectQueue;
+
+    public SpawnPoint(Transform pos, SpawnObject obj)
+    {
+        spawnPosition = pos;
+        objectQueue = new Queue<SpawnObject>();
+        objectQueue.Enqueue(obj);
+    }
+}
+
 public class Spawner : MonoBehaviour
 {
     // This setting allows to set the same spawn period for every spawn object.
@@ -98,7 +112,7 @@ public class Spawner : MonoBehaviour
     [SerializeField]
     public List<SpawnObject> MyList = new List<SpawnObject>();
 
-    public Dictionary<Transform, Queue<SpawnObject>> spawnPointDictionary = new Dictionary<Transform, Queue<SpawnObject>>();
+    public List<SpawnPoint> spawnPointList = new List<SpawnPoint>();
 
     // Amount of all enemies spawned on one level.
     public static int TotalNumberOfEnemies = -1;
@@ -108,13 +122,15 @@ public class Spawner : MonoBehaviour
         // Adding spawn objects to the queue.
         for (int i = 0; i < MyList.Count; i++)
         {
-            if (spawnPointDictionary.ContainsKey(MyList[i].spawnPos))
+            // Searching for position.
+            SpawnPoint point = spawnPointList.Find(x => x.spawnPosition == MyList[i].spawnPos);
+            if (point != null)
             {
-                spawnPointDictionary[MyList[i].spawnPos].Enqueue(MyList[i]);
+                spawnPointList[spawnPointList.IndexOf(point)].objectQueue.Enqueue(MyList[i]);
             }
             else
             {
-                spawnPointDictionary[MyList[i].spawnPos] = new Queue<SpawnObject>();
+                spawnPointList.Add(new SpawnPoint(MyList[i].spawnPos, MyList[i]));
             }
         }
 
@@ -142,14 +158,6 @@ public class Spawner : MonoBehaviour
             }
         }*/
 
-        /*
-        // Starting a spawn timer for every spawn object.
-        for (int i = 0; i < MyList.Count; i++)
-        {
-            StartCoroutine(Timer(MyList[i], i));
-        }
-        */
-
         StartCoroutine(StartInitialTimer(0));
 
         // Setting an amount of all enemies spawned on one level.
@@ -158,24 +166,26 @@ public class Spawner : MonoBehaviour
 
     // Starts a timer to spawn and sets all spawn object parameters.
     private IEnumerator StartInitialTimer(int num)
-    {
-        /*
-        // Set the timer for first spawn object in list.
-        if (num == 0)
+    { 
+        if (spawnPointList[num].objectQueue.Count <= 0)
         {
-            yield return new WaitForSeconds(spawnObj.spawnPeriod);
+            Debug.LogWarning("No objects to spawn");
+            yield break;
         }
-        // Set the timer for other spawn objects in list.
-        else
-        {
-            yield return new WaitForSeconds(spawnObj.spawnPeriod * num);
-        }
-        */
 
-        yield return new WaitForSeconds(MyList[num].spawnPeriod);
+        SpawnObject spawnObj = spawnPointList[num].objectQueue.Dequeue();
+
+
+        if (spawnObj.spawnPeriod < 0)
+        {
+            spawnObj.spawnPeriod = 0;
+        }
+
+        yield return new WaitForSeconds(spawnObj.spawnPeriod);
 
         // Creating an object and getting its enemy script.
-        GameObject SpawnedObject = Instantiate(MyList[num].obj, MyList[num].spawnPos.position, Quaternion.identity);
+        GameObject SpawnedObject = Instantiate(spawnObj.obj, spawnPointList[num].spawnPosition.position, Quaternion.identity);
+
         Enemy enemy = SpawnedObject.GetComponent<Enemy>();
 
         // Setting all parameters for objects.
@@ -193,7 +203,7 @@ public class Spawner : MonoBehaviour
 
         num++;
 
-        if (num < MyList.Count)
+        if (num < spawnPointList.Count)
         {  
             StartCoroutine(StartInitialTimer(num));
         }
