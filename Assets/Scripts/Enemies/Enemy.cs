@@ -170,18 +170,21 @@ public class Enemy : MonoBehaviour
     {
         float timeElapsed = 0;
         float i = 0f;
-        Color cl = new Color(1f, 1f, 1f, i);
         SpriteRenderer renderer = obj.GetComponent<SpriteRenderer>();
+        float r = renderer.color.r;
+        float g = renderer.color.g;
+        float b = renderer.color.b;
+        Color cl = new Color(r, g, b, i);
         while (timeElapsed < duration)
         {
             i = Mathf.Lerp(startValue, EndValue, timeElapsed / duration);
             timeElapsed += Time.deltaTime;
-            cl = new Color(1f, 1f, 1f, i);
+            cl = new Color(r, g, b, i);
             renderer.color = cl;
             yield return null;
         }
         i = EndValue;
-        cl = new Color(1f, 1f, 1f, i);
+        cl = new Color(r, g, b, i);
         renderer.color = cl;
     }
 
