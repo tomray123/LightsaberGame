@@ -101,6 +101,7 @@ public class Rocketman : Enemy
     {
         // Initially rocket is under rocketman.
         rocket = Instantiate(bullet, rocketSpawnPosition, Quaternion.identity).GetComponent<Rocket>();
+        rocket.transform.parent = transform;
         // Then the rocket sticks its nose out of the muzzle.
         rocket.transform.DOMove(launchPosition, 0.5f).SetEase(rocketPreparingAnimationEase);
         rocket.damage = damage;

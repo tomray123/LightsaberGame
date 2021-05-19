@@ -118,6 +118,8 @@ public class Rocket : MonoBehaviour
         // flyForwardAnimation = transform.DOMove(targetLocation, moveDuration).SetEase(moveEaseForward);
         Vector2 shootDirection = targetLocation - transform.position;
         rb.velocity = shootDirection.normalized * rocketSpeed;
+        // Uparenting rocket from rocketman.
+        transform.parent = null;
     }
 
     public void ReverseRocket()
