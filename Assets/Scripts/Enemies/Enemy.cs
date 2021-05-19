@@ -62,6 +62,7 @@ public class Enemy : MonoBehaviour
     // Defines whether the enemy was just spawned and haven't made any shot yet.
     protected bool isJustBorn = true;
 
+    [HideInInspector]
     public bool isKilled = false;
 
     // The counter of killed enemies.
@@ -132,22 +133,6 @@ public class Enemy : MonoBehaviour
             StartCoroutine(SaberDamageCooldown());
             StartCoroutine(GetHit());
         }
-
-        // Checking for rocket layer.
-        if (other.gameObject.layer == 12 && other.gameObject.GetComponent<Rocket>().isDangerous)
-        {
-            GameObject explosion = other.gameObject.GetComponent<Rocket>().explosion;
-            if (explosion != null)
-            {
-                // Creating an explosion and destroying a rocket.
-                Instantiate(explosion, transform.position, Quaternion.identity);
-                Destroy(other);
-            }
-            else
-            {
-                Debug.LogWarning("No explosion attached to this GameObject.");
-            }
-        }
     }
 
     protected virtual void OnTriggerExit2D(Collider2D other)
@@ -199,18 +184,21 @@ public class Enemy : MonoBehaviour
     {
         float timeElapsed = 0;
         float i = 0f;
-        Color cl = new Color(1f, 1f, 1f, i);
         SpriteRenderer renderer = obj.GetComponent<SpriteRenderer>();
+        float r = renderer.color.r;
+        float g = renderer.color.g;
+        float b = renderer.color.b;
+        Color cl = new Color(r, g, b, i);
         while (timeElapsed < duration)
         {
             i = Mathf.Lerp(startValue, EndValue, timeElapsed / duration);
             timeElapsed += Time.deltaTime;
-            cl = new Color(1f, 1f, 1f, i);
+            cl = new Color(r, g, b, i);
             renderer.color = cl;
             yield return null;
         }
         i = EndValue;
-        cl = new Color(1f, 1f, 1f, i);
+        cl = new Color(r, g, b, i);
         renderer.color = cl;
     }
 

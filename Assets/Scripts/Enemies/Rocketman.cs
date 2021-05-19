@@ -1,16 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Rocketman : Enemy
 {
-    public LineRenderer leftLine;
+    private LineRenderer leftLine;
 
-    public LineRenderer rightLine;
+    private LineRenderer rightLine;
 
-    public Rocket rocket;
+    private Rocket rocket;
 
-    public Vector3 launchPosition;
+    // Forward animation type.
+    [SerializeField]
+    private Ease rocketPreparingAnimationEase = Ease.Linear;
+
+    // Final position of the rocket before shot.
+    private Vector3 launchPosition;
+
+    // Initial spawn position of the rocket.
+    private Vector3 rocketSpawnPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +39,7 @@ public class Rocketman : Enemy
         isKilled = false;
         rend = GetComponent<Renderer>();
         launchPosition = transform.GetChild(2).position;
+        rocketSpawnPosition = transform.GetChild(3).position;
     }
 
     // Update is called once per frame
@@ -40,6 +50,7 @@ public class Rocketman : Enemy
 
     private IEnumerator EnemyLoop(float startLaserAngle, float endLaserAngle, float initTime, float aimingTime, float cooldownTime)
     {
+        PrepareRocket();
         startLoop = false;
 
         if (isJustBorn)
@@ -47,8 +58,6 @@ public class Rocketman : Enemy
             isJustBorn = false;
             yield return new WaitForSeconds(initTime);
         }
-
-        PrepareRocket();
 
         StartCoroutine(Aiming(-startLaserAngle, -endLaserAngle, aimingTime, leftLine, 200f));
         StartCoroutine(Aiming(startLaserAngle, endLaserAngle, aimingTime, rightLine, 200f));
@@ -90,8 +99,13 @@ public class Rocketman : Enemy
     }
     protected void PrepareRocket()
     {
-        rocket = Instantiate(bullet, launchPosition, Quaternion.identity).GetComponent<Rocket>();
+        // Initially rocket is under rocketman.
+        rocket = Instantiate(bullet, rocketSpawnPosition, Quaternion.identity).GetComponent<Rocket>();
+        rocket.transform.parent = transform;
+        // Then the rocket sticks its nose out of the muzzle.
+        rocket.transform.DOMove(launchPosition, 0.5f).SetEase(rocketPreparingAnimationEase);
         rocket.damage = damage;
+        rocket.targetLocation = target.transform.position;
     }
 
     protected override void Shoot()
