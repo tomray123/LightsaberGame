@@ -70,7 +70,7 @@ public class BasePlayerSettings : MonoBehaviour
         {
             // Destroying the object.
             isKilled = true;
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }
