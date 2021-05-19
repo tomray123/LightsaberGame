@@ -599,233 +599,233 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSpawnPeriod: 0
   MyList:
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
     spawnPos: {fileID: 150065747}
     spawnPeriod: 1
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
+    p1Name: Time to first shot
+    p1Value: 4
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
     p4Value: 0
-    p5Name: 
+    p5Name: none
     p5Value: 0
-    p6Name: 
+    p6Name: none
     p6Value: 0
-    p7Name: 
+    p7Name: none
     p7Value: 0
-    p8Name: 
+    p8Name: none
     p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+  - obj: {fileID: 2690857137895966694, guid: 8851bc02850f5ca449a8aa4164cf4992, type: 3}
     spawnPos: {fileID: 1398558929}
     spawnPeriod: 4
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
+    p1Name: Time to first shot
+    p1Value: 3
+    p2Name: Shoot interval
+    p2Value: 3
+    p3Name: Flashes duration
+    p3Value: 1.5
+    p4Name: none
     p4Value: 0
-    p5Name: 
+    p5Name: none
     p5Value: 0
-    p6Name: 
+    p6Name: none
     p6Value: 0
-    p7Name: 
+    p7Name: none
     p7Value: 0
-    p8Name: 
+    p8Name: none
     p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
     spawnPos: {fileID: 827449314}
     spawnPeriod: 5
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
+    p1Name: Time to first shot
+    p1Value: 4
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
     p4Value: 0
-    p5Name: 
+    p5Name: none
     p5Value: 0
-    p6Name: 
+    p6Name: none
     p6Value: 0
-    p7Name: 
+    p7Name: none
     p7Value: 0
-    p8Name: 
+    p8Name: none
     p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+  - obj: {fileID: 2690857137895966694, guid: 8851bc02850f5ca449a8aa4164cf4992, type: 3}
     spawnPos: {fileID: 1868462819}
     spawnPeriod: 5
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
+    p1Name: Time to first shot
+    p1Value: 3
+    p2Name: Shoot interval
+    p2Value: 3
+    p3Name: Flashes duration
+    p3Value: 1.5
+    p4Name: none
     p4Value: 0
-    p5Name: 
+    p5Name: none
     p5Value: 0
-    p6Name: 
+    p6Name: none
     p6Value: 0
-    p7Name: 
+    p7Name: none
     p7Value: 0
-    p8Name: 
+    p8Name: none
     p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
     spawnPos: {fileID: 1581845253}
     spawnPeriod: 4
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
+    p1Name: Time to first shot
+    p1Value: 4
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
     p4Value: 0
-    p5Name: 
+    p5Name: none
     p5Value: 0
-    p6Name: 
+    p6Name: none
     p6Value: 0
-    p7Name: 
+    p7Name: none
     p7Value: 0
-    p8Name: 
+    p8Name: none
     p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
-    spawnPos: {fileID: 2059751975}
-    spawnPeriod: 3.7
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
-    p4Value: 0
-    p5Name: 
-    p5Value: 0
-    p6Name: 
-    p6Value: 0
-    p7Name: 
-    p7Value: 0
-    p8Name: 
-    p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+  - obj: {fileID: 2690857137895966694, guid: 8851bc02850f5ca449a8aa4164cf4992, type: 3}
     spawnPos: {fileID: 417688790}
-    spawnPeriod: 4.5
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
+    spawnPeriod: 3.7
+    p1Name: Time to first shot
+    p1Value: 3
+    p2Name: Shoot interval
+    p2Value: 3
+    p3Name: Flashes duration
+    p3Value: 1.5
+    p4Name: none
     p4Value: 0
-    p5Name: 
+    p5Name: none
     p5Value: 0
-    p6Name: 
+    p6Name: none
     p6Value: 0
-    p7Name: 
+    p7Name: none
     p7Value: 0
-    p8Name: 
+    p8Name: none
     p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 517043075}
+    spawnPeriod: 4.5
+    p1Name: Time to first shot
+    p1Value: 4
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 2690857137895966694, guid: 8851bc02850f5ca449a8aa4164cf4992, type: 3}
     spawnPos: {fileID: 517043075}
     spawnPeriod: 5
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
+    p1Name: Time to first shot
+    p1Value: 3
+    p2Name: Shoot interval
+    p2Value: 3
+    p3Name: Flashes duration
+    p3Value: 1.5
+    p4Name: none
     p4Value: 0
-    p5Name: 
+    p5Name: none
     p5Value: 0
-    p6Name: 
+    p6Name: none
     p6Value: 0
-    p7Name: 
+    p7Name: none
     p7Value: 0
-    p8Name: 
+    p8Name: none
     p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
     spawnPos: {fileID: 4576496}
     spawnPeriod: 5
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
+    p1Name: Time to first shot
+    p1Value: 4
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
     p4Value: 0
-    p5Name: 
+    p5Name: none
     p5Value: 0
-    p6Name: 
+    p6Name: none
     p6Value: 0
-    p7Name: 
+    p7Name: none
     p7Value: 0
-    p8Name: 
+    p8Name: none
     p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+  - obj: {fileID: 2690857137895966694, guid: 8851bc02850f5ca449a8aa4164cf4992, type: 3}
     spawnPos: {fileID: 1732021908}
     spawnPeriod: 5
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
+    p1Name: Time to first shot
+    p1Value: 3
+    p2Name: Shoot interval
+    p2Value: 3
+    p3Name: Flashes duration
+    p3Value: 1.5
+    p4Name: none
     p4Value: 0
-    p5Name: 
+    p5Name: none
     p5Value: 0
-    p6Name: 
+    p6Name: none
     p6Value: 0
-    p7Name: 
+    p7Name: none
     p7Value: 0
-    p8Name: 
+    p8Name: none
     p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
     spawnPos: {fileID: 1374713354}
     spawnPeriod: 5
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
+    p1Name: Time to first shot
+    p1Value: 4
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
     p4Value: 0
-    p5Name: 
+    p5Name: none
     p5Value: 0
-    p6Name: 
+    p6Name: none
     p6Value: 0
-    p7Name: 
+    p7Name: none
     p7Value: 0
-    p8Name: 
+    p8Name: none
     p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
-    spawnPos: {fileID: 150065747}
+  - obj: {fileID: 2690857137895966694, guid: 8851bc02850f5ca449a8aa4164cf4992, type: 3}
+    spawnPos: {fileID: 861018042}
     spawnPeriod: 5
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
+    p1Name: Time to first shot
+    p1Value: 3
+    p2Name: Shoot interval
+    p2Value: 3
+    p3Name: Flashes duration
+    p3Value: 1.5
+    p4Name: none
     p4Value: 0
-    p5Name: 
+    p5Name: none
     p5Value: 0
-    p6Name: 
+    p6Name: none
     p6Value: 0
-    p7Name: 
+    p7Name: none
     p7Value: 0
-    p8Name: 
+    p8Name: none
     p8Value: 0
 --- !u!4 &1212123990
 Transform:
@@ -901,10 +901,10 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 13.32, y: 8.5}
     newSize: {x: 50, y: 30}
     adaptiveTilingThreshold: 0.5
-    drawMode: 2
+    drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
@@ -950,11 +950,11 @@ SpriteRenderer:
   m_SortingLayerID: -1363584251
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 03682bcce2ab79741901d81eacb9921a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1dae1136f52cc7c4bb2aa19036afb449, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 2
+  m_DrawMode: 0
   m_Size: {x: 50, y: 30}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
@@ -970,7 +970,7 @@ Transform:
   m_GameObject: {fileID: 1342920941}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1.876877, y: 1.7647059, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2

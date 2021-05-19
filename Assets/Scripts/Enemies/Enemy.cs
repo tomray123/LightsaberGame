@@ -33,6 +33,8 @@ public class Enemy : MonoBehaviour
     // Enemie's target.
     public GameObject target;
 
+    public Action<Enemy, int> OnDeath;
+
     public float timeToFirstShoot = 0.8f;
 
     // Time interval between shots (not for all enemies).
@@ -43,6 +45,9 @@ public class Enemy : MonoBehaviour
     public int hp = 100;
 
     public int damage = 100;
+
+    // Intended to define the position in spawn list.
+    public int spawnIndex = 0;
 
     // Sets the time when enemy can't get damage from player's saber after first saber's hit. 
     public float saberDamageCooldown = 3f;
@@ -68,6 +73,15 @@ public class Enemy : MonoBehaviour
     protected Transform shootIndicator;
 
     protected bool flash = false;
+
+    public void EnemyDestroy()
+    {
+        if (OnDeath != null)
+        {
+            OnDeath(this, spawnIndex);
+        }
+        spawnIndex = 0;
+    }
 
     // Usually called from Start() method.
     protected virtual void BaseInitialization()
@@ -209,6 +223,7 @@ public class Enemy : MonoBehaviour
             {
                 NumberOfKilledEnemies++;
             }
+            EnemyDestroy();
             isKilled = true;
             Destroy(gameObject);
         }

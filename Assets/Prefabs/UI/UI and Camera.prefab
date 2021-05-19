@@ -4528,14 +4528,14 @@ RectTransform:
   m_GameObject: {fileID: 707929745292775381}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children: []
   m_Father: {fileID: 707929744702157707}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 31, y: -0.00000071526}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 15, y: -19}
   m_SizeDelta: {x: 48.562225, y: 48.562225}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &707929745292775368
@@ -8086,17 +8086,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 385fcdf9b751b914d8625195ac7e0aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plController: {fileID: 6387370590292991224, guid: 0470770b121af954d8b23fb39892839e, type: 3}
   player: {fileID: 0}
+  plController: {fileID: 6387370590292991224, guid: 0470770b121af954d8b23fb39892839e, type: 3}
   throwIcon: {fileID: 4527776499242857040}
-  throwIconCooldown: {fileID: 0}
   targetVector: {x: 0, y: 0, z: 0}
+  throwIconCooldown: {fileID: 0}
   throwCooldownDuration: 5
-  width: 0
   touchMarker: {fileID: 8675341583910768025}
   lowSpeed: 100
   medSpeed: 300
   highSpeed: 800
+  width: 0
 --- !u!114 &8675341583894499106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8109,17 +8109,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe397a984916ec46a6f6b8edf61d066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plController: {fileID: 6387370590292991224, guid: 0470770b121af954d8b23fb39892839e, type: 3}
   player: {fileID: 0}
+  plController: {fileID: 6387370590292991224, guid: 0470770b121af954d8b23fb39892839e, type: 3}
   throwIcon: {fileID: 4527776499242857040}
-  throwIconCooldown: {fileID: 0}
   targetVector: {x: 0, y: 0, z: 0}
+  throwIconCooldown: {fileID: 0}
   throwCooldownDuration: 5
-  width: 0
   touchMarker: {fileID: 8675341583910768025}
   lowSpeed: 100
   medSpeed: 400
   highSpeed: 800
+  width: 0
 --- !u!114 &8675341583894499109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8132,13 +8132,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9478e0703f3f1f4e98a9ebfb0bfa777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plController: {fileID: 6387370590292991224, guid: 0470770b121af954d8b23fb39892839e, type: 3}
   player: {fileID: 4258905628541220326, guid: 0470770b121af954d8b23fb39892839e, type: 3}
+  plController: {fileID: 6387370590292991224, guid: 0470770b121af954d8b23fb39892839e, type: 3}
   throwIcon: {fileID: 4527776499242857040}
-  throwIconCooldown: {fileID: 0}
   targetVector: {x: 0, y: 0, z: 0}
+  throwIconCooldown: {fileID: 0}
   throwCooldownDuration: 5
-  width: 0
   speed: 800
 --- !u!1 &8675341583910768025
 GameObject:

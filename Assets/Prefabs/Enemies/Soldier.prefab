@@ -174,11 +174,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parameters:
   - name: Time to first shot
-    value: 3
+    value: 4
   - name: Shoot interval
-    value: 2
+    value: 4
   - name: Flashes duration
-    value: 1.2
+    value: 2
   - name: none
     value: 0
   - name: none

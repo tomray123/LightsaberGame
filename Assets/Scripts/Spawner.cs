@@ -75,6 +75,19 @@ public class SpawnObject
     }
 }
 
+// Class for storing spawn position and queue of spawn objects to this position.
+public class SpawnPoint
+{
+    public Transform spawnPosition;
+    public Queue<SpawnObject> objectQueue;
+
+    public SpawnPoint(Transform pos, SpawnObject obj)
+    {
+        spawnPosition = pos;
+        objectQueue = new Queue<SpawnObject>();
+        objectQueue.Enqueue(obj);
+    }
+}
 
 public class Spawner : MonoBehaviour
 {
@@ -83,80 +96,132 @@ public class Spawner : MonoBehaviour
     [Header("Set spawn period of the first object to all")]
     public bool allSpawnPeriod = false;
 
-    /*
-    [SerializeField]
-    [Header("Set time before the first shot of the first object to all")]
-    public bool allTimeToInitialShoot = false;
-
-    [SerializeField]
-    [Header("Set time interval for shooting of the first object to all")]
-    public bool allShootPeriod = false;
-    */
-
     [Space(10)]
 
     // List of objects to spawn.
     [SerializeField]
     public List<SpawnObject> MyList = new List<SpawnObject>();
 
+    public List<SpawnPoint> spawnPointList = new List<SpawnPoint>();
+
     // Amount of all enemies spawned on one level.
     public static int TotalNumberOfEnemies = -1;
 
     void Start()
     {
+        // Adding spawn objects to the queue.
+        for (int i = 0; i < MyList.Count; i++)
+        {
+            // Searching for position.
+            SpawnPoint point = spawnPointList.Find(x => x.spawnPosition == MyList[i].spawnPos);
+            if (point != null)
+            {
+                spawnPointList[spawnPointList.IndexOf(point)].objectQueue.Enqueue(MyList[i]);
+            }
+            else
+            {
+                spawnPointList.Add(new SpawnPoint(MyList[i].spawnPos, MyList[i]));
+            }
+        }
+
         if (allSpawnPeriod)
         {
             // Setting the same spawn period for every spawn object.
-            for (int i = 0; i < MyList.Count; i++)       
+            for (int i = 0; i < MyList.Count; i++)
             {
                 MyList[i].spawnPeriod = MyList[0].spawnPeriod;
             }
         }
 
-        /*if (allTimeToInitialShoot)
-        {
-            for (int i = 0; i < MyList.Count; i++)      
-            {
-                MyList[i].timeToInitialShoot = MyList[0].timeToInitialShoot;
-            }
-        }
-        if (allShootPeriod)
-        {
-            for (int i = 0; i < MyList.Count; i++)     
-            {
-                MyList[i].shootPeriod = MyList[0].shootPeriod;
-            }
-        }*/
-
-        // Starting a spawn timer for every spawn object.
-        for (int i = 0; i < MyList.Count; i++)
-        {
-            StartCoroutine(Timer(MyList[i], i));
-        }
+        StartCoroutine(StartInitialTimer(0));
 
         // Setting an amount of all enemies spawned on one level.
         TotalNumberOfEnemies = MyList.Count;
     }
 
-    // Starts a timer to spawn and sets all spawn object parameters.
-    private IEnumerator Timer(SpawnObject spawnObj, int num)
+    // Starts coroutine to spawn another enemy on the position of previous enemy (if it's dead).
+    public void SpawnAnotherEnemy(Enemy enemy, int index)
     {
-        // Set the timer for first spawn object in list.
-        if (num == 0)
+        if (spawnPointList[index].objectQueue.Count > 0)
         {
-            yield return new WaitForSeconds(spawnObj.spawnPeriod);
+            StartCoroutine(SpawnFromQueue(index));
         }
-        // Set the timer for other spawn objects in list.
-        else
+        // Unsubscribing from enemy OnDeath event. 
+        enemy.OnDeath -= SpawnAnotherEnemy;
+    }
+
+    // Starts a timer to spawn and sets all spawn object parameters.
+    private IEnumerator StartInitialTimer(int num)
+    {
+        if (spawnPointList[num].objectQueue.Count <= 0)
         {
-            yield return new WaitForSeconds(spawnObj.spawnPeriod * num);
+            Debug.LogWarning("No objects to spawn");
+            yield break;
         }
+
+        // Getting object from queue.
+        SpawnObject spawnObj = spawnPointList[num].objectQueue.Dequeue();
+
+        // Checking for negative spawnPeriod.
+        if (spawnObj.spawnPeriod < 0)
+        {
+            spawnObj.spawnPeriod = 0;
+        }
+
+        yield return new WaitForSeconds(spawnObj.spawnPeriod);
 
         // Creating an object and getting its enemy script.
-        GameObject SpawnedObject = Instantiate(spawnObj.obj, spawnObj.spawnPos.position, Quaternion.identity);
+        GameObject SpawnedObject = Instantiate(spawnObj.obj, spawnPointList[num].spawnPosition.position, Quaternion.identity);
+
         Enemy enemy = SpawnedObject.GetComponent<Enemy>();
+        // Subscribing to enemy OnDeath event. 
+        enemy.OnDeath += SpawnAnotherEnemy;
 
         // Setting all parameters for objects.
+        enemy.spawnIndex = num;
+        if (enemy.parameters.Count > 7)
+        {
+            enemy.parameters[0].value = spawnObj.p1Value;
+            enemy.parameters[1].value = spawnObj.p2Value;
+            enemy.parameters[2].value = spawnObj.p3Value;
+            enemy.parameters[3].value = spawnObj.p4Value;
+            enemy.parameters[4].value = spawnObj.p5Value;
+            enemy.parameters[5].value = spawnObj.p6Value;
+            enemy.parameters[6].value = spawnObj.p7Value;
+            enemy.parameters[7].value = spawnObj.p8Value;
+        }
+
+        num++;
+
+        if (num < spawnPointList.Count)
+        {
+            StartCoroutine(StartInitialTimer(num));
+        }
+    }
+
+    // Spawns objects from queue of spawn points.
+    private IEnumerator SpawnFromQueue(int num)
+    {
+        // Getting object from queue.
+        SpawnObject spawnObj = spawnPointList[num].objectQueue.Dequeue();
+
+        // Checking for negative spawnPeriod.
+        if (spawnObj.spawnPeriod < 0)
+        {
+            spawnObj.spawnPeriod = 0;
+        }
+
+        yield return new WaitForSeconds(spawnObj.spawnPeriod);
+
+        // Creating an object and getting its enemy script.
+        GameObject SpawnedObject = Instantiate(spawnObj.obj, spawnPointList[num].spawnPosition.position, Quaternion.identity);
+
+        Enemy enemy = SpawnedObject.GetComponent<Enemy>();
+        // Subscribing to enemy OnDeath event. 
+        enemy.OnDeath += SpawnAnotherEnemy;
+
+        // Setting all parameters for objects.
+        enemy.spawnIndex = num;
         if (enemy.parameters.Count > 7)
         {
             enemy.parameters[0].value = spawnObj.p1Value;
