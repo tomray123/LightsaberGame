@@ -9,13 +9,15 @@ public class Rocket : MonoBehaviour
 
     public Vector3 reflectLocation = Vector3.zero;
 
-    public float moveDuration = 1.0f;
+    // public float moveDuration = 1.0f;
 
-    public float reflectedRocketSpeed = 1f;
+    public float rocketSpeed = 1f;
 
-    public Ease moveEaseForward = Ease.Linear;
+    // public float reflectedRocketSpeed = 1f;
 
-    public Ease moveEaseBackward = Ease.Linear;
+    // public Ease moveEaseForward = Ease.Linear;
+
+    // public Ease moveEaseBackward = Ease.Linear;
 
     public int damage = 300;
 
@@ -31,9 +33,9 @@ public class Rocket : MonoBehaviour
 
     public MouseInputController mouseInput;
 
-    protected Tween flyForwardAnimation;
+    // protected Tween flyForwardAnimation;
 
-    protected Tween flyBackwardAnimation;
+    // protected Tween flyBackwardAnimation;
 
     protected Rigidbody2D rb;
 
@@ -113,18 +115,24 @@ public class Rocket : MonoBehaviour
 
     public void LaunchRocket()
     {
-        flyForwardAnimation = transform.DOMove(targetLocation, moveDuration).SetEase(moveEaseForward);
+        // flyForwardAnimation = transform.DOMove(targetLocation, moveDuration).SetEase(moveEaseForward);
+        Vector2 shootDirection = targetLocation - transform.position;
+        rb.velocity = shootDirection.normalized * rocketSpeed;
     }
 
     public void ReverseRocket()
     {
+        /*
         if(flyForwardAnimation.IsPlaying())
         {
             flyForwardAnimation.Kill();
-            transform.up = reflectLocation;
+           
             rb.velocity = reflectLocation.normalized * reflectedRocketSpeed;
             //flyBackwardAnimation = transform.DOMove(reflectLocation, moveDuration).SetEase(moveEaseBackward);
         }
+        */
+        transform.up = reflectLocation;
+        rb.velocity = reflectLocation.normalized * rocketSpeed;
     }
 
     public void BlowUp()

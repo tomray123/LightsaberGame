@@ -104,6 +104,7 @@ public class Rocketman : Enemy
         // Then the rocket sticks its nose out of the muzzle.
         rocket.transform.DOMove(launchPosition, 0.5f).SetEase(rocketPreparingAnimationEase);
         rocket.damage = damage;
+        rocket.targetLocation = target.transform.position;
     }
 
     protected override void Shoot()
