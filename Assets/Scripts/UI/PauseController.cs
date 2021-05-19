@@ -7,11 +7,11 @@ public class PauseController : MonoBehaviour
 {
     public static bool IsGamePaused = false;
 
-    public GameObject PauseMenu;
+    public GameObject PauseMenu = null;
 
-    public GameObject pauseButton;
+    public GameObject pauseButton = null;
 
-    public GameObject joystick;
+    public GameObject joystick = null;
 
     Scene currentScene;
 
@@ -156,11 +156,6 @@ public class PauseController : MonoBehaviour
     // Loads first level from pause menu.
     public void LoadLevel(int LevelNumber)
     {
-        // Disabling pause menu.
-        PauseMenu.SetActive(false);
-        // Enabling pause button.
-        pauseButton.SetActive(true);
-        // Resume the time.
         Time.timeScale = 1f;
         IsGamePaused = false;
         //joystick.SetActive(true);

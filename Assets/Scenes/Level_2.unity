@@ -314,6 +314,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.00024414062
       objectReference: {fileID: 0}
+    - target: {fileID: 707929744612666132, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -33.099976
+      objectReference: {fileID: 0}
     - target: {fileID: 707929744825154530, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -47.11194
@@ -385,6 +389,14 @@ PrefabInstance:
     - target: {fileID: 707929746036856330, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4542945230968710275, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -63.899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790723573640967178, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -63.899963
       objectReference: {fileID: 0}
     - target: {fileID: 8353933220760021072, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -796,7 +808,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1363584251
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 03682bcce2ab79741901d81eacb9921a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
