@@ -57,6 +57,7 @@ public class Enemy : MonoBehaviour
     // Defines whether the enemy was just spawned and haven't made any shot yet.
     protected bool isJustBorn = true;
 
+    [HideInInspector]
     public bool isKilled = false;
 
     // The counter of killed enemies.

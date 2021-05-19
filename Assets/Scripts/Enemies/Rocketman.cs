@@ -1,16 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Rocketman : Enemy
 {
-    public LineRenderer leftLine;
+    private LineRenderer leftLine;
 
-    public LineRenderer rightLine;
+    private LineRenderer rightLine;
 
-    public Rocket rocket;
+    private Rocket rocket;
 
-    public Vector3 launchPosition;
+    // Forward animation type.
+    [SerializeField]
+    private Ease rocketPreparingAnimationEase = Ease.Linear;
+
+    // Final position of the rocket before shot.
+    private Vector3 launchPosition;
+
+    // Initial spawn position of the rocket.
+    private Vector3 rocketSpawnPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +39,7 @@ public class Rocketman : Enemy
         isKilled = false;
         rend = GetComponent<Renderer>();
         launchPosition = transform.GetChild(2).position;
+        rocketSpawnPosition = transform.GetChild(3).position;
     }
 
     // Update is called once per frame
@@ -89,7 +99,10 @@ public class Rocketman : Enemy
     }
     protected void PrepareRocket()
     {
-        rocket = Instantiate(bullet, launchPosition, Quaternion.identity).GetComponent<Rocket>();
+        // Initially rocket is under rocketman.
+        rocket = Instantiate(bullet, rocketSpawnPosition, Quaternion.identity).GetComponent<Rocket>();
+        // Then the rocket sticks its nose out of the muzzle.
+        rocket.transform.DOMove(launchPosition, 0.5f).SetEase(rocketPreparingAnimationEase);
         rocket.damage = damage;
     }
 
