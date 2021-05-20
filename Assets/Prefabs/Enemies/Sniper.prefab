@@ -327,7 +327,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5223154668494895743}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -359,7 +359,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0000016093254, y: -0.9936278}
+  m_Offset: {x: 0.00000166893, y: 0.29282832}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -370,7 +370,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7757373, y: 1.8459182}
+  m_Size: {x: 2.7757373, y: 4.4188304}
   m_EdgeRadius: 0
 --- !u!114 &6664886170412704235
 MonoBehaviour:
@@ -407,6 +407,7 @@ MonoBehaviour:
   bullet: {fileID: 6391346094752536334, guid: a155630d8cafcbe459d9f184b4710146, type: 3}
   hp: 200
   damage: 300
+  spawnIndex: 0
   saberDamageCooldown: 3
   isSaberDangerous: 1
   isKilled: 0
