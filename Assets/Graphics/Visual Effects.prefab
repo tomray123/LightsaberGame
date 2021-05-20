@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8299329962689509603}
   - component: {fileID: 8299329962689509612}
-  m_Layer: 20
+  m_Layer: 13
   m_Name: Visual Effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
