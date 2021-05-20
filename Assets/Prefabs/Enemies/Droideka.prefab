@@ -351,7 +351,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.031905413, y: -0.5583161}
+  m_Offset: {x: -0.031905413, y: 0.049584508}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -362,7 +362,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3.341003, y: 2.9900582}
+  m_Size: {x: 3.341003, y: 4.009763}
   m_EdgeRadius: 0
 --- !u!61 &7704397635115465950
 BoxCollider2D:
@@ -371,7 +371,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7704397635115465951}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -425,10 +425,13 @@ MonoBehaviour:
   bullet: {fileID: 2737468164590865732, guid: 419e1cf998269504c9ec9e681f80b8ca, type: 3}
   hp: 100
   damage: 100
+  spawnIndex: 0
   saberDamageCooldown: 3
   isSaberDangerous: 1
   isKilled: 0
   droidekaCol: []
+  barrelLeft: {fileID: 0}
+  barrelRight: {fileID: 0}
 --- !u!1 &8332384102790777111
 GameObject:
   m_ObjectHideFlags: 0

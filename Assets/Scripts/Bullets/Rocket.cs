@@ -9,13 +9,15 @@ public class Rocket : MonoBehaviour
 
     public Vector3 reflectLocation = Vector3.zero;
 
-    public float moveDuration = 1.0f;
+    // public float moveDuration = 1.0f;
 
-    public float reflectedRocketSpeed = 1f;
+    public float rocketSpeed = 1f;
 
-    public Ease moveEaseForward = Ease.Linear;
+    // public float reflectedRocketSpeed = 1f;
 
-    public Ease moveEaseBackward = Ease.Linear;
+    // public Ease moveEaseForward = Ease.Linear;
+
+    // public Ease moveEaseBackward = Ease.Linear;
 
     public int damage = 300;
 
@@ -31,9 +33,9 @@ public class Rocket : MonoBehaviour
 
     public MouseInputController mouseInput;
 
-    protected Tween flyForwardAnimation;
+    // protected Tween flyForwardAnimation;
 
-    protected Tween flyBackwardAnimation;
+    // protected Tween flyBackwardAnimation;
 
     protected Rigidbody2D rb;
 
@@ -64,6 +66,29 @@ public class Rocket : MonoBehaviour
         mouseInput.OnSingleClick -= OnClick;
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Lighsaber can't reflect the rocket.
+        if (!collision.gameObject.CompareTag("LightSaber"))
+        {
+            // Activating an explosion only if rocket is dangerous.
+            if (isDangerous)
+            {
+                isDangerous = false;
+                if (explosion != null)
+                {
+                    // Creating an explosion and destroying a rocket.
+                    Instantiate(explosion, transform.position, Quaternion.identity);
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Debug.LogWarning("No explosion attached to this GameObject.");
+                }
+            }
+        }
+    }
+
     public void OnTap()
     {
         Vector3 clickPosition = Camera.main.ScreenToWorldPoint(smartphoneInput.touch.position);
@@ -90,18 +115,26 @@ public class Rocket : MonoBehaviour
 
     public void LaunchRocket()
     {
-        flyForwardAnimation = transform.DOMove(targetLocation, moveDuration).SetEase(moveEaseForward);
+        // flyForwardAnimation = transform.DOMove(targetLocation, moveDuration).SetEase(moveEaseForward);
+        Vector2 shootDirection = targetLocation - transform.position;
+        rb.velocity = shootDirection.normalized * rocketSpeed;
+        // Uparenting rocket from rocketman.
+        transform.parent = null;
     }
 
     public void ReverseRocket()
     {
+        /*
         if(flyForwardAnimation.IsPlaying())
         {
             flyForwardAnimation.Kill();
-            transform.up = reflectLocation;
+           
             rb.velocity = reflectLocation.normalized * reflectedRocketSpeed;
             //flyBackwardAnimation = transform.DOMove(reflectLocation, moveDuration).SetEase(moveEaseBackward);
         }
+        */
+        transform.up = reflectLocation;
+        rb.velocity = reflectLocation.normalized * rocketSpeed;
     }
 
     public void BlowUp()

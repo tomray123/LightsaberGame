@@ -9,6 +9,7 @@ public class FloatJoystickController : JoystickController
 
     void Start()
     {
+        BaseInitialization();
         BaseJoystickInitialization();
         GetComponent<Image>().enabled = false;
         touchMarker.GetComponent<Image>().enabled = false;

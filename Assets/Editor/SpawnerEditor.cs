@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 
 [CustomEditor(typeof(Spawner))]
 public class SpawnerEditor : Editor
@@ -119,5 +120,14 @@ public class SpawnerEditor : Editor
             }
             EditorGUILayout.Space(10);
         }
+        // If something was changed, then mark as dirty (unsaved).
+        if (GUI.changed) SetObjectDirty(spawner.gameObject);
+    }
+
+    // Marks object and scene as dirty (allows to save changes).
+    public static void SetObjectDirty(GameObject obj)
+    {
+        EditorUtility.SetDirty(obj);
+        EditorSceneManager.MarkSceneDirty(obj.scene);
     }
 }
