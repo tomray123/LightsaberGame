@@ -33,6 +33,8 @@ public class Enemy : MonoBehaviour
     // Enemie's target.
     public GameObject target;
 
+    public Action<Enemy, int> OnDeath;
+
     public float timeToFirstShoot = 0.8f;
 
     // Time interval between shots (not for all enemies).
@@ -43,6 +45,9 @@ public class Enemy : MonoBehaviour
     public int hp = 100;
 
     public int damage = 100;
+
+    // Intended to define the position in spawn list.
+    public int spawnIndex = 0;
 
     // Sets the time when enemy can't get damage from player's saber after first saber's hit. 
     public float saberDamageCooldown = 3f;
@@ -57,6 +62,7 @@ public class Enemy : MonoBehaviour
     // Defines whether the enemy was just spawned and haven't made any shot yet.
     protected bool isJustBorn = true;
 
+    [HideInInspector]
     public bool isKilled = false;
 
     // The counter of killed enemies.
@@ -68,6 +74,15 @@ public class Enemy : MonoBehaviour
     protected Transform shootIndicator;
 
     protected bool flash = false;
+
+    public void EnemyDestroy()
+    {
+        if (OnDeath != null)
+        {
+            OnDeath(this, spawnIndex);
+        }
+        spawnIndex = 0;
+    }
 
     // Usually called from Start() method.
     protected virtual void BaseInitialization()
@@ -117,22 +132,6 @@ public class Enemy : MonoBehaviour
             // Starting a saber's non-hit cooldown.
             StartCoroutine(SaberDamageCooldown());
             StartCoroutine(GetHit());
-        }
-
-        // Checking for rocket layer.
-        if (other.gameObject.layer == 12 && other.gameObject.GetComponent<Rocket>().isDangerous)
-        {
-            GameObject explosion = other.gameObject.GetComponent<Rocket>().explosion;
-            if (explosion != null)
-            {
-                // Creating an explosion and destroying a rocket.
-                Instantiate(explosion, transform.position, Quaternion.identity);
-                Destroy(other);
-            }
-            else
-            {
-                Debug.LogWarning("No explosion attached to this GameObject.");
-            }
         }
     }
 
@@ -185,18 +184,21 @@ public class Enemy : MonoBehaviour
     {
         float timeElapsed = 0;
         float i = 0f;
-        Color cl = new Color(1f, 1f, 1f, i);
         SpriteRenderer renderer = obj.GetComponent<SpriteRenderer>();
+        float r = renderer.color.r;
+        float g = renderer.color.g;
+        float b = renderer.color.b;
+        Color cl = new Color(r, g, b, i);
         while (timeElapsed < duration)
         {
             i = Mathf.Lerp(startValue, EndValue, timeElapsed / duration);
             timeElapsed += Time.deltaTime;
-            cl = new Color(1f, 1f, 1f, i);
+            cl = new Color(r, g, b, i);
             renderer.color = cl;
             yield return null;
         }
         i = EndValue;
-        cl = new Color(1f, 1f, 1f, i);
+        cl = new Color(r, g, b, i);
         renderer.color = cl;
     }
 
@@ -209,6 +211,7 @@ public class Enemy : MonoBehaviour
             {
                 NumberOfKilledEnemies++;
             }
+            EnemyDestroy();
             isKilled = true;
             Destroy(gameObject);
         }

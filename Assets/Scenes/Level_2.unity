@@ -314,6 +314,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.00024414062
       objectReference: {fileID: 0}
+    - target: {fileID: 707929744612666132, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -33.099976
+      objectReference: {fileID: 0}
     - target: {fileID: 707929744825154530, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -47.11194
@@ -385,6 +389,14 @@ PrefabInstance:
     - target: {fileID: 707929746036856330, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4542945230968710275, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -63.899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 7790723573640967178, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -63.899963
       objectReference: {fileID: 0}
     - target: {fileID: 8353933220760021072, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -522,81 +534,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSpawnPeriod: 0
   MyList:
-  - obj: {fileID: 751141338283610165, guid: 22a5cc7f15fd3ef46ab84a92a6d735f4, type: 3}
-    spawnPos: {fileID: 827449314}
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 1398558929}
     spawnPeriod: 1
-    p1Name: Start laser angle
-    p1Value: 30
-    p2Name: End laser angle
-    p2Value: 0
-    p3Name: Init time
-    p3Value: 1
-    p4Name: Aiming Time
-    p4Value: 8
-    p5Name: Cooldown time
-    p5Value: 4
+    p1Name: Time to first shot
+    p1Value: 4
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
     p6Name: none
     p6Value: 0
     p7Name: none
     p7Value: 0
     p8Name: none
     p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
     spawnPos: {fileID: 1868462819}
     spawnPeriod: 3
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
+    p1Name: Time to first shot
+    p1Value: 4
+    p2Name: Shoot interval
+    p2Value: 3
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
     p4Value: 0
-    p5Name: 
+    p5Name: none
     p5Value: 0
-    p6Name: 
+    p6Name: none
     p6Value: 0
-    p7Name: 
+    p7Name: none
     p7Value: 0
-    p8Name: 
+    p8Name: none
     p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
-    spawnPos: {fileID: 2059751975}
-    spawnPeriod: 5
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
-    p4Value: 0
-    p5Name: 
-    p5Value: 0
-    p6Name: 
-    p6Value: 0
-    p7Name: 
-    p7Value: 0
-    p8Name: 
-    p8Value: 0
-  - obj: {fileID: 3684367867540466767, guid: 9cdbb53f37660004ba685c3e3d29b936, type: 3}
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
     spawnPos: {fileID: 1581845253}
-    spawnPeriod: 3
-    p1Name: 
-    p1Value: 0
-    p2Name: 
-    p2Value: 0
-    p3Name: 
-    p3Value: 0
-    p4Name: 
+    spawnPeriod: 5
+    p1Name: Time to first shot
+    p1Value: 3
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
     p4Value: 0
-    p5Name: 
+    p5Name: none
     p5Value: 0
-    p6Name: 
+    p6Name: none
     p6Value: 0
-    p7Name: 
+    p7Name: none
     p7Value: 0
-    p8Name: 
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 827449314}
+    spawnPeriod: 4
+    p1Name: Time to first shot
+    p1Value: 3
+    p2Name: Shoot interval
+    p2Value: 3
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
     p8Value: 0
 --- !u!4 &1212123990
 Transform:
@@ -796,7 +808,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1363584251
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 03682bcce2ab79741901d81eacb9921a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
