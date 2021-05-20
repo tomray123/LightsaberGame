@@ -2,29 +2,100 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseLooker : MonoBehaviour
+public class MouseLooker : BaseInputController
 {
+    // Rotation speed.
     public float speed = 800f;
 
-    public GameObject player;
-
-    public PlayerController plController;
-
-    // Start is called before the first frame update
     void Start()
     {
+        BaseInitialization();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(0)) //Change this to (Input.touchCount > 0) in order to switch PC to mobile
+        // Checking for game is unpaused.
+        if (!PauseController.IsGamePaused)
         {
+            // Checking for device used in the game (Can be directly set from the GameSettings script).
+            switch (GameSettings.device)
+            {
+                case GameSettings.Device.PC:
+
+                    WhatToDoPC();
+
+                    break;
+
+                case GameSettings.Device.Smartphone:
+
+                    WhatToDoSmartphone();
+
+                    break;
+            }
+        }
+    }
+
+    // Defines joystick actions based on user actions on smartphone.
+    public void WhatToDoSmartphone()
+    {
+        // Which action was made by user.
+        switch (smartphoneInput.CheckInputSmartphone())
+        {
+            // Holding a finger on a screen.
+            case "continious":
+
+                Vector3 tapPosition = Input.GetTouch(0).position;
+                // Calculating player rotation vector.
+                var dir = tapPosition - Camera.main.WorldToScreenPoint(player.transform.position);
+                plController.targetMove = dir;
+                plController.rotationSpeed = speed;
+
+                break;
+
+            case "doubleTap":
+
+                Vector3 touchPosition = smartphoneInput.touch.position;
+                // Rotating player towards the saber throw.
+                plController.targetMove = touchPosition - Camera.main.WorldToScreenPoint(player.transform.position);
+
+                // Throwing the saber.
+                if (tweenController.isThrowTweenCompleted)
+                {
+                    ThrowSaber(smartphoneInput.touch.position);
+                }
+
+                break;
+        }
+    }
+
+    // Defines joystick actions based on user actions on PC.
+    public void WhatToDoPC()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            // Telling everybody about single click.
+            mouseInput.SingleClick();
+        }
+
+        // If player is holding left mouse button.
+        if (Input.GetMouseButton(0))
+        {
+            // Calculating player rotation vector.
             var dir = Input.mousePosition - Camera.main.WorldToScreenPoint(player.transform.position);
             plController.targetMove = dir;
             plController.rotationSpeed = speed;
-            //var angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-            //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            // Rotating player towards the saber throw.
+            plController.targetMove = Input.mousePosition - Camera.main.WorldToScreenPoint(player.transform.position);
+
+            // Throwing the saber.
+            if (tweenController.isThrowTweenCompleted)
+            {
+                ThrowSaber(Input.mousePosition);
+            }
         }
     }
 }

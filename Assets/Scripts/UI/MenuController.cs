@@ -12,23 +12,33 @@ public class MenuController : MonoBehaviour
 	public Button flJoyst;
 	public Button clJoyst;
 
+	public GameObject linearFlightCorrection;
+	public GameObject angularFlightCorrection;
+
+	public string whichCorrection;
+
 	public Toggle smooth;
 
-	public static string whichController;
+	public string whichController;
 
-	public static bool isSmooth;
+	public bool isSmooth;
 
 	public GameObject SettingsMenu;
 
+	public GameObject LevelMenu;
 
-    private void Start()
-    {
+	public GameObject UiContainer;
+
+
+	private void Start()
+	{
 		Color disableColor = new Color(0.5568628f, 0.5568628f, 0.5568628f, 1f);
 		Color activeColor = new Color(1f, 1f, 1f, 1f);
 
 		ColorBlock cb = noJoyst.colors;
 
 		whichController = PlayerPrefs.GetString("ControllerType", "NoJoystick");
+		whichCorrection = PlayerPrefs.GetString("CorrectionType", "linear");
 		isSmooth = Convert.ToBoolean(PlayerPrefs.GetInt("SmoothSetting", 0));
 
 		switch (whichController)
@@ -67,6 +77,15 @@ public class MenuController : MonoBehaviour
 				break;
 		}
 
+		angularFlightCorrection.SetActive(false);
+		linearFlightCorrection.SetActive(true);
+
+		if (whichCorrection == "angular")
+		{
+			angularFlightCorrection.SetActive(true);
+			linearFlightCorrection.SetActive(false);
+		}
+
 		if (isSmooth)
 		{
 			cb.normalColor = activeColor;
@@ -81,18 +100,6 @@ public class MenuController : MonoBehaviour
 		}
 	}
 
-    public void OpenSettings()
-	{
-		MainMenu.SetActive(false);
-		SettingsMenu.SetActive(true);
-	}
-
-	public void CloseSettings()
-	{
-		MainMenu.SetActive(true);
-		SettingsMenu.SetActive(false);
-	}
-
 	public void ChangeController(Button pressed)
 	{
 		Color disableColor = new Color(0.5568628f, 0.5568628f, 0.5568628f, 1f);
@@ -104,10 +111,10 @@ public class MenuController : MonoBehaviour
 		pressed.colors = cb;
 
 		cb.normalColor = disableColor;
-		
+
 
 		switch (pressed.name)
-        {
+		{
 			case "No Joystick Button":
 
 				flJoyst.colors = cb;
@@ -147,21 +154,44 @@ public class MenuController : MonoBehaviour
 
 		ColorBlock cb = pressed.colors;
 
-		if (pressed.isOn)
-        {
+		if (cb.normalColor == disableColor)
+		{
 			cb.normalColor = activeColor;
 			cb.selectedColor = activeColor;
 			pressed.colors = cb;
 			isSmooth = true;
 			PlayerPrefs.SetInt("SmoothSetting", 1);
 		}
-        else
-        {
+		else
+		{
 			cb.normalColor = disableColor;
 			cb.selectedColor = disableColor;
 			pressed.colors = cb;
 			isSmooth = false;
 			PlayerPrefs.SetInt("SmoothSetting", 0);
+		}
+	}
+	public void ChangeFlightCorrection()
+	{
+		switch (whichCorrection)
+		{
+			case "linear":
+
+				angularFlightCorrection.SetActive(true);
+				linearFlightCorrection.SetActive(false);
+				whichCorrection = "angular";
+				PlayerPrefs.SetString("CorrectionType", whichCorrection);
+
+				break;
+
+			case "angular":
+
+				angularFlightCorrection.SetActive(false);
+				linearFlightCorrection.SetActive(true);
+				whichCorrection = "linear";
+				PlayerPrefs.SetString("CorrectionType", whichCorrection);
+
+				break;
 		}
 	}
 
