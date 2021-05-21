@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 7544404307406101565}
   - component: {fileID: 3900508866727677934}
   - component: {fileID: 6664886170412704235}
+  - component: {fileID: 9066050030869066527}
   m_Layer: 9
   m_Name: Sniper
   m_TagString: Untagged
@@ -267,7 +268,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -411,3 +412,21 @@ MonoBehaviour:
   saberDamageCooldown: 3
   isSaberDangerous: 1
   isKilled: 0
+--- !u!114 &9066050030869066527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5223154668494895743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f6d3c6e4250e84192f5b34ce9e71bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  glowColor: {r: 0.9528302, g: 0, b: 0, a: 1}
+  glowBrightness: 1.62
+  outlineWidth: 5
+  alphaThreshold: 0.288
+  drawOutside: 0
+  enableInstancing: 0
