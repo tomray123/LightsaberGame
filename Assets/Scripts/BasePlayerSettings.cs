@@ -24,6 +24,16 @@ public class BasePlayerSettings : MonoBehaviour
         rend = GetComponent<Renderer>();
     }
 
+    public void Heal(int hp)
+    {
+        currentHealth += hp;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        healthBar.SetHealth(currentHealth);
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Checking for bullet layer.
