@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ExplosionAbility : Ability
 {
-    public int damage = 100;
-
     public GameObject explosionPrefab;
 
     public override void ActivateAbility()
