@@ -13,7 +13,7 @@ public class EnvManager : MonoBehaviour
     [HideInInspector]
     public EnvVisual envVisual;
 
-    protected virtual void Start()
+    void Awake()
     {
         envController = GetComponent<EnvController>();
         envData = GetComponent<EnvData>();

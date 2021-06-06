@@ -8,9 +8,12 @@ public class Ability : MonoBehaviour
     {
         OnHit,
         OnDestroy,
-        OnAwake,
+        OnCreate,
         OnEnable
     }
+
+    // Some additional information like ability type.
+    public string extraData = "";
 
     public EventType type = EventType.OnHit;
 
