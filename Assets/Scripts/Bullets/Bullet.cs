@@ -89,12 +89,14 @@ public class Bullet : MonoBehaviour
     }
     void Update()
     {
+        /*
         // Trajectory correction after reflection
         float angle = Vector3.Angle(rb.velocity, transform.up);
         if (angle > 1f || angle < -1f)
         {
             rb.velocity = transform.up * speed;
         }
+        */
     }
 
     void OnCollisionEnter2D(Collision2D other)
