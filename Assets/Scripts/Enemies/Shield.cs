@@ -10,8 +10,9 @@ public class Shield : Enemy
     private Droideka parent;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         BaseInitialization();
         skin = gameObject.GetComponent<SpriteRenderer>();
         shieldCollider = gameObject.GetComponent<CircleCollider2D>();

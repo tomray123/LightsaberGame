@@ -22,8 +22,10 @@ public class EnvData : EnvManager
     [HideInInspector]
     public List<Ability> OnEnableAbility = new List<Ability>();
 
-    protected void Start()
+    protected override void Start()
     {
+        base.Start();
+
         // Normal damage.
         modificator = 1;
 

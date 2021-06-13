@@ -385,6 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5895b627a02886458b62eea27fcbdd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scorePrice: 200
   parameters:
   - name: Waiting time before start
     value: 1

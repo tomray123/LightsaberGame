@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SaberSettings : MonoBehaviour
+public class SaberSettings : KillingObjects
 {
-    public int damage = 100;
 }

@@ -21,7 +21,7 @@ public class EnemyParameter
 }
 
 // Base enemy class.
-public class Enemy : MonoBehaviour
+public class Enemy : ScorableObjects
 {
     // List of enemy parameters.
     [SerializeField]
@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
     // Enemie's target.
     public GameObject target;
 
-    public Action<Enemy, int> OnDeath;
+    public Action<Enemy, int> OnSpawnObjectDeath;
 
     public float timeToFirstShoot = 0.8f;
 
@@ -75,11 +75,16 @@ public class Enemy : MonoBehaviour
 
     protected bool flash = false;
 
+    protected override void Start()
+    {
+        base.Start();
+    }
+
     public void EnemyDestroy()
     {
-        if (OnDeath != null)
+        if (OnSpawnObjectDeath != null)
         {
-            OnDeath(this, spawnIndex);
+            OnSpawnObjectDeath(this, spawnIndex);
         }
         spawnIndex = 0;
     }
@@ -100,35 +105,59 @@ public class Enemy : MonoBehaviour
     protected virtual void Shoot()
     {
         // Creating a bullet and setting its damage.
-        GameObject bulletClone = Instantiate(bullet, transform.position, transform.rotation);
-        bulletClone.GetComponent<Bullet>().damage += damage;
+        Bullet bulletClone = Instantiate(bullet, transform.position, transform.rotation).GetComponent<Bullet>();
+        bulletClone.damage += damage;
+        bulletClone.shooter = gameObject;
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
+        
+        KillingObjects killer = other.GetComponent<KillingObjects>();
+
         // Check for bullet layer and if bullet can hit enemy.
-        if(other.gameObject.layer == 8 && other.gameObject.GetComponent<Bullet>().isDangerous)
+        if (other.gameObject.layer == 8 && other.gameObject.GetComponent<Bullet>().isDangerous && killer != null)
         {
+            Bullet bullet = other.gameObject.GetComponent<Bullet>();
             // Getting damage.
-            hp -= other.GetComponent<Bullet>().damage;
+            hp -= killer.damage;
+            // Generating death action to score system.
+            if (hp <= 0)
+            {
+                if (!ReferenceEquals(bullet.shooter, gameObject))
+                {
+                    killer.factor++;
+                }
+                ObjectDeath(killer.factor);
+            }
             StartCoroutine(GetHit());
             // Destroying the bullet.
             Destroy(other.gameObject);
         }
 
         // Checking for explosion layer.
-        if (other.gameObject.layer == 11)
+        if (other.gameObject.layer == 11 && killer != null)
         {
             // Getting damage.
-            hp -= other.GetComponent<SimpleExplosion>().damage;
+            hp -= killer.damage;
+            // Generating death action to score system.
+            if (hp <= 0)
+            {
+                ObjectDeath(killer.factor);
+            }
             StartCoroutine(GetHit());
         }
 
         // Checking for lightsaber.
-        if (other.gameObject.CompareTag("LightSaber") && isSaberDangerous)
+        if (other.gameObject.CompareTag("LightSaber") && isSaberDangerous && killer != null)
         {
             // Getting damage.
-            hp -= other.GetComponent<SaberSettings>().damage;
+            hp -= killer.damage;
+            // Generating death action to score system.
+            if (hp <= 0)
+            {
+                ObjectDeath(killer.factor);
+            }
             // Starting a saber's non-hit cooldown.
             StartCoroutine(SaberDamageCooldown());
             StartCoroutine(GetHit());
