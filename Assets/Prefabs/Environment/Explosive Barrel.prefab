@@ -184,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d725f2bf7af02fd44be2a5efaebb9fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scorePrice: 50
   envController: {fileID: 2446902129607981596}
   envData: {fileID: 0}
   envVisual: {fileID: 0}
@@ -199,6 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d721901009f756b469dbe249f695f777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scorePrice: 50
   envController: {fileID: 0}
   envData: {fileID: 0}
   envVisual: {fileID: 0}
@@ -226,6 +228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 084bf6ebf7e46b9499ffe34cfb8d533c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scorePrice: 50
   envController: {fileID: 0}
   envData: {fileID: 0}
   envVisual: {fileID: 0}

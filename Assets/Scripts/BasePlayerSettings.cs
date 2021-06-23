@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.IO;
 
 public class BasePlayerSettings : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class BasePlayerSettings : MonoBehaviour
 
     public int currentHealth;
 
+    Action OnHit;
+
     // For checking whether palyer's killed or not.
     public static bool isKilled = false;
 
@@ -22,6 +26,15 @@ public class BasePlayerSettings : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         rend = GetComponent<Renderer>();
+        OnHit += ComboScoreController.instance.onPlayerHit;
+    }
+
+    public void GetHit()
+    {
+        if (OnHit != null)
+        {
+            OnHit();
+        }
     }
 
     public void Heal(int hp)
@@ -42,6 +55,7 @@ public class BasePlayerSettings : MonoBehaviour
             // Getting damage.
             currentHealth -= other.GetComponent<Bullet>().damage;
             healthBar.SetHealth(currentHealth);
+            GetHit();
             StartCoroutine(ChangeColor());
             // Destroying the bullet.
             Destroy(other.gameObject);
@@ -52,6 +66,7 @@ public class BasePlayerSettings : MonoBehaviour
         {
             // Getting damage.
             currentHealth -= other.GetComponent<SimpleExplosion>().damage;
+            GetHit();
             healthBar.SetHealth(currentHealth);
             StartCoroutine(ChangeColor());
         }
@@ -79,6 +94,7 @@ public class BasePlayerSettings : MonoBehaviour
         if (currentHealth <= 0)
         {
             // Destroying the object.
+            OnHit -= ComboScoreController.instance.onPlayerHit;
             isKilled = true;
             gameObject.SetActive(false);
         }

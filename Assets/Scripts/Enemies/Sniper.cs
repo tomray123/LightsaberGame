@@ -7,8 +7,9 @@ public class Sniper : Enemy
     private LineRenderer line;
 
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         BaseInitialization();
     }
 

@@ -147,7 +147,7 @@ public class Spawner : MonoBehaviour
             StartCoroutine(SpawnFromQueue(index));
         }
         // Unsubscribing from enemy OnDeath event. 
-        enemy.OnDeath -= SpawnAnotherEnemy;
+        enemy.OnSpawnObjectDeath -= SpawnAnotherEnemy;
     }
 
     // Starts a timer to spawn and sets all spawn object parameters.
@@ -175,7 +175,7 @@ public class Spawner : MonoBehaviour
 
         Enemy enemy = SpawnedObject.GetComponent<Enemy>();
         // Subscribing to enemy OnDeath event. 
-        enemy.OnDeath += SpawnAnotherEnemy;
+        enemy.OnSpawnObjectDeath += SpawnAnotherEnemy;
 
         // Setting all parameters for objects.
         enemy.spawnIndex = num;
@@ -218,7 +218,7 @@ public class Spawner : MonoBehaviour
 
         Enemy enemy = SpawnedObject.GetComponent<Enemy>();
         // Subscribing to enemy OnDeath event. 
-        enemy.OnDeath += SpawnAnotherEnemy;
+        enemy.OnSpawnObjectDeath += SpawnAnotherEnemy;
 
         // Setting all parameters for objects.
         enemy.spawnIndex = num;
