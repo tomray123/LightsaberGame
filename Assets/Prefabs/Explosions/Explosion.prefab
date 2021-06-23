@@ -155,5 +155,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   factor: 2
-  damage: 100
+  damage: 300
   radius: 4
