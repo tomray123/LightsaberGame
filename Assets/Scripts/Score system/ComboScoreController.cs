@@ -31,8 +31,13 @@ public class ComboScoreController : MonoBehaviour
     Stack<FactorItem> buffer = new Stack<FactorItem>();
     Stack<FactorItem> factorItems = new Stack<FactorItem>();
 
+    ScoreVisual visual;
+
     [HideInInspector]
     public int comboScore = 0;
+
+    [HideInInspector]
+    public float comboScorePercent = 0;
 
     [HideInInspector]
     public int comboFactor = 1;
@@ -50,6 +55,7 @@ public class ComboScoreController : MonoBehaviour
 
         comboScore = 0;
         comboFactor = 1;
+        comboScorePercent = 0;
     }
 
     private void Start()
@@ -60,6 +66,7 @@ public class ComboScoreController : MonoBehaviour
             buffer.Push(factorTable[i]);
         }
         factorItems.Push(factorTable[0]);
+        visual = ScoreVisual.instance;
     }
 
     private void Update()
@@ -67,6 +74,9 @@ public class ComboScoreController : MonoBehaviour
         if (!PauseController.IsGamePaused)
         {
             DecreaseComboScore();
+
+            // Updating visual;
+            visual.UpdateCombo(comboScorePercent, comboFactor);
         }
     }
 
@@ -115,17 +125,29 @@ public class ComboScoreController : MonoBehaviour
         CalculateFactor();
     }
 
+    public void CalculateScorePercent(int min, int max, int currentScore)
+    {
+        comboScorePercent = (currentScore - min) / (float)(max - min);
+    }
+
     public void CalculateFactor()
     {
         if (factorItems.Peek().higherBorder < comboScore)
         {
-            factorItems.Push(buffer.Pop());
+            if(buffer.Count > 1)
+            {
+                factorItems.Push(buffer.Pop());
+            }
         }
         if (factorItems.Peek().lowerBorder > comboScore)
         {
-            buffer.Push(factorItems.Pop());
+            if(factorItems.Count > 1)
+            {
+                buffer.Push(factorItems.Pop());
+            }
         }
         comboFactor = factorItems.Peek().factor;
-        // Debug.Log("CCCCCCCC" + comboScore);
+ 
+        CalculateScorePercent(factorItems.Peek().lowerBorder, factorItems.Peek().higherBorder, comboScore);
     }
 }

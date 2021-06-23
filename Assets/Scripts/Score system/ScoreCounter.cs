@@ -9,6 +9,8 @@ public class ScoreCounter : MonoBehaviour
 
     ComboScoreController comboController;
 
+    ScoreVisual visual;
+
     public int simpleFactorUpperBorder = 5;
 
     int totalScore = 0;
@@ -27,6 +29,7 @@ public class ScoreCounter : MonoBehaviour
     private void Start()
     {
         comboController = ComboScoreController.instance;
+        visual = ScoreVisual.instance;
     }
 
     public void CountActionScore(int receivedScore, int receivedFactor)
@@ -39,7 +42,8 @@ public class ScoreCounter : MonoBehaviour
         totalScore += receivedScore * receivedFactor * comboController.comboFactor;
         comboController.comboScore += receivedScore * receivedFactor;
         comboController.CalculateFactor();
- 
-        Debug.Log("Score is: " + totalScore);
+
+        // Adding visual.
+        visual.UpdateScoreText(totalScore);
     }
 }
