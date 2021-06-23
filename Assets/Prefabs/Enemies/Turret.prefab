@@ -371,6 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f42e767d8fc85b24bb540709ccd2a8f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scorePrice: 200
   parameters:
   - name: Time to first shot
     value: 3

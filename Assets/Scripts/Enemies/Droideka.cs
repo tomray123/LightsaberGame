@@ -7,9 +7,11 @@ public class Droideka : Enemy
     public Collider2D[] droidekaCol;
     public Transform barrelLeft;
     public Transform barrelRight;
+
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         BaseInitialization();
         transform.GetChild(1).gameObject.GetComponent<Shield>().parameters[0].value = parameters[3].value;
         droidekaCol = gameObject.GetComponents<BoxCollider2D>();
@@ -50,9 +52,11 @@ public class Droideka : Enemy
 
     protected override void Shoot()
     {
-        GameObject bulletCloneLeft = Instantiate(bullet, barrelLeft.position, barrelLeft.rotation);
-        bulletCloneLeft.GetComponent<Bullet>().damage += damage;
-        GameObject bulletCloneRight = Instantiate(bullet, barrelRight.position, barrelRight.rotation);
-        bulletCloneRight.GetComponent<Bullet>().damage += damage;
+        Bullet bulletCloneLeft = Instantiate(bullet, barrelLeft.position, barrelLeft.rotation).GetComponent<Bullet>();
+        bulletCloneLeft.damage += damage;
+        bulletCloneLeft.shooter = gameObject;
+        Bullet bulletCloneRight = Instantiate(bullet, barrelRight.position, barrelRight.rotation).GetComponent<Bullet>();
+        bulletCloneRight.damage += damage;
+        bulletCloneRight.shooter = gameObject;
     }
 }

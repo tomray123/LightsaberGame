@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet : KillingObjects
 {
     public float speed = 7f;
 
-    Vector3 direction;
+    int reflectCount = 0;
 
-    public int damage = 0;
+    [HideInInspector]
+    public GameObject shooter = null;
+
+    Vector3 direction;
 
     public float RayDelta = 10f;
 
@@ -28,6 +31,7 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
+        reflectCount = 0;
         whichCorrection = PlayerPrefs.GetString("CorrectionType", "linear");
 
         direction = target.transform.position - transform.position;
@@ -103,6 +107,11 @@ public class Bullet : MonoBehaviour
     {
         if (other.gameObject.CompareTag("LightSaber"))
         {
+            reflectCount++;
+            if (reflectCount > 1)
+            {
+                factor++;
+            }
             direction = Vector3.Reflect(direction, other.transform.up);
             transform.position = other.GetContact(0).point;
             direction = TrajectoryСorrection(direction);

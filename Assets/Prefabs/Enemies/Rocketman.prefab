@@ -305,6 +305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff935bc39d220a84e89f2ffea3ab6e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scorePrice: 200
   parameters:
   - name: Start laser angle
     value: 30
