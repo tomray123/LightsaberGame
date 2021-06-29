@@ -7,6 +7,7 @@ public class BaseInputController : MonoBehaviour
 {
     public GameObject player;
 
+    [HideInInspector]
     public PlayerController plController;
 
     public GameObject throwIcon;
@@ -14,6 +15,7 @@ public class BaseInputController : MonoBehaviour
     // Rotation direction of the character.
     public Vector3 targetVector;
 
+    [HideInInspector]
     // Animation of icon's cooldown.
     public IconCooldown throwIconCooldown;
 
@@ -32,6 +34,7 @@ public class BaseInputController : MonoBehaviour
 
     public void BaseInitialization()
     {
+        player = LevelManager.instance.player;
         Transform saber = player.transform.GetChild(0);
         tweenController = saber.GetComponent<DoTweenController>();
         // Layer mask for raycasting throw border collider.
