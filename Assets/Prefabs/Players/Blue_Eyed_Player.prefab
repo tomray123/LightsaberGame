@@ -184,6 +184,7 @@ GameObject:
   - component: {fileID: 7547075357152424715}
   - component: {fileID: 3212768304487761049}
   - component: {fileID: 3627656860541472538}
+  - component: {fileID: 1471837136779409172}
   m_Layer: 0
   m_Name: Blue_Eyed_Player
   m_TagString: Player
@@ -324,6 +325,25 @@ MonoBehaviour:
   targetMove: {x: 0, y: 0, z: 0}
   rotationSpeed: 0
   isSmooth: 0
+--- !u!95 &1471837136779409172
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7280439939109321282}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9acf98e739c0764488a93cd7706f7ca6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7280439939913734100
 GameObject:
   m_ObjectHideFlags: 0
