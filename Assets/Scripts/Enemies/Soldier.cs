@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Soldier : Enemy
 {
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         BaseInitialization();
     }
 

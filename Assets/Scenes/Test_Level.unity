@@ -123,6 +123,171 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &830616768 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8583008262989663590, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+  m_PrefabInstance: {fileID: 8583008262465602546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1209573538 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8583008262857636113, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+  m_PrefabInstance: {fileID: 8583008262465602546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1295490934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1295490936}
+  - component: {fileID: 1295490935}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1295490935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295490934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0703d8e3210036c40b1d6614e712421c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allSpawnPeriod: 0
+  MyList:
+  - obj: {fileID: 5223154668494895743, guid: bc0a94e18ea86b548ae6aa23fbc4b325, type: 3}
+    spawnPos: {fileID: 1688429012}
+    spawnPeriod: 1
+    p1Name: Waiting time before start
+    p1Value: 1
+    p2Name: Aiming time
+    p2Value: 6
+    p3Name: Cooldown (After shot)
+    p3Value: 2
+    p4Name: Freeze time (when get hit)
+    p4Value: 1
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
+    spawnPos: {fileID: 830616768}
+    spawnPeriod: 0.5
+    p1Name: Time to first shot
+    p1Value: 3
+    p2Name: Time between single shots
+    p2Value: 2
+    p3Name: Wait time before multiple attack
+    p3Value: 1
+    p4Name: Time to prepare multiple attack (Gun spin)
+    p4Value: 3
+    p5Name: Multiple shots duration
+    p5Value: 1
+    p6Name: Recharge time
+    p6Value: 4
+    p7Name: Flashes duration
+    p7Value: 1.2
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 5223154668494895743, guid: bc0a94e18ea86b548ae6aa23fbc4b325, type: 3}
+    spawnPos: {fileID: 1339193266}
+    spawnPeriod: 3
+    p1Name: Waiting time before start
+    p1Value: 1
+    p2Name: Aiming time
+    p2Value: 6
+    p3Name: Cooldown (After shot)
+    p3Value: 2
+    p4Name: Freeze time (when get hit)
+    p4Value: 1
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 1209573538}
+    spawnPeriod: 0.5
+    p1Name: Time to first shot
+    p1Value: 4
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
+    spawnPos: {fileID: 1500361334}
+    spawnPeriod: 5
+    p1Name: Time to first shot
+    p1Value: 3
+    p2Name: Time between single shots
+    p2Value: 2.5
+    p3Name: Wait time before multiple attack
+    p3Value: 1
+    p4Name: Time to prepare multiple attack (Gun spin)
+    p4Value: 3
+    p5Name: Multiple shots duration
+    p5Value: 1
+    p6Name: Recharge time
+    p6Value: 4
+    p7Name: Flashes duration
+    p7Value: 1.2
+    p8Name: none
+    p8Value: 0
+--- !u!4 &1295490936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1295490934}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -12.98, y: -4.97, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1339193266 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8583008263107791095, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+  m_PrefabInstance: {fileID: 8583008262465602546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1500361334 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8583008262330290593, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+  m_PrefabInstance: {fileID: 8583008262465602546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1688429012 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8583008263286633976, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+  m_PrefabInstance: {fileID: 8583008262465602546}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8583008262465602546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -130,6 +295,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1984094749628220915, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 61.599854
+      objectReference: {fileID: 0}
+    - target: {fileID: 1984094749628220915, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 60.599976
+      objectReference: {fileID: 0}
+    - target: {fileID: 2709053239096938738, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4118407136093820021, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -145,6 +322,22 @@ PrefabInstance:
     - target: {fileID: 4835657786463857199, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5178343317359842946, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478158977452039140, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7256015748282274874, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7919686610810215587, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8583008263291474773, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_Name

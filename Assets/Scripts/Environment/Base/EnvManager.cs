@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnvManager : MonoBehaviour
+public class EnvManager : ScorableObjects
 {
     [HideInInspector]
     public EnvController envController;
@@ -13,7 +13,7 @@ public class EnvManager : MonoBehaviour
     [HideInInspector]
     public EnvVisual envVisual;
 
-    void Awake()
+    protected void Awake()
     {
         envController = GetComponent<EnvController>();
         envData = GetComponent<EnvData>();

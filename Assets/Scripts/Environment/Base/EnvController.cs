@@ -6,8 +6,10 @@ public class EnvController : EnvManager
 {
     bool isDestroyable = false;
 
-    protected void Start()
+    protected override void Start()
     {
+        base.Start();
+
         // Setting destroyability.
         if (envData.hp < 0)
         {
@@ -31,12 +33,19 @@ public class EnvController : EnvManager
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // Checking for bullet layer.
-        if (collision.gameObject.layer == 8)
+        KillingObjects killer = collision.GetComponent<KillingObjects>();
+
+        if (killer != null)
         {
             if (isDestroyable)
             {
-                envData.hp -= (collision.GetComponent<Bullet>().damage - envData.modificator) * envData.modificator + 1;
+                envData.hp -= (killer.damage - envData.modificator) * envData.modificator + 1;
+            }
+
+            // Generating death action to score system.
+            if (envData.hp <= 0)
+            {
+                ObjectDeath(killer.factor);
             }
 
             // Add get hit visual.
@@ -49,53 +58,18 @@ public class EnvController : EnvManager
                 a.ActivateAbility();
             }
 
-            Destroy(collision);
-        }
-
-        // Checking for explosion layer.
-        if (collision.gameObject.layer == 11)
-        {
-            if (isDestroyable)
+            // Checking for bullet layer.
+            if (collision.gameObject.layer == 8)
             {
-                envData.hp -= collision.GetComponent<SimpleExplosion>().damage * envData.modificator;
-            }
-
-            // Add get hit visual.
-            //
-            //
-
-            // Call the ability.
-            foreach (Ability a in envData.OnHitAbility)
-            {
-                a.ActivateAbility();
-            }
-
-            Destroy(collision);
-        }
-
-        // Checking for lightsaber's hit.
-        if (collision.CompareTag("LightSaber"))
-        {
-            if (isDestroyable)
-            {
-                envData.hp -= (collision.GetComponent<SaberSettings>().damage - envData.modificator) * envData.modificator + 1;
-            }
-
-            // Add get hit visual.
-            //
-            //
-
-            // Call the ability.
-            foreach (Ability a in envData.OnHitAbility)
-            {
-                a.ActivateAbility();
+                Destroy(collision);
             }
         }
+
         // Check for destroying.
-        OnDeath();
+        OnEnvDeath();
     }
 
-    private void OnDeath()
+    private void OnEnvDeath()
     {
         if (envData.hp <= 0)
         {

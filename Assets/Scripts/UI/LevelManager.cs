@@ -17,6 +17,19 @@ public class LevelManager : MonoBehaviour
     public string whichController;
     public bool isSmooth;
 
+    // Singleton instance.
+    public static LevelManager instance;
+
+    public void Awake()
+    {
+        // Creating singleton instance.
+        if (instance == null)
+        {
+            instance = this;
+        }
+        player = Instantiate(player, Vector3.zero, Quaternion.identity);
+    }
+
     void Start()
     {
         whichController = PlayerPrefs.GetString("ControllerType", "NoJoystick");

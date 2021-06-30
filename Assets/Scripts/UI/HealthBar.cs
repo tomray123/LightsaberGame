@@ -6,7 +6,15 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider slider;
-    
+
+    BasePlayerSettings player;
+
+    private void Start()
+    {
+        player = LevelManager.instance.player.GetComponent<BasePlayerSettings>();
+        SetMaxHealth(player.maxHealth);
+        player.OnHpChange += SetHealth;
+    }
 
     public void SetMaxHealth(int hp)
     {

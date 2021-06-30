@@ -97,7 +97,6 @@ GameObject:
   - component: {fileID: 4901502205576605593}
   - component: {fileID: 4901502205576605589}
   - component: {fileID: 8315377447309268442}
-  - component: {fileID: 4901502205576605590}
   - component: {fileID: 4901502205576605599}
   - component: {fileID: 7345519205403038982}
   m_Layer: 0
@@ -185,6 +184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d725f2bf7af02fd44be2a5efaebb9fd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scorePrice: 50
   envController: {fileID: 4901502205576605593}
   envData: {fileID: 0}
   envVisual: {fileID: 0}
@@ -200,10 +200,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 084bf6ebf7e46b9499ffe34cfb8d533c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scorePrice: 50
   envController: {fileID: 0}
   envData: {fileID: 0}
   envVisual: {fileID: 0}
-  hp: 4
+  hp: 5
   abilities: []
   modificator: 1
   OnHitAbility: []
@@ -222,6 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d721901009f756b469dbe249f695f777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scorePrice: 50
   envController: {fileID: 0}
   envData: {fileID: 0}
   envVisual: {fileID: 0}
@@ -253,21 +255,6 @@ MonoBehaviour:
   type: 0
   hpAmount: 100
   playerSettingsScript: {fileID: 0}
---- !u!114 &4901502205576605590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4901502205576605591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8878993bce01bc14eb9e4072e8b48f05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  extraData: 
-  type: 1
-  explosionPrefab: {fileID: 3236395758418378455, guid: 44bb0f903658e3d4e8dfbd4a9530820e, type: 3}
 --- !u!114 &4901502205576605599
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleExplosion : MonoBehaviour
+public class SimpleExplosion : KillingObjects
 {
-    public int damage = 100;
-
     public float radius = 4f;
 
     void Start()

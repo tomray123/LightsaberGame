@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+using System.IO;
 
 public class BasePlayerSettings : MonoBehaviour
 {
     // For changing player's color.
     private Renderer rend;
 
-    // UI health bar slider.
-    public HealthBar healthBar;
-
     public int maxHealth = 500;
 
     public int currentHealth;
+
+    Action OnHit;
+
+    public Action<int> OnHpChange;
 
     // For checking whether palyer's killed or not.
     public static bool isKilled = false;
@@ -20,8 +23,25 @@ public class BasePlayerSettings : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
         rend = GetComponent<Renderer>();
+        OnHit += ComboScoreController.instance.onPlayerHit;
+    }
+
+    public void GetHit()
+    {
+        if (OnHit != null)
+        {
+            OnHit();
+        }
+        ChangeHP(currentHealth);
+    }
+
+    public void ChangeHP(int hp)
+    {
+        if (OnHpChange != null)
+        {
+            OnHpChange(hp);
+        }
     }
 
     public void Heal(int hp)
@@ -31,7 +51,7 @@ public class BasePlayerSettings : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        healthBar.SetHealth(currentHealth);
+        ChangeHP(currentHealth);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -41,7 +61,7 @@ public class BasePlayerSettings : MonoBehaviour
         {
             // Getting damage.
             currentHealth -= other.GetComponent<Bullet>().damage;
-            healthBar.SetHealth(currentHealth);
+            GetHit();
             StartCoroutine(ChangeColor());
             // Destroying the bullet.
             Destroy(other.gameObject);
@@ -52,7 +72,7 @@ public class BasePlayerSettings : MonoBehaviour
         {
             // Getting damage.
             currentHealth -= other.GetComponent<SimpleExplosion>().damage;
-            healthBar.SetHealth(currentHealth);
+            GetHit();
             StartCoroutine(ChangeColor());
         }
     }
@@ -79,6 +99,7 @@ public class BasePlayerSettings : MonoBehaviour
         if (currentHealth <= 0)
         {
             // Destroying the object.
+            OnHit -= ComboScoreController.instance.onPlayerHit;
             isKilled = true;
             gameObject.SetActive(false);
         }
