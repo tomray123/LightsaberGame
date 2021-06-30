@@ -151,10 +151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f9aa732c23fee04cbe11993c4a61643, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetMove: {x: 0, y: 0, z: 0}
-  rotationSpeed: 0
+  targetMove: {x: -246.15381, y: 232.61542, z: -10}
+  rotationSpeed: 800
   isSmooth: 0
-  _targetLocation: {x: 0, y: 0, z: 0}
 --- !u!1 &4258905629515534121
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,13 +182,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4258905629515534121}
-  m_LocalRotation: {x: -0, y: -0, z: 0.0045571746, w: -0.9999896}
-  m_LocalPosition: {x: -0.38, y: 1.57, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.007389463, w: -0.9999727}
+  m_LocalPosition: {x: -0.28908455, y: 1.560211, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4258905628541220323}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.522}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -0.847}
 --- !u!50 &4258905629515534100
 Rigidbody2D:
   serializedVersion: 4
@@ -310,7 +309,7 @@ MonoBehaviour:
   _scaleMultiplier: 3
   _colorChangeDuration: 1
   _doTweenType: 0
-  isThrowTweenCompleted: 1
+  isThrowTweenCompleted: 0
 --- !u!114 &4168390735108449869
 MonoBehaviour:
   m_ObjectHideFlags: 0
