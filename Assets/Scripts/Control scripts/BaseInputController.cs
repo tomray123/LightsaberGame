@@ -35,6 +35,7 @@ public class BaseInputController : MonoBehaviour
     public void BaseInitialization()
     {
         player = LevelManager.instance.player;
+        plController = player.GetComponent<PlayerController>();
         Transform saber = player.transform.GetChild(0);
         tweenController = saber.GetComponent<DoTweenController>();
         // Layer mask for raycasting throw border collider.

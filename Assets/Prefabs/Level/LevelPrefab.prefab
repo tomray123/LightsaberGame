@@ -1108,7 +1108,7 @@ PrefabInstance:
     - target: {fileID: 3749050601325467059, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 5478158977452039140}
+      objectReference: {fileID: 7280439939109321282, guid: 73f77125d0af5c34fa55b5c4f7dc1df7, type: 3}
     - target: {fileID: 3749050601456617448, guid: a1bcc6f392b9f3a46a9098a15654cdf3, type: 3}
       propertyPath: m_RootOrder
       value: 7

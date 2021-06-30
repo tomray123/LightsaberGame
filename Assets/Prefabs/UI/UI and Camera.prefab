@@ -4777,7 +4777,7 @@ MonoBehaviour:
   PauseMenu: {fileID: 3749050601747855256}
   LoseMenu: {fileID: 3749050601807185389}
   joystick: {fileID: 5021899266124574337}
-  player: {fileID: 0}
+  player: {fileID: 7280439939109321282, guid: 73f77125d0af5c34fa55b5c4f7dc1df7, type: 3}
   whichController: 
   isSmooth: 0
 --- !u!1 &3749050601369656578

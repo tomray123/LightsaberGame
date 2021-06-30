@@ -144,7 +144,7 @@ public class DoTweenController : MonoBehaviour
         Vector3 originalLocation = player.position;
         Vector3 localOriginalLocation = transform.localPosition;
         // Detaching the saber from the player.
-        player.DetachChildren();
+        transform.parent = null;
         // Start rotating the saber.
         Tween Rotation = transform.DORotate(new Vector3(0, 0, -360), _rotate360Duration, RotateMode.LocalAxisAdd).SetEase(Ease.Linear).SetLoops(-1);
         if (targetPosition == Vector3.zero)
