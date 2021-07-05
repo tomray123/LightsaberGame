@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -20,6 +21,9 @@ public class LevelManager : MonoBehaviour
     // Singleton instance.
     public static LevelManager instance;
 
+    private int oldRecord;
+    private string currentSceneRecordTag;
+
     public void Awake()
     {
         // Creating singleton instance.
@@ -32,6 +36,8 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        currentSceneRecordTag = "rec_lvl" + SceneManager.GetActiveScene().buildIndex;
+        oldRecord = PlayerPrefs.GetInt(currentSceneRecordTag);
         whichController = PlayerPrefs.GetString("ControllerType", "NoJoystick");
         isSmooth = Convert.ToBoolean(PlayerPrefs.GetInt("SmoothSetting", 0));
         switch (whichController)
@@ -92,6 +98,13 @@ public class LevelManager : MonoBehaviour
             Enemy.NumberOfKilledEnemies = 0;
             Spawner.TotalNumberOfEnemies = -1;
             BasePlayerSettings.isKilled = false;
+
+            int currentScore = ScoreCounter.instance.totalScore;
+
+            if (currentScore > oldRecord)
+            {
+                PlayerPrefs.SetInt(currentSceneRecordTag, currentScore);
+            }
         }
         if (BasePlayerSettings.isKilled)
         {

@@ -13,7 +13,7 @@ public class ScoreCounter : MonoBehaviour
 
     public int simpleFactorUpperBorder = 5;
 
-    int totalScore = 0;
+    public int totalScore = 0;
 
     public void Awake()
     {
