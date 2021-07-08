@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class WinMenuVisual : MonoBehaviour
 {
@@ -16,9 +18,20 @@ public class WinMenuVisual : MonoBehaviour
     [SerializeField]
     private GameObject star3;
 
-    private List<ParticleSystem> ps = new List<ParticleSystem>();
+    [SerializeField]
+    private Text currentScore;
+
+    [SerializeField]
+    private GameObject oldRecordUI;
+    [SerializeField]
+    private Text oldRecord;
+
+    [SerializeField]
+    private GameObject newRecord;
 
     private List<GameObject> stars = new List<GameObject>();
+
+    public UnityEvent onStarsLighted;
 
     // Start is called before the first frame update
     void Start()
@@ -26,10 +39,6 @@ public class WinMenuVisual : MonoBehaviour
         stars.Add(star1);
         stars.Add(star2);
         stars.Add(star3);
-        for (int i = 0; i < stars.Count; i++)
-        {
-            ps.Add(stars[i].GetComponent<ParticleSystem>());
-        }
     }
 
     public void ActivateStars(int starCount = 0)
@@ -39,13 +48,30 @@ public class WinMenuVisual : MonoBehaviour
 
     private IEnumerator LightStars(int starCount = 0)
     {
-        yield return new WaitForSecondsRealtime(InitStarDelay);
+        yield return new WaitForSeconds(InitStarDelay);
 
         for (int i = 0; i < starCount; i++)
         {
             stars[i].SetActive(true);
-            ps[i].Play();
-            yield return new WaitForSecondsRealtime(starTimeInterval);
+            yield return new WaitForSeconds(starTimeInterval);
         }
+
+        onStarsLighted.Invoke();
+    }
+
+    public void UpdateScoreText(int score)
+    {
+        currentScore.text = score.ToString();
+    }
+
+    public void ShowOldRecord(int score)
+    {
+        oldRecordUI.SetActive(true);
+        oldRecord.text = score.ToString();
+    }
+
+    public void EnableNewRecord()
+    {
+        newRecord.SetActive(true);
     }
 }

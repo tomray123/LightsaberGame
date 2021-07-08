@@ -18,7 +18,7 @@ public class GameInit : MonoBehaviour
         if (!PlayerPrefs.HasKey("init"))
         {
             // Setting records of each level in build to 0.
-            for (int i = 1; i < SceneManager.sceneCountInBuildSettings; i++)
+            for (int i = 1; i < SceneManager.sceneCountInBuildSettings + 1; i++)
             {
                 PlayerPrefs.SetInt("rec_lvl" + i.ToString(), 0);
             }

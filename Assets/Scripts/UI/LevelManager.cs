@@ -98,7 +98,11 @@ public class LevelManager : MonoBehaviour
     {
         PauseController.IsGamePaused = true;
         //joystick.SetActive(false);
-        Time.timeScale = 0f;
+
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //Time.timeScale = 0f;
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         pauseButton.SetActive(false);
         PauseMenu.SetActive(false);
         WinMenu.SetActive(true);
@@ -120,9 +124,26 @@ public class LevelManager : MonoBehaviour
             wmVisual.ActivateStars(1);
         }
 
+        wmVisual.UpdateScoreText(currentScore);
+
         if (currentScore > oldRecord)
         {
             PlayerPrefs.SetInt(currentSceneRecordTag, currentScore);
+        }
+        else
+        {
+            wmVisual.ShowOldRecord(oldRecord);
+        }
+    }
+
+    public void VisualizeNewRecord()
+    {
+        int currentScore = scoreManager.totalScore;
+
+        if (currentScore > oldRecord)
+        {
+            // Visual for new record.
+            wmVisual.EnableNewRecord();
         }
     }
 

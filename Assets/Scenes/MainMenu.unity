@@ -2076,7 +2076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1631f923e7bfa4691ece9c66d6d623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetToInitialSettings: 0
+  resetToInitialSettings: 1
 --- !u!4 &630445533
 Transform:
   m_ObjectHideFlags: 0
