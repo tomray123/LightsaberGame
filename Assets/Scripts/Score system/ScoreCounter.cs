@@ -15,6 +15,12 @@ public class ScoreCounter : MonoBehaviour
 
     public int totalScore = 0;
 
+    public int scoreForOneStar = 0;
+
+    public int scoreForTwoStars = 0;
+
+    public int scoreForThreeStars = 0;
+
     public void Awake()
     {
         // Creating singleton instance.

@@ -70,8 +70,6 @@ public class PauseController : MonoBehaviour
         // Loading main menu.
         SceneManager.LoadScene(0);
 
-        // Reseting the counter of killed enemies.
-        Enemy.NumberOfKilledEnemies = 0;
         // Reseting the counter of all enemies on level.
         Spawner.TotalNumberOfEnemies = -1;
         // Player is not killed.
@@ -91,8 +89,6 @@ public class PauseController : MonoBehaviour
         // Loading next level.
         SceneManager.LoadScene(nextSceneIndex);
 
-        // Reseting the counter of killed enemies.
-        Enemy.NumberOfKilledEnemies = 0;
         // Reseting the counter of all enemies on level.
         Spawner.TotalNumberOfEnemies = -1;
         // Player is not killed.
@@ -111,9 +107,7 @@ public class PauseController : MonoBehaviour
         //joystick.SetActive(true);
         // Loading previous level.
         SceneManager.LoadScene(prevSceneIndex);
-
-        // Reseting the counter of killed enemies.
-        Enemy.NumberOfKilledEnemies = 0;
+;
         // Reseting the counter of all enemies on level.
         Spawner.TotalNumberOfEnemies = -1;
         // Player is not killed.
@@ -133,8 +127,6 @@ public class PauseController : MonoBehaviour
         // Reloading current level.
         SceneManager.LoadScene(currSceneIndex);
 
-        // Reseting the counter of killed enemies.
-        Enemy.NumberOfKilledEnemies = 0;
         // Reseting the counter of all enemies on level.
         Spawner.TotalNumberOfEnemies = -1;
         // Player is not killed.
@@ -162,8 +154,6 @@ public class PauseController : MonoBehaviour
         // Loading previous level.
         SceneManager.LoadScene(LevelNumber);
 
-        // Reseting the counter of killed enemies.
-        Enemy.NumberOfKilledEnemies = 0;
         // Reseting the counter of all enemies on level.
         Spawner.TotalNumberOfEnemies = -1;
         // Player is not killed.

@@ -65,9 +65,6 @@ public class Enemy : ScorableObjects
     [HideInInspector]
     public bool isKilled = false;
 
-    // The counter of killed enemies.
-    public static int NumberOfKilledEnemies = 0;
-
     protected Renderer rend;
 
     // Flashes over the enemy.
@@ -236,10 +233,6 @@ public class Enemy : ScorableObjects
     {
         if (hp <= 0)
         {
-            if (!isKilled)
-            {
-                NumberOfKilledEnemies++;
-            }
             EnemyDestroy();
             isKilled = true;
             Destroy(gameObject);

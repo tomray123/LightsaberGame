@@ -17,6 +17,8 @@ public class BasePlayerSettings : MonoBehaviour
 
     public Action<int> OnHpChange;
 
+    public Action OnPlayerKilled;
+
     // For checking whether palyer's killed or not.
     public static bool isKilled = false;
 
@@ -34,6 +36,18 @@ public class BasePlayerSettings : MonoBehaviour
             OnHit();
         }
         ChangeHP(currentHealth);
+    }
+
+    public void KillPlayer()
+    {
+        // Destroying the object.
+        OnHit -= ComboScoreController.instance.onPlayerHit;
+        isKilled = true;
+
+        if (OnPlayerKilled != null)
+        {
+            OnPlayerKilled();
+        }
     }
 
     public void ChangeHP(int hp)
@@ -98,10 +112,7 @@ public class BasePlayerSettings : MonoBehaviour
         // Checking for death.
         if (currentHealth <= 0)
         {
-            // Destroying the object.
-            OnHit -= ComboScoreController.instance.onPlayerHit;
-            isKilled = true;
-            gameObject.SetActive(false);
+            KillPlayer();
         }
     }
 }
