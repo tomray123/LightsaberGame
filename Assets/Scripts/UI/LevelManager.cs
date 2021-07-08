@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
     public GameObject player;
 
     private BasePlayerSettings basePlayerSettings;
+    private WinMenuVisual wmVisual;
 
     public string whichController;
     public bool isSmooth;
@@ -42,6 +43,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        wmVisual = WinMenu.GetComponent<WinMenuVisual>();
         Spawner.instance.onAllEnemiesDead += OnWin;
         scoreManager = ScoreCounter.instance;
         currentSceneRecordTag = "rec_lvl" + SceneManager.GetActiveScene().buildIndex;
@@ -92,21 +94,6 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        /*
-        if (Enemy.NumberOfKilledEnemies == Spawner.TotalNumberOfEnemies)
-        {
-           
-        }
-        if (BasePlayerSettings.isKilled)
-        {
-            
-        }
-        */
-    }
-
     private void OnWin()
     {
         PauseController.IsGamePaused = true;
@@ -119,6 +106,19 @@ public class LevelManager : MonoBehaviour
         BasePlayerSettings.isKilled = false;
 
         int currentScore = scoreManager.totalScore;
+
+        if (currentScore >= scoreManager.scoreForThreeStars)
+        {
+            wmVisual.ActivateStars(3);
+        }
+        else if (currentScore >= scoreManager.scoreForTwoStars)
+        {
+            wmVisual.ActivateStars(2);
+        }
+        else
+        {
+            wmVisual.ActivateStars(1);
+        }
 
         if (currentScore > oldRecord)
         {
