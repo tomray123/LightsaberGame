@@ -18,6 +18,9 @@ public class LevelManager : MonoBehaviour
     private BasePlayerSettings basePlayerSettings;
     private WinMenuVisual wmVisual;
 
+    [SerializeField]
+    private float timeBreak = 1.5f;
+
     public string whichController;
     public bool isSmooth;
 
@@ -149,6 +152,13 @@ public class LevelManager : MonoBehaviour
 
     private void OnPlayerDeath()
     {
+        StartCoroutine(AfterDeath());
+    }
+
+    private IEnumerator AfterDeath()
+    {
+        yield return new WaitForSeconds(timeBreak);
+
         PauseController.IsGamePaused = true;
         //joystick.SetActive(false);
         Time.timeScale = 0f;

@@ -13,6 +13,8 @@ public class BasePlayerSettings : MonoBehaviour
 
     public int currentHealth;
 
+    private PlayerVisualController visualController;
+
     Action OnHit;
 
     public Action<int> OnHpChange;
@@ -24,6 +26,7 @@ public class BasePlayerSettings : MonoBehaviour
 
     private void Start()
     {
+        visualController = GetComponent<PlayerVisualController>();
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
         OnHit += ComboScoreController.instance.onPlayerHit;
@@ -35,6 +38,13 @@ public class BasePlayerSettings : MonoBehaviour
         {
             OnHit();
         }
+
+        // Checking for death.
+        if (currentHealth <= 0)
+        {
+            KillPlayer();
+        }
+
         ChangeHP(currentHealth);
     }
 
@@ -42,6 +52,10 @@ public class BasePlayerSettings : MonoBehaviour
     {
         // Destroying the object.
         OnHit -= ComboScoreController.instance.onPlayerHit;
+
+        // Adding visual for player's death.
+        visualController.StartDeathAnimation();
+
         isKilled = true;
 
         if (OnPlayerKilled != null)
@@ -76,7 +90,7 @@ public class BasePlayerSettings : MonoBehaviour
             // Getting damage.
             currentHealth -= other.GetComponent<Bullet>().damage;
             GetHit();
-            StartCoroutine(ChangeColor());
+            //StartCoroutine(ChangeColor());
             // Destroying the bullet.
             Destroy(other.gameObject);
         }
@@ -87,12 +101,13 @@ public class BasePlayerSettings : MonoBehaviour
             // Getting damage.
             currentHealth -= other.GetComponent<SimpleExplosion>().damage;
             GetHit();
-            StartCoroutine(ChangeColor());
+            //StartCoroutine(ChangeColor());
         }
     }
 
     // Changes the color of the object from normal to red and back 
     // and also checks whether an object is dead and destroys it.
+    /*
     IEnumerator ChangeColor()
     {
         // Changing the color of the object from normal to red.
@@ -109,10 +124,7 @@ public class BasePlayerSettings : MonoBehaviour
             rend.material.color = cl;
             yield return null;
         }
-        // Checking for death.
-        if (currentHealth <= 0)
-        {
-            KillPlayer();
-        }
+        
     }
+    */
 }
