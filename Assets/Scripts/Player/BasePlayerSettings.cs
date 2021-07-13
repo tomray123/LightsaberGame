@@ -39,6 +39,9 @@ public class BasePlayerSettings : MonoBehaviour
             OnHit();
         }
 
+        // Visual for hit.
+        visualController.GetHit();
+
         // Checking for death.
         if (currentHealth <= 0)
         {

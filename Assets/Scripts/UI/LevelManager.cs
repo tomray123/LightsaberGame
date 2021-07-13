@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour
     public GameObject PauseMenu;
     public GameObject LoseMenu;
 
+    public Image HitVignette;
+
     public GameObject joystick;
     public GameObject player;
 
@@ -40,6 +42,7 @@ public class LevelManager : MonoBehaviour
             instance = this;
         }
         player = Instantiate(player, Vector3.zero, Quaternion.identity);
+        player.GetComponent<PlayerVisualController>().HitVignette = HitVignette;
         basePlayerSettings = player.GetComponent<BasePlayerSettings>();
         basePlayerSettings.OnPlayerKilled += OnPlayerDeath;
     }
