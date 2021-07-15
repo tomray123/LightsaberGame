@@ -13,10 +13,10 @@ TextureImporter:
     second: blue_hand
   - first:
       213: 4453097328497262351
-    second: blue_handle
+    second: Handle_blue
   - first:
       213: 2566610160778365708
-    second: Complete_saber
+    second: BlueBlade
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -186,6 +186,48 @@ TextureImporter:
       bones: []
       spriteID: a6bca70ed74b05690800000000000000
       internalID: -7615388517153453206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Handle_blue
+      rect:
+        serializedVersion: 2
+        x: 1439
+        y: 1628
+        width: 543
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0ff15f3d649ccd30800000000000000
+      internalID: 4453097328497262351
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BlueBlade
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 1676
+        width: 1368
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0b4a1eb75e6e9320800000000000000
+      internalID: 2566610160778365708
       vertices: []
       indices: 
       edges: []

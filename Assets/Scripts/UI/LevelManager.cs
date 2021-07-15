@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -11,14 +12,27 @@ public class LevelManager : MonoBehaviour
     public GameObject PauseMenu;
     public GameObject LoseMenu;
 
+    public Image HitVignette;
+
     public GameObject joystick;
     public GameObject player;
+
+    private BasePlayerSettings basePlayerSettings;
+    private WinMenuVisual wmVisual;
+
+    [SerializeField]
+    private float timeBreak = 1.5f;
 
     public string whichController;
     public bool isSmooth;
 
     // Singleton instance.
     public static LevelManager instance;
+
+    private ScoreCounter scoreManager;
+
+    private int oldRecord;
+    private string currentSceneRecordTag;
 
     public void Awake()
     {
@@ -28,10 +42,18 @@ public class LevelManager : MonoBehaviour
             instance = this;
         }
         player = Instantiate(player, Vector3.zero, Quaternion.identity);
+        player.GetComponent<PlayerVisualController>().HitVignette = HitVignette;
+        basePlayerSettings = player.GetComponent<BasePlayerSettings>();
+        basePlayerSettings.OnPlayerKilled += OnPlayerDeath;
     }
 
     void Start()
     {
+        wmVisual = WinMenu.GetComponent<WinMenuVisual>();
+        Spawner.instance.onAllEnemiesDead += OnWin;
+        scoreManager = ScoreCounter.instance;
+        currentSceneRecordTag = "rec_lvl" + SceneManager.GetActiveScene().buildIndex;
+        oldRecord = PlayerPrefs.GetInt(currentSceneRecordTag);
         whichController = PlayerPrefs.GetString("ControllerType", "NoJoystick");
         isSmooth = Convert.ToBoolean(PlayerPrefs.GetInt("SmoothSetting", 0));
         switch (whichController)
@@ -78,32 +100,82 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnWin()
     {
-        if (Enemy.NumberOfKilledEnemies == Spawner.TotalNumberOfEnemies)
+        PauseController.IsGamePaused = true;
+        //joystick.SetActive(false);
+
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //Time.timeScale = 0f;
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        pauseButton.SetActive(false);
+        PauseMenu.SetActive(false);
+        WinMenu.SetActive(true);
+        Spawner.TotalNumberOfEnemies = -1;
+        BasePlayerSettings.isKilled = false;
+
+        int currentScore = scoreManager.totalScore;
+
+        if (currentScore >= scoreManager.scoreForThreeStars)
         {
-            PauseController.IsGamePaused = true;
-            //joystick.SetActive(false);
-            Time.timeScale = 0f;
-            pauseButton.SetActive(false);
-            PauseMenu.SetActive(false);
-            WinMenu.SetActive(true);
-            Enemy.NumberOfKilledEnemies = 0;
-            Spawner.TotalNumberOfEnemies = -1;
-            BasePlayerSettings.isKilled = false;
+            wmVisual.ActivateStars(3);
         }
-        if (BasePlayerSettings.isKilled)
+        else if (currentScore >= scoreManager.scoreForTwoStars)
         {
-            PauseController.IsGamePaused = true;
-            //joystick.SetActive(false);
-            Time.timeScale = 0f;
-            pauseButton.SetActive(false);
-            PauseMenu.SetActive(false);
-            LoseMenu.SetActive(true);
-            Enemy.NumberOfKilledEnemies = 0;
-            Spawner.TotalNumberOfEnemies = -1;
-            BasePlayerSettings.isKilled = false;
+            wmVisual.ActivateStars(2);
         }
+        else
+        {
+            wmVisual.ActivateStars(1);
+        }
+
+        wmVisual.UpdateScoreText(currentScore);
+
+        if (currentScore > oldRecord)
+        {
+            PlayerPrefs.SetInt(currentSceneRecordTag, currentScore);
+        }
+        else
+        {
+            wmVisual.ShowOldRecord(oldRecord);
+        }
+    }
+
+    public void VisualizeNewRecord()
+    {
+        int currentScore = scoreManager.totalScore;
+
+        if (currentScore > oldRecord)
+        {
+            // Visual for new record.
+            wmVisual.EnableNewRecord();
+        }
+    }
+
+    private void OnPlayerDeath()
+    {
+        StartCoroutine(AfterDeath());
+    }
+
+    private IEnumerator AfterDeath()
+    {
+        yield return new WaitForSeconds(timeBreak);
+
+        PauseController.IsGamePaused = true;
+        //joystick.SetActive(false);
+        Time.timeScale = 0f;
+        pauseButton.SetActive(false);
+        PauseMenu.SetActive(false);
+        LoseMenu.SetActive(true);
+        Spawner.TotalNumberOfEnemies = -1;
+        BasePlayerSettings.isKilled = false;
+        basePlayerSettings.OnPlayerKilled -= OnPlayerDeath;
+    }
+
+    private void OnDestroy()
+    {
+        basePlayerSettings.OnPlayerKilled -= OnPlayerDeath;
+        Spawner.instance.onAllEnemiesDead -= OnWin;
     }
 }

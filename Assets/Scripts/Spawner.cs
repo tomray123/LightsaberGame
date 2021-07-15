@@ -91,6 +91,9 @@ public class SpawnPoint
 
 public class Spawner : MonoBehaviour
 {
+    // Singleton instance.
+    public static Spawner instance;
+
     // This setting allows to set the same spawn period for every spawn object.
     [SerializeField]
     [Header("Set spawn period of the first object to all")]
@@ -106,6 +109,19 @@ public class Spawner : MonoBehaviour
 
     // Amount of all enemies spawned on one level.
     public static int TotalNumberOfEnemies = -1;
+
+    public static int NumberOfKilledEnemies = -1;
+
+    public Action onAllEnemiesDead;
+
+    private void Awake()
+    {
+        // Creating singleton instance.
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
 
     void Start()
     {
@@ -137,11 +153,28 @@ public class Spawner : MonoBehaviour
 
         // Setting an amount of all enemies spawned on one level.
         TotalNumberOfEnemies = MyList.Count;
+
+        NumberOfKilledEnemies = 0;
+    }
+
+    public void OnAllEnemiesKilled()
+    {
+        if (onAllEnemiesDead != null)
+        {
+            onAllEnemiesDead();
+        }
     }
 
     // Starts coroutine to spawn another enemy on the position of previous enemy (if it's dead).
     public void SpawnAnotherEnemy(Enemy enemy, int index)
     {
+        NumberOfKilledEnemies++;
+        if (NumberOfKilledEnemies == TotalNumberOfEnemies)
+        {
+            NumberOfKilledEnemies = 0;
+            OnAllEnemiesKilled();
+        }
+
         if (spawnPointList[index].objectQueue.Count > 0)
         {
             StartCoroutine(SpawnFromQueue(index));

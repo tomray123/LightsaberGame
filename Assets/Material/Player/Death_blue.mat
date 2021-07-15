@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Blue Eyed Body
+  m_Name: Death_blue
   m_Shader: {fileID: -6465566751694194690, guid: 7279b828f26c6c845a5abc3e8dff9863, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -24,11 +24,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emission:
-        m_Texture: {fileID: 2800000, guid: 4261bebca25411642bcc73578d82df3a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 033123397d60cbf41bb8a902a89aa5ba, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d0496ce5517c43c4e89321f4e39600c0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 553cba33bc56b3e4a8787338646f14b6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskTex:
@@ -42,7 +42,7 @@ Material:
     m_Floats:
     - _EnableExternalAlpha: 0
     m_Colors:
-    - Color_3F6D7163: {r: 0, g: 0.25263035, b: 1.3041189, a: 0}
+    - Color_3F6D7163: {r: 0, g: 0.26082385, b: 1.3041189, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}

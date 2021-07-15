@@ -123,14 +123,9 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!4 &830616768 stripped
+--- !u!4 &566144898 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8583008262989663590, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-  m_PrefabInstance: {fileID: 8583008262465602546}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1209573538 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8583008262857636113, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8583008262629364181, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
   m_PrefabInstance: {fileID: 8583008262465602546}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1295490934
@@ -164,66 +159,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSpawnPeriod: 0
   MyList:
-  - obj: {fileID: 5223154668494895743, guid: bc0a94e18ea86b548ae6aa23fbc4b325, type: 3}
-    spawnPos: {fileID: 1688429012}
-    spawnPeriod: 1
-    p1Name: Waiting time before start
-    p1Value: 1
-    p2Name: Aiming time
-    p2Value: 6
-    p3Name: Cooldown (After shot)
-    p3Value: 2
-    p4Name: Freeze time (when get hit)
-    p4Value: 1
-    p5Name: none
-    p5Value: 0
-    p6Name: none
-    p6Value: 0
-    p7Name: none
-    p7Value: 0
-    p8Name: none
-    p8Value: 0
-  - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
-    spawnPos: {fileID: 830616768}
-    spawnPeriod: 0.5
-    p1Name: Time to first shot
-    p1Value: 3
-    p2Name: Time between single shots
-    p2Value: 2
-    p3Name: Wait time before multiple attack
-    p3Value: 1
-    p4Name: Time to prepare multiple attack (Gun spin)
-    p4Value: 3
-    p5Name: Multiple shots duration
-    p5Value: 1
-    p6Name: Recharge time
-    p6Value: 4
-    p7Name: Flashes duration
-    p7Value: 1.2
-    p8Name: none
-    p8Value: 0
-  - obj: {fileID: 5223154668494895743, guid: bc0a94e18ea86b548ae6aa23fbc4b325, type: 3}
-    spawnPos: {fileID: 1339193266}
-    spawnPeriod: 3
-    p1Name: Waiting time before start
-    p1Value: 1
-    p2Name: Aiming time
-    p2Value: 6
-    p3Name: Cooldown (After shot)
-    p3Value: 2
-    p4Name: Freeze time (when get hit)
-    p4Value: 1
-    p5Name: none
-    p5Value: 0
-    p6Name: none
-    p6Value: 0
-    p7Name: none
-    p7Value: 0
-    p8Name: none
-    p8Value: 0
   - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
-    spawnPos: {fileID: 1209573538}
-    spawnPeriod: 0.5
+    spawnPos: {fileID: 1535915666}
+    spawnPeriod: 1
     p1Name: Time to first shot
     p1Value: 4
     p2Name: Shoot interval
@@ -240,23 +178,23 @@ MonoBehaviour:
     p7Value: 0
     p8Name: none
     p8Value: 0
-  - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
-    spawnPos: {fileID: 1500361334}
-    spawnPeriod: 5
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 566144898}
+    spawnPeriod: 2
     p1Name: Time to first shot
-    p1Value: 3
-    p2Name: Time between single shots
-    p2Value: 2.5
-    p3Name: Wait time before multiple attack
-    p3Value: 1
-    p4Name: Time to prepare multiple attack (Gun spin)
-    p4Value: 3
-    p5Name: Multiple shots duration
-    p5Value: 1
-    p6Name: Recharge time
-    p6Value: 4
-    p7Name: Flashes duration
-    p7Value: 1.2
+    p1Value: 4
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
     p8Name: none
     p8Value: 0
 --- !u!4 &1295490936
@@ -273,19 +211,9 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1339193266 stripped
+--- !u!4 &1535915666 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8583008263107791095, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-  m_PrefabInstance: {fileID: 8583008262465602546}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1500361334 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8583008262330290593, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-  m_PrefabInstance: {fileID: 8583008262465602546}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1688429012 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8583008263286633976, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8583008261682273296, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
   m_PrefabInstance: {fileID: 8583008262465602546}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8583008262465602546
@@ -297,11 +225,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1984094749628220915, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 61.599854
+      value: 61.600098
       objectReference: {fileID: 0}
     - target: {fileID: 1984094749628220915, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 60.599976
+      value: 60.599854
       objectReference: {fileID: 0}
     - target: {fileID: 2709053239096938738, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_RootOrder
@@ -315,12 +243,84 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4835657784778852407, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657784778852407, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657784778852407, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657784778852407, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657784778852407, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657784778852407, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657784778852407, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657784778852407, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657784802066560, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00024414062
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657784955294333, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657785260525511, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657785260525511, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657785260525511, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -47.11206
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657785369565289, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00024414062
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657785494841882, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.00024414062
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657785696319990, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -62.100098
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657785739551093, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4835657786463857199, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4835657786463857199, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835657786766704500, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5178343317359842946, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
@@ -330,6 +330,14 @@ PrefabInstance:
     - target: {fileID: 5478158977452039140, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489636826796235543, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: scoreForTwoStars
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489636826796235543, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: scoreForThreeStars
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 7256015748282274874, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_RootOrder
