@@ -7,19 +7,26 @@ public class SubMenuController : MonoBehaviour
     public GameObject currentMenu;
     public GameObject nextMenu;
 
-    void DeactivateAllUi(GameObject container)
-    {
-        foreach (Transform child in container.transform)
-        {
-            child.gameObject.SetActive(false);
-        }
-    }
+    SubMenuData curSubMenuData;
+    SubMenuData nextSubMenuData;
 
-    void ActivateAllUi(GameObject container)
+    private void Start()
     {
-        foreach (Transform child in container.transform)
+        if (currentMenu)
         {
-            child.gameObject.SetActive(true);
+            curSubMenuData = currentMenu.GetComponent<SubMenuData>();
+        }
+        else
+        {
+            Debug.LogWarning("No CurrentMenu Assigned!");
+        }
+        if (nextMenu)
+        {
+            nextSubMenuData = nextMenu.GetComponent<SubMenuData>();
+        }
+        else
+        {
+            Debug.LogWarning("No Next Menu Assigned!");
         }
     }
 
@@ -27,6 +34,14 @@ public class SubMenuController : MonoBehaviour
     {
         currentMenu.SetActive(false);
         nextMenu.SetActive(true);
+        nextSubMenuData.whoOpenedMe = currentMenu;
     }
 
+    public void GoBack()
+    {
+        currentMenu.SetActive(false);
+        nextMenu = curSubMenuData.whoOpenedMe;
+        curSubMenuData.whoOpenedMe = null;
+        nextMenu.SetActive(true);
+    }
 }
