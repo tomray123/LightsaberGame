@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class SubMenuController : MonoBehaviour
 {
-    public GameObject UiContainer;
+    public GameObject currentMenu;
+    public GameObject nextMenu;
 
     void DeactivateAllUi(GameObject container)
     {
@@ -22,16 +23,10 @@ public class SubMenuController : MonoBehaviour
         }
     }
 
-    public void OpenSubMenu(GameObject SubMenu)
+    public void ChangeMenu()
     {
-        DeactivateAllUi(UiContainer);
-        SubMenu.SetActive(true);
-    }
-
-    public void CloseSubMenu(GameObject SubMenu)
-    {
-        ActivateAllUi(UiContainer);
-        SubMenu.SetActive(false);
+        currentMenu.SetActive(false);
+        nextMenu.SetActive(true);
     }
 
 }
