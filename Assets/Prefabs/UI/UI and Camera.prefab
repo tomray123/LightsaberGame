@@ -1214,7 +1214,7 @@ MonoBehaviour:
   LoseMenu: {fileID: 3749050601807185389}
   HitVignette: {fileID: 1456749841380119169}
   joystick: {fileID: 5021899266124574337}
-  player: {fileID: 7280439939109321282, guid: 73f77125d0af5c34fa55b5c4f7dc1df7, type: 3}
+  player: {fileID: 7280439939109321282, guid: 7d313ff66bccffc46897a7ddf3267bd8, type: 3}
   timeBreak: 2.5
   whichController: 
   isSmooth: 0
