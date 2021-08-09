@@ -421,6 +421,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6879880912af8714e9da853a372b66b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HitVignette: {fileID: 0}
+  vignetteFadeDuration: 1
+  vignetteFadeMaxValue: 0.6
+  alphaHitStep: 0.2
 --- !u!95 &1471837136779409172
 Animator:
   serializedVersion: 3
