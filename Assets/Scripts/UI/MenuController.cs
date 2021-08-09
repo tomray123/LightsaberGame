@@ -8,9 +8,9 @@ public class MenuController : MonoBehaviour
 {
 	public GameObject MainMenu;
 
-	public Button noJoyst;
-	public Button flJoyst;
-	public Button clJoyst;
+	public GameObject noJoyst;
+	public GameObject flJoyst;
+	public GameObject clJoyst;
 
 	public GameObject linearFlightCorrection;
 	public GameObject angularFlightCorrection;
@@ -18,6 +18,8 @@ public class MenuController : MonoBehaviour
 	public string whichCorrection;
 
 	public Toggle smooth;
+	public GameObject smoothOnText;
+	public GameObject smoothOffText;
 
 	public string whichController;
 
@@ -32,12 +34,7 @@ public class MenuController : MonoBehaviour
 
 	private void Start()
 	{
-		Color disableColor = new Color(0.5568628f, 0.5568628f, 0.5568628f, 1f);
-		Color activeColor = new Color(1f, 1f, 1f, 1f);
-
-		ColorBlock cb = noJoyst.colors;
-
-		whichController = PlayerPrefs.GetString("ControllerType", "NoJoystick");
+		whichController = PlayerPrefs.GetString("ControllerType", "FloatJoystick");
 		whichCorrection = PlayerPrefs.GetString("CorrectionType", "linear");
 		isSmooth = Convert.ToBoolean(PlayerPrefs.GetInt("SmoothSetting", 0));
 
@@ -45,34 +42,25 @@ public class MenuController : MonoBehaviour
 		{
 			case "NoJoystick":
 
-				cb.normalColor = activeColor;
-				noJoyst.colors = cb;
-
-				cb.normalColor = disableColor;
-				flJoyst.colors = cb;
-				clJoyst.colors = cb;
+				noJoyst.SetActive(true);
+				flJoyst.SetActive(false);
+				clJoyst.SetActive(false);
 
 				break;
 
 			case "FloatJoystick":
 
-				cb.normalColor = activeColor;
-				flJoyst.colors = cb;
-
-				cb.normalColor = disableColor;
-				noJoyst.colors = cb;
-				clJoyst.colors = cb;
+				noJoyst.SetActive(false);
+				flJoyst.SetActive(true);
+				clJoyst.SetActive(false);
 
 				break;
 
 			case "ClassicJoystick":
 
-				cb.normalColor = activeColor;
-				clJoyst.colors = cb;
-
-				cb.normalColor = disableColor;
-				noJoyst.colors = cb;
-				flJoyst.colors = cb;
+				noJoyst.SetActive(false);
+				flJoyst.SetActive(false);
+				clJoyst.SetActive(true);
 
 				break;
 		}
@@ -86,64 +74,26 @@ public class MenuController : MonoBehaviour
 			linearFlightCorrection.SetActive(false);
 		}
 
+		Color disableColor = new Color(0.5568628f, 0.5568628f, 0.5568628f, 1f);
+		Color activeColor = new Color(1f, 1f, 1f, 1f);
+
+		ColorBlock cb = smooth.colors;
+
 		if (isSmooth)
 		{
+			smoothOnText.SetActive(true);
+			smoothOffText.SetActive(false);
 			cb.normalColor = activeColor;
 			cb.selectedColor = activeColor;
 			smooth.colors = cb;
 		}
 		else
 		{
+			smoothOnText.SetActive(false);
+			smoothOffText.SetActive(true);
 			cb.normalColor = disableColor;
 			cb.selectedColor = disableColor;
 			smooth.colors = cb;
-		}
-	}
-
-	public void ChangeController(Button pressed)
-	{
-		Color disableColor = new Color(0.5568628f, 0.5568628f, 0.5568628f, 1f);
-		Color activeColor = new Color(1f, 1f, 1f, 1f);
-
-		ColorBlock cb = pressed.colors;
-
-		cb.normalColor = activeColor;
-		pressed.colors = cb;
-
-		cb.normalColor = disableColor;
-
-
-		switch (pressed.name)
-		{
-			case "No Joystick Button":
-
-				flJoyst.colors = cb;
-				clJoyst.colors = cb;
-
-				whichController = "NoJoystick";
-				PlayerPrefs.SetString("ControllerType", "NoJoystick");
-
-				break;
-
-			case "Float Joystick Button":
-
-				noJoyst.colors = cb;
-				clJoyst.colors = cb;
-
-				whichController = "FloatJoystick";
-				PlayerPrefs.SetString("ControllerType", "FloatJoystick");
-
-				break;
-
-			case "Classic Joystick Button":
-
-				flJoyst.colors = cb;
-				noJoyst.colors = cb;
-
-				whichController = "ClassicJoystick";
-				PlayerPrefs.SetString("ControllerType", "ClassicJoystick");
-
-				break;
 		}
 	}
 
@@ -156,6 +106,8 @@ public class MenuController : MonoBehaviour
 
 		if (cb.normalColor == disableColor)
 		{
+			smoothOnText.SetActive(true);
+			smoothOffText.SetActive(false);
 			cb.normalColor = activeColor;
 			cb.selectedColor = activeColor;
 			pressed.colors = cb;
@@ -164,6 +116,8 @@ public class MenuController : MonoBehaviour
 		}
 		else
 		{
+			smoothOnText.SetActive(false);
+			smoothOffText.SetActive(true);
 			cb.normalColor = disableColor;
 			cb.selectedColor = disableColor;
 			pressed.colors = cb;
@@ -180,7 +134,6 @@ public class MenuController : MonoBehaviour
 				angularFlightCorrection.SetActive(true);
 				linearFlightCorrection.SetActive(false);
 				whichCorrection = "angular";
-				PlayerPrefs.SetString("CorrectionType", whichCorrection);
 
 				break;
 
@@ -189,10 +142,74 @@ public class MenuController : MonoBehaviour
 				angularFlightCorrection.SetActive(false);
 				linearFlightCorrection.SetActive(true);
 				whichCorrection = "linear";
-				PlayerPrefs.SetString("CorrectionType", whichCorrection);
 
 				break;
 		}
+
+		PlayerPrefs.SetString("CorrectionType", whichCorrection);
 	}
 
+	public void ChangeControllerLeft()
+	{
+		switch (whichController)
+		{
+			case "NoJoystick":
+
+				clJoyst.SetActive(true);
+				noJoyst.SetActive(false);
+				whichController = "ClassicJoystick";
+
+				break;
+
+			case "FloatJoystick":
+
+				noJoyst.SetActive(true);
+				flJoyst.SetActive(false);
+				whichController = "NoJoystick";
+
+				break;
+
+			case "ClassicJoystick":
+
+				flJoyst.SetActive(true);
+				clJoyst.SetActive(false);
+				whichController = "FloatJoystick";
+
+				break;
+		}
+
+		PlayerPrefs.SetString("ControllerType", whichController);
+	}
+
+	public void ChangeControllerRight()
+	{
+		switch (whichController)
+		{
+			case "NoJoystick":
+
+				flJoyst.SetActive(true);
+				noJoyst.SetActive(false);
+				whichController = "FloatJoystick";
+
+				break;
+
+			case "FloatJoystick":
+
+				clJoyst.SetActive(true);
+				flJoyst.SetActive(false);
+				whichController = "ClassicJoystick";
+
+				break;
+
+			case "ClassicJoystick":
+
+				noJoyst.SetActive(true);
+				clJoyst.SetActive(false);
+				whichController = "NoJoystick";
+
+				break;
+		}
+
+		PlayerPrefs.SetString("ControllerType", whichController);
+	}
 }
