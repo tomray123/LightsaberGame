@@ -4,34 +4,44 @@ using UnityEngine;
 
 public class SubMenuController : MonoBehaviour
 {
-    public GameObject UiContainer;
+    public GameObject currentMenu;
+    public GameObject nextMenu;
 
-    void DeactivateAllUi(GameObject container)
+    SubMenuData curSubMenuData;
+    SubMenuData nextSubMenuData;
+
+    private void Start()
     {
-        foreach (Transform child in container.transform)
+        if (currentMenu)
         {
-            child.gameObject.SetActive(false);
+            curSubMenuData = currentMenu.GetComponent<SubMenuData>();
+        }
+        else
+        {
+            Debug.LogWarning("No CurrentMenu Assigned!");
+        }
+        if (nextMenu)
+        {
+            nextSubMenuData = nextMenu.GetComponent<SubMenuData>();
+        }
+        else
+        {
+            Debug.LogWarning("No Next Menu Assigned!");
         }
     }
 
-    void ActivateAllUi(GameObject container)
+    public void ChangeMenu()
     {
-        foreach (Transform child in container.transform)
-        {
-            child.gameObject.SetActive(true);
-        }
+        currentMenu.SetActive(false);
+        nextMenu.SetActive(true);
+        nextSubMenuData.whoOpenedMe = currentMenu;
     }
 
-    public void OpenSubMenu(GameObject SubMenu)
+    public void GoBack()
     {
-        DeactivateAllUi(UiContainer);
-        SubMenu.SetActive(true);
+        currentMenu.SetActive(false);
+        nextMenu = curSubMenuData.whoOpenedMe;
+        curSubMenuData.whoOpenedMe = null;
+        nextMenu.SetActive(true);
     }
-
-    public void CloseSubMenu(GameObject SubMenu)
-    {
-        ActivateAllUi(UiContainer);
-        SubMenu.SetActive(false);
-    }
-
 }

@@ -17,6 +17,11 @@ public class GameInit : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("init"))
         {
+            // Setting basic controls.
+            PlayerPrefs.SetString("ControllerType", "FloatJoystick");
+            PlayerPrefs.SetString("CorrectionType", "linear");
+            PlayerPrefs.SetInt("SmoothSetting", 0);
+
             // Setting records of each level in build to 0.
             for (int i = 1; i < SceneManager.sceneCountInBuildSettings + 1; i++)
             {
