@@ -34,7 +34,7 @@ public class ComboScoreController : MonoBehaviour
     ScoreVisual visual;
 
     [HideInInspector]
-    public int comboScore = 0;
+    public float comboScore = 0;
 
     [HideInInspector]
     public float comboScorePercent = 0;
@@ -42,8 +42,8 @@ public class ComboScoreController : MonoBehaviour
     [HideInInspector]
     public int comboFactor = 1;
 
-    int decreasePercent = 0;
-    int decreaseVal = 0;
+    float decreasePercent = 0;
+    float decreaseVal = 0;
 
     public void Awake()
     {
@@ -73,7 +73,14 @@ public class ComboScoreController : MonoBehaviour
     {
         if (!PauseController.IsGamePaused)
         {
+            float t = comboScore;
+            //print("Before "+comboScore);
             DecreaseComboScore();
+            //print("After " + comboScore);
+            print("Delta " + (t - comboScore));
+
+
+
 
             // Updating visual;
             visual.UpdateCombo(comboScorePercent, comboFactor);
@@ -82,8 +89,8 @@ public class ComboScoreController : MonoBehaviour
 
     public void DecreaseComboScore()
     {
-        decreasePercent = (int)(comboScore * (timeFinePercent / 100));
-
+        decreasePercent = (float)(comboScore * (timeFinePercent / 100));
+        
         if (decreasePercent > timeFineNumber)
         {
             decreaseVal = decreasePercent;
@@ -92,18 +99,17 @@ public class ComboScoreController : MonoBehaviour
         {
             decreaseVal = timeFineNumber;
         }
+        decreaseVal = timeFineNumber;
 
-        if(comboScore > 0)
-        {
-            comboScore -= (int)(decreaseVal * Time.deltaTime);
-        }
-        else
-        {
+
+        comboScore -= (float)(decreaseVal * Time.deltaTime);
+        if (comboScore < 0)
             comboScore = 0;
-        }
+
         CalculateFactor();
     }
 
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
     public void onPlayerHit()
     {
         int percent = (int)(comboScore * (playerHitFinePercent / 100));
@@ -125,7 +131,7 @@ public class ComboScoreController : MonoBehaviour
         CalculateFactor();
     }
 
-    public void CalculateScorePercent(int min, int max, int currentScore)
+    public void CalculateScorePercent(int min, int max, float currentScore)
     {
         comboScorePercent = (currentScore - min) / (float)(max - min);
     }
