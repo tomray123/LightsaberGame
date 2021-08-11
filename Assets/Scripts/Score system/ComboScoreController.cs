@@ -73,14 +73,7 @@ public class ComboScoreController : MonoBehaviour
     {
         if (!PauseController.IsGamePaused)
         {
-            float t = comboScore;
-            //print("Before "+comboScore);
             DecreaseComboScore();
-            //print("After " + comboScore);
-            print("Delta " + (t - comboScore));
-
-
-
 
             // Updating visual;
             visual.UpdateCombo(comboScorePercent, comboFactor);
