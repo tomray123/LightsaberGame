@@ -176,6 +176,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6489636826796235543, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: scoreForOneStar
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489636826796235543, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: scoreForTwoStars
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489636826796235543, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: scoreForThreeStars
+      value: 2000
+      objectReference: {fileID: 0}
     - target: {fileID: 8583008263291474773, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_Name
       value: LevelPrefab

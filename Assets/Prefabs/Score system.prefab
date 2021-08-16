@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   simpleFactorUpperBorder: 5
+  totalScore: 0
+  scoreForOneStar: 0
+  scoreForTwoStars: 0
+  scoreForThreeStars: 0
 --- !u!114 &518395172811155985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59,24 +63,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHitFineNumber: 300
-  playerHitFinePercent: 30
+  playerHitFinePercent: 1
   fineTime: 1
-  timeFineNumber: 100
-  timeFinePercent: 10
+  timeFineNumber: 50
+  timeFinePercent: 1
   factorTable:
   - lowerBorder: 0
-    higherBorder: 199
+    higherBorder: 149
     factor: 1
-  - lowerBorder: 200
-    higherBorder: 599
+  - lowerBorder: 150
+    higherBorder: 449
     factor: 2
-  - lowerBorder: 600
-    higherBorder: 999
+  - lowerBorder: 450
+    higherBorder: 1199
     factor: 3
-  - lowerBorder: 1000
-    higherBorder: 1599
+  - lowerBorder: 1200
+    higherBorder: 2199
     factor: 4
-  - lowerBorder: 1600
+  - lowerBorder: 2200
     higherBorder: 50000000
     factor: 5
   comboScore: 0
