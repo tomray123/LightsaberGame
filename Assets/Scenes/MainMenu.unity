@@ -320,7 +320,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1934759042}
+      - m_Target: {fileID: 1805749658}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: ChangeControllerRight
         m_Mode: 1
@@ -1917,7 +1917,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1934759042}
+      - m_Target: {fileID: 1805749658}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: ChangeFlightCorrection
         m_Mode: 1
@@ -2185,7 +2185,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1934759042}
+      - m_Target: {fileID: 1805749658}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: ChangeFlightCorrection
         m_Mode: 1
@@ -2496,7 +2496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0018405475, y: -0}
+  m_AnchoredPosition: {x: -0.0018405475, y: 0}
   m_SizeDelta: {x: 245.74313, y: 214.0653}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1092718004
@@ -3570,6 +3570,7 @@ GameObject:
   - component: {fileID: 1805749654}
   - component: {fileID: 1805749653}
   - component: {fileID: 1805749657}
+  - component: {fileID: 1805749658}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -3675,6 +3676,33 @@ MonoBehaviour:
   PauseMenu: {fileID: 0}
   pauseButton: {fileID: 0}
   joystick: {fileID: 0}
+--- !u!114 &1805749658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805749652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 790e453007f4b774abc714d5ec76aa86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MainMenu: {fileID: 2026244731}
+  noJoyst: {fileID: 665359256}
+  flJoyst: {fileID: 730888}
+  clJoyst: {fileID: 1964064460}
+  linearFlightCorrection: {fileID: 954253282}
+  angularFlightCorrection: {fileID: 37559181}
+  whichCorrection: 
+  smooth: {fileID: 730810507}
+  smoothOnText: {fileID: 714233419}
+  smoothOffText: {fileID: 2084714315}
+  whichController: 
+  isSmooth: 0
+  SettingsMenu: {fileID: 1206381430}
+  LevelMenu: {fileID: 1678965137}
+  UiContainer: {fileID: 2026244731}
 --- !u!1 &1866409862
 GameObject:
   m_ObjectHideFlags: 0
@@ -3756,7 +3784,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1934759042}
+      - m_Target: {fileID: 1805749658}
         m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
         m_MethodName: ChangeControllerLeft
         m_Mode: 1
@@ -4030,7 +4058,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0018405475, y: -0}
+  m_AnchoredPosition: {x: -0.0018405475, y: 0}
   m_SizeDelta: {x: 245.74313, y: 214.0653}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1939428679
