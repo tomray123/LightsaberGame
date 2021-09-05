@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Droideka : Enemy
 {
-    public Collider2D[] droidekaCol;
+    public Collider2D droidekaCol;
     public Transform barrelLeft;
     public Transform barrelRight;
 
@@ -14,13 +14,16 @@ public class Droideka : Enemy
         base.Start();
         BaseInitialization();
         transform.GetChild(1).gameObject.GetComponent<Shield>().parameters[0].value = parameters[3].value;
-        droidekaCol = gameObject.GetComponents<BoxCollider2D>();
+        droidekaCol = gameObject.GetComponent<BoxCollider2D>();
         barrelLeft = transform.GetChild(2);
         barrelRight = transform.GetChild(3);
+        droidekaCol.enabled = false;
+        /*
         for (int i = 0; i < droidekaCol.Length; i++)
         {
             droidekaCol[i].enabled = false;
         }
+        */
     }
 
     // Update is called once per frame
