@@ -13,6 +13,10 @@ public class PauseController : MonoBehaviour
 
     public GameObject joystick = null;
 
+    public GameObject background = null;
+
+    Animator pauseAnimator;
+
     Scene currentScene;
 
     // Next scene number.
@@ -31,6 +35,10 @@ public class PauseController : MonoBehaviour
         currSceneIndex = currentScene.buildIndex;
         nextSceneIndex = currentScene.buildIndex + 1;
         prevSceneIndex = currentScene.buildIndex - 1;
+        if (PauseMenu)
+        {
+            pauseAnimator = PauseMenu.GetComponent<Animator>();
+        }
     }
 
     public void PauseGame()
@@ -41,6 +49,8 @@ public class PauseController : MonoBehaviour
         Time.timeScale = 0f;
         // Enabling pause menu.
         PauseMenu.SetActive(true);
+        pauseAnimator.SetBool("isAppear", true);
+        background.SetActive(true);
         // Disabling pause button.
         pauseButton.SetActive(false);
     }
@@ -49,6 +59,8 @@ public class PauseController : MonoBehaviour
     {
         // Disabling pause menu.
         PauseMenu.SetActive(false);
+        pauseAnimator.SetBool("isAppear", false);
+        background.SetActive(false);
         // Enabling pause button.
         pauseButton.SetActive(true);
         // Resume the time.
@@ -61,6 +73,7 @@ public class PauseController : MonoBehaviour
     {
         // Disabling pause menu.
         PauseMenu.SetActive(false);
+        background.SetActive(false);
         // Enabling pause button.
         pauseButton.SetActive(true);
         // Resume the time.
@@ -80,6 +93,7 @@ public class PauseController : MonoBehaviour
     {
         // Disabling pause menu.
         PauseMenu.SetActive(false);
+        background.SetActive(false);
         // Enabling pause button.
         pauseButton.SetActive(true);
         // Resume the time.
@@ -99,6 +113,7 @@ public class PauseController : MonoBehaviour
     {
         // Disabling pause menu.
         PauseMenu.SetActive(false);
+        background.SetActive(false);
         // Enabling pause button.
         pauseButton.SetActive(true);
         // Resume the time.
@@ -118,6 +133,7 @@ public class PauseController : MonoBehaviour
     {
         // Disabling pause menu.
         PauseMenu.SetActive(false);
+        background.SetActive(false);
         // Enabling pause button.
         pauseButton.SetActive(true);
         // Resume the time.

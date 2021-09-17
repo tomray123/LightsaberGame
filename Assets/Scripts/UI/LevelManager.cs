@@ -11,6 +11,10 @@ public class LevelManager : MonoBehaviour
     public GameObject pauseButton;
     public GameObject PauseMenu;
     public GameObject LoseMenu;
+    public GameObject background;
+
+    Animator winMenuAnimator;
+    Animator loseMenuAnimator;
 
     public Image HitVignette;
 
@@ -49,6 +53,14 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        if (WinMenu)
+        {
+            winMenuAnimator = WinMenu.GetComponent<Animator>();
+        }
+        if (LoseMenu)
+        {
+            loseMenuAnimator = LoseMenu.GetComponent<Animator>();
+        }
         wmVisual = WinMenu.GetComponent<WinMenuVisual>();
         Spawner.instance.onAllEnemiesDead += OnWin;
         scoreManager = ScoreCounter.instance;
@@ -110,8 +122,10 @@ public class LevelManager : MonoBehaviour
         // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
         pauseButton.SetActive(false);
-        PauseMenu.SetActive(false);
+        PauseMenu.SetActive(false);    
+        background.SetActive(true);
         WinMenu.SetActive(true);
+        winMenuAnimator.SetBool("isAppear", true);
         Spawner.TotalNumberOfEnemies = -1;
         BasePlayerSettings.isKilled = false;
 
@@ -167,7 +181,9 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 0f;
         pauseButton.SetActive(false);
         PauseMenu.SetActive(false);
+        background.SetActive(true);
         LoseMenu.SetActive(true);
+        loseMenuAnimator.SetBool("isAppear", true);
         Spawner.TotalNumberOfEnemies = -1;
         BasePlayerSettings.isKilled = false;
         basePlayerSettings.OnPlayerKilled -= OnPlayerDeath;
