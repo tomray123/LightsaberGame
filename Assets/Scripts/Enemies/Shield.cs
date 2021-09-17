@@ -59,20 +59,27 @@ public class Shield : Enemy
 
     protected IEnumerator RespawnShield(float respawnTime)
     {
+        /*
         for (int i = 0; i < parent.droidekaCol.Length; i++)
         {
             parent.droidekaCol[i].enabled = true;
         }
+        */
+        parent.droidekaCol.enabled = true;
+
         yield return new WaitForSeconds(respawnTime);
 
         hp = defaultHP;
         isKilled = false;
         skin.enabled = true;
         shieldCollider.enabled = true;
+        /*
         for (int i = 0; i < parent.droidekaCol.Length; i++)
         {
             parent.droidekaCol[i].enabled = false;
         }
+        */
+        parent.droidekaCol.enabled = false;
         yield return new WaitForSeconds(0.1f);
 
         skin.enabled = false;

@@ -123,7 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &115340700
+--- !u!4 &177910448 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8583008262061043492, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+  m_PrefabInstance: {fileID: 463974571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &463974571
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -147,16 +152,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6489636826796235543, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-      propertyPath: scoreForOneStar
-      value: 2400
-      objectReference: {fileID: 0}
-    - target: {fileID: 6489636826796235543, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: scoreForTwoStars
-      value: 3200
+      value: 2500
       objectReference: {fileID: 0}
     - target: {fileID: 6489636826796235543, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: scoreForThreeStars
-      value: 4400
+      value: 3000
       objectReference: {fileID: 0}
     - target: {fileID: 8583008263291474773, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_Name
@@ -208,17 +209,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
---- !u!4 &139396385 stripped
+--- !u!4 &463974572 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8583008261682273296, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-  m_PrefabInstance: {fileID: 115340700}
+  m_CorrespondingSourceObject: {fileID: 8583008262857636113, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+  m_PrefabInstance: {fileID: 463974571}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &168365197 stripped
+--- !u!4 &463974573 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8583008262061043492, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-  m_PrefabInstance: {fileID: 115340700}
+  m_CorrespondingSourceObject: {fileID: 8583008263327257379, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+  m_PrefabInstance: {fileID: 463974571}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &809074026
+--- !u!4 &894039784 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8583008262470014722, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+  m_PrefabInstance: {fileID: 463974571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1050973188 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8583008263286633976, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+  m_PrefabInstance: {fileID: 463974571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1140504213
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -226,8 +237,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 809074028}
-  - component: {fileID: 809074027}
+  - component: {fileID: 1140504215}
+  - component: {fileID: 1140504214}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -235,13 +246,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &809074027
+--- !u!114 &1140504214
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809074026}
+  m_GameObject: {fileID: 1140504213}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0703d8e3210036c40b1d6614e712421c, type: 3}
@@ -249,28 +260,104 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allSpawnPeriod: 0
   MyList:
-  - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
-    spawnPos: {fileID: 2075153281}
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 1050973188}
+    spawnPeriod: 1
+    p1Name: Time to first shot
+    p1Value: 4
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 7704397635115465951, guid: 425fcdae243d70243862b81c30f0549b, type: 3}
+    spawnPos: {fileID: 894039784}
+    spawnPeriod: 2
+    p1Name: Time to first shot
+    p1Value: 3
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 1.2
+    p4Name: Respawn shield time
+    p4Value: 7
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 2690857137895966694, guid: 8851bc02850f5ca449a8aa4164cf4992, type: 3}
+    spawnPos: {fileID: 1824967080}
     spawnPeriod: 0
     p1Name: Time to first shot
-    p1Value: 2
-    p2Name: Time between single shots
-    p2Value: 2
-    p3Name: Wait time before multiple attack
-    p3Value: 1
-    p4Name: Time to prepare multiple attack (Gun spin)
-    p4Value: 3
-    p5Name: Multiple shots duration
-    p5Value: 1
-    p6Name: Recharge time
-    p6Value: 4
-    p7Name: Flashes duration
-    p7Value: 1.2
+    p1Value: 3
+    p2Name: Shoot interval
+    p2Value: 3
+    p3Name: Flashes duration
+    p3Value: 1.5
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 7704397635115465951, guid: 425fcdae243d70243862b81c30f0549b, type: 3}
+    spawnPos: {fileID: 1926007910}
+    spawnPeriod: 3
+    p1Name: Time to first shot
+    p1Value: 3
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 1.2
+    p4Name: Respawn shield time
+    p4Value: 7
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 5223154668494895743, guid: bc0a94e18ea86b548ae6aa23fbc4b325, type: 3}
+    spawnPos: {fileID: 1510919882}
+    spawnPeriod: 4
+    p1Name: Waiting time before start
+    p1Value: 1
+    p2Name: Aiming time
+    p2Value: 6
+    p3Name: Cooldown (After shot)
+    p3Value: 2
+    p4Name: Freeze time (when get hit)
+    p4Value: 1
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
     p8Name: none
     p8Value: 0
   - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
-    spawnPos: {fileID: 895145871}
-    spawnPeriod: 1.2
+    spawnPos: {fileID: 177910448}
+    spawnPeriod: 5
     p1Name: Time to first shot
     p1Value: 3
     p2Name: Time between single shots
@@ -288,8 +375,8 @@ MonoBehaviour:
     p8Name: none
     p8Value: 0
   - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
-    spawnPos: {fileID: 139396385}
-    spawnPeriod: 1.2
+    spawnPos: {fileID: 463974572}
+    spawnPeriod: 3
     p1Name: Time to first shot
     p1Value: 3
     p2Name: Time between single shots
@@ -306,184 +393,70 @@ MonoBehaviour:
     p7Value: 1.2
     p8Name: none
     p8Value: 0
-  - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
-    spawnPos: {fileID: 1742969330}
-    spawnPeriod: 1.2
+  - obj: {fileID: 2690857137895966694, guid: 8851bc02850f5ca449a8aa4164cf4992, type: 3}
+    spawnPos: {fileID: 1366710674}
+    spawnPeriod: 0
     p1Name: Time to first shot
     p1Value: 3
-    p2Name: Time between single shots
-    p2Value: 2
-    p3Name: Wait time before multiple attack
-    p3Value: 1
-    p4Name: Time to prepare multiple attack (Gun spin)
-    p4Value: 3
-    p5Name: Multiple shots duration
-    p5Value: 1
-    p6Name: Recharge time
-    p6Value: 4
-    p7Name: Flashes duration
-    p7Value: 1.2
+    p2Name: Shoot interval
+    p2Value: 3
+    p3Name: Flashes duration
+    p3Value: 1.5
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
     p8Name: none
     p8Value: 0
-  - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
-    spawnPos: {fileID: 1594280751}
-    spawnPeriod: 1.2
-    p1Name: Time to first shot
-    p1Value: 3
-    p2Name: Time between single shots
-    p2Value: 2
-    p3Name: Wait time before multiple attack
-    p3Value: 1
-    p4Name: Time to prepare multiple attack (Gun spin)
-    p4Value: 3
-    p5Name: Multiple shots duration
-    p5Value: 1
-    p6Name: Recharge time
-    p6Value: 4
-    p7Name: Flashes duration
-    p7Value: 1.2
-    p8Name: none
-    p8Value: 0
-  - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
-    spawnPos: {fileID: 1751950826}
-    spawnPeriod: 1.2
-    p1Name: Time to first shot
-    p1Value: 3
-    p2Name: Time between single shots
-    p2Value: 2
-    p3Name: Wait time before multiple attack
-    p3Value: 1
-    p4Name: Time to prepare multiple attack (Gun spin)
-    p4Value: 3
-    p5Name: Multiple shots duration
-    p5Value: 1
-    p6Name: Recharge time
-    p6Value: 4
-    p7Name: Flashes duration
-    p7Value: 1.2
-    p8Name: none
-    p8Value: 0
-  - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
-    spawnPos: {fileID: 168365197}
+  - obj: {fileID: 5223154668494895743, guid: bc0a94e18ea86b548ae6aa23fbc4b325, type: 3}
+    spawnPos: {fileID: 463974573}
     spawnPeriod: 6
-    p1Name: Time to first shot
-    p1Value: 3
-    p2Name: Time between single shots
-    p2Value: 2
-    p3Name: Wait time before multiple attack
-    p3Value: 1
-    p4Name: Time to prepare multiple attack (Gun spin)
-    p4Value: 3
-    p5Name: Multiple shots duration
-    p5Value: 1
-    p6Name: Recharge time
-    p6Value: 4
-    p7Name: Flashes duration
-    p7Value: 1.2
+    p1Name: Waiting time before start
+    p1Value: 1
+    p2Name: Aiming time
+    p2Value: 6
+    p3Name: Cooldown (After shot)
+    p3Value: 2
+    p4Name: Freeze time (when get hit)
+    p4Value: 1
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
     p8Name: none
     p8Value: 0
-  - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
-    spawnPos: {fileID: 1397759404}
-    spawnPeriod: 1.2
+  - obj: {fileID: 7704397635115465951, guid: 425fcdae243d70243862b81c30f0549b, type: 3}
+    spawnPos: {fileID: 2104981444}
+    spawnPeriod: 2
     p1Name: Time to first shot
     p1Value: 3
-    p2Name: Time between single shots
-    p2Value: 2
-    p3Name: Wait time before multiple attack
-    p3Value: 1
-    p4Name: Time to prepare multiple attack (Gun spin)
-    p4Value: 3
-    p5Name: Multiple shots duration
-    p5Value: 1
-    p6Name: Recharge time
-    p6Value: 4
-    p7Name: Flashes duration
-    p7Value: 1.2
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 1.2
+    p4Name: Respawn shield time
+    p4Value: 7
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
     p8Name: none
     p8Value: 0
-  - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
-    spawnPos: {fileID: 1591642358}
-    spawnPeriod: 1.2
-    p1Name: Time to first shot
-    p1Value: 3
-    p2Name: Time between single shots
-    p2Value: 2
-    p3Name: Wait time before multiple attack
-    p3Value: 1
-    p4Name: Time to prepare multiple attack (Gun spin)
-    p4Value: 3
-    p5Name: Multiple shots duration
-    p5Value: 1
-    p6Name: Recharge time
-    p6Value: 4
-    p7Name: Flashes duration
-    p7Value: 1.2
-    p8Name: none
-    p8Value: 0
-  - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
-    spawnPos: {fileID: 1540849377}
-    spawnPeriod: 1.2
-    p1Name: Time to first shot
-    p1Value: 3
-    p2Name: Time between single shots
-    p2Value: 2
-    p3Name: Wait time before multiple attack
-    p3Value: 1
-    p4Name: Time to prepare multiple attack (Gun spin)
-    p4Value: 3
-    p5Name: Multiple shots duration
-    p5Value: 1
-    p6Name: Recharge time
-    p6Value: 4
-    p7Name: Flashes duration
-    p7Value: 1.2
-    p8Name: none
-    p8Value: 0
-  - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
-    spawnPos: {fileID: 2043559815}
-    spawnPeriod: 1.2
-    p1Name: Time to first shot
-    p1Value: 3
-    p2Name: Time between single shots
-    p2Value: 2
-    p3Name: Wait time before multiple attack
-    p3Value: 1
-    p4Name: Time to prepare multiple attack (Gun spin)
-    p4Value: 3
-    p5Name: Multiple shots duration
-    p5Value: 1
-    p6Name: Recharge time
-    p6Value: 4
-    p7Name: Flashes duration
-    p7Value: 1.2
-    p8Name: none
-    p8Value: 0
-  - obj: {fileID: 3780104619535569339, guid: c07bcc7435492bb44b5128a03f9b3c50, type: 3}
-    spawnPos: {fileID: 1094176282}
-    spawnPeriod: 1.2
-    p1Name: Time to first shot
-    p1Value: 3
-    p2Name: Time between single shots
-    p2Value: 2
-    p3Name: Wait time before multiple attack
-    p3Value: 1
-    p4Name: Time to prepare multiple attack (Gun spin)
-    p4Value: 3
-    p5Name: Multiple shots duration
-    p5Value: 1
-    p6Name: Recharge time
-    p6Value: 4
-    p7Name: Flashes duration
-    p7Value: 1.2
-    p8Name: none
-    p8Value: 0
---- !u!4 &809074028
+--- !u!4 &1140504215
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809074026}
+  m_GameObject: {fileID: 1140504213}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -12.98, y: -4.97, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -491,53 +464,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &895145871 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8583008263327257379, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-  m_PrefabInstance: {fileID: 115340700}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1094176282 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8583008261716005960, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-  m_PrefabInstance: {fileID: 115340700}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1397759404 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8583008262026178673, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-  m_PrefabInstance: {fileID: 115340700}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1540849377 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8583008262989663590, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-  m_PrefabInstance: {fileID: 115340700}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1591642358 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8583008262470014722, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-  m_PrefabInstance: {fileID: 115340700}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1594280751 stripped
+--- !u!4 &1366710674 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8583008263107791095, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-  m_PrefabInstance: {fileID: 115340700}
+  m_PrefabInstance: {fileID: 463974571}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1742969330 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8583008262857636113, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-  m_PrefabInstance: {fileID: 115340700}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1751950826 stripped
+--- !u!4 &1510919882 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8583008262629364181, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-  m_PrefabInstance: {fileID: 115340700}
+  m_PrefabInstance: {fileID: 463974571}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2043559815 stripped
+--- !u!4 &1824967080 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8583008263286633976, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-  m_PrefabInstance: {fileID: 115340700}
+  m_CorrespondingSourceObject: {fileID: 8583008262989663590, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+  m_PrefabInstance: {fileID: 463974571}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2075153281 stripped
+--- !u!4 &1926007910 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8583008262026178673, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+  m_PrefabInstance: {fileID: 463974571}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2104981444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8583008262330290593, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-  m_PrefabInstance: {fileID: 115340700}
+  m_PrefabInstance: {fileID: 463974571}
   m_PrefabAsset: {fileID: 0}

@@ -354,6 +354,18 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6489636826796235543, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: scoreForOneStar
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489636826796235543, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: scoreForTwoStars
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 6489636826796235543, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: scoreForThreeStars
+      value: 4800
+      objectReference: {fileID: 0}
     - target: {fileID: 8583008262026178673, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 20.79

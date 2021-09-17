@@ -8,6 +8,7 @@ public class FactorItem
     public int lowerBorder = 0;
     public int higherBorder = 0;
     public int factor = 1;
+    public float decreaseVal = 100f;
 }
 
 public class ComboScoreController : MonoBehaviour
@@ -20,9 +21,8 @@ public class ComboScoreController : MonoBehaviour
 
     [Space]
 
-    public float fineTime = 1f;
-    public int timeFineNumber = 100;
-    public float timeFinePercent = 10;
+    // public int timeFineNumber = 100;
+    // public float timeFinePercent = 10;
 
     [Space]
 
@@ -43,7 +43,7 @@ public class ComboScoreController : MonoBehaviour
     public int comboFactor = 1;
 
     float decreasePercent = 0;
-    float decreaseVal = 0;
+    // float decreaseVal = 0;
 
     public void Awake()
     {
@@ -82,6 +82,7 @@ public class ComboScoreController : MonoBehaviour
 
     public void DecreaseComboScore()
     {
+        /* ------------------------- Old one
         decreasePercent = (float)(comboScore * (timeFinePercent / 100));
         
         if (decreasePercent > timeFineNumber)
@@ -93,9 +94,10 @@ public class ComboScoreController : MonoBehaviour
             decreaseVal = timeFineNumber;
         }
         decreaseVal = timeFineNumber;
+        */
 
+        comboScore -= factorItems.Peek().decreaseVal * Time.deltaTime;
 
-        comboScore -= (float)(decreaseVal * Time.deltaTime);
         if (comboScore < 0)
             comboScore = 0;
 
