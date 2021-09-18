@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using System;
 using System.IO;
 
@@ -21,6 +22,8 @@ public class BasePlayerSettings : MonoBehaviour
 
     public Action OnPlayerKilled;
 
+    public UnityEvent DeathEvent;
+
     // For checking whether palyer's killed or not.
     public static bool isKilled = false;
 
@@ -34,21 +37,24 @@ public class BasePlayerSettings : MonoBehaviour
 
     public void GetHit()
     {
-        if (OnHit != null)
+        if (!isKilled)
         {
-            OnHit();
+            if (OnHit != null)
+            {
+                OnHit();
+            }
+
+            // Visual for hit.
+            visualController.GetHit();
+
+            // Checking for death.
+            if (currentHealth <= 0)
+            {
+                KillPlayer();
+            }
+
+            ChangeHP(currentHealth);
         }
-
-        // Visual for hit.
-        visualController.GetHit();
-
-        // Checking for death.
-        if (currentHealth <= 0)
-        {
-            KillPlayer();
-        }
-
-        ChangeHP(currentHealth);
     }
 
     public void KillPlayer()
@@ -65,6 +71,8 @@ public class BasePlayerSettings : MonoBehaviour
         {
             OnPlayerKilled();
         }
+
+        DeathEvent.Invoke();
     }
 
     public void ChangeHP(int hp)
