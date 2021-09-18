@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 6135809255827227909}
   - component: {fileID: 7363850605919422933}
   - component: {fileID: 4299391844387218055}
-  - component: {fileID: 9060113764076251655}
+  - component: {fileID: 4013010776797577438}
   m_Layer: 5
   m_Name: UI Background
   m_TagString: Untagged
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &9060113764076251655
+--- !u!95 &4013010776797577438
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -229,7 +229,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 155d0ffb28186714b9110b52c264a80e, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 2
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -14223,7 +14223,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -62.100006}
+  m_AnchoredPosition: {x: 0, y: -62.100098}
   m_SizeDelta: {x: 879.86444, y: 99.15607}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5294998871855615258
@@ -19379,6 +19379,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3749050601325467060}
     m_Modifications:
+    - target: {fileID: 7245769371731851757, guid: a8949add58ab4d84c9c584707bacfe35, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -62.100586
+      objectReference: {fileID: 0}
     - target: {fileID: 7245769372808662616, guid: a8949add58ab4d84c9c584707bacfe35, type: 3}
       propertyPath: m_Name
       value: LevelMenu
@@ -19457,7 +19461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7245769372808662619, guid: a8949add58ab4d84c9c584707bacfe35, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.00036621094
+      value: 0.00024414062
       objectReference: {fileID: 0}
     - target: {fileID: 7245769372808662619, guid: a8949add58ab4d84c9c584707bacfe35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -19470,6 +19474,14 @@ PrefabInstance:
     - target: {fileID: 7245769372808662619, guid: a8949add58ab4d84c9c584707bacfe35, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245769373468354405, guid: a8949add58ab4d84c9c584707bacfe35, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -90.00049
+      objectReference: {fileID: 0}
+    - target: {fileID: 7245769373468354405, guid: a8949add58ab4d84c9c584707bacfe35, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -62.52002
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a8949add58ab4d84c9c584707bacfe35, type: 3}
