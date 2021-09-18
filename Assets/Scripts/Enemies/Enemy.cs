@@ -187,6 +187,9 @@ public class Enemy : ScorableObjects
     // and also checks whether an object is dead and destroys it.
     protected virtual IEnumerator GetHit()
     {
+        // Checks whether an object is dead and destroys it.
+        DestroyWhenDead();
+
         // Changing the color of the object from normal to red.
         for (float i = 1f; i >= 0; i-=0.05f)
         {
@@ -201,8 +204,7 @@ public class Enemy : ScorableObjects
             rend.material.color = cl;
             yield return null;
         }
-        // Checks whether an object is dead and destroys it.
-        DestroyWhenDead();
+
     }
 
     // Sets the transparency of object's sprite.
