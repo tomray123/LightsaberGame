@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3524791336403438434}
   - component: {fileID: 2628927612469239001}
   - component: {fileID: 6363942505527868760}
+  - component: {fileID: -8800367387507634209}
   m_Layer: 12
   m_Name: RocketDummy
   m_TagString: Untagged
@@ -182,3 +183,18 @@ MonoBehaviour:
   smartphoneInput: {fileID: 0}
   mouseInput: {fileID: 0}
   isDangerous: 0
+  pool: {fileID: 0}
+--- !u!114 &-8800367387507634209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4859814107141096307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb9a10b5c85e0b94bbeeabc55171ed07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolTag: rocket
+  objIdPool: 0

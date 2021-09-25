@@ -30,6 +30,8 @@ public class Enemy : ScorableObjects
                                                                           new EnemyParameter(), new EnemyParameter(),
                                                                           new EnemyParameter(), new EnemyParameter() };
 
+    public GameObject bullet;
+
     // Enemie's target.
     public GameObject target;
 
@@ -40,9 +42,9 @@ public class Enemy : ScorableObjects
     // Time interval between shots (not for all enemies).
     public float timeToShoot = 1f;
 
-    public GameObject bullet;
+    public int startHp = 100;
 
-    public int hp = 100;
+    protected int hp;
 
     public int damage = 100;
 
@@ -75,6 +77,7 @@ public class Enemy : ScorableObjects
     protected override void Start()
     {
         base.Start();
+        hp = startHp;
     }
 
     public void EnemyDestroy()
@@ -98,17 +101,35 @@ public class Enemy : ScorableObjects
         shootIndicator = gameObject.transform.GetChild(0);
     }
 
+    public override void OnObjectSpawn()
+    {
+        base.Start();
+        base.OnObjectSpawn();
+        hp = startHp;
+        startLoop = true;
+    }
+
+    public override void OnObjectDestroy()
+    {
+        base.OnObjectDestroy();
+        StopAllCoroutines();
+    }
+
     // Simple shoot method.
     protected virtual void Shoot()
     {
         // Creating a bullet and setting its damage.
-        Bullet bulletClone = Instantiate(bullet, transform.position, transform.rotation).GetComponent<Bullet>();
+        Bullet bulletClone = pool.SpawnFromPool(bullet, transform.position, transform.rotation).GetComponent<Bullet>();
         bulletClone.damage += damage;
         bulletClone.shooter = gameObject;
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
+        if (!gameObject.activeSelf)
+        {
+            return;
+        }
         
         KillingObjects killer = other.GetComponent<KillingObjects>();
 
@@ -129,7 +150,7 @@ public class Enemy : ScorableObjects
             }
             StartCoroutine(GetHit());
             // Destroying the bullet.
-            Destroy(other.gameObject);
+            pool.ReturnToPool(other.gameObject);
         }
 
         // Checking for explosion layer.
@@ -237,7 +258,7 @@ public class Enemy : ScorableObjects
         {
             EnemyDestroy();
             isKilled = true;
-            Destroy(gameObject);
+            pool.ReturnToPool(gameObject);
         }
     }
 }

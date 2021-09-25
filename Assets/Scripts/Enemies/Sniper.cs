@@ -38,6 +38,12 @@ public class Sniper : Enemy
         startLoop = true;
     }
 
+    public override void OnObjectSpawn()
+    {
+        base.OnObjectSpawn();
+        BaseInitialization();
+    }
+
     protected override void BaseInitialization()
     {
         isSaberDangerous = true;

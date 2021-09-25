@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class Rocket : MonoBehaviour
+public class Rocket : MonoBehaviour, IPooledObject
 {
     public Vector3 targetLocation = Vector3.zero;
 
@@ -41,9 +41,13 @@ public class Rocket : MonoBehaviour
 
     public bool isDangerous;
 
+    [HideInInspector]
+    public ObjectPooler pool;
+
     // Start is called before the first frame update
     void Start()
     {
+        pool = ObjectPooler.Instance;
         smartphoneInput = SmartphoneInputController.instance;
         smartphoneInput.OnSingleTap += OnTap;
         mouseInput = MouseInputController.instance;
@@ -51,7 +55,6 @@ public class Rocket : MonoBehaviour
         Vector2 direction = targetLocation - transform.position;
         transform.up = direction;
         rb = GetComponent<Rigidbody2D>();
-        explosion.GetComponent<SimpleExplosion>().damage = damage;
 
         //Bullet doesn't hit enemy when bullet spawns
         isDangerous = false;
@@ -60,10 +63,26 @@ public class Rocket : MonoBehaviour
     }
 
     // Change this to OnDisable
-    private void OnDestroy()
+    public void OnObjectDestroy()
     {
         smartphoneInput.OnSingleTap -= OnTap;
         mouseInput.OnSingleClick -= OnClick;
+    }
+
+    public void OnObjectSpawn() 
+    {
+        smartphoneInput = SmartphoneInputController.instance;
+        smartphoneInput.OnSingleTap += OnTap;
+        mouseInput = MouseInputController.instance;
+        mouseInput.OnSingleClick += OnClick;
+        Vector2 direction = targetLocation - transform.position;
+        transform.up = direction;
+        rb = GetComponent<Rigidbody2D>();
+
+        //Bullet doesn't hit enemy when bullet spawns
+        isDangerous = false;
+
+        reflectLocation = transform.position;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -78,8 +97,9 @@ public class Rocket : MonoBehaviour
                 if (explosion != null)
                 {
                     // Creating an explosion and destroying a rocket.
-                    Instantiate(explosion, transform.position, Quaternion.identity);
-                    Destroy(gameObject);
+                    GameObject exp = pool.SpawnFromPool(explosion, transform.position, Quaternion.identity);
+                    explosion.GetComponent<SimpleExplosion>().damage = damage;
+                    pool.ReturnToPool(gameObject);
                 }
                 else
                 {

@@ -22,6 +22,18 @@ public class Shield : Enemy
         }
     }
 
+    public override void OnObjectSpawn()
+    {
+        base.OnObjectSpawn();
+        BaseInitialization();
+        skin = gameObject.GetComponent<SpriteRenderer>();
+        shieldCollider = gameObject.GetComponent<CircleCollider2D>();
+        if (transform.parent.gameObject.GetComponent<Droideka>())
+        {
+            parent = transform.parent.gameObject.GetComponent<Droideka>();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

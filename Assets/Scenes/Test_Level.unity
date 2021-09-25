@@ -123,6 +123,16 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &187321584 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8583008262857636113, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+  m_PrefabInstance: {fileID: 8583008262465602546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &300460596 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8583008263107791095, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+  m_PrefabInstance: {fileID: 8583008262465602546}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &566144898 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8583008262629364181, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
@@ -181,6 +191,44 @@ MonoBehaviour:
   - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
     spawnPos: {fileID: 566144898}
     spawnPeriod: 2
+    p1Name: Time to first shot
+    p1Value: 4
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 187321584}
+    spawnPeriod: 4
+    p1Name: Time to first shot
+    p1Value: 4
+    p2Name: Shoot interval
+    p2Value: 4
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 300460596}
+    spawnPeriod: 5
     p1Name: Time to first shot
     p1Value: 4
     p2Name: Shoot interval

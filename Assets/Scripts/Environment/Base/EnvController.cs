@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnvController : EnvManager
+public class EnvController : EnvManager, IPooledObject
 {
     bool isDestroyable = false;
 
@@ -29,6 +29,37 @@ public class EnvController : EnvManager
         {
             a.ActivateAbility();
         }
+    }
+
+    public override void OnObjectSpawn()
+    {
+        base.Start();
+        base.OnObjectSpawn();
+
+        // Setting destroyability.
+        if (envData.hp < 0)
+        {
+            isDestroyable = false;
+        }
+        else
+        {
+            isDestroyable = true;
+        }
+
+        // Add visual.
+        //
+        //
+
+        // Call the ability.
+        foreach (Ability a in envData.OnCreateAbility)
+        {
+            a.ActivateAbility();
+        }
+    }
+
+    public override void OnObjectDestroy()
+    {
+        base.OnObjectDestroy();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,7 +92,7 @@ public class EnvController : EnvManager
             // Checking for bullet layer.
             if (collision.gameObject.layer == 8)
             {
-                Destroy(collision);
+                pool.ReturnToPool(collision.gameObject);
             }
         }
 
@@ -83,7 +114,7 @@ public class EnvController : EnvManager
                 a.ActivateAbility();
             }
 
-            Destroy(gameObject);
+            pool.ReturnToPool(gameObject);
         }
     }
 

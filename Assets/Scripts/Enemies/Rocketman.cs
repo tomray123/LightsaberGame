@@ -43,6 +43,12 @@ public class Rocketman : Enemy
         rocketSpawnPosition = transform.GetChild(3).position;
     }
 
+    public override void OnObjectSpawn()
+    {
+        base.OnObjectSpawn();
+        BaseInitialization();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -101,7 +107,7 @@ public class Rocketman : Enemy
     protected void PrepareRocket()
     {
         // Initially rocket is under rocketman.
-        rocket = Instantiate(bullet, rocketSpawnPosition, Quaternion.identity).GetComponent<Rocket>();
+        rocket = pool.SpawnFromPool(bullet, rocketSpawnPosition, Quaternion.identity).GetComponent<Rocket>();
         rocket.transform.parent = transform;
         // Then the rocket sticks its nose out of the muzzle.
         rocket.transform.DOMove(launchPosition, 0.5f).SetEase(rocketPreparingAnimationEase);

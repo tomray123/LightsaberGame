@@ -8,6 +8,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1311627495949898077, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+      propertyPath: bulletName
+      value: rBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: -1311627495949898077, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
       propertyPath: parameters.Array.data[0].value
       value: 3
       objectReference: {fileID: 0}
@@ -21,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
       propertyPath: m_Name
-      value: Soldier 2
+      value: Soldier 2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 265645723975045791, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
       propertyPath: m_RootOrder

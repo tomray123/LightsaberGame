@@ -44,7 +44,6 @@ public class ScoreCounter : MonoBehaviour
         {
             receivedFactor = simpleFactorUpperBorder;
         }
-
         totalScore += receivedScore * receivedFactor * comboController.comboFactor;
         comboController.comboScore += receivedScore * receivedFactor;
         comboController.CalculateFactor();

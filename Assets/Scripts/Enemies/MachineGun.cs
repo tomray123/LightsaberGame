@@ -11,6 +11,12 @@ public class MachineGun : Enemy
         BaseInitialization();
     }
 
+    public override void OnObjectSpawn()
+    {
+        base.OnObjectSpawn();
+        BaseInitialization();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -60,6 +66,7 @@ public class MachineGun : Enemy
 
     protected override IEnumerator GetHit()
     {
+        DestroyWhenDead();
         SpriteRenderer renderer = transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>();
         Color cl = new Color(1f, 1f, 1f, 0f);
         for (float i = 0f; i <= 0.7f; i += 0.035f)
@@ -76,6 +83,5 @@ public class MachineGun : Enemy
         }
         cl = new Color(1f, 1f, 1f, 0f);
         renderer.color = cl;
-        DestroyWhenDead();
     }
 }

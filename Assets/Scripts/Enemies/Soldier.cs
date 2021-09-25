@@ -10,6 +10,12 @@ public class Soldier : Enemy
         BaseInitialization();
     }
 
+    public override void OnObjectSpawn()
+    {
+        base.OnObjectSpawn();
+        BaseInitialization();
+    }
+
 
     void Update()
     {

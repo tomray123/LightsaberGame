@@ -94,6 +94,8 @@ public class Spawner : MonoBehaviour
     // Singleton instance.
     public static Spawner instance;
 
+    private ObjectPooler pool;
+
     // This setting allows to set the same spawn period for every spawn object.
     [SerializeField]
     [Header("Set spawn period of the first object to all")]
@@ -125,6 +127,8 @@ public class Spawner : MonoBehaviour
 
     void Start()
     {
+        pool = ObjectPooler.Instance;
+
         // Adding spawn objects to the queue.
         for (int i = 0; i < MyList.Count; i++)
         {
@@ -204,7 +208,7 @@ public class Spawner : MonoBehaviour
         yield return new WaitForSeconds(spawnObj.spawnPeriod);
 
         // Creating an object and getting its enemy script.
-        GameObject SpawnedObject = Instantiate(spawnObj.obj, spawnPointList[num].spawnPosition.position, Quaternion.identity);
+        GameObject SpawnedObject = pool.SpawnFromPool(spawnObj.obj, spawnPointList[num].spawnPosition.position, Quaternion.identity);
 
         Enemy enemy = SpawnedObject.GetComponent<Enemy>();
         // Subscribing to enemy OnDeath event. 
@@ -247,7 +251,7 @@ public class Spawner : MonoBehaviour
         yield return new WaitForSeconds(spawnObj.spawnPeriod);
 
         // Creating an object and getting its enemy script.
-        GameObject SpawnedObject = Instantiate(spawnObj.obj, spawnPointList[num].spawnPosition.position, Quaternion.identity);
+        GameObject SpawnedObject = pool.SpawnFromPool(spawnObj.obj, spawnPointList[num].spawnPosition.position, Quaternion.identity);
 
         Enemy enemy = SpawnedObject.GetComponent<Enemy>();
         // Subscribing to enemy OnDeath event. 

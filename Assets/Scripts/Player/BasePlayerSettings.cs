@@ -7,6 +7,8 @@ using System.IO;
 
 public class BasePlayerSettings : MonoBehaviour
 {
+    private ObjectPooler pool;
+
     // For changing player's color.
     private Renderer rend;
 
@@ -29,6 +31,7 @@ public class BasePlayerSettings : MonoBehaviour
 
     private void Start()
     {
+        pool = ObjectPooler.Instance;
         visualController = GetComponent<PlayerVisualController>();
         currentHealth = maxHealth;
         rend = GetComponent<Renderer>();
@@ -103,7 +106,7 @@ public class BasePlayerSettings : MonoBehaviour
             GetHit();
             //StartCoroutine(ChangeColor());
             // Destroying the bullet.
-            Destroy(other.gameObject);
+            pool.ReturnToPool(other.gameObject);
         }
 
         // Checking for explosion layer.

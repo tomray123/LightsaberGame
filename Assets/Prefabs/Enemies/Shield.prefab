@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1900837808660489691}
   - component: {fileID: 3125732117424914382}
   - component: {fileID: 1379408137685298646}
+  - component: {fileID: -7793890623815882453}
   m_Layer: 9
   m_Name: Shield
   m_TagString: Untagged
@@ -134,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438155c9f9fc1854298999e64a8f8b07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scorePrice: 0
   parameters:
   - name: Respawn Time
     value: 7
@@ -151,10 +153,28 @@ MonoBehaviour:
     value: 0
   - name: none
     value: 0
+  bulletName: 
+  enemyName: 
   target: {fileID: 0}
   timeToFirstShoot: 0.8
   timeToShoot: 1
-  bullet: {fileID: 0}
   hp: 100
   damage: 100
+  spawnIndex: 0
+  saberDamageCooldown: 3
+  isSaberDangerous: 1
   isKilled: 0
+--- !u!114 &-7793890623815882453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7642926330680477560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb9a10b5c85e0b94bbeeabc55171ed07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolTag: 
+  objIdPool: 0

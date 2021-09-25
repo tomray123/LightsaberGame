@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5973405915297386631}
   - component: {fileID: -1311627495949898077}
   - component: {fileID: 3478034142124426827}
+  - component: {fileID: 8961050210622136480}
   m_Layer: 9
   m_Name: Soldier
   m_TagString: Untagged
@@ -191,11 +192,11 @@ MonoBehaviour:
     value: 0
   - name: none
     value: 0
+  bullet: {fileID: 2737468164590865732, guid: 419e1cf998269504c9ec9e681f80b8ca, type: 3}
   target: {fileID: 4258905628541220326, guid: 0470770b121af954d8b23fb39892839e, type: 3}
   timeToFirstShoot: 2
   timeToShoot: 4
-  bullet: {fileID: 2737468164590865732, guid: 419e1cf998269504c9ec9e681f80b8ca, type: 3}
-  hp: 100
+  startHp: 100
   damage: 100
   spawnIndex: 0
   saberDamageCooldown: 3
@@ -219,6 +220,20 @@ MonoBehaviour:
   alphaThreshold: 0.364
   drawOutside: 0
   enableInstancing: 0
+--- !u!114 &8961050210622136480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16898945102351504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb9a10b5c85e0b94bbeeabc55171ed07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolTag: sold
+  objIdPool: 0
 --- !u!1 &1945263220913230937
 GameObject:
   m_ObjectHideFlags: 0

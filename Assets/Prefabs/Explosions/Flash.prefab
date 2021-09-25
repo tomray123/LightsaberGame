@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2654897383529207673}
   - component: {fileID: 6124363988154284688}
   - component: {fileID: 1950875284251624552}
+  - component: {fileID: -5005704719402819454}
   m_Layer: 0
   m_Name: Flash
   m_TagString: Untagged
@@ -135,3 +136,17 @@ MonoBehaviour:
   factor: 1
   damage: 300
   radius: 5
+--- !u!114 &-5005704719402819454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2654897383529207672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb9a10b5c85e0b94bbeeabc55171ed07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolTag: 
+  objIdPool: 0

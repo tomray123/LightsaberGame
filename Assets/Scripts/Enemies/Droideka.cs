@@ -26,6 +26,17 @@ public class Droideka : Enemy
         */
     }
 
+    public override void OnObjectSpawn()
+    {
+        base.OnObjectSpawn();
+        BaseInitialization();
+        transform.GetChild(1).gameObject.GetComponent<Shield>().parameters[0].value = parameters[3].value;
+        droidekaCol = gameObject.GetComponent<BoxCollider2D>();
+        barrelLeft = transform.GetChild(2);
+        barrelRight = transform.GetChild(3);
+        droidekaCol.enabled = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -55,10 +66,10 @@ public class Droideka : Enemy
 
     protected override void Shoot()
     {
-        Bullet bulletCloneLeft = Instantiate(bullet, barrelLeft.position, barrelLeft.rotation).GetComponent<Bullet>();
+        Bullet bulletCloneLeft = pool.SpawnFromPool(bullet, barrelLeft.position, barrelLeft.rotation).GetComponent<Bullet>();
         bulletCloneLeft.damage += damage;
         bulletCloneLeft.shooter = gameObject;
-        Bullet bulletCloneRight = Instantiate(bullet, barrelRight.position, barrelRight.rotation).GetComponent<Bullet>();
+        Bullet bulletCloneRight = pool.SpawnFromPool(bullet, barrelRight.position, barrelRight.rotation).GetComponent<Bullet>();
         bulletCloneRight.damage += damage;
         bulletCloneRight.shooter = gameObject;
     }

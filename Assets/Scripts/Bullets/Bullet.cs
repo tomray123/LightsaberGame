@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : KillingObjects
+public class Bullet : KillingObjects, IPooledObject
 {
     public float speed = 7f;
 
@@ -44,6 +44,34 @@ public class Bullet : KillingObjects
 
         rb.velocity = direction.normalized * speed;
 
+        //Bullet doesn't hit enemy when bullet spawns
+        isDangerous = false;
+    }
+
+    public void OnObjectSpawn()
+    {
+        reflectCount = 0;
+        whichCorrection = PlayerPrefs.GetString("CorrectionType", "linear");
+
+        direction = target.transform.position - transform.position;
+        transform.up = direction;
+
+        Vector2[] colPoints = transform.GetComponent<EdgeCollider2D>().points;
+        frontPoint.transform.localPosition = colPoints[0];
+
+        rb = GetComponent<Rigidbody2D>();
+
+        rb.velocity = direction.normalized * speed;
+
+        //Bullet doesn't hit enemy when bullet spawns
+        isDangerous = false;
+    }
+
+    public void OnObjectDestroy()
+    {
+        reflectCount = 0;
+        damage = 0;
+        shooter = null;
         //Bullet doesn't hit enemy when bullet spawns
         isDangerous = false;
     }

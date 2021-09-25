@@ -6,8 +6,16 @@ public class ExplosionAbility : Ability
 {
     public GameObject explosionPrefab;
 
+    [HideInInspector]
+    public ObjectPooler pool;
+
+    private void Start()
+    {
+        pool = ObjectPooler.Instance;
+    }
+
     public override void ActivateAbility()
     {
-        Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        pool.SpawnFromPool(explosionPrefab, transform.position, Quaternion.identity);
     }
 }
