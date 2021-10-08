@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 2241700969691119038}
   - component: {fileID: 4867009525818934820}
   - component: {fileID: -1237148430923875568}
+  - component: {fileID: 780176988533627686}
   m_Layer: 9
   m_Name: RocketmanDummy
   m_TagString: Untagged
@@ -167,6 +168,7 @@ Transform:
   - {fileID: 291256488294857423}
   - {fileID: 3428266482351419546}
   - {fileID: 1299979355432469142}
+  - {fileID: 7497552119061760035}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -326,6 +328,8 @@ MonoBehaviour:
     value: 0
   bullet: {fileID: 4859814107141096307, guid: e5c461bd51699f044ba8805cee5c0ba6, type: 3}
   target: {fileID: 4258905628541220326, guid: 0470770b121af954d8b23fb39892839e, type: 3}
+  shootPosition: {fileID: 0}
+  hitPosition: {fileID: 7497552119061760035}
   timeToFirstShoot: 0.8
   timeToShoot: 1
   startHp: 100
@@ -367,6 +371,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolTag: rockman
   objIdPool: 0
+--- !u!114 &780176988533627686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751141338283610165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e72adc6884416b4dabd013e2dc1e718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualEffects:
+  - tag: shoot
+    visualEffect: {fileID: 2654897383529207672, guid: d9cf01f7cd7c4f044b9ef36bdbfeacd7, type: 3}
+  - tag: hitspark
+    visualEffect: {fileID: 1394017828927644960, guid: bd73a1658865f904ebb596fc2e256939, type: 3}
+  - tag: destroy
+    visualEffect: {fileID: 6754739243285097763, guid: cfea924662f8fa34da90a8e95aeb74ee, type: 3}
 --- !u!1 &3925586978027004822
 GameObject:
   m_ObjectHideFlags: 0
@@ -526,6 +549,36 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 0
   m_Loop: 0
+--- !u!1 &4589124683351342089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7497552119061760035}
+  m_Layer: 9
+  m_Name: Hit Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7497552119061760035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589124683351342089}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.03, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4637793824011130448}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5621246934143523896
 GameObject:
   m_ObjectHideFlags: 0

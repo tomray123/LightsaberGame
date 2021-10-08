@@ -23,6 +23,12 @@ public class EnemyParameter
 // Base enemy class.
 public class Enemy : ScorableObjects
 {
+    [Space]
+    public string visualEffectShootTag = "shoot";
+    public string visualEffectHitTag = "hitspark";
+    public string visualEffectExplosionTag = "destroy";
+    [Space]
+
     // List of enemy parameters.
     [SerializeField]
     public List<EnemyParameter> parameters = new List<EnemyParameter>(8) {new EnemyParameter(), new EnemyParameter(),
@@ -34,6 +40,12 @@ public class Enemy : ScorableObjects
 
     // Enemie's target.
     public GameObject target;
+
+    public Transform shootPosition;
+
+    public Transform hitPosition;
+
+    protected VisualEffects visEffects;
 
     public Action<Enemy, int> OnSpawnObjectDeath;
 
@@ -70,18 +82,23 @@ public class Enemy : ScorableObjects
     protected Renderer rend;
 
     // Flashes over the enemy.
-    protected Transform shootIndicator;
+    protected GameObject shootIndicator;
 
     protected bool flash = false;
+
 
     protected override void Start()
     {
         base.Start();
+        visEffects = GetComponent<VisualEffects>();
         hp = startHp;
     }
 
     public void EnemyDestroy()
     {
+        // Add visual effect for destroy.
+        visEffects.ActivateVisualEffect(visualEffectExplosionTag, transform.position, transform.rotation);
+
         if (OnSpawnObjectDeath != null)
         {
             OnSpawnObjectDeath(this, spawnIndex);
@@ -98,7 +115,7 @@ public class Enemy : ScorableObjects
         isKilled = false;
         rend = GetComponent<Renderer>();
         // Indicator must be a first child of enemy.
-        shootIndicator = gameObject.transform.GetChild(0);
+        shootIndicator = gameObject.transform.GetChild(0).gameObject;
     }
 
     public override void OnObjectSpawn()
@@ -107,6 +124,10 @@ public class Enemy : ScorableObjects
         base.OnObjectSpawn();
         hp = startHp;
         startLoop = true;
+        // Indicator must be a first child of enemy.
+        shootIndicator = gameObject.transform.GetChild(0).gameObject;
+        shootIndicator.SetActive(false);
+        flash = false;
     }
 
     public override void OnObjectDestroy()
@@ -118,6 +139,7 @@ public class Enemy : ScorableObjects
     // Simple shoot method.
     protected virtual void Shoot()
     {
+        visEffects.ActivateVisualEffect(visualEffectShootTag, shootPosition.position, shootPosition.rotation);
         // Creating a bullet and setting its damage.
         Bullet bulletClone = pool.SpawnFromPool(bullet, transform.position, transform.rotation).GetComponent<Bullet>();
         bulletClone.damage += damage;
@@ -126,6 +148,7 @@ public class Enemy : ScorableObjects
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
     {
+        // Just check for error.
         if (!gameObject.activeSelf)
         {
             return;
@@ -148,7 +171,13 @@ public class Enemy : ScorableObjects
                 }
                 ObjectDeath(killer.factor);
             }
-            StartCoroutine(GetHit());
+
+            // Hit Visual Effect.
+            visEffects.ActivateVisualEffect(visualEffectHitTag, hitPosition.position, Quaternion.LookRotation(hitPosition.up));
+
+            // Checks whether an object is dead and destroys it.
+            DestroyWhenDead();
+
             // Destroying the bullet.
             pool.ReturnToPool(other.gameObject);
         }
@@ -163,7 +192,12 @@ public class Enemy : ScorableObjects
             {
                 ObjectDeath(killer.factor);
             }
-            StartCoroutine(GetHit());
+
+            // Hit Visual Effect.
+            visEffects.ActivateVisualEffect(visualEffectHitTag, hitPosition.position, Quaternion.LookRotation(hitPosition.up));
+
+            // Checks whether an object is dead and destroys it.
+            DestroyWhenDead();
         }
 
         // Checking for lightsaber.
@@ -178,7 +212,12 @@ public class Enemy : ScorableObjects
             }
             // Starting a saber's non-hit cooldown.
             StartCoroutine(SaberDamageCooldown());
-            StartCoroutine(GetHit());
+
+            // Hit Visual Effect.
+            visEffects.ActivateVisualEffect(visualEffectHitTag, hitPosition.position, Quaternion.LookRotation(hitPosition.up));
+
+            // Checks whether an object is dead and destroys it.
+            DestroyWhenDead();
         }
     }
 

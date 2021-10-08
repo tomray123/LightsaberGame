@@ -152,36 +152,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-      propertyPath: pools.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-      propertyPath: pools.Array.data[3].tag
-      value: sold2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-      propertyPath: pools.Array.data[6].tag
-      value: bBullet
-      objectReference: {fileID: 0}
-    - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: pools.Array.data[0].size
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: pools.Array.data[1].size
-      value: 1
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: pools.Array.data[2].size
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: pools.Array.data[3].size
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: pools.Array.data[4].size
-      value: 2
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: pools.Array.data[5].size
@@ -189,16 +177,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: pools.Array.data[6].size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-      propertyPath: pools.Array.data[3].prefab
-      value: 
-      objectReference: {fileID: 2690857137895966694, guid: 8851bc02850f5ca449a8aa4164cf4992, type: 3}
+      propertyPath: pools.Array.data[7].size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-      propertyPath: pools.Array.data[6].prefab
-      value: 
-      objectReference: {fileID: 6391346094752536334, guid: a155630d8cafcbe459d9f184b4710146, type: 3}
+      propertyPath: pools.Array.data[8].size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: pools.Array.data[9].size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: pools.Array.data[11].size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: pools.Array.data[12].size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: pools.Array.data[13].size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: pools.Array.data[14].size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: pools.Array.data[15].size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6489636826796235543, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: scoreForTwoStars
       value: 2500

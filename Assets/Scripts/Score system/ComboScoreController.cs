@@ -42,7 +42,7 @@ public class ComboScoreController : MonoBehaviour
     [HideInInspector]
     public int comboFactor = 1;
 
-    float decreasePercent = 0;
+    // float decreasePercent = 0;
     // float decreaseVal = 0;
 
     public void Awake()

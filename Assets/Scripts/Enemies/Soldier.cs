@@ -33,7 +33,7 @@ public class Soldier : Enemy
             for (int i = 0; i < 6; i++)
             {
                 flash = !flash;
-                shootIndicator.gameObject.SetActive(flash);
+                shootIndicator.SetActive(flash);
                 yield return new WaitForSeconds(flashesDuration / 6);
             }
         }
@@ -42,7 +42,7 @@ public class Soldier : Enemy
         for (int i = 0; i < 6; i++)
         {
             flash = !flash;
-            shootIndicator.gameObject.SetActive(flash);
+            shootIndicator.SetActive(flash);
             yield return new WaitForSeconds(flashesDuration / 6);
         }
         startLoop = true;

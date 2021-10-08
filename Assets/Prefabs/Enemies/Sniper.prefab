@@ -211,6 +211,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &4156368891423809299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2498387848666298298}
+  m_Layer: 9
+  m_Name: Hit Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2498387848666298298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4156368891423809299}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.59, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 358831928768206042}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5223154668494895743
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,6 +257,7 @@ GameObject:
   - component: {fileID: 6664886170412704235}
   - component: {fileID: 9066050030869066527}
   - component: {fileID: 8126064848915829359}
+  - component: {fileID: 5766531712643603491}
   m_Layer: 9
   m_Name: Sniper
   m_TagString: Untagged
@@ -247,6 +278,8 @@ Transform:
   m_Children:
   - {fileID: 8767798266285240788}
   - {fileID: 1765187888381335914}
+  - {fileID: 2498387848666298298}
+  - {fileID: 7233665903861953595}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -387,6 +420,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scorePrice: 200
+  visualEffectShootTag: shoot
+  visualEffectHitTag: hitspark
+  visualEffectExplosionTag: destroy
   parameters:
   - name: Waiting time before start
     value: 1
@@ -406,6 +442,8 @@ MonoBehaviour:
     value: 0
   bullet: {fileID: 6391346094752536334, guid: a155630d8cafcbe459d9f184b4710146, type: 3}
   target: {fileID: 4258905628541220326, guid: 0470770b121af954d8b23fb39892839e, type: 3}
+  shootPosition: {fileID: 7233665903861953595}
+  hitPosition: {fileID: 2498387848666298298}
   timeToFirstShoot: 0.8
   timeToShoot: 1
   startHp: 100
@@ -446,3 +484,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   poolTag: snip
   objIdPool: 0
+--- !u!114 &5766531712643603491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5223154668494895743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e72adc6884416b4dabd013e2dc1e718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualEffects:
+  - tag: shoot
+    visualEffect: {fileID: 2654897383529207672, guid: d9cf01f7cd7c4f044b9ef36bdbfeacd7, type: 3}
+  - tag: hitspark
+    visualEffect: {fileID: 1394017828927644960, guid: bd73a1658865f904ebb596fc2e256939, type: 3}
+  - tag: destroy
+    visualEffect: {fileID: 6754739243285097763, guid: cfea924662f8fa34da90a8e95aeb74ee, type: 3}
+--- !u!1 &7798498082957471736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7233665903861953595}
+  m_Layer: 9
+  m_Name: Shoot Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7233665903861953595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7798498082957471736}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.24, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 358831928768206042}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

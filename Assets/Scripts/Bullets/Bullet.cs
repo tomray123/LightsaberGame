@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Bullet : KillingObjects, IPooledObject
 {
+    [Space]
+    public string visualEffectReflectionTag = "reflect";
+    [Space]
+
     public float speed = 7f;
 
     int reflectCount = 0;
@@ -29,6 +33,8 @@ public class Bullet : KillingObjects, IPooledObject
 
     protected Rigidbody2D rb;
 
+    private VisualEffects ve;
+
     private void Start()
     {
         reflectCount = 0;
@@ -46,6 +52,8 @@ public class Bullet : KillingObjects, IPooledObject
 
         //Bullet doesn't hit enemy when bullet spawns
         isDangerous = false;
+
+        ve = GetComponent<VisualEffects>();
     }
 
     public void OnObjectSpawn()
@@ -63,17 +71,17 @@ public class Bullet : KillingObjects, IPooledObject
 
         rb.velocity = direction.normalized * speed;
 
+        factor = 1;
+        reflectCount = 0;
+        damage = 0;
+        shooter = null;
         //Bullet doesn't hit enemy when bullet spawns
         isDangerous = false;
     }
 
     public void OnObjectDestroy()
     {
-        reflectCount = 0;
-        damage = 0;
-        shooter = null;
-        //Bullet doesn't hit enemy when bullet spawns
-        isDangerous = false;
+        
     }
 
     void FixedUpdate()
@@ -133,6 +141,11 @@ public class Bullet : KillingObjects, IPooledObject
     {
         if (other.gameObject.CompareTag("LightSaber"))
         {
+            ContactPoint2D hit = other.GetContact(0);
+
+            // Adding visual effects.
+            ve.ActivateVisualEffect(visualEffectReflectionTag, hit.point, Quaternion.LookRotation(Vector3.forward, hit.normal));
+
             reflectCount++;
             if (reflectCount > 1)
             {
@@ -142,7 +155,7 @@ public class Bullet : KillingObjects, IPooledObject
             transform.position = other.GetContact(0).point;
             direction = TrajectoryСorrection(direction);
             transform.up = direction.normalized;
-            rb.velocity = transform.up * speed;
+            rb.velocity = transform.up * speed;      
         }
     }
 

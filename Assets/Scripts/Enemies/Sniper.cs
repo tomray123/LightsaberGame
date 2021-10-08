@@ -6,6 +6,8 @@ public class Sniper : Enemy
 {
     private LineRenderer line;
 
+    private GameObject eye;
+
     // Start is called before the first frame update
     protected override void Start()
     {
@@ -28,11 +30,11 @@ public class Sniper : Enemy
             yield return new WaitForSeconds(initialTime);
         }
         line.enabled = true;
-        StartCoroutine(SetTransparency(aimingTime, 0f, 1f, transform.GetChild(0).gameObject));
+        StartCoroutine(SetTransparency(aimingTime, 0f, 1f, eye));
         yield return new WaitForSeconds(aimingTime);
         Shoot();
         line.enabled = false;
-        StartCoroutine(SetTransparency(0f, 1f, 0f, transform.GetChild(0).gameObject));
+        StartCoroutine(SetTransparency(0f, 1f, 0f, eye));
         yield return new WaitForSeconds(cooldownTime);
 
         startLoop = true;
@@ -55,5 +57,7 @@ public class Sniper : Enemy
         line.enabled = false;
         line.SetPosition(0, transform.localPosition);
         line.SetPosition(1, target.transform.position);
+        eye = transform.GetChild(0).gameObject;
+        eye.SetActive(true);
     }
 }

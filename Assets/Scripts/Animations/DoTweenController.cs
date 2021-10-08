@@ -32,14 +32,14 @@ public class DoTweenController : MonoBehaviour
     [SerializeField]
     private Color _targetColor;
 
-    [Range(1.0f, 500.0f), SerializeField]
-    private float _scaleMultiplier = 3.0f;
+    // [Range(1.0f, 500.0f), SerializeField]
+    // private float _scaleMultiplier = 3.0f;
 
-    [Range(1.0f, 10.0f), SerializeField]
-    private float _colorChangeDuration = 1.0f;
+    // [Range(1.0f, 10.0f), SerializeField]
+    // private float _colorChangeDuration = 1.0f;
 
-    [SerializeField]
-    private DoTweenType _doTweenType = DoTweenType.MovementOneWay;
+    // [SerializeField]
+    // private DoTweenType _doTweenType = DoTweenType.MovementOneWay;
 
     // Bool for checking whether the saber throw finished.
     public bool isThrowTweenCompleted = true;

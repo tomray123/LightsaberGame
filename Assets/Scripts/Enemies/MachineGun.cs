@@ -34,7 +34,7 @@ public class MachineGun : Enemy
         for (int i = 0; i < 6; i++)
         {
             flash = !flash;
-            shootIndicator.gameObject.SetActive(flash);
+            shootIndicator.SetActive(flash);
             yield return new WaitForSeconds(flashesDuration / 6);
         }
         Shoot();
@@ -42,7 +42,7 @@ public class MachineGun : Enemy
         for (int i = 0; i < 6; i++)
         {
             flash = !flash;
-            shootIndicator.gameObject.SetActive(flash);
+            shootIndicator.SetActive(flash);
             yield return new WaitForSeconds(flashesDuration / 6);
         }
         Shoot();
@@ -64,6 +64,7 @@ public class MachineGun : Enemy
         startLoop = true;
     }
 
+    /*
     protected override IEnumerator GetHit()
     {
         DestroyWhenDead();
@@ -84,4 +85,5 @@ public class MachineGun : Enemy
         cl = new Color(1f, 1f, 1f, 0f);
         renderer.color = cl;
     }
+    */
 }
