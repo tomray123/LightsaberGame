@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class SmartphoneInputController : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class SmartphoneInputController : MonoBehaviour
     public static SmartphoneInputController instance;
 
     public Action OnSingleTap;
+
+    public UnityEvent onScreenTouch;
 
     public void Awake()
     {
@@ -39,6 +42,8 @@ public class SmartphoneInputController : MonoBehaviour
     {
         if (Input.touchCount > 0)
         {
+            // Invoke screen touch event.
+            onScreenTouch.Invoke();
             touch = Input.GetTouch(0);
             touchDuration += Time.deltaTime;
 

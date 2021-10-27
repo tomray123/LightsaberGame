@@ -18,7 +18,7 @@ public class BasePlayerSettings : MonoBehaviour
 
     private PlayerVisualController visualController;
 
-    Action OnHit;
+    public Action OnHit;
 
     public Action<int> OnHpChange;
 
@@ -42,11 +42,6 @@ public class BasePlayerSettings : MonoBehaviour
     {
         if (!isKilled)
         {
-            if (OnHit != null)
-            {
-                OnHit();
-            }
-
             // Visual for hit.
             visualController.GetHit();
 
@@ -57,6 +52,11 @@ public class BasePlayerSettings : MonoBehaviour
             }
 
             ChangeHP(currentHealth);
+
+            if (OnHit != null)
+            {
+                OnHit();
+            }
         }
     }
 

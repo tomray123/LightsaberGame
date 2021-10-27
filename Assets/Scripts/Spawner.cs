@@ -101,6 +101,11 @@ public class Spawner : MonoBehaviour
     [Header("Set spawn period of the first object to all")]
     public bool allSpawnPeriod = false;
 
+    [Space]
+
+    [Header("Use timer (default) or spawn manually.")]
+    public bool useTimer = true;
+
     [Space(10)]
 
     // List of objects to spawn.
@@ -115,6 +120,9 @@ public class Spawner : MonoBehaviour
     public static int NumberOfKilledEnemies = -1;
 
     public Action onAllEnemiesDead;
+
+    // Used in SpawnNext function to count enemies.
+    private int currentIndex = 0;
 
     private void Awake()
     {
@@ -153,7 +161,10 @@ public class Spawner : MonoBehaviour
             }
         }
 
-        StartCoroutine(StartInitialTimer(0));
+        if (useTimer)
+        {
+            StartCoroutine(StartInitialTimer(0));
+        }
 
         // Setting an amount of all enemies spawned on one level.
         TotalNumberOfEnemies = MyList.Count;
@@ -270,5 +281,50 @@ public class Spawner : MonoBehaviour
             enemy.parameters[6].value = spawnObj.p7Value;
             enemy.parameters[7].value = spawnObj.p8Value;
         }
+    }
+
+    // Function for spawning enemies without spawn timer.
+    public GameObject SpawnNext()
+    {
+        if (currentIndex < MyList.Count)
+        {
+            // Searching for right spawn point.
+            SpawnPoint point = spawnPointList.Find(x => x.spawnPosition == MyList[currentIndex].spawnPos);
+
+            if (point.objectQueue.Count <= 0)
+            {
+                Debug.LogWarning("No objects to spawn");
+                return null;
+            }
+
+            // Getting object from queue.
+            SpawnObject spawnObj = point.objectQueue.Dequeue();
+
+            // Creating an object and getting its enemy script.
+            GameObject SpawnedObject = pool.SpawnFromPool(spawnObj.obj, point.spawnPosition.position, Quaternion.identity);
+
+            Enemy enemy = SpawnedObject.GetComponent<Enemy>();
+
+            // Setting all parameters for objects.
+            enemy.spawnIndex = currentIndex;
+
+            if (enemy.parameters.Count > 7)
+            {
+                enemy.parameters[0].value = spawnObj.p1Value;
+                enemy.parameters[1].value = spawnObj.p2Value;
+                enemy.parameters[2].value = spawnObj.p3Value;
+                enemy.parameters[3].value = spawnObj.p4Value;
+                enemy.parameters[4].value = spawnObj.p5Value;
+                enemy.parameters[5].value = spawnObj.p6Value;
+                enemy.parameters[6].value = spawnObj.p7Value;
+                enemy.parameters[7].value = spawnObj.p8Value;
+            }
+
+            currentIndex++;
+
+            return SpawnedObject;
+        }
+
+        return null;
     }
 }

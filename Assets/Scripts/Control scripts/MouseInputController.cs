@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MouseInputController : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class MouseInputController : MonoBehaviour
     public static MouseInputController instance;
 
     public Action OnSingleClick;
+
+    public UnityEvent onScreenClick;
 
     public void Awake()
     {

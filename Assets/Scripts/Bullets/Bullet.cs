@@ -15,7 +15,8 @@ public class Bullet : KillingObjects, IPooledObject
     [HideInInspector]
     public GameObject shooter = null;
 
-    Vector3 direction;
+    [HideInInspector]
+    public Vector3 direction;
 
     public float RayDelta = 10f;
 

@@ -17,6 +17,11 @@ public class SpawnerEditor : Editor
         EditorGUILayout.LabelField("Set spawn period of the first object to all", EditorStyles.boldLabel);
         spawner.allSpawnPeriod = EditorGUILayout.Toggle("All Spawn Period", spawner.allSpawnPeriod);
 
+        EditorGUILayout.Space();
+
+        EditorGUILayout.LabelField("Use timer (default) or spawn manually.", EditorStyles.boldLabel);
+        spawner.useTimer = EditorGUILayout.Toggle("Use Timer", spawner.useTimer);
+
         EditorGUILayout.Space(10);
 
         int listSize = spawner.MyList.Count;

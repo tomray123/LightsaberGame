@@ -49,6 +49,10 @@ public class Enemy : ScorableObjects
 
     public Action<Enemy, int> OnSpawnObjectDeath;
 
+    public Action OnHit;
+
+    public Action<int> OnTutorHit;
+
     public float timeToFirstShoot = 0.8f;
 
     // Time interval between shots (not for all enemies).
@@ -56,7 +60,8 @@ public class Enemy : ScorableObjects
 
     public int startHp = 100;
 
-    protected int hp;
+    [HideInInspector]
+    public int hp;
 
     public int damage = 100;
 
@@ -71,10 +76,12 @@ public class Enemy : ScorableObjects
     public bool isSaberDangerous = true;
 
     // Defines whether the enemy loop is started.
-    protected bool startLoop = true;
+    [HideInInspector]
+    public bool startLoop = true;
 
     // Defines whether the enemy was just spawned and haven't made any shot yet.
-    protected bool isJustBorn = true;
+    [HideInInspector]
+    public bool isJustBorn = true;
 
     [HideInInspector]
     public bool isKilled = false;
@@ -159,6 +166,16 @@ public class Enemy : ScorableObjects
         // Check for bullet layer and if bullet can hit enemy.
         if (other.gameObject.layer == 8 && other.gameObject.GetComponent<Bullet>().isDangerous && killer != null)
         {
+            if (OnHit != null)
+            {
+                OnHit();
+            }
+
+            if (OnTutorHit != null)
+            {
+                OnTutorHit(killer.factor);
+            }
+
             Bullet bullet = other.gameObject.GetComponent<Bullet>();
             // Getting damage.
             hp -= killer.damage;
@@ -185,6 +202,11 @@ public class Enemy : ScorableObjects
         // Checking for explosion layer.
         if (other.gameObject.layer == 11 && killer != null)
         {
+            if (OnHit != null)
+            {
+                OnHit();
+            }
+
             // Getting damage.
             hp -= killer.damage;
             // Generating death action to score system.
@@ -203,6 +225,11 @@ public class Enemy : ScorableObjects
         // Checking for lightsaber.
         if (other.gameObject.CompareTag("LightSaber") && isSaberDangerous && killer != null)
         {
+            if (OnHit != null)
+            {
+                OnHit();
+            }
+
             // Getting damage.
             hp -= killer.damage;
             // Generating death action to score system.
@@ -291,7 +318,7 @@ public class Enemy : ScorableObjects
     }
 
     // Checks whether an object is dead and destroys it.
-    protected virtual void DestroyWhenDead()
+    public virtual void DestroyWhenDead()
     {
         if (hp <= 0)
         {

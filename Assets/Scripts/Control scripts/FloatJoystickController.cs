@@ -147,6 +147,7 @@ public class FloatJoystickController : JoystickController
         {
             // Telling everybody about single click.
             mouseInput.SingleClick();
+            mouseInput.onScreenClick.Invoke();
         }
 
         // If player is holding left mouse button.

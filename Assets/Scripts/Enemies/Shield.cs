@@ -121,7 +121,7 @@ public class Shield : Enemy
         }
     }
 
-    protected override void DestroyWhenDead()
+    public override void DestroyWhenDead()
     {
         if (hp <= 0)
         {
