@@ -81,7 +81,7 @@ public class PauseController : MonoBehaviour
         IsGamePaused = false;
         //joystick.SetActive(true);
         // Loading main menu.
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
 
         // Reseting the counter of all enemies on level.
         Spawner.TotalNumberOfEnemies = -1;
@@ -152,7 +152,9 @@ public class PauseController : MonoBehaviour
     // Loads first level from main menu.
     public void StartGame()
     {
-        SceneManager.LoadScene(nextSceneIndex);
+        // Loading latest uncomplited level.
+        int lastLevel = PlayerPrefs.GetInt("PlayerLastLevel");
+        SceneManager.LoadScene(lastLevel + 3);
     }
 
     // Loads any level from main menu.

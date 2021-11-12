@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Linq;
 
 public class LevelManager : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class LevelManager : MonoBehaviour
     private ScoreCounter scoreManager;
 
     private int oldRecord;
+    private int levelNum;
     private string currentSceneRecordTag;
 
     public void Awake()
@@ -64,7 +66,12 @@ public class LevelManager : MonoBehaviour
         wmVisual = WinMenu.GetComponent<WinMenuVisual>();
         Spawner.instance.onAllEnemiesDead += OnWin;
         scoreManager = ScoreCounter.instance;
-        currentSceneRecordTag = "rec_lvl" + SceneManager.GetActiveScene().buildIndex;
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (!int.TryParse(string.Join("", sceneName.Where(c => char.IsDigit(c))), out levelNum))
+        {
+            Debug.LogError("Can't get level number from scene with name: " + sceneName);
+        }
+        currentSceneRecordTag = "rec_lvl" + levelNum.ToString();
         oldRecord = PlayerPrefs.GetInt(currentSceneRecordTag);
         whichController = PlayerPrefs.GetString("ControllerType", "NoJoystick");
         isSmooth = Convert.ToBoolean(PlayerPrefs.GetInt("SmoothSetting", 0));
@@ -153,6 +160,14 @@ public class LevelManager : MonoBehaviour
         else
         {
             wmVisual.ShowOldRecord(oldRecord);
+        }
+
+        int lastLevelNum = PlayerPrefs.GetInt("PlayerLastLevel");
+
+        // Updating player's last completed level.
+        if (lastLevelNum < levelNum)
+        {
+            PlayerPrefs.SetInt("PlayerLastLevel", levelNum);
         }
     }
 

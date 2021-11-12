@@ -22,9 +22,14 @@ public class GameInit : MonoBehaviour
         if (!PlayerPrefs.HasKey("init"))
         {
             // Setting basic controls.
-            PlayerPrefs.SetString("ControllerType", "FloatJoystick");
+            // Input type.
+            PlayerPrefs.SetString("ControllerType", "NoJoystick");
+            // Bullet correction type.
             PlayerPrefs.SetString("CorrectionType", "linear");
+            // Smooth player's movement or not.
             PlayerPrefs.SetInt("SmoothSetting", 0);
+            // Level number where player finished his game.
+            PlayerPrefs.SetInt("PlayerLastLevel", 0);
 
             // Setting records of each level in build to 0.
             for (int i = 1; i < SceneManager.sceneCountInBuildSettings - 3; i++)
