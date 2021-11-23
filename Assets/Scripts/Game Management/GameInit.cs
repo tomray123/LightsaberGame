@@ -35,6 +35,7 @@ public class GameInit : MonoBehaviour
             for (int i = 1; i < SceneManager.sceneCountInBuildSettings - 3; i++)
             {
                 PlayerPrefs.SetInt("rec_lvl" + i.ToString(), 0);
+                PlayerPrefs.SetInt("stars_lvl" + i.ToString(), 0);
             }
             PlayerPrefs.SetInt("init", 1);
 

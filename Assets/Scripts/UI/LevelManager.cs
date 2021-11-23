@@ -39,6 +39,7 @@ public class LevelManager : MonoBehaviour
     private int oldRecord;
     private int levelNum;
     private string currentSceneRecordTag;
+    private string currentSceneStarsTag;
 
     public void Awake()
     {
@@ -72,6 +73,7 @@ public class LevelManager : MonoBehaviour
             Debug.LogError("Can't get level number from scene with name: " + sceneName);
         }
         currentSceneRecordTag = "rec_lvl" + levelNum.ToString();
+        currentSceneStarsTag = "stars_lvl" + levelNum.ToString();
         oldRecord = PlayerPrefs.GetInt(currentSceneRecordTag);
         whichController = PlayerPrefs.GetString("ControllerType", "NoJoystick");
         isSmooth = Convert.ToBoolean(PlayerPrefs.GetInt("SmoothSetting", 0));
@@ -141,14 +143,17 @@ public class LevelManager : MonoBehaviour
         if (currentScore >= scoreManager.scoreForThreeStars)
         {
             wmVisual.ActivateStars(3);
+            PlayerPrefs.SetInt(currentSceneStarsTag, 3);
         }
         else if (currentScore >= scoreManager.scoreForTwoStars)
         {
             wmVisual.ActivateStars(2);
+            PlayerPrefs.SetInt(currentSceneStarsTag, 2);
         }
         else
         {
             wmVisual.ActivateStars(1);
+            PlayerPrefs.SetInt(currentSceneStarsTag, 1);
         }
 
         wmVisual.UpdateScoreText(currentScore);

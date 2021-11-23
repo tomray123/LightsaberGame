@@ -192,7 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0.011764706, g: 0, b: 0.14901961, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1332,6 +1332,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7245769372423867314}
     m_Modifications:
+    - target: {fileID: 1663662460517116580, guid: 984015e6387bfaf4dba6246a3bdc2d9e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8413268552522522259, guid: 984015e6387bfaf4dba6246a3bdc2d9e, type: 3}
       propertyPath: m_Text
       value: 2
