@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameInit : MonoBehaviour
@@ -12,8 +10,12 @@ public class GameInit : MonoBehaviour
     [SerializeField]
     private int mainMenuSceneBuildIndex = 1;
 
+    private ILevelsData levelsData;
+
     private void Awake()
     {
+        levelsData = new LevelsDataPlayerPrefs();
+
         if (resetToInitialSettings)
         {
             PlayerPrefs.DeleteKey("init");
@@ -29,13 +31,13 @@ public class GameInit : MonoBehaviour
             // Smooth player's movement or not.
             PlayerPrefs.SetInt("SmoothSetting", 0);
             // Level number where player finished his game.
-            PlayerPrefs.SetInt("PlayerLastLevel", 0);
+            levelsData.SetLastLevelNumber(0);
 
             // Setting records of each level in build to 0.
             for (int i = 1; i < SceneManager.sceneCountInBuildSettings - 3; i++)
             {
-                PlayerPrefs.SetInt("rec_lvl" + i.ToString(), 0);
-                PlayerPrefs.SetInt("stars_lvl" + i.ToString(), 0);
+                levelsData.SetLevelRecord(i, 0);
+                levelsData.SetStarsRate(i, 0);
             }
             PlayerPrefs.SetInt("init", 1);
 

@@ -35,11 +35,9 @@ public class LevelManager : MonoBehaviour
     public static LevelManager instance;
 
     private ScoreCounter scoreManager;
-
+    private ILevelsData levelData;
     private int oldRecord;
     private int levelNum;
-    private string currentSceneRecordTag;
-    private string currentSceneStarsTag;
 
     public void Awake()
     {
@@ -56,6 +54,8 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        levelData = new LevelsDataPlayerPrefs();
+
         if (WinMenu)
         {
             winMenuAnimator = WinMenu.GetComponent<Animator>();
@@ -72,9 +72,7 @@ public class LevelManager : MonoBehaviour
         {
             Debug.LogError("Can't get level number from scene with name: " + sceneName);
         }
-        currentSceneRecordTag = "rec_lvl" + levelNum.ToString();
-        currentSceneStarsTag = "stars_lvl" + levelNum.ToString();
-        oldRecord = PlayerPrefs.GetInt(currentSceneRecordTag);
+        oldRecord = levelData.GetLevelRecord(levelNum);
         whichController = PlayerPrefs.GetString("ControllerType", "NoJoystick");
         isSmooth = Convert.ToBoolean(PlayerPrefs.GetInt("SmoothSetting", 0));
         switch (whichController)
@@ -143,36 +141,36 @@ public class LevelManager : MonoBehaviour
         if (currentScore >= scoreManager.scoreForThreeStars)
         {
             wmVisual.ActivateStars(3);
-            PlayerPrefs.SetInt(currentSceneStarsTag, 3);
+            levelData.SetStarsRate(levelNum, 3);
         }
         else if (currentScore >= scoreManager.scoreForTwoStars)
         {
             wmVisual.ActivateStars(2);
-            PlayerPrefs.SetInt(currentSceneStarsTag, 2);
+            levelData.SetStarsRate(levelNum, 2);
         }
         else
         {
             wmVisual.ActivateStars(1);
-            PlayerPrefs.SetInt(currentSceneStarsTag, 1);
+            levelData.SetStarsRate(levelNum, 1);
         }
 
         wmVisual.UpdateScoreText(currentScore);
 
         if (currentScore > oldRecord)
         {
-            PlayerPrefs.SetInt(currentSceneRecordTag, currentScore);
+            levelData.SetLevelRecord(levelNum, currentScore);
         }
         else
         {
             wmVisual.ShowOldRecord(oldRecord);
         }
 
-        int lastLevelNum = PlayerPrefs.GetInt("PlayerLastLevel");
+        int lastLevelNum = levelData.GetLastLevelNumber();
 
         // Updating player's last completed level.
         if (lastLevelNum < levelNum)
         {
-            PlayerPrefs.SetInt("PlayerLastLevel", levelNum);
+            levelData.SetLastLevelNumber(levelNum);
         }
     }
 

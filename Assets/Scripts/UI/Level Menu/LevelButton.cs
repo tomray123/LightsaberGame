@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
-public class LevelButton : MonoBehaviour
+public class LevelButton : MonoBehaviour, ILevelButton, IAwakeInit
 {
     // GameObject containing level stars rate.
     [SerializeField]
@@ -23,14 +24,17 @@ public class LevelButton : MonoBehaviour
     // Text component with level number.
     private Text levelNumText;
 
-    private void Awake()
-    {
-        InitializeData();
-    }
+    // Stars gameobjects.
+    private List<GameObject> stars = new List<GameObject>();
 
     private void OnDestroy()
     {
         UnSubscribeOnButtonEvent();
+    }
+
+    public void OnAwakeInit()
+    {
+        InitializeData();
     }
 
     private void InitializeData()
@@ -46,9 +50,12 @@ public class LevelButton : MonoBehaviour
         // Getting button component.
         buttonComponent = button.GetComponent<Button>();
 
-        // Setting lock state.
-        starsUI.SetActive(true);
-        lockedStateUI.SetActive(false);
+        // Getting stars.
+        Transform starsHolder = starsUI.transform.GetChild(1);
+        for (int i = 0; i < starsHolder.childCount; i++)
+        {
+            stars.Add(starsHolder.GetChild(i).gameObject);
+        }
 
         sceneLoader = new LevelSwitcher();
 
@@ -69,5 +76,31 @@ public class LevelButton : MonoBehaviour
     private void UnSubscribeOnButtonEvent()
     {
         buttonComponent.onClick.RemoveListener(loadSceneWrapper);
+    }
+
+    // Sets button opened state.
+    public void OpenButton()
+    {
+        // Setting opened state.
+        starsUI.SetActive(true);
+        lockedStateUI.SetActive(false);
+    }
+
+    // Sets button closed state.
+    public void CloseButton()
+    {
+        // Setting lock state.
+        starsUI.SetActive(false);
+        lockedStateUI.SetActive(true);
+    }
+
+    // Sets button rating with stars.
+    public void SetButtonRate(int starsNumber = 1)
+    {
+        starsUI.SetActive(true);
+        for (int i = 0; i < starsNumber; i++)
+        {
+            stars[i].SetActive(true);
+        }
     }
 }
