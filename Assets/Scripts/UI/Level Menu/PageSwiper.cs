@@ -6,21 +6,25 @@ using UnityEngine.EventSystems;
 public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     [SerializeField]
-    public float percentThreshold = 0.2f;
+    private float percentThreshold = 0.2f;
     [SerializeField]
-    public float easing = 0.5f;
+    private float easing = 0.5f;
     [SerializeField]
-    public int totalPages = 1;
+    private int totalPages = 1;
+    [SerializeField]
+    private Canvas canvas;
 
     private Vector3 panelLocation;
     private int currentPage = 1;
     private Camera cam;
+    private int localWidth;
 
     // Start is called before the first frame update
     void Start()
     {
         panelLocation = transform.position;
         cam = Camera.main;
+        localWidth = (int)(Screen.width / canvas.scaleFactor);
     }
 
     public void OnDrag(PointerEventData data)
@@ -34,19 +38,21 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     public void OnEndDrag(PointerEventData data)
     {
         panelLocation = transform.position;
-        /*float percentage = (data.pressPosition.x - data.position.x) / Screen.width;
+        float percentage = (data.pressPosition.x - data.position.x) / Screen.width;
         if (Mathf.Abs(percentage) >= percentThreshold)
         {
             Vector3 newLocation = panelLocation;
             if (percentage > 0 && currentPage < totalPages)
             {
                 currentPage++;
-                newLocation += new Vector3(-Screen.width, 0, 0);
+                newLocation += cam.ScreenToWorldPoint(new Vector3(-localWidth, 0, 0));
+                print("Old location " + transform.position + " New location " + newLocation);  // REMOVE
             }
             else if (percentage < 0 && currentPage > 1)
             {
                 currentPage--;
-                newLocation += new Vector3(Screen.width, 0, 0);
+                newLocation += cam.ScreenToWorldPoint(new Vector3(localWidth, 0, 0));
+                print("Old location " + transform.position + " New location " + newLocation);  // REMOVE
             }
             StartCoroutine(SmoothMove(transform.position, newLocation, easing));
             panelLocation = newLocation;
@@ -54,7 +60,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
         else
         {
             StartCoroutine(SmoothMove(transform.position, panelLocation, easing));
-        }*/
+        }
     }
 
     IEnumerator SmoothMove(Vector3 startpos, Vector3 endpos, float seconds)

@@ -15,7 +15,6 @@ public class LevelButton : MonoBehaviour, ILevelButton, IAwakeInit
     private GameObject button;
 
     // Level Menu logic.
-    [SerializeField]
     private ISceneLoader sceneLoader;
 
     // Button component.
