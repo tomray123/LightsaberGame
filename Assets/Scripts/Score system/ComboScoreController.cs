@@ -33,14 +33,9 @@ public class ComboScoreController : MonoBehaviour
 
     ScoreVisual visual;
 
-    [HideInInspector]
-    public float comboScore = 0;
-
-    [HideInInspector]
-    public float comboScorePercent = 0;
-
-    [HideInInspector]
-    public int comboFactor = 1;
+    public float ComboScore { get; set; }
+    public int ComboFactor { get; private set; }
+    public float ComboScorePercent { get; private set; }
 
     // float decreasePercent = 0;
     // float decreaseVal = 0;
@@ -53,9 +48,9 @@ public class ComboScoreController : MonoBehaviour
             instance = this;
         }
 
-        comboScore = 0;
-        comboFactor = 1;
-        comboScorePercent = 0;
+        ComboScore = 0;
+        ComboFactor = 1;
+        ComboScorePercent = 0;
     }
 
     private void Start()
@@ -67,8 +62,12 @@ public class ComboScoreController : MonoBehaviour
         }
         factorItems.Push(factorTable[0]);
         visual = ScoreVisual.instance;
+
+        // Updating visual;
+        visual.UpdateCombo(ComboScorePercent, ComboFactor);
     }
 
+    /*
     private void Update()
     {
         if (!PauseController.IsGamePaused)
@@ -79,6 +78,7 @@ public class ComboScoreController : MonoBehaviour
             visual.UpdateCombo(comboScorePercent, comboFactor);
         }
     }
+    */
 
     public void DecreaseComboScore()
     {
@@ -96,10 +96,10 @@ public class ComboScoreController : MonoBehaviour
         decreaseVal = timeFineNumber;
         */
 
-        comboScore -= factorItems.Peek().decreaseVal * Time.deltaTime;
+        ComboScore -= factorItems.Peek().decreaseVal * Time.deltaTime;
 
-        if (comboScore < 0)
-            comboScore = 0;
+        if (ComboScore < 0)
+            ComboScore = 0;
 
         CalculateFactor();
     }
@@ -107,48 +107,51 @@ public class ComboScoreController : MonoBehaviour
     //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
     public void onPlayerHit()
     {
-        int percent = (int)(comboScore * (playerHitFinePercent / 100));
+        int percent = (int)(ComboScore * (playerHitFinePercent / 100));
 
         if (percent > playerHitFineNumber)
         {
-            comboScore -= percent;
+            ComboScore -= percent;
         }
         else
         {
-            comboScore -= playerHitFineNumber;
+            ComboScore -= playerHitFineNumber;
         }
 
-        if (comboScore < 0)
+        if (ComboScore < 0)
         {
-            comboScore = 0;
+            ComboScore = 0;
         }
 
         CalculateFactor();
+
+        // Updating visual;
+        visual.UpdateCombo(ComboScorePercent, ComboFactor);
     }
 
     public void CalculateScorePercent(int min, int max, float currentScore)
     {
-        comboScorePercent = (currentScore - min) / (float)(max - min);
+        ComboScorePercent = (currentScore - min) / (float)(max - min);
     }
 
     public void CalculateFactor()
     {
-        if (factorItems.Peek().higherBorder < comboScore)
+        if (factorItems.Peek().higherBorder < ComboScore)
         {
             if(buffer.Count > 1)
             {
                 factorItems.Push(buffer.Pop());
             }
         }
-        if (factorItems.Peek().lowerBorder > comboScore)
+        if (factorItems.Peek().lowerBorder > ComboScore)
         {
             if(factorItems.Count > 1)
             {
                 buffer.Push(factorItems.Pop());
             }
         }
-        comboFactor = factorItems.Peek().factor;
+        ComboFactor = factorItems.Peek().factor;
  
-        CalculateScorePercent(factorItems.Peek().lowerBorder, factorItems.Peek().higherBorder, comboScore);
+        CalculateScorePercent(factorItems.Peek().lowerBorder, factorItems.Peek().higherBorder, ComboScore);
     }
 }
