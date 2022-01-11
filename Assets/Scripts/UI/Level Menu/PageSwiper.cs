@@ -9,10 +9,9 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     private float percentThreshold = 0.2f;
     [SerializeField]
     private float easing = 0.5f;
-    [SerializeField]
-    private Canvas canvas;
 
     private Vector3 lastPanelLocation;
+    private Canvas canvas;
     private RectTransform levelHolderTransform;
     private int totalPages = 1;
     private int currentPage = 1;
@@ -41,6 +40,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         // Calculating deviation percent.
         float percentage = (data.pressPosition.x - data.position.x) / Screen.width;
+
         if (Mathf.Abs(percentage) >= percentThreshold)
         {
             Vector3 newLocation = lastPanelLocation;
@@ -66,6 +66,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
             // Returning to the current page.
             StartCoroutine(SmoothMove(levelHolderTransform.anchoredPosition, lastPanelLocation, easing));
         }
+        
     }
 
     IEnumerator SmoothMove(Vector3 startpos, Vector3 endpos, float seconds)
@@ -73,7 +74,7 @@ public class PageSwiper : MonoBehaviour, IDragHandler, IEndDragHandler
         float t = 0f;
         while (t <= 1.0)
         {
-            t += Time.deltaTime / seconds;
+            t += Time.unscaledDeltaTime / seconds;
             levelHolderTransform.anchoredPosition = Vector3.Lerp(startpos, endpos, Mathf.SmoothStep(0f, 1f, t));
             yield return null;
         }
