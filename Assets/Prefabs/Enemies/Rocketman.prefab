@@ -309,6 +309,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scorePrice: 200
+  visualEffectShootTag: shoot
+  visualEffectHitTag: hitspark
+  visualEffectExplosionTag: destroy
   parameters:
   - name: Start laser angle
     value: 30
@@ -332,11 +335,14 @@ MonoBehaviour:
   hitPosition: {fileID: 82853415359762122}
   timeToFirstShoot: 0.8
   timeToShoot: 1
-  startHp: 100
+  startHp: 200
+  hp: 0
   damage: 300
   spawnIndex: 0
   saberDamageCooldown: 3
   isSaberDangerous: 1
+  startLoop: 1
+  isJustBorn: 1
   isKilled: 0
   rocketPreparingAnimationEase: 1
 --- !u!114 &4867009525818934820

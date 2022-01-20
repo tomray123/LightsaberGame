@@ -446,11 +446,14 @@ MonoBehaviour:
   hitPosition: {fileID: 2498387848666298298}
   timeToFirstShoot: 0.8
   timeToShoot: 1
-  startHp: 100
+  startHp: 200
+  hp: 0
   damage: 300
   spawnIndex: 0
   saberDamageCooldown: 3
   isSaberDangerous: 1
+  startLoop: 1
+  isJustBorn: 1
   isKilled: 0
 --- !u!114 &9066050030869066527
 MonoBehaviour:
