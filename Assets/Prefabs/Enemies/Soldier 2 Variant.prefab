@@ -12,6 +12,10 @@ PrefabInstance:
       value: rBullet
       objectReference: {fileID: 0}
     - target: {fileID: -1311627495949898077, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+      propertyPath: timeToShoot
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -1311627495949898077, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
       propertyPath: parameters.Array.data[0].value
       value: 3
       objectReference: {fileID: 0}
