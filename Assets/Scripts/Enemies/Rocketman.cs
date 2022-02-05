@@ -30,10 +30,16 @@ public class Rocketman : Enemy
 
     protected override void BaseInitialization()
     {
-        leftLine = transform.GetChild(0).GetComponent<LineRenderer>();
+        GameObject leftLineObject = transform.GetChild(0).gameObject;
+        leftLineObject.SetActive(true);
+        GameObject rightLineObject = transform.GetChild(1).gameObject;
+        rightLineObject.SetActive(true);
+
+        leftLine = leftLineObject.GetComponent<LineRenderer>();
         leftLine.enabled = false;
-        rightLine = transform.GetChild(1).GetComponent<LineRenderer>();
+        rightLine = rightLineObject.GetComponent<LineRenderer>();
         rightLine.enabled = false;
+
         isSaberDangerous = true;
         transform.up = target.transform.position - transform.position;
         isJustBorn = true;
@@ -88,6 +94,7 @@ public class Rocketman : Enemy
         Vector3 endLinePosition = new Vector3(length * Mathf.Sin(newAngle) + startX, length * Mathf.Cos(newAngle) + startY, 0f);
         line.SetPosition(1, endLinePosition);
         line.enabled = true;
+        
 
         while (timeElapsed < duration)
         {

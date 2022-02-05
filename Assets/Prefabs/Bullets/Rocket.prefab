@@ -178,7 +178,7 @@ MonoBehaviour:
   damage: 300
   damageRadius: 1
   tapRadius: 0.8
-  reflectAreaRadius: 4
+  reflectAreaRadius: 2
   explosion: {fileID: 3236395758418378455, guid: 44bb0f903658e3d4e8dfbd4a9530820e, type: 3}
   smartphoneInput: {fileID: 0}
   mouseInput: {fileID: 0}
