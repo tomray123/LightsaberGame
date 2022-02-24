@@ -578,57 +578,228 @@ MonoBehaviour:
     p7Value: 0
     p8Name: none
     p8Value: 0
-  - obj: {fileID: 751141338283610165, guid: 22a5cc7f15fd3ef46ab84a92a6d735f4, type: 3}
-    spawnPos: {fileID: 221901764}
-    spawnPeriod: 1
-    p1Name: Start laser angle
-    p1Value: 30
-    p2Name: End laser angle
-    p2Value: 0
-    p3Name: Init time
-    p3Value: 1
-    p4Name: Aiming Time
-    p4Value: 8
-    p5Name: Cooldown time
-    p5Value: 4
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 463974577}
+    spawnPeriod: 5
+    p1Name: Time to first shot
+    p1Value: 6
+    p2Name: Shoot interval
+    p2Value: 6
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
     p6Name: none
     p6Value: 0
     p7Name: none
     p7Value: 0
     p8Name: none
     p8Value: 0
-  - obj: {fileID: 751141338283610165, guid: 22a5cc7f15fd3ef46ab84a92a6d735f4, type: 3}
-    spawnPos: {fileID: 1340447508}
-    spawnPeriod: 1
-    p1Name: Start laser angle
-    p1Value: 30
-    p2Name: End laser angle
-    p2Value: 0
-    p3Name: Init time
-    p3Value: 1
-    p4Name: Aiming Time
-    p4Value: 8
-    p5Name: Cooldown time
-    p5Value: 4
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 463974579}
+    spawnPeriod: 5
+    p1Name: Time to first shot
+    p1Value: 6
+    p2Name: Shoot interval
+    p2Value: 6
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
     p6Name: none
     p6Value: 0
     p7Name: none
     p7Value: 0
     p8Name: none
     p8Value: 0
-  - obj: {fileID: 751141338283610165, guid: 22a5cc7f15fd3ef46ab84a92a6d735f4, type: 3}
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 463974578}
+    spawnPeriod: 5
+    p1Name: Time to first shot
+    p1Value: 5
+    p2Name: Shoot interval
+    p2Value: 5
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 463974573}
+    spawnPeriod: 5
+    p1Name: Time to first shot
+    p1Value: 5
+    p2Name: Shoot interval
+    p2Value: 5
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 463974574}
+    spawnPeriod: 5
+    p1Name: Time to first shot
+    p1Value: 6
+    p2Name: Shoot interval
+    p2Value: 6
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 463974572}
+    spawnPeriod: 5
+    p1Name: Time to first shot
+    p1Value: 6
+    p2Name: Shoot interval
+    p2Value: 6
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 1648190210}
+    spawnPeriod: 5
+    p1Name: Time to first shot
+    p1Value: 5
+    p2Name: Shoot interval
+    p2Value: 5
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 463974575}
+    spawnPeriod: 5
+    p1Name: Time to first shot
+    p1Value: 5
+    p2Name: Shoot interval
+    p2Value: 5
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
     spawnPos: {fileID: 972420488}
-    spawnPeriod: 1
-    p1Name: Start laser angle
-    p1Value: 30
-    p2Name: End laser angle
-    p2Value: 0
-    p3Name: Init time
-    p3Value: 1
-    p4Name: Aiming Time
-    p4Value: 8
-    p5Name: Cooldown time
-    p5Value: 4
+    spawnPeriod: 5
+    p1Name: Time to first shot
+    p1Value: 6
+    p2Name: Shoot interval
+    p2Value: 6
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 1340447508}
+    spawnPeriod: 5
+    p1Name: Time to first shot
+    p1Value: 6
+    p2Name: Shoot interval
+    p2Value: 6
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 221901764}
+    spawnPeriod: 5
+    p1Name: Time to first shot
+    p1Value: 5
+    p2Name: Shoot interval
+    p2Value: 5
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
+    p6Name: none
+    p6Value: 0
+    p7Name: none
+    p7Value: 0
+    p8Name: none
+    p8Value: 0
+  - obj: {fileID: 16898945102351504, guid: 224fa4205937bc44aac348d4d5409bb7, type: 3}
+    spawnPos: {fileID: 463974576}
+    spawnPeriod: 5
+    p1Name: Time to first shot
+    p1Value: 5
+    p2Name: Shoot interval
+    p2Value: 5
+    p3Name: Flashes duration
+    p3Value: 2
+    p4Name: none
+    p4Value: 0
+    p5Name: none
+    p5Value: 0
     p6Name: none
     p6Value: 0
     p7Name: none
