@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SubMenuController : MonoBehaviour
 {
@@ -10,8 +11,12 @@ public class SubMenuController : MonoBehaviour
     SubMenuData curSubMenuData;
     SubMenuData nextSubMenuData;
 
+    private ILevelsData levelsData;
+
     private void Start()
     {
+        levelsData = new LevelsDataPlayerPrefs();
+
         if (currentMenu)
         {
             curSubMenuData = currentMenu.GetComponent<SubMenuData>();
@@ -43,5 +48,12 @@ public class SubMenuController : MonoBehaviour
         nextMenu = curSubMenuData.whoOpenedMe;
         curSubMenuData.whoOpenedMe = null;
         nextMenu.SetActive(true);
+    }
+
+    public void SwitchToDevMode()
+    {
+        int levelCount = SceneManager.sceneCountInBuildSettings - 4;
+        // Level number where player finished his game.
+        levelsData.SetLastLevelNumber(levelCount);
     }
 }
