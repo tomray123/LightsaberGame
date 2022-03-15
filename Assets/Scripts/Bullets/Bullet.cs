@@ -36,10 +36,12 @@ public class Bullet : KillingObjects, IPooledObject
 
     private VisualEffects ve;
 
+    private GameSettingsController gameSettings = new GameSettingsController();
+
     private void Start()
     {
         reflectCount = 0;
-        whichCorrection = PlayerPrefs.GetString("CorrectionType", "linear");
+        whichCorrection = gameSettings.GetCorrectionType();
 
         direction = target.transform.position - transform.position;
         transform.up = direction;
@@ -60,7 +62,7 @@ public class Bullet : KillingObjects, IPooledObject
     public void OnObjectSpawn()
     {
         reflectCount = 0;
-        whichCorrection = PlayerPrefs.GetString("CorrectionType", "linear");
+        whichCorrection = gameSettings.GetCorrectionType();
 
         direction = target.transform.position - transform.position;
         transform.up = direction;

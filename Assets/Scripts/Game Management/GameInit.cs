@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameInit : MonoBehaviour
@@ -10,11 +11,19 @@ public class GameInit : MonoBehaviour
     [SerializeField]
     private int mainMenuSceneBuildIndex = 1;
 
+    private GameSettingsSO defaultGameSettings;
     private ILevelsData levelsData;
 
     private void Awake()
     {
+        GameSettingsController gameSettings = new GameSettingsController();
         levelsData = new LevelsDataPlayerPrefs();
+        defaultGameSettings = Resources.Load<GameSettingsSO>("ScriptableObjects/Default Game Settings");
+        if (!defaultGameSettings)
+        {
+            Debug.LogError("Can't load Default Game Settings from VisualEffectsInit.");
+            return;
+        }
 
         if (resetToInitialSettings)
         {
@@ -25,13 +34,15 @@ public class GameInit : MonoBehaviour
         {
             // Setting basic controls.
             // Input type.
-            PlayerPrefs.SetString("ControllerType", "NoJoystick");
+            gameSettings.SetControllerType(defaultGameSettings.ControllerType);
             // Bullet correction type.
-            PlayerPrefs.SetString("CorrectionType", "linear");
+            gameSettings.SetCorrectionType(defaultGameSettings.CorrectionType);
             // Smooth player's movement or not.
-            PlayerPrefs.SetInt("SmoothSetting", 0);
+            gameSettings.SetSmoothSetting(defaultGameSettings.IsSmooth);
             // Level number where player finished his game.
             levelsData.SetLastLevelNumber(0);
+            // Visual effects are enabled by default.
+            gameSettings.SetVisualEffects(defaultGameSettings.GraphicsEnabled);
 
             // Setting records of each level in build to 0.
             for (int i = 1; i < SceneManager.sceneCountInBuildSettings - 3; i++)

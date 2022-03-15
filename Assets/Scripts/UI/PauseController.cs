@@ -152,8 +152,9 @@ public class PauseController : MonoBehaviour
     // Loads first level from main menu.
     public void StartGame()
     {
+        ILevelsData levelsData = new LevelsDataPlayerPrefs();
         // Loading latest uncomplited level.
-        int lastLevel = PlayerPrefs.GetInt("PlayerLastLevel");
+        int lastLevel = levelsData.GetLastLevelNumber();
         SceneManager.LoadScene(lastLevel + 3);
     }
 

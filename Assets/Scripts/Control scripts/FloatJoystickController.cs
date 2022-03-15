@@ -21,15 +21,15 @@ public class FloatJoystickController : JoystickController
         if (!PauseController.IsGamePaused)
         {
             // Checking for device used in the game (Can be directly set from the GameSettings script).
-            switch (GameSettings.device)
+            switch (gameSettings.TargetDevice)
             {
-                case GameSettings.Device.PC:
+                case Device.PC:
 
                     WhatToDoPC();
 
                     break;
 
-                case GameSettings.Device.Smartphone:
+                case Device.Smartphone:
 
                     WhatToDoSmartphone();
 

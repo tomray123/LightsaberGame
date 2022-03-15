@@ -21,9 +21,19 @@ public class MenuController : MonoBehaviour
 	public GameObject smoothOnText;
 	public GameObject smoothOffText;
 
+	public Toggle visualEffects;
+	public GameObject visualEffectsOnText;
+	public GameObject visualEffectsOffText;
+	[SerializeField]
+	private GameObject visualEffectsPrefab;
+
 	public string whichController;
 
-	public bool isSmooth;
+	private bool isSmooth;
+
+	private bool isGraphicsEnabled;
+
+	private GameSettingsController gameSettings = new GameSettingsController();
 
 	public GameObject SettingsMenu;
 
@@ -34,9 +44,10 @@ public class MenuController : MonoBehaviour
 
 	private void Start()
 	{
-		whichController = PlayerPrefs.GetString("ControllerType", "FloatJoystick");
-		whichCorrection = PlayerPrefs.GetString("CorrectionType", "linear");
-		isSmooth = Convert.ToBoolean(PlayerPrefs.GetInt("SmoothSetting", 0));
+		whichController = gameSettings.GetControllerType();
+		whichCorrection = gameSettings.GetCorrectionType();
+		isSmooth = gameSettings.GetSmoothSetting();
+		isGraphicsEnabled = gameSettings.GetVisualEffects();
 
 		switch (whichController)
 		{
@@ -95,6 +106,23 @@ public class MenuController : MonoBehaviour
 			cb.selectedColor = disableColor;
 			smooth.colors = cb;
 		}
+
+		if (isGraphicsEnabled)
+		{
+			visualEffectsOnText.SetActive(true);
+			visualEffectsOffText.SetActive(false);
+			cb.normalColor = activeColor;
+			cb.selectedColor = activeColor;
+			visualEffects.colors = cb;
+		}
+		else
+		{
+			visualEffectsOnText.SetActive(false);
+			visualEffectsOffText.SetActive(true);
+			cb.normalColor = disableColor;
+			cb.selectedColor = disableColor;
+			visualEffects.colors = cb;
+		}
 	}
 
 	public void ChangeSmooth(Toggle pressed)
@@ -112,7 +140,7 @@ public class MenuController : MonoBehaviour
 			cb.selectedColor = activeColor;
 			pressed.colors = cb;
 			isSmooth = true;
-			PlayerPrefs.SetInt("SmoothSetting", 1);
+			gameSettings.SetSmoothSetting(true);
 		}
 		else
 		{
@@ -122,9 +150,39 @@ public class MenuController : MonoBehaviour
 			cb.selectedColor = disableColor;
 			pressed.colors = cb;
 			isSmooth = false;
-			PlayerPrefs.SetInt("SmoothSetting", 0);
+			gameSettings.SetSmoothSetting(false);
 		}
 	}
+
+	public void ChangeVisualEffects(Toggle pressed)
+	{
+		Color disableColor = new Color(0.5568628f, 0.5568628f, 0.5568628f, 1f);
+		Color activeColor = new Color(1f, 1f, 1f, 1f);
+
+		ColorBlock cb = pressed.colors;
+
+		if (cb.normalColor == disableColor)
+		{
+			visualEffectsOnText.SetActive(true);
+			visualEffectsOffText.SetActive(false);
+			cb.normalColor = activeColor;
+			cb.selectedColor = activeColor;
+			pressed.colors = cb;
+			gameSettings.SetVisualEffects(true);
+			visualEffectsPrefab.SetActive(true);
+		}
+		else
+		{
+			visualEffectsOnText.SetActive(false);
+			visualEffectsOffText.SetActive(true);
+			cb.normalColor = disableColor;
+			cb.selectedColor = disableColor;
+			pressed.colors = cb;
+			gameSettings.SetVisualEffects(false);
+			visualEffectsPrefab.SetActive(false);
+		}
+	}
+
 	public void ChangeFlightCorrection()
 	{
 		switch (whichCorrection)
@@ -146,7 +204,7 @@ public class MenuController : MonoBehaviour
 				break;
 		}
 
-		PlayerPrefs.SetString("CorrectionType", whichCorrection);
+		gameSettings.SetCorrectionType(whichCorrection);
 	}
 
 	public void ChangeControllerLeft()
@@ -178,7 +236,7 @@ public class MenuController : MonoBehaviour
 				break;
 		}
 
-		PlayerPrefs.SetString("ControllerType", whichController);
+		gameSettings.SetControllerType(whichController);
 	}
 
 	public void ChangeControllerRight()
@@ -210,6 +268,6 @@ public class MenuController : MonoBehaviour
 				break;
 		}
 
-		PlayerPrefs.SetString("ControllerType", whichController);
+		gameSettings.SetControllerType(whichController);
 	}
 }

@@ -12,6 +12,8 @@ public class BaseInputController : MonoBehaviour
 
     public GameObject throwIcon;
 
+    protected GameSettingsSO gameSettings;
+
     // Rotation direction of the character.
     public Vector3 targetVector;
 
@@ -34,6 +36,13 @@ public class BaseInputController : MonoBehaviour
 
     public void BaseInitialization()
     {
+        gameSettings = Resources.Load<GameSettingsSO>("ScriptableObjects/Default Game Settings");
+        if (!gameSettings)
+        {
+            Debug.LogError("Can't load GameSetting from BaseInputController.");
+            return;
+        }
+
         player = LevelManager.instance.player;
         plController = player.GetComponent<PlayerController>();
         Transform saber = player.transform.GetChild(0);

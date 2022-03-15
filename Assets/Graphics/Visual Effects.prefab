@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 8299329962689509603}
   - component: {fileID: 8299329962689509612}
   - component: {fileID: -5643790566936815634}
+  - component: {fileID: 5460466663329857689}
   m_Layer: 0
   m_Name: Visual Effects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8299329962689509603
 Transform:
   m_ObjectHideFlags: 0
@@ -66,3 +67,15 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 2a65a66b51bd6dd428d4c03973b4749f, type: 2}
+--- !u!114 &5460466663329857689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8299329962689509613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66634240710d9454f91ca97f73adc3a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

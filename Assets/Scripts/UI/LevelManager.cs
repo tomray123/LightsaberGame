@@ -54,6 +54,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
+        GameSettingsController gameSettings = new GameSettingsController();
         levelData = new LevelsDataPlayerPrefs();
 
         if (WinMenu)
@@ -73,8 +74,8 @@ public class LevelManager : MonoBehaviour
             Debug.LogError("Can't get level number from scene with name: " + sceneName);
         }
         oldRecord = levelData.GetLevelRecord(levelNum);
-        whichController = PlayerPrefs.GetString("ControllerType", "NoJoystick");
-        isSmooth = Convert.ToBoolean(PlayerPrefs.GetInt("SmoothSetting", 0));
+        whichController = gameSettings.GetControllerType();
+        isSmooth = gameSettings.GetSmoothSetting();
         switch (whichController)
         {
             case "NoJoystick":
