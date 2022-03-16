@@ -182,6 +182,7 @@ MonoBehaviour:
   visualEffectHitTag: hitspark
   visualEffectExplosionTag: destroy
   onShootEventChannel: {fileID: 11400000, guid: 8336f53287d1c434cad7e927e7065161, type: 2}
+  onEnemyDestroyEventChannel: {fileID: 11400000, guid: 5f3c7118233f6bc43879e3937d11ed96, type: 2}
   parameters:
   - name: Time to first shot
     value: 4

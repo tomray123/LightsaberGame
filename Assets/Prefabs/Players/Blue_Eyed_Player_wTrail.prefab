@@ -248,9 +248,6 @@ MonoBehaviour:
   _moveForwardEase: 3
   _moveBackwardEase: 2
   _targetColor: {r: 0, g: 0, b: 0, a: 0}
-  _scaleMultiplier: 3
-  _colorChangeDuration: 1
-  _doTweenType: 0
   isThrowTweenCompleted: 1
 --- !u!114 &2899668349460605824
 MonoBehaviour:
@@ -266,6 +263,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   factor: 1
   damage: 100
+  reflectionEventChannel: {fileID: 11400000, guid: eb009c82327ee404497d5453a61c4c0d, type: 2}
 --- !u!1 &7280439939109321282
 GameObject:
   m_ObjectHideFlags: 0

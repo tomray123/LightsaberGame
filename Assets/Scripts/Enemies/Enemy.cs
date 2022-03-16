@@ -30,6 +30,9 @@ public class Enemy : ScorableObjects
 
     [Space]
     [SerializeField] protected VoidEventChannelSO onShootEventChannel;
+    [SerializeField] protected VoidEventChannelSO onEnemyDestroyEventChannel;
+
+    [Space]
 
     // List of enemy parameters.
     [SerializeField]
@@ -107,6 +110,8 @@ public class Enemy : ScorableObjects
     {
         // Add visual effect for destroy.
         visEffects.ActivateVisualEffect(visualEffectExplosionTag, transform.position, transform.rotation);
+        // Raising event about destroying.
+        onEnemyDestroyEventChannel.RaiseEvent();
 
         if (OnSpawnObjectDeath != null)
         {
