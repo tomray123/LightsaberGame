@@ -18,9 +18,11 @@ public class AudioCue : MonoBehaviour
 	private IEnumerator Start()
 	{
 		if (_playOnStart)
+        {
 			// Waiting for end of frame in order to wait for initialization of all objects in scene.
 			yield return new WaitForEndOfFrame();
 			PlayAudioCue();
+		}
 	}
 
 	public void PlayAudioCue()

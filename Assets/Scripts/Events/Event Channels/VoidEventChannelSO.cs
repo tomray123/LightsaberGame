@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New VoidEventChannel", menuName = "ScriptableObjects/Events/VoidEventChannel")]
 public class VoidEventChannelSO : ScriptableObject
 {
-	public UnityEvent onVoidEvent;
+	public UnityAction onVoidEvent;
 
 	public void RaiseEvent()
 	{

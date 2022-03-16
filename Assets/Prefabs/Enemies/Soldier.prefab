@@ -149,7 +149,7 @@ BoxCollider2D:
   m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.007832408, y: -0.39157724}
@@ -181,6 +181,7 @@ MonoBehaviour:
   visualEffectShootTag: shoot
   visualEffectHitTag: hitspark
   visualEffectExplosionTag: destroy
+  onShootEventChannel: {fileID: 11400000, guid: 8336f53287d1c434cad7e927e7065161, type: 2}
   parameters:
   - name: Time to first shot
     value: 4
@@ -205,10 +206,13 @@ MonoBehaviour:
   timeToFirstShoot: 2
   timeToShoot: 4
   startHp: 100
+  hp: 0
   damage: 100
   spawnIndex: 0
   saberDamageCooldown: 3
   isSaberDangerous: 1
+  startLoop: 1
+  isJustBorn: 1
   isKilled: 0
 --- !u!114 &3478034142124426827
 MonoBehaviour:

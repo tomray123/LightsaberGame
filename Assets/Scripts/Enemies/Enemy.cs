@@ -29,7 +29,7 @@ public class Enemy : ScorableObjects
     public string visualEffectExplosionTag = "destroy";
 
     [Space]
-    [SerializeField] private VoidEventChannelSO onShootEventChannel;
+    [SerializeField] protected VoidEventChannelSO onShootEventChannel;
 
     // List of enemy parameters.
     [SerializeField]
@@ -153,6 +153,9 @@ public class Enemy : ScorableObjects
         Bullet bulletClone = pool.SpawnFromPool(bullet, transform.position, transform.rotation).GetComponent<Bullet>();
         bulletClone.damage += damage;
         bulletClone.shooter = gameObject;
+
+        // Raising an onShoot event.
+        onShootEventChannel.RaiseEvent();
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)

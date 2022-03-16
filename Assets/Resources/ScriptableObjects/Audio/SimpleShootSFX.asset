@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95ceb08f1345bdd4e9acdd2ab883758c, type: 3}
-  m_Name: LevelMusicRandom
+  m_Name: SimpleShootSFX
   m_EditorClassIdentifier: 
   _audioClipGroup:
-    sequenceMode: 3
+    sequenceMode: 2
     audioClips:
-    - {fileID: 8300000, guid: e758866b7d4105c47991e9c984e93ff8, type: 3}
-    - {fileID: 8300000, guid: 4e2d9135aabb5654e992394dad403277, type: 3}
-  isLoop: 1
+    - {fileID: 8300000, guid: 5a85a7c38ca17df45b990ecee9bf5c92, type: 3}
+  isLoop: 0
