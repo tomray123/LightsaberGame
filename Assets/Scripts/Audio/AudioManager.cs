@@ -32,15 +32,20 @@ public class AudioManager : MonoBehaviour
 
     public void PlayAudioCue(AudioCueSO audioCue)
 	{
-        SoundEmitter soundEmitter = pool.SpawnFromPool(soundEmitterPoolTag, transform.position, Quaternion.identity).GetComponent<SoundEmitter>();
+        AudioClip[] clipsToPlay = audioCue.GetClips();
+        int nOfClips = clipsToPlay.Length;
 
-		if (soundEmitter != null)
-		{
-            soundEmitter.PlayAudioClip(audioCue.AudioClip, audioCue.IsLoop);
-			if (!audioCue.IsLoop)
-				soundEmitter.OnSoundFinishedPlaying += OnSoundEmitterFinishedPlaying;
-		}
-	}
+        for (int i = 0; i < nOfClips; i++)
+        {
+            SoundEmitter soundEmitter = pool.SpawnFromPool(soundEmitterPoolTag, transform.position, Quaternion.identity).GetComponent<SoundEmitter>();
+            if (soundEmitter != null)
+            {
+                soundEmitter.PlayAudioClip(clipsToPlay[i], audioCue.IsLoop);
+                if (!audioCue.IsLoop)
+                    soundEmitter.OnSoundFinishedPlaying += OnSoundEmitterFinishedPlaying;
+            }
+        }
+    }
 
     private void OnSoundEmitterFinishedPlaying(SoundEmitter soundEmitter)
     {
