@@ -27,7 +27,9 @@ public class Enemy : ScorableObjects
     public string visualEffectShootTag = "shoot";
     public string visualEffectHitTag = "hitspark";
     public string visualEffectExplosionTag = "destroy";
+
     [Space]
+    [SerializeField] private VoidEventChannelSO onShootEventChannel;
 
     // List of enemy parameters.
     [SerializeField]

@@ -13,7 +13,7 @@ public class AudioManager : MonoBehaviour
     [Tooltip("The SoundManager listens to this event, fired by objects in any scene, to play Music")]
     [SerializeField] private AudioCueEventChannelSO _musicEventChannel = default;
 
-    private void Awake()
+    private void Start()
     {
         pool = ObjectPooler.Instance;
     }

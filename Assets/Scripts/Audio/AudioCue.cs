@@ -15,9 +15,11 @@ public class AudioCue : MonoBehaviour
 	[Header("Configuration")]
 	[SerializeField] private AudioCueEventChannelSO _audioCueEventChannel = default;
 
-	private void Start()
+	private IEnumerator Start()
 	{
 		if (_playOnStart)
+			// Waiting for end of frame in order to wait for initialization of all objects in scene.
+			yield return new WaitForEndOfFrame();
 			PlayAudioCue();
 	}
 
