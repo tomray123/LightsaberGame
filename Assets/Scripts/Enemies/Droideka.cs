@@ -79,5 +79,8 @@ public class Droideka : Enemy
         Bullet bulletCloneRight = pool.SpawnFromPool(bullet, barrelRight.position, barrelRight.rotation).GetComponent<Bullet>();
         bulletCloneRight.damage += damage;
         bulletCloneRight.shooter = gameObject;
+
+        // Raising an onShoot event.
+        onShootEventChannel.RaiseEvent(ShootType.Simple);
     }
 }

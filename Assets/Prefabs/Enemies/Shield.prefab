@@ -138,6 +138,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scorePrice: 0
+  visualEffectShootTag: shoot
+  visualEffectHitTag: hitspark
+  visualEffectExplosionTag: destroy
+  onShootEventChannel: {fileID: 0}
+  onEnemyDamageEventChannel: {fileID: 11400000, guid: c15714a7482aa414fa99f7685dda2d2b, type: 2}
   parameters:
   - name: Respawn Time
     value: 7
@@ -158,13 +163,17 @@ MonoBehaviour:
   bullet: {fileID: 0}
   target: {fileID: 0}
   shootPosition: {fileID: 0}
+  hitPosition: {fileID: 0}
   timeToFirstShoot: 0.8
   timeToShoot: 1
   startHp: 100
+  hp: 0
   damage: 100
   spawnIndex: 0
   saberDamageCooldown: 3
   isSaberDangerous: 1
+  startLoop: 1
+  isJustBorn: 1
   isKilled: 0
 --- !u!114 &-7793890623815882453
 MonoBehaviour:

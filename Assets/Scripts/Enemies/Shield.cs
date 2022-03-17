@@ -123,6 +123,9 @@ public class Shield : Enemy
 
     public override void DestroyWhenDead()
     {
+        // Raising shield hit event.
+        onEnemyDamageEventChannel.RaiseEvent(DamageType.Hit);
+
         if (hp <= 0)
         {
             isKilled = true;
