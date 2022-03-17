@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OnEventPlayer : MonoBehaviour
+public class OnVoidEventPlayer : MonoBehaviour
 {
     [SerializeField] private VoidEventChannelSO _voidEventChannel = default;
     private AudioCue audioCue;

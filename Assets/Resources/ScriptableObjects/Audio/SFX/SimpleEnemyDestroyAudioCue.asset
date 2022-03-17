@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05b27a4752883f3418ef17b6f9de8804, type: 3}
-  m_Name: OnSimpleBulletShootEC
+  m_Script: {fileID: 11500000, guid: 95ceb08f1345bdd4e9acdd2ab883758c, type: 3}
+  m_Name: SimpleEnemyDestroyAudioCue
   m_EditorClassIdentifier: 
-  onVoidEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  _audioClipGroup:
+    sequenceMode: 3
+    audioClips:
+    - {fileID: 8300000, guid: 68f52ff435898704c8a0fef99f39a800, type: 3}
+  isLoop: 0

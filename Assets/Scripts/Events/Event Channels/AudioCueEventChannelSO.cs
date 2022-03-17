@@ -4,13 +4,13 @@ using UnityEngine.Events;
 [CreateAssetMenu(fileName = "New AudioCueEventChanel", menuName = "ScriptableObjects/Events/AudioCueEventChannel")]
 public class AudioCueEventChannelSO : ScriptableObject
 {
-	public UnityAction<AudioCueSO> OnAudioCueRequested;
+	public UnityAction<AudioCueSO, AudioConfigurationSO> OnAudioCueRequested;
 
-	public void RaiseEvent(AudioCueSO audioCue)
+	public void RaiseEvent(AudioCueSO audioCue, AudioConfigurationSO settings)
 	{
 		if (OnAudioCueRequested != null)
 		{
-			OnAudioCueRequested.Invoke(audioCue);
+			OnAudioCueRequested.Invoke(audioCue, settings);
 		}
 		else
 		{

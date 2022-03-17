@@ -7,6 +7,9 @@ using System.IO;
 
 public class BasePlayerSettings : MonoBehaviour
 {
+    [Header("Player death event channel")]
+    [SerializeField] private DamageEnumEventChannelSO playerDamageEventChannel;
+
     private ObjectPooler pool;
 
     // For changing player's color.
@@ -45,6 +48,9 @@ public class BasePlayerSettings : MonoBehaviour
             // Visual for hit.
             visualController.GetHit();
 
+            // Raising event about player hit.
+            playerDamageEventChannel.RaiseEvent(DamageType.Hit);
+
             // Checking for death.
             if (currentHealth <= 0)
             {
@@ -67,6 +73,9 @@ public class BasePlayerSettings : MonoBehaviour
 
         // Adding visual for player's death.
         visualController.StartDeathAnimation();
+
+        // Raising an event about death.
+        playerDamageEventChannel.RaiseEvent(DamageType.Death);
 
         isKilled = true;
 

@@ -29,8 +29,8 @@ public class Enemy : ScorableObjects
     public string visualEffectExplosionTag = "destroy";
 
     [Space]
-    [SerializeField] protected VoidEventChannelSO onShootEventChannel;
-    [SerializeField] protected VoidEventChannelSO onEnemyDestroyEventChannel;
+    [SerializeField] protected ShootEnumEventChannelSO onShootEventChannel;
+    [SerializeField] protected DamageEnumEventChannelSO onEnemyDamageEventChannel;
 
     [Space]
 
@@ -111,7 +111,7 @@ public class Enemy : ScorableObjects
         // Add visual effect for destroy.
         visEffects.ActivateVisualEffect(visualEffectExplosionTag, transform.position, transform.rotation);
         // Raising event about destroying.
-        onEnemyDestroyEventChannel.RaiseEvent();
+        onEnemyDamageEventChannel.RaiseEvent(DamageType.Death);
 
         if (OnSpawnObjectDeath != null)
         {
@@ -160,7 +160,7 @@ public class Enemy : ScorableObjects
         bulletClone.shooter = gameObject;
 
         // Raising an onShoot event.
-        onShootEventChannel.RaiseEvent();
+        onShootEventChannel.RaiseEvent(ShootType.Simple);
     }
 
     protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -335,6 +335,11 @@ public class Enemy : ScorableObjects
             EnemyDestroy();
             isKilled = true;
             pool.ReturnToPool(gameObject);
+        }
+        else
+        {
+            // Raise event about hit, but not killed.
+            onEnemyDamageEventChannel.RaiseEvent(DamageType.Hit);
         }
     }
 }

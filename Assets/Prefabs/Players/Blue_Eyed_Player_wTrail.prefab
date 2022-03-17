@@ -403,6 +403,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3864f96759b4031498895d9c8155f7c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDamageEventChannel: {fileID: 11400000, guid: 71c4b4e13e87cfe4fb2f2faf100b53fe, type: 2}
   maxHealth: 700
   currentHealth: 0
   DeathEvent:

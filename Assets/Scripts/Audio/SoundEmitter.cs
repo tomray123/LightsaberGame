@@ -13,9 +13,10 @@ public class SoundEmitter : MonoBehaviour
 		_audioSource.playOnAwake = false;
 	}
 
-	public void PlayAudioClip(AudioClip clip, bool hasToLoop)
+	public void PlayAudioClip(AudioClip clip, AudioConfigurationSO settings, bool hasToLoop)
 	{
 		_audioSource.clip = clip;
+		settings.ApplyTo(_audioSource);
 		_audioSource.loop = hasToLoop;
 		_audioSource.Play();
 

@@ -1452,6 +1452,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitStarDelay: 0.5
   starTimeInterval: 1
+  starEventChannel: {fileID: 11400000, guid: 99c2915599423ef4984579995964dc28, type: 2}
   star1: {fileID: 4659756602187807489}
   star2: {fileID: 2388982291791391791}
   star3: {fileID: 386578088195451974}

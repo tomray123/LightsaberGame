@@ -423,6 +423,8 @@ MonoBehaviour:
   visualEffectShootTag: shoot
   visualEffectHitTag: hitspark
   visualEffectExplosionTag: destroy
+  onShootEventChannel: {fileID: 11400000, guid: 55097d33d1edceb4ca7d47556ccdf5e0, type: 2}
+  onEnemyDamageEventChannel: {fileID: 11400000, guid: b49002f6261a0984096a083153f62897, type: 2}
   parameters:
   - name: Waiting time before start
     value: 1

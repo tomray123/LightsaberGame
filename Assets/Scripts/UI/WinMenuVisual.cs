@@ -11,6 +11,11 @@ public class WinMenuVisual : MonoBehaviour
     [SerializeField]
     private float starTimeInterval = 1f;
 
+    [Space]
+    [Header("Event Channel for UI star appearing.")]
+    [SerializeField] private VoidEventChannelSO starEventChannel;
+
+    [Space]
     [SerializeField]
     private GameObject star1;
     [SerializeField]
@@ -18,6 +23,7 @@ public class WinMenuVisual : MonoBehaviour
     [SerializeField]
     private GameObject star3;
 
+    [Space]
     [SerializeField]
     private Text currentScore;
 
@@ -52,6 +58,7 @@ public class WinMenuVisual : MonoBehaviour
 
         for (int i = 0; i < starCount; i++)
         {
+            starEventChannel.RaiseEvent();
             stars[i].SetActive(true);
             yield return new WaitForSeconds(starTimeInterval);
         }

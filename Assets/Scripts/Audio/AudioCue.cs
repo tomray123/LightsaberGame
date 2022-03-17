@@ -14,6 +14,7 @@ public class AudioCue : MonoBehaviour
 
 	[Header("Configuration")]
 	[SerializeField] private AudioCueEventChannelSO _audioCueEventChannel = default;
+	[SerializeField] private AudioConfigurationSO _audioConfiguration = default;
 
 	private IEnumerator Start()
 	{
@@ -27,6 +28,6 @@ public class AudioCue : MonoBehaviour
 
 	public void PlayAudioCue()
 	{
-		_audioCueEventChannel.RaiseEvent(_audioCue);
+		_audioCueEventChannel.RaiseEvent(_audioCue, _audioConfiguration);
 	}
 }

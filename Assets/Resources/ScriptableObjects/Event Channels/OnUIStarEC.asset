@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95ceb08f1345bdd4e9acdd2ab883758c, type: 3}
-  m_Name: SimpleEnemyDestroyAudioCue
+  m_Script: {fileID: 11500000, guid: 05b27a4752883f3418ef17b6f9de8804, type: 3}
+  m_Name: OnUIStarEC
   m_EditorClassIdentifier: 
-  _audioClipGroup:
-    sequenceMode: 3
-    audioClips:
-    - {fileID: 8300000, guid: 1e704f2577915b648b5ac66e4fbc10ed, type: 3}
-  isLoop: 0
