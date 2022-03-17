@@ -64,6 +64,18 @@ public class MachineGun : Enemy
         startLoop = true;
     }
 
+    protected override void Shoot()
+    {
+        visEffects.ActivateVisualEffect(visualEffectShootTag, shootPosition.position, shootPosition.rotation);
+        // Creating a bullet and setting its damage.
+        Bullet bulletClone = pool.SpawnFromPool(bullet, transform.position, transform.rotation).GetComponent<Bullet>();
+        bulletClone.damage += damage;
+        bulletClone.shooter = gameObject;
+
+        // Raising an onShoot event.
+        onShootEventChannel.RaiseEvent(ShootType.Turret);
+    }
+
     /*
     protected override IEnumerator GetHit()
     {
