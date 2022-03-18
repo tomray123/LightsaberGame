@@ -52,7 +52,7 @@ public class SubMenuController : MonoBehaviour
 
     public void SwitchToDevMode()
     {
-        int levelCount = SceneManager.sceneCountInBuildSettings - 4;
+        int levelCount = SceneManager.sceneCountInBuildSettings - 5;
         // Level number where player finished his game.
         levelsData.SetLastLevelNumber(levelCount);
     }
