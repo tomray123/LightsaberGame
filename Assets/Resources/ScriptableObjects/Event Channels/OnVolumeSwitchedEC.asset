@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95ceb08f1345bdd4e9acdd2ab883758c, type: 3}
-  m_Name: SniperShootSFX
+  m_Script: {fileID: 11500000, guid: 441fbfb66cc1fdc4681a345cc60b2906, type: 3}
+  m_Name: OnVolumeSwitchedEC
   m_EditorClassIdentifier: 
-  _audioClipGroup:
-    sequenceMode: 3
-    audioClips:
-    - {fileID: 8300000, guid: bf50e7974fb7cc4448f8539001cb5219, type: 3}
-  isLoop: 0

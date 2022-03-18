@@ -33,7 +33,7 @@ public class MenuController : MonoBehaviour
 
 	private bool isGraphicsEnabled;
 
-	private GameSettingsController gameSettings = new GameSettingsController();
+	private GameSettingsControllerSO gameSettings;
 
 	public GameObject SettingsMenu;
 
@@ -44,6 +44,7 @@ public class MenuController : MonoBehaviour
 
 	private void Start()
 	{
+		gameSettings = Resources.Load<GameSettingsControllerSO>("ScriptableObjects/GameSettingsController");
 		whichController = gameSettings.GetControllerType();
 		whichCorrection = gameSettings.GetCorrectionType();
 		isSmooth = gameSettings.GetSmoothSetting();

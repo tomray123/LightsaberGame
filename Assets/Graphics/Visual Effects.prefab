@@ -79,3 +79,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66634240710d9454f91ca97f73adc3a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameSettings: {fileID: 11400000, guid: a67ef472266bb5545b6461af4eedc4ac, type: 2}

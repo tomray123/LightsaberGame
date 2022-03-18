@@ -11,14 +11,15 @@ public class GameInit : MonoBehaviour
     [SerializeField]
     private int mainMenuSceneBuildIndex = 1;
 
+    private GameSettingsControllerSO gameSettings = default;
     private GameSettingsSO defaultGameSettings;
     private ILevelsData levelsData;
 
     private void Awake()
     {
-        GameSettingsController gameSettings = new GameSettingsController();
         levelsData = new LevelsDataPlayerPrefs();
         defaultGameSettings = Resources.Load<GameSettingsSO>("ScriptableObjects/Default Game Settings");
+        gameSettings = Resources.Load<GameSettingsControllerSO>("ScriptableObjects/GameSettingsController");
         if (!defaultGameSettings)
         {
             Debug.LogError("Can't load Default Game Settings from VisualEffectsInit.");
@@ -43,6 +44,8 @@ public class GameInit : MonoBehaviour
             levelsData.SetLastLevelNumber(0);
             // Visual effects are enabled by default.
             gameSettings.SetVisualEffects(defaultGameSettings.GraphicsEnabled);
+            // Global volume is enabled by default.
+            gameSettings.SetBoolPlayerPrefsData(PlayerPrefsParametersType.GlobalVolumeSetting, defaultGameSettings.GlobalVolumeOn);
 
             // Setting records of each level in build to 0.
             for (int i = 1; i < SceneManager.sceneCountInBuildSettings - 3; i++)

@@ -4,6 +4,8 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour
 {
     private ObjectPooler pool;
+    // The SoundManager will take some data from game settings to initialize the data.
+    private GameSettingsControllerSO gameSettings = default;
 
     [SerializeField] private string soundEmitterPoolTag = "Sound";
     [Header("Listening on channels")]
@@ -11,6 +13,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioCueEventChannelSO _SFXEventChannel = default;
     [Tooltip("The SoundManager listens to this event, fired by objects in any scene, to play Music")]
     [SerializeField] private AudioCueEventChannelSO _musicEventChannel = default;
+    [Tooltip("The SoundManager listens to this event, fired by sound button, to enable or disable audio.")]
+    [SerializeField] private BoolEventChannelSO _audioSwitchChannel = default;
 
     [Header("Audio control")]
     [SerializeField] private AudioMixer audioMixer = default;
@@ -24,18 +28,40 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         pool = ObjectPooler.Instance;
+
+        // Initializing data.
+        gameSettings = Resources.Load<GameSettingsControllerSO>("ScriptableObjects/GameSettingsController");
+        // Turning sound volume on or off.
+        SwitchVolume(gameSettings.GetBoolPlayerPrefsData(PlayerPrefsParametersType.GlobalVolumeSetting));
     }
 
     private void OnEnable()
     {
         _SFXEventChannel.OnAudioCueRequested += PlayAudioCue;
         _musicEventChannel.OnAudioCueRequested += PlayAudioCue;
+        _audioSwitchChannel.onBoolEvent += SwitchVolume;
     }
 
     private void OnDisable()
     {
         _SFXEventChannel.OnAudioCueRequested -= PlayAudioCue;
         _musicEventChannel.OnAudioCueRequested -= PlayAudioCue;
+        _audioSwitchChannel.onBoolEvent -= SwitchVolume;
+    }
+
+    /// <summary>
+    ///  Enables or disables audio volume.
+    /// </summary>
+    private void SwitchVolume(bool isEnabled)
+    {
+        if (isEnabled)
+        {
+            SetGroupVolume("MasterVolume", 1f);
+        }
+        else
+        {
+            SetGroupVolume("MasterVolume", 0f);
+        }
     }
 
     /// <summary>

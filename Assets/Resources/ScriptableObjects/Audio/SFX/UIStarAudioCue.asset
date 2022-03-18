@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95ceb08f1345bdd4e9acdd2ab883758c, type: 3}
-  m_Name: New AudioCue
+  m_Name: UIStarAudioCue
   m_EditorClassIdentifier: 
   _audioClipGroup:
     sequenceMode: 3
-    audioClips: []
+    audioClips:
+    - {fileID: 8300000, guid: bb901f86e1f843846a3ac08cd8ddd68b, type: 3}
   isLoop: 0

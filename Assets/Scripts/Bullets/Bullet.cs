@@ -36,10 +36,11 @@ public class Bullet : KillingObjects, IPooledObject
 
     private VisualEffects ve;
 
-    private GameSettingsController gameSettings = new GameSettingsController();
+    private GameSettingsControllerSO gameSettings;
 
     private void Start()
     {
+        gameSettings = Resources.Load<GameSettingsControllerSO>("ScriptableObjects/GameSettingsController");
         reflectCount = 0;
         whichCorrection = gameSettings.GetCorrectionType();
 
@@ -61,6 +62,7 @@ public class Bullet : KillingObjects, IPooledObject
 
     public void OnObjectSpawn()
     {
+        gameSettings = Resources.Load<GameSettingsControllerSO>("ScriptableObjects/GameSettingsController");
         reflectCount = 0;
         whichCorrection = gameSettings.GetCorrectionType();
 

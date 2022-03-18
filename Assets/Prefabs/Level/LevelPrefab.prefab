@@ -46,6 +46,7 @@ MonoBehaviour:
   soundEmitterPoolTag: Sound
   _SFXEventChannel: {fileID: 11400000, guid: 343254c9aa64e1d44a2ac27d11b7c710, type: 2}
   _musicEventChannel: {fileID: 11400000, guid: d45d29ae8fa95a0478129381762a1793, type: 2}
+  _audioSwitchChannel: {fileID: 11400000, guid: dd870b927bae21148934f5fe0bd18aff, type: 2}
   audioMixer: {fileID: 24100000, guid: 701845a81613a2e49bace7015246e987, type: 2}
   _masterVolume: 1
   _musicVolume: 1

@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New BoolEventChannel", menuName = "ScriptableObjects/Events/BoolEventChannel")]
-public class BoolEventChannel : ScriptableObject
+public class BoolEventChannelSO : ScriptableObject
 {
 	public UnityAction<bool> onBoolEvent;
 

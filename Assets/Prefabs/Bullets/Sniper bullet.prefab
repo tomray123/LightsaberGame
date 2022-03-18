@@ -149,6 +149,7 @@ MonoBehaviour:
   visualEffectReflectionTag: reflect
   speed: 20
   shooter: {fileID: 0}
+  direction: {x: 0, y: 0, z: 0}
   RayDelta: 10
   MaxRayLength: 10
   rayAngle: 6
@@ -156,6 +157,7 @@ MonoBehaviour:
   frontPoint: {fileID: 9165713405235188893}
   target: {fileID: 4258905628541220326, guid: 0470770b121af954d8b23fb39892839e, type: 3}
   isDangerous: 0
+  gameSettings: {fileID: 11400000, guid: a67ef472266bb5545b6461af4eedc4ac, type: 2}
 --- !u!61 &3080162178184282111
 BoxCollider2D:
   m_ObjectHideFlags: 0

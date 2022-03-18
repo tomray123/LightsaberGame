@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour
     public GameObject LoseMenu;
     public GameObject background;
 
+    GameSettingsControllerSO gameSettings;
+
     Animator winMenuAnimator;
     Animator loseMenuAnimator;
 
@@ -54,7 +56,7 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        GameSettingsController gameSettings = new GameSettingsController();
+        gameSettings = Resources.Load<GameSettingsControllerSO>("ScriptableObjects/GameSettingsController");
         levelData = new LevelsDataPlayerPrefs();
 
         if (WinMenu)

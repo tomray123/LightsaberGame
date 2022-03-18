@@ -57,5 +57,15 @@ public class GameSettingsSO : ScriptableObject
         {
             return correctionType;
         }
-    }  
+    }
+
+    [SerializeField]
+    private bool globalVolumeOn = true;
+    public bool GlobalVolumeOn
+    {
+        get
+        {
+            return globalVolumeOn;
+        }
+    }
 }
