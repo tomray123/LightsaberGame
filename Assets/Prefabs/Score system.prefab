@@ -47,9 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   simpleFactorUpperBorder: 5
   totalScore: 0
-  scoreForOneStar: 0
-  scoreForTwoStars: 0
-  scoreForThreeStars: 0
+  scoreForOneStar: 1
+  scoreForTwoStars: 1
+  scoreForThreeStars: 1
 --- !u!114 &518395172811155985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,9 +85,6 @@ MonoBehaviour:
     higherBorder: 50000000
     factor: 5
     decreaseVal: 350
-  comboScore: 0
-  comboScorePercent: 0
-  comboFactor: 1
 --- !u!114 &518395172811155986
 MonoBehaviour:
   m_ObjectHideFlags: 0

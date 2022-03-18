@@ -560,6 +560,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -62.100098
       objectReference: {fileID: 0}
+    - target: {fileID: 3549939100621507914, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 87.31592
+      objectReference: {fileID: 0}
+    - target: {fileID: 3549939100621507914, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -78.47986
+      objectReference: {fileID: 0}
     - target: {fileID: 3822158458524927917, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
@@ -571,6 +579,18 @@ PrefabInstance:
     - target: {fileID: 4118407136093820021, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4309437209316815344, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 87.31592
+      objectReference: {fileID: 0}
+    - target: {fileID: 4309437209316815344, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -78.47986
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749809616078773953, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 87.31592
       objectReference: {fileID: 0}
     - target: {fileID: 4835657785114202030, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -639,18 +659,6 @@ PrefabInstance:
     - target: {fileID: 4901547268769038002, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: pools.Array.data[15].size
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6489636826796235543, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-      propertyPath: scoreForOneStar
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 6489636826796235543, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-      propertyPath: scoreForTwoStars
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 6489636826796235543, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
-      propertyPath: scoreForThreeStars
-      value: 600
       objectReference: {fileID: 0}
     - target: {fileID: 8583008263291474773, guid: af6b3d625a2bc8241b6c1af762118b0a, type: 3}
       propertyPath: m_Name
